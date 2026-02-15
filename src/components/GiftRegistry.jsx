@@ -2,8 +2,9 @@ import React, { useRef, useEffect, useState } from 'react'
 import { createPortal } from 'react-dom'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { ArrowRight, X } from 'lucide-react'
+import { ArrowRight, X, Copy, Check } from 'lucide-react'
 import { paymentMethods as paymentMethodsData } from '../data'
+import { themeConfig } from '../config/themeConfig'
 import './pages/Details.css'
 
 // Register ScrollTrigger plugin
@@ -12,7 +13,18 @@ gsap.registerPlugin(ScrollTrigger)
 const GiftRegistry = () => {
   const giftRegistryRef = useRef(null)
   const [isGiftModalOpen, setIsGiftModalOpen] = useState(false)
+  const [copiedIndex, setCopiedIndex] = useState(null)
   const { paymentMethods } = paymentMethodsData
+
+  const handleCopy = async (text, index) => {
+    try {
+      await navigator.clipboard.writeText(text)
+      setCopiedIndex(index)
+      setTimeout(() => setCopiedIndex(null), 2000)
+    } catch (err) {
+      console.error('Failed to copy:', err)
+    }
+  }
 
   useEffect(() => {
     // Gift Registry animation
@@ -47,11 +59,11 @@ const GiftRegistry = () => {
             <span 
               className="font-tebranos text-5xl sm:text-6xl md:text-7xl lg:text-8xl inline-block leading-none uppercase gift-registry-title-text"
             >
-              Gift Registry
+              Couple's Request
             </span>
           </h3>
-          <p className="text-base sm:text-lg font-albert font-thin text-[#f5f5f0] max-w-3xl mx-auto leading-relaxed">
-            Your presence is our greatest gift. Monetary gifts are appreciated.
+          <p className="text-base sm:text-lg font-albert font-thin text-[#333333] max-w-3xl mx-auto leading-relaxed">
+            With all that we have, we've been truly blessed. Your presence and prayers are all that we request. But if you desire to give nonetheless, a <strong>monetary gift</strong> is one we suggest.
           </p>
         </div>
         
@@ -62,10 +74,11 @@ const GiftRegistry = () => {
             className="relative flex items-center justify-center hover:opacity-80 transition-all duration-300 group bg-white rounded-lg px-8 py-3 gap-2 gift-button"
           >
             <div 
-              className="absolute inset-0 rounded-lg border border-[#800000] pointer-events-none gift-button-border"
+              className="absolute inset-0 rounded-lg border pointer-events-none gift-button-border"
+              style={{ borderColor: themeConfig.cssVariables['--gold'] }}
             ></div>
-            <span className="text-[#800000] font-medium text-sm sm:text-base relative z-10">Send Gift</span>
-            <ArrowRight className="w-4 h-4 text-[#800000] relative z-10" />
+            <span className="font-medium text-sm sm:text-base relative z-10" style={{ color: themeConfig.cssVariables['--gold'] }}>Send Gift</span>
+            <ArrowRight className="w-4 h-4 relative z-10" style={{ color: themeConfig.cssVariables['--gold'] }} />
           </button>
         </div>
       </div>
@@ -95,21 +108,52 @@ const GiftRegistry = () => {
             {/* Content */}
             <div className="p-6">
               {paymentMethods && paymentMethods.length > 0 && (
-                <div className="flex items-center justify-center">
-                  {paymentMethods.map((method, index) => (
-                    <div key={index} className="flex items-center justify-center">
-                      {/* BPI QR Code Image */}
-                      {method.image && (
-                        <div className="flex items-center justify-center">
-                          <img 
-                            src={method.image} 
-                            alt="BPI QR Code" 
-                            className="w-full max-w-md h-auto object-contain"
-                          />
-                        </div>
-                      )}
-                    </div>
-                  ))}
+                <div className="space-y-8">
+                  {paymentMethods.map((method, index) => {
+                    // Extract name from "GCash - Name" format
+                    const accountName = method.accountInfo?.accountName || method.name?.split(' - ')[1] || method.name
+                    const accountNumber = method.accountInfo?.accountNumber
+                    
+                    return (
+                      <div key={index} className="flex flex-col items-center justify-center">
+                        {/* QR Code Image */}
+                        {method.accountInfo?.qrCode && (
+                          <div className="flex items-center justify-center mb-4">
+                            <img 
+                              src={method.accountInfo.qrCode} 
+                              alt={`${accountName} QR Code`}
+                              className="w-full max-w-xs h-auto object-contain"
+                            />
+                          </div>
+                        )}
+                        {/* Account Name */}
+                        {accountName && (
+                          <h4 className="text-lg sm:text-xl font-boska text-[#333333] mb-2">
+                            {accountName}
+                          </h4>
+                        )}
+                        {/* Account Number with Copy Icon */}
+                        {accountNumber && (
+                          <div className="flex items-center gap-2">
+                            <p className="text-sm sm:text-base font-albert text-[#333333] font-semibold">
+                              {accountNumber}
+                            </p>
+                            <button
+                              onClick={() => handleCopy(accountNumber, index)}
+                              className="p-1 hover:bg-gray-100 rounded transition-colors duration-200"
+                              title="Copy number"
+                            >
+                              {copiedIndex === index ? (
+                                <Check className="w-4 h-4 text-green-600" />
+                              ) : (
+                                <Copy className="w-4 h-4 text-gray-600" />
+                              )}
+                            </button>
+                          </div>
+                        )}
+                      </div>
+                    )
+                  })}
                 </div>
               )}
             </div>

@@ -1,19 +1,14 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useLayoutEffect, useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { ArrowLeft } from 'lucide-react'
-import { entourage } from '../../data'
+import { entourage, couple } from '../../data'
+import { themeConfig } from '../../config/themeConfig'
+import './Entourage.css'
 
 // Register ScrollTrigger plugin
 gsap.registerPlugin(ScrollTrigger)
-
-// Helper function to remove middle initial from name
-const removeMiddleInitial = (name) => {
-  // Remove single letter followed by period (middle initial)
-  // Pattern: space + single letter + period + space
-  return name.replace(/\s+[A-Z]\.\s+/g, ' ').replace(/\s+/g, ' ').trim()
-}
 
 const Entourage = () => {
   const navigate = useNavigate()
@@ -30,7 +25,127 @@ const Entourage = () => {
   const bibleBearerRef = useRef(null)
   const ringBearerRef = useRef(null)
   const coinBearerRef = useRef(null)
-  const flowerGirlsRef = useRef(null)
+  const veilSponsorsRef = useRef(null)
+  const cordSponsorsRef = useRef(null)
+  const candleSponsorsRef = useRef(null)
+  const littleFlowerGirlsRef = useRef(null)
+  const flowersContainerRef = useRef(null)
+
+  useLayoutEffect(() => {
+    const pageLoadTime = performance.now()
+    console.log('Current page: Entourage')
+    console.log('Page load time:', pageLoadTime, 'ms')
+    
+    // Start falling flowers animation immediately when page opens
+    // The first flower (delay-0) starts immediately, others follow with their delays
+    const startAnimations = () => {
+      const animationStartTime = performance.now()
+      const timeSincePageLoad = ((animationStartTime - pageLoadTime) / 1000).toFixed(2)
+      
+      if (flowersContainerRef.current) {
+        const flowers = flowersContainerRef.current.querySelectorAll('.falling-flower')
+        console.log('Found flowers:', flowers.length)
+        
+        if (flowers.length > 0) {
+          let delayZeroFound = false
+          flowers.forEach((flower, index) => {
+            // Remove any existing animation delay for delay-0 to start immediately
+            if (flower.classList.contains('delay-0')) {
+              delayZeroFound = true
+              
+              // Force restart animation by removing and re-adding
+              flower.style.animation = 'none'
+              void flower.offsetWidth // Force reflow
+              
+              // Set initial transform to start delay-0 flowers at top of viewport (immediately visible)
+              // Start from 0vh instead of -100vh so they're visible right away
+              flower.style.transform = 'translateY(0vh) rotate(0deg)'
+              flower.style.opacity = '0.6'
+              flower.style.animationDelay = '0s'
+              flower.style.animationPlayState = 'running'
+              
+              // Re-apply animation - it will continue from the current transform
+              const speedClass = flower.classList.toString().match(/speed-(slow|medium|fast)/)?.[1] || 'medium'
+              const duration = speedClass === 'slow' ? 15 : speedClass === 'fast' ? 8 : 12
+              
+              // Create custom keyframes that start from 0vh (visible) instead of -100vh
+              const animationName = `fallingSnowVisible-${speedClass}`
+              if (!document.getElementById(`style-${animationName}`)) {
+                const style = document.createElement('style')
+                style.id = `style-${animationName}`
+                style.textContent = `
+                  @keyframes ${animationName} {
+                    0% {
+                      transform: translateY(0vh) rotate(0deg);
+                      opacity: 0.6;
+                    }
+                    90% {
+                      opacity: 0.6;
+                    }
+                    100% {
+                      transform: translateY(100vh) rotate(360deg);
+                      opacity: 0;
+                    }
+                  }
+                `
+                document.head.appendChild(style)
+              }
+              
+              flower.style.animation = `${animationName} ${duration}s linear infinite`
+              
+              // Check computed styles to verify what's actually applied
+              const computedStyle = window.getComputedStyle(flower)
+              const computedDelay = computedStyle.animationDelay
+              const computedPlayState = computedStyle.animationPlayState
+              const computedOpacity = computedStyle.opacity
+              const computedTop = computedStyle.top
+              const computedTransform = computedStyle.transform
+              
+              console.log(`Flower ${index} (delay-0): Animation started at ${timeSincePageLoad}s`)
+              console.log(`  - Computed animation-delay: ${computedDelay}`)
+              console.log(`  - Computed animation-play-state: ${computedPlayState}`)
+              console.log(`  - Computed opacity: ${computedOpacity}`)
+              console.log(`  - Computed top: ${computedTop}`)
+              console.log(`  - Computed transform: ${computedTransform}`)
+              console.log(`  - Element visible: ${flower.offsetParent !== null}`)
+            } else {
+              const delay = flower.classList.toString().match(/delay-(\d+)/)?.[1] || 'unknown'
+              flower.style.animationPlayState = 'running'
+              
+              // Check computed styles for other flowers too
+              const computedStyle = window.getComputedStyle(flower)
+              const computedDelay = computedStyle.animationDelay
+              
+              console.log(`Flower ${index} (delay-${delay}): Animation play state set at ${timeSincePageLoad}s`)
+              console.log(`  - Computed animation-delay: ${computedDelay}`)
+            }
+            // Trigger reflow to ensure animation starts
+            void flower.offsetWidth
+          })
+          
+          if (!delayZeroFound) {
+            console.warn('WARNING: No delay-0 flower found!')
+          }
+          
+          console.log(`Snow effect started after: ${timeSincePageLoad}sec`)
+        } else {
+          console.warn('No flowers found in container!')
+        }
+      } else {
+        console.warn('Flowers container ref is null!')
+      }
+    }
+    
+    // Try immediately
+    console.log('Attempting to start animations immediately...')
+    startAnimations()
+    
+    // Also try on next frame in case DOM isn't ready
+    requestAnimationFrame(() => {
+      console.log('Attempting to start animations on next frame...')
+      startAnimations()
+    })
+  }, [])
 
   useEffect(() => {
     // Set initial hidden states to prevent glimpse
@@ -39,6 +154,12 @@ const Entourage = () => {
     }
     if (backButtonRef.current) {
       gsap.set(backButtonRef.current, { opacity: 0, scale: 0 })
+    }
+    
+    // Set initial hidden states for all name elements to prevent flash
+    const allNameElements = sectionRef.current?.querySelectorAll('p.font-poppins, .ninong-item, .ninang-item, .groomsmen-item, .bridesmaids-item')
+    if (allNameElements && allNameElements.length > 0) {
+      gsap.set(allNameElements, { opacity: 0, y: 20 })
     }
     
     // Page slide-in animation on mount
@@ -73,260 +194,164 @@ const Entourage = () => {
       { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" }
     )
 
-    // Groom and Bride names - animate together as a pair
-    if (groomRef.current) {
-      const groomName = groomRef.current.querySelector('p.font-poppins')
-      const brideName = groomRef.current.parentElement?.querySelector('[class*="flex-1"]:last-child')?.querySelector('p.font-poppins')
-      
-      if (groomName && brideName) {
-        const row = [groomName, brideName]
-        gsap.set(row, { opacity: 0, y: 20 })
-        
-        ScrollTrigger.create({
-          trigger: groomRef.current,
-          start: "top 80%",
-          onEnter: () => {
-            gsap.to(row, {
-              opacity: 1,
-              y: 0,
-              duration: 0.6,
-              ease: "power2.out"
-            })
-          },
-          toggleActions: "play none none reverse"
-        })
-      }
-    }
 
-    // Parents section animation - animate row by row (one row after the other)
+    // Collect all names from Parents down to Flower Girls for sequential row-by-row animation
+    const allNameRows = []
+    let currentTime = 0
+    
+    // Parents section - collect rows
     if (parentsRef.current) {
-      const groomParentsDiv = parentsRef.current.querySelector('[class*="flex-1"]:first-child')
-      const brideParentsDiv = parentsRef.current.querySelector('[class*="flex-1"]:last-child')
+      const groomParents = parentsRef.current.querySelectorAll('.flex-1:first-child p.font-poppins')
+      const brideParents = parentsRef.current.querySelectorAll('.flex-1:last-child p.font-poppins')
       
-      if (groomParentsDiv && brideParentsDiv) {
-        const groomParentsNames = groomParentsDiv.querySelectorAll('p.font-poppins')
-        const brideParentsNames = brideParentsDiv.querySelectorAll('p.font-poppins')
+      if (groomParents.length > 0 && brideParents.length > 0) {
+        const maxLength = Math.max(groomParents.length, brideParents.length)
+        gsap.set([...groomParents, ...brideParents], { opacity: 0, y: 20 })
         
-        if (groomParentsNames && brideParentsNames) {
-          const groomArray = Array.from(groomParentsNames)
-          const brideArray = Array.from(brideParentsNames)
-          const maxLength = Math.max(groomArray.length, brideArray.length)
-          
-          // Create row pairs
-          const rows = []
-          for (let i = 0; i < maxLength; i++) {
-            const row = []
-            if (groomArray[i]) row.push(groomArray[i])
-            if (brideArray[i]) row.push(brideArray[i])
-            if (row.length > 0) rows.push(row)
-          }
-          
-          if (rows.length > 0) {
-            rows.forEach(row => {
-              gsap.set(row, { opacity: 0, y: 20 })
-            })
-            
-            ScrollTrigger.create({
-              trigger: parentsRef.current,
-              start: "top 80%",
-              onEnter: () => {
-                rows.forEach((row, index) => {
-                  gsap.to(row, {
-                    opacity: 1,
-                    y: 0,
-                    duration: 0.6,
-                    ease: "power2.out",
-                    delay: index * 0.15
-                  })
-                })
-              },
-              toggleActions: "play none none reverse"
-            })
+        for (let i = 0; i < maxLength; i++) {
+          const row = []
+          if (groomParents[i]) row.push(groomParents[i])
+          if (brideParents[i]) row.push(brideParents[i])
+          if (row.length > 0) {
+            allNameRows.push({ elements: row, time: currentTime })
+            currentTime += 0.2
           }
         }
       }
     }
 
-    // Principal Sponsors animation - animate row by row (one row after the other)
+    // Principal Sponsors - collect rows
     if (principalSponsorsRef.current) {
       const ninongElements = principalSponsorsRef.current?.querySelectorAll('.ninong-item')
       const ninangElements = principalSponsorsRef.current?.querySelectorAll('.ninang-item')
       
-      if (ninongElements && ninangElements) {
-        const ninongArray = Array.from(ninongElements)
-        const ninangArray = Array.from(ninangElements)
-        const maxLength = Math.max(ninongArray.length, ninangArray.length)
+      if (ninongElements && ninangElements && ninongElements.length > 0) {
+        const maxLength = Math.max(ninongElements.length, ninangElements.length)
+        gsap.set([...ninongElements, ...ninangElements], { opacity: 0, y: 20 })
         
-        // Create row pairs
-        const rows = []
+        // Collect paired rows
         for (let i = 0; i < maxLength; i++) {
           const row = []
-          if (ninongArray[i]) row.push(ninongArray[i])
-          if (ninangArray[i]) row.push(ninangArray[i])
-          if (row.length > 0) rows.push(row)
+          if (ninongElements[i]) row.push(ninongElements[i])
+          if (ninangElements[i]) row.push(ninangElements[i])
+          if (row.length > 0) {
+            allNameRows.push({ elements: row, time: currentTime })
+            currentTime += 0.2
+          }
         }
-        
-        if (rows.length > 0) {
-          // Set initial state for all items
-          rows.forEach(row => {
-            gsap.set(row, { opacity: 0, y: 20 })
-          })
-          
-          ScrollTrigger.create({
-            trigger: principalSponsorsRef.current,
-            start: "top 80%",
-            onEnter: () => {
-              // Animate each row one after the other
-              rows.forEach((row, index) => {
-                gsap.to(row, {
-                  opacity: 1,
-                  y: 0,
-                  duration: 0.6,
-                  ease: "power2.out",
-                  delay: index * 0.15
-                })
-              })
-            },
-            toggleActions: "play none none reverse"
+
+        // Collect unpaired ninangs
+        const unpairedNinangs = principalSponsorsRef.current?.querySelectorAll('.mt-4 .ninang-item')
+        if (unpairedNinangs && unpairedNinangs.length > 0) {
+          gsap.set(unpairedNinangs, { opacity: 0, y: 20 })
+          Array.from(unpairedNinangs).forEach(ninang => {
+            allNameRows.push({ elements: [ninang], time: currentTime })
+            currentTime += 0.1
           })
         }
       }
     }
 
-    // Secondary Sponsors animation - animate row by row (one row after the other)
-    if (secondarySponsorsRef.current) {
-      const groomsmenElements = secondarySponsorsRef.current?.querySelectorAll('.groomsmen-item')
-      const bridesmaidsElements = secondarySponsorsRef.current?.querySelectorAll('.bridesmaids-item')
-      
-      if (groomsmenElements && bridesmaidsElements) {
-        const groomsmenArray = Array.from(groomsmenElements)
-        const bridesmaidsArray = Array.from(bridesmaidsElements)
-        const maxLength = Math.max(groomsmenArray.length, bridesmaidsArray.length)
-        
-        // Create row pairs
-        const rows = []
-        for (let i = 0; i < maxLength; i++) {
-          const row = []
-          if (groomsmenArray[i]) row.push(groomsmenArray[i])
-          if (bridesmaidsArray[i]) row.push(bridesmaidsArray[i])
-          if (row.length > 0) rows.push(row)
-        }
-        
-        if (rows.length > 0) {
-          // Set initial state for all items
-          rows.forEach(row => {
-            gsap.set(row, { opacity: 0, y: 20 })
-          })
-          
-          ScrollTrigger.create({
-            trigger: secondarySponsorsRef.current,
-            start: "top 80%",
-            onEnter: () => {
-              // Animate each row one after the other
-              rows.forEach((row, index) => {
-                gsap.to(row, {
-                  opacity: 1,
-                  y: 0,
-                  duration: 0.6,
-                  ease: "power2.out",
-                  delay: index * 0.15
-                })
-              })
-            },
-            toggleActions: "play none none reverse"
-          })
-        }
-      }
-    }
-
-    // Bestman and Maid of Honor - animate row by row (one row after the other)
+    // Bestman and Maid of Honor - collect rows (after Secondary Sponsors title)
     if (bestmanRef.current && maidOfHonorRef.current) {
       const bestmanNames = bestmanRef.current.querySelectorAll('p.font-poppins')
       const maidOfHonorNames = maidOfHonorRef.current.querySelectorAll('p.font-poppins')
       
-      if (bestmanNames && maidOfHonorNames) {
-        const bestmanArray = Array.from(bestmanNames)
-        const maidOfHonorArray = Array.from(maidOfHonorNames)
-        const maxLength = Math.max(bestmanArray.length, maidOfHonorArray.length)
+      if (bestmanNames.length > 0 || maidOfHonorNames.length > 0) {
+        const maxLength = Math.max(bestmanNames.length, maidOfHonorNames.length)
+        gsap.set([...bestmanNames, ...maidOfHonorNames], { opacity: 0, y: 20 })
         
-        // Create row pairs
-        const rows = []
         for (let i = 0; i < maxLength; i++) {
           const row = []
-          if (bestmanArray[i]) row.push(bestmanArray[i])
-          if (maidOfHonorArray[i]) row.push(maidOfHonorArray[i])
-          if (row.length > 0) rows.push(row)
-        }
-        
-        if (rows.length > 0) {
-          const pairContainer = bestmanRef.current.parentElement
-          if (pairContainer) {
-            // Set initial state for all items
-            rows.forEach(row => {
-              gsap.set(row, { opacity: 0, y: 20 })
-            })
-            
-            ScrollTrigger.create({
-              trigger: pairContainer,
-              start: "top 80%",
-              onEnter: () => {
-                // Animate each row one after the other
-                rows.forEach((row, index) => {
-                  gsap.to(row, {
-                    opacity: 1,
-                    y: 0,
-                    duration: 0.6,
-                    ease: "power2.out",
-                    delay: index * 0.15
-                  })
-                })
-              },
-              toggleActions: "play none none reverse"
-            })
+          if (bestmanNames[i]) row.push(bestmanNames[i])
+          if (maidOfHonorNames[i]) row.push(maidOfHonorNames[i])
+          if (row.length > 0) {
+            allNameRows.push({ elements: row, time: currentTime })
+            currentTime += 0.2
           }
         }
       }
     }
 
-    // Bible Bearer, Ring Bearer, Coin Bearer, and Flower Girls - animate each section one after the other
-    const bearerRefs = [bibleBearerRef, ringBearerRef, coinBearerRef, flowerGirlsRef].filter(ref => ref.current)
-    if (bearerRefs.length > 0) {
-      const container = bearerRefs[0].current.parentElement
-      if (container) {
-        // Set initial state for all items
-        bearerRefs.forEach(ref => {
-          const names = ref.current.querySelectorAll('p.font-poppins')
-          if (names) {
-            gsap.set(Array.from(names), { opacity: 0, y: 20 })
-          }
+    // Secondary Sponsors - collect Candle, Cord, Veil Sponsors (single column - one name per row)
+    const sponsorRefs = [candleSponsorsRef, cordSponsorsRef, veilSponsorsRef].filter(ref => ref.current)
+    sponsorRefs.forEach(ref => {
+      const names = ref.current.querySelectorAll('p.font-poppins')
+      if (names.length > 0) {
+        gsap.set(names, { opacity: 0, y: 20 })
+        Array.from(names).forEach(name => {
+          allNameRows.push({ elements: [name], time: currentTime })
+          currentTime += 0.1
         })
+      }
+    })
+    
+    // Groomsmen + Bridesmaids - collect rows
+    if (secondarySponsorsRef.current) {
+      const groomsmenElements = secondarySponsorsRef.current?.querySelectorAll('.groomsmen-item')
+      const bridesmaidsElements = secondarySponsorsRef.current?.querySelectorAll('.bridesmaids-item')
+      
+      if (groomsmenElements && bridesmaidsElements && groomsmenElements.length > 0) {
+        const maxLength = Math.max(groomsmenElements.length, bridesmaidsElements.length)
+        gsap.set([...groomsmenElements, ...bridesmaidsElements], { opacity: 0, y: 20 })
         
-        ScrollTrigger.create({
-          trigger: container,
-          start: "top 80%",
-          onEnter: () => {
-            // Animate each section (bearer category) one after the other
-            bearerRefs.forEach((ref, sectionIndex) => {
-              const names = ref.current.querySelectorAll('p.font-poppins')
-              if (names) {
-                const namesArray = Array.from(names)
-                // Animate all names in this section together, but each section after the previous
-                gsap.to(namesArray, {
-                  opacity: 1,
-                  y: 0,
-                  duration: 0.6,
-                  ease: "power2.out",
-                  delay: sectionIndex * 0.3,
-                  stagger: 0.1
-                })
-              }
-            })
-          },
-          toggleActions: "play none none reverse"
+        for (let i = 0; i < maxLength; i++) {
+          const row = []
+          if (groomsmenElements[i]) row.push(groomsmenElements[i])
+          if (bridesmaidsElements[i]) row.push(bridesmaidsElements[i])
+          if (row.length > 0) {
+            allNameRows.push({ elements: row, time: currentTime })
+            currentTime += 0.2
+          }
+        }
+      }
+    }
+    
+    // Bible Bearer, Ring Bearer, Coin Bearer - collect (single column - one name per row)
+    const bearerRefs = [bibleBearerRef, ringBearerRef, coinBearerRef].filter(ref => ref.current)
+    bearerRefs.forEach(ref => {
+      const names = ref.current.querySelectorAll('p.font-poppins')
+      if (names.length > 0) {
+        gsap.set(names, { opacity: 0, y: 20 })
+        Array.from(names).forEach(name => {
+          allNameRows.push({ elements: [name], time: currentTime })
+          currentTime += 0.1
+        })
+      }
+    })
+
+    // Little Flower Girls - collect (single column - one name per row)
+    if (littleFlowerGirlsRef.current) {
+      const names = littleFlowerGirlsRef.current.querySelectorAll('p.font-poppins')
+      if (names.length > 0) {
+        gsap.set(names, { opacity: 0, y: 20 })
+        Array.from(names).forEach(name => {
+          allNameRows.push({ elements: [name], time: currentTime })
+          currentTime += 0.1
         })
       }
     }
 
+    
+    // Animate all collected rows sequentially when any section comes into view
+    if (allNameRows.length > 0 && parentsRef.current) {
+      ScrollTrigger.create({
+        trigger: parentsRef.current,
+        start: "top 80%",
+        onEnter: () => {
+          const masterTl = gsap.timeline()
+          allNameRows.forEach(({ elements, time }) => {
+            masterTl.to(elements, {
+              opacity: 1,
+              y: 0,
+              duration: 0.6,
+              ease: "power2.out"
+            }, time)
+          })
+        },
+        toggleActions: "play none none reverse"
+      })
+    }
 
     // Cleanup function
     return () => {
@@ -341,183 +366,254 @@ const Entourage = () => {
   const bibleBearer = entourage.entourageList.find(item => item.category === "Bible Bearer")
   const ringBearer = entourage.entourageList.find(item => item.category === "Ring Bearer")
   const coinBearer = entourage.entourageList.find(item => item.category === "Coin Bearer")
-  const flowerGirls = entourage.entourageList.find(item => item.category === "Flower Girls")
+  const veilSponsors = entourage.entourageList.find(item => item.category === "Veil Sponsors")
+  const cordSponsors = entourage.entourageList.find(item => item.category === "Cord Sponsors")
+  const candleSponsors = entourage.entourageList.find(item => item.category === "Candle Sponsors")
+  const littleFlowerGirls = entourage.entourageList.find(item => item.category === "Little Flower Girls")
 
   return (
     <>
+      {/* Falling Snow Effect - Falling Flower (fixed to viewport, independent of scroll) */}
+      <div ref={flowersContainerRef}>
+        {[...Array(20)].map((_, i) => {
+          const leftPosition = `${(i * 5) % 100}%`
+          const sizeClass = i % 3 === 0 ? 'size-small' : i % 3 === 1 ? 'size-medium' : 'size-large'
+          const speedClass = i % 3 === 0 ? 'speed-slow' : i % 3 === 1 ? 'speed-medium' : 'speed-fast'
+          const delayClass = `delay-${i % 15}`
+          const isDelayZero = (i % 15) === 0
+
+          return (
+            <div
+              key={`falling-flower-${i}`}
+              className={`falling-flower ${sizeClass} ${speedClass} ${delayClass}`}
+              style={{ 
+                left: leftPosition,
+                ...(isDelayZero && {
+                  animationDelay: '0s',
+                  opacity: '0.6',
+                  animationPlayState: 'running'
+                })
+              }}
+            >
+              <img 
+                src="/assets/images/graphics/falling-flower.png" 
+                alt="Falling flower"
+              />
+            </div>
+          )
+        })}
+      </div>
+
       <section
         ref={sectionRef}
         id="entourage"
         data-section="entourage"
-        className="relative py-20 w-full overflow-hidden"
+        className="relative w-full overflow-hidden px-6 py-32 sm:py-40 md:py-44 lg:py-52"
         style={{ 
           opacity: 0, 
-          transform: 'translateX(100%)',
-          paddingLeft: '1rem',
-          paddingRight: '1rem',
-          paddingTop: '4rem',
-          paddingBottom: '4rem'
+          transform: 'translateX(100%)'
         }}
       >
-        {/* Background Image */}
-        <div 
-          className="absolute inset-0 z-0"
-          style={{
-            backgroundImage: 'url(/assets/images/graphics/bg-3.png)',
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            backgroundRepeat: 'no-repeat'
-          }}
-        />
-        {/* Line-1 Image - Top */}
-        <img 
-          src="/assets/images/graphics/line-1.png" 
-          alt="Line decoration" 
-          className="absolute left-1/2 transform -translate-x-1/2 z-30"
-          style={{ 
-            width: '50%',
-            height: 'auto',
-            maxWidth: '50%',
-            objectFit: 'cover',
-            top: '1rem'
-          }}
-        />
-        {/* Line-1 Image - Bottom */}
-        <img 
-          src="/assets/images/graphics/line-1.png" 
-          alt="Line decoration" 
-          className="absolute left-1/2 transform -translate-x-1/2 z-30"
-          style={{ 
-            width: '50%',
-            height: 'auto',
-            maxWidth: '50%',
-            objectFit: 'cover',
-            bottom: '1rem'
-          }}
-        />
-        {/* Content */}
-        <div className="relative z-20 flex items-center justify-center py-12" style={{ backgroundColor: '#F5F5DC' }}>
-          {/* Beige-1 Image Overlay */}
-          <div 
-            className="absolute inset-0 z-10"
-            style={{
-              backgroundImage: 'url(/assets/images/graphics/beige-1.png)',
-              backgroundSize: 'cover',
-              backgroundPosition: 'center',
-              backgroundRepeat: 'no-repeat',
-              opacity: 0.25
-            }}
+        {/* Flower Banner - Top (absolute, full viewport width, container matches image size) */}
+        <div
+          className="absolute top-0 flex items-center justify-center"
+          style={{ left: 0, width: '100vw' }}
+        >
+          <img 
+            src="/assets/images/graphics/flower-banner.png" 
+            alt="Flower banner"
+            style={{ width: '100vw', height: 'auto', display: 'block' }}
           />
+        </div>
+
+        {/* Content */}
+        <div className="relative z-20 flex items-center justify-center py-12">
           <div className="max-w-xs sm:max-w-md lg:max-w-4xl w-full mx-auto px-4 sm:px-6 md:px-6 lg:px-8">
             {/* Header Section */}
             <div className="text-center mb-12">
               <h2 ref={headerRef} className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl mb-8">
-                <span className="imperial-script-regular text-4xl sm:text-5xl md:text-6xl lg:text-7xl inline-block leading-none capitalize" style={{ lineHeight: '0.8', color: '#800000' }}>Entourage</span>
+                {/* Couple Names */}
+                <div className="flex flex-col items-center justify-center">
+                  {/* Groom's Name */}
+                  <div>
+                    <p className={`font-tebranos text-4xl sm:text-5xl md:text-6xl lg:text-7xl uppercase leading-tight ${themeConfig.text.primary}`}>
+                      {couple.groom.firstName}
+                    </p>
+                    <p className={`font-ballet text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-tight -mt-4 ${themeConfig.text.secondary}`}>
+                      {couple.groom.lastName}
+                    </p>
+                  </div>
+                  <p className={`caudex-bold text-base sm:text-lg md:text-xl lg:text-2xl uppercase leading-tight my-1 ${themeConfig.text.primary}`}>
+                    AND
+                  </p>
+                  {/* Bride's Name */}
+                  <div>
+                    <p className={`font-tebranos text-4xl sm:text-5xl md:text-6xl lg:text-7xl uppercase leading-tight ${themeConfig.text.primary}`}>
+                      {couple.bride.firstName}
+                    </p>
+                    <p className={`font-ballet text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-tight -mt-4 ${themeConfig.text.secondary}`}>
+                      {couple.bride.lastName}
+                    </p>
+                  </div>
+                </div>
+                {/* NUPTIALS */}
+                <div className={`caudex-bold text-base sm:text-lg md:text-xl lg:text-2xl block leading-none uppercase mt-8 ${themeConfig.text.primary}`} style={{ lineHeight: '0.8' }}>
+                  NUPTIALS
+                </div>
               </h2>
-            </div>
-
-            {/* Groom and Bride Names - Side by Side */}
-            <div ref={groomRef} className="mb-6 flex flex-row gap-4 sm:gap-6 justify-center items-center">
-              {/* Groom Name */}
-              <div className="flex-1">
-                <p className="text-[10px] sm:text-sm md:text-base lg:text-lg alice-regular mb-2 text-right uppercase" style={{ color: '#800000' }}>Name Of Groom</p>
-                <p className="text-[10px] sm:text-sm md:text-base lg:text-lg font-poppins uppercase whitespace-nowrap overflow-hidden text-ellipsis text-right text-[#333333]">{removeMiddleInitial(entourage.couple.groom.name)}</p>
-              </div>
-
-              {/* Bride Name */}
-              <div className="flex-1">
-                <p className="text-[10px] sm:text-sm md:text-base lg:text-lg alice-regular mb-2 text-left uppercase" style={{ color: '#800000' }}>Name Of Bride</p>
-                <p className="text-[10px] sm:text-sm md:text-base lg:text-lg font-poppins uppercase whitespace-nowrap overflow-hidden text-ellipsis text-left text-[#333333]">{removeMiddleInitial(entourage.couple.bride.name)}</p>
-              </div>
             </div>
 
             {/* Parents Section */}
             <div ref={parentsRef} className="mb-6 flex flex-row gap-4 sm:gap-6 justify-center items-center">
               {/* Groom's Parents */}
               <div className="flex-1">
-                <p className="text-[10px] sm:text-sm md:text-base lg:text-lg alice-regular mb-2 text-right uppercase" style={{ color: '#800000' }}>Groom's Parents</p>
-                <p className="text-[10px] sm:text-sm md:text-base lg:text-lg font-poppins uppercase whitespace-nowrap overflow-hidden text-ellipsis text-right text-[#333333]">{entourage.parents.groom.father}</p>
-                <p className="text-[10px] sm:text-sm md:text-base lg:text-lg font-poppins uppercase whitespace-nowrap overflow-hidden text-ellipsis text-right text-[#333333]">{entourage.parents.groom.mother}</p>
+                <p className="text-[10px] sm:text-[13px] md:text-[15px] lg:text-[17px] caudex-bold mb-2 whitespace-nowrap text-right uppercase" style={{ color: '#87AE73' }}>Groom's Parents</p>
+                <p className="text-[8.5px] sm:text-[12px] md:text-[14px] lg:text-[16px] font-poppins uppercase whitespace-nowrap overflow-hidden text-ellipsis text-right text-[#333333]">{entourage.parents.groom.father}</p>
+                <p className="text-[8.5px] sm:text-[12px] md:text-[14px] lg:text-[16px] font-poppins uppercase whitespace-nowrap overflow-hidden text-ellipsis text-right text-[#333333]">{entourage.parents.groom.mother}</p>
               </div>
 
               {/* Bride's Parents */}
               <div className="flex-1">
-                <p className="text-[10px] sm:text-sm md:text-base lg:text-lg alice-regular mb-2 text-left uppercase" style={{ color: '#800000' }}>Bride's Parents</p>
-                <p className="text-[10px] sm:text-sm md:text-base lg:text-lg font-poppins uppercase whitespace-nowrap overflow-hidden text-ellipsis text-left text-[#333333]">{entourage.parents.bride.father}</p>
-                <p className="text-[10px] sm:text-sm md:text-base lg:text-lg font-poppins uppercase whitespace-nowrap overflow-hidden text-ellipsis text-left text-[#333333]">{entourage.parents.bride.mother}</p>
+                <p className="text-[10px] sm:text-[13px] md:text-[15px] lg:text-[17px] caudex-bold mb-2 whitespace-nowrap text-left uppercase" style={{ color: '#87AE73' }}>Bride's Parents</p>
+                <p className="text-[8.5px] sm:text-[12px] md:text-[14px] lg:text-[16px] font-poppins uppercase whitespace-nowrap overflow-hidden text-ellipsis text-left text-[#333333]">{entourage.parents.bride.father}</p>
+                <p className="text-[8.5px] sm:text-[12px] md:text-[14px] lg:text-[16px] font-poppins uppercase whitespace-nowrap overflow-hidden text-ellipsis text-left text-[#333333]">{entourage.parents.bride.mother}</p>
               </div>
             </div>
 
             {/* Principal Sponsors */}
-            {principalSponsors && (
-              <div ref={principalSponsorsRef} className="mb-6">
-                <h3 className="text-lg imperial-script-regular mb-6 text-center capitalize" style={{ color: '#800000' }}>Principal Sponsors</h3>
-                <div className="flex flex-row gap-4 sm:gap-6 justify-center items-center">
-                  {/* NINONG Column */}
-                  <div className="flex-1">
-                    <p className="text-[10px] sm:text-sm md:text-base lg:text-lg alice-regular mb-2 text-right uppercase" style={{ color: '#800000' }}>NINONG</p>
-                    <div className="space-y-2">
-                      {principalSponsors.ninong && principalSponsors.ninong.map((name, index) => (
-                        <p key={index} className="ninong-item text-[10px] sm:text-sm md:text-base lg:text-lg font-poppins uppercase text-[#333333] text-right whitespace-nowrap overflow-hidden text-ellipsis">
-                          {name}
-                        </p>
-                      ))}
+            {principalSponsors && (() => {
+              const ninongs = principalSponsors.ninong || []
+              const ninangs = principalSponsors.ninang || []
+              const pairedNinangs = ninangs.slice(0, ninongs.length)
+              const unpairedNinangs = ninangs.slice(ninongs.length)
+              
+              return (
+                <div ref={principalSponsorsRef} className="mb-6">
+                  <h3 className={`text-xl sm:text-2xl md:text-3xl lg:text-4xl imperial-script-regular mb-6 text-center capitalize whitespace-nowrap ${themeConfig.text.secondary}`}>Principal Sponsors</h3>
+                  <div className="flex flex-row gap-4 sm:gap-6 justify-center items-start">
+                    {/* NINONG Column */}
+                    <div className="flex-1">
+                      <p className="text-[10px] sm:text-[13px] md:text-[15px] lg:text-[17px] caudex-bold mb-2 whitespace-nowrap text-right uppercase" style={{ color: '#87AE73' }}>NINONG</p>
+                      <div className="space-y-2">
+                        {ninongs.map((name, index) => (
+                          <p key={index} className="ninong-item text-[8.5px] sm:text-[12px] md:text-[14px] lg:text-[16px] font-poppins uppercase text-[#333333] text-right whitespace-nowrap overflow-hidden text-ellipsis">
+                            {name}
+                          </p>
+                        ))}
+                      </div>
+                    </div>
+                    {/* NINANG Column - Paired */}
+                    <div className="flex-1">
+                      <p className="text-[10px] sm:text-[13px] md:text-[15px] lg:text-[17px] caudex-bold mb-2 whitespace-nowrap text-left uppercase" style={{ color: '#87AE73' }}>NINANG</p>
+                      <div className="space-y-2">
+                        {pairedNinangs.map((name, index) => (
+                          <p key={index} className="ninang-item text-[8.5px] sm:text-[12px] md:text-[14px] lg:text-[16px] font-poppins uppercase text-[#333333] text-left whitespace-nowrap overflow-hidden text-ellipsis">
+                            {name}
+                          </p>
+                        ))}
+                      </div>
                     </div>
                   </div>
-                  {/* NINANG Column */}
-                  <div className="flex-1">
-                    <p className="text-[10px] sm:text-sm md:text-base lg:text-lg alice-regular mb-2 text-left uppercase" style={{ color: '#800000' }}>NINANG</p>
-                    <div className="space-y-2">
-                      {principalSponsors.ninang && principalSponsors.ninang.map((name, index) => (
-                        <p key={index} className="ninang-item text-[10px] sm:text-sm md:text-base lg:text-lg font-poppins uppercase text-[#333333] text-left whitespace-nowrap overflow-hidden text-ellipsis">
-                          {name}
-                        </p>
-                      ))}
+                  {/* Unpaired NINANGs - Centered */}
+                  {unpairedNinangs.length > 0 && (
+                    <div className="mt-4 flex justify-center">
+                      <div className="space-y-2">
+                        {unpairedNinangs.map((name, index) => (
+                          <p key={`unpaired-${index}`} className="ninang-item text-[8.5px] sm:text-[12px] md:text-[14px] lg:text-[16px] font-poppins uppercase text-[#333333] text-center whitespace-nowrap overflow-hidden text-ellipsis">
+                            {name}
+                          </p>
+                        ))}
+                      </div>
                     </div>
-                  </div>
+                  )}
                 </div>
-              </div>
-            )}
+              )
+            })()}
+
+            {/* Bestman and Maid of Honor */}
+            <div className="mb-6 flex flex-row gap-4 sm:gap-6 justify-center items-center">
+              {/* Bestman */}
+              {bestman && (
+                <div ref={bestmanRef} className="flex-1">
+                  <p className="text-[10px] sm:text-[13px] md:text-[15px] lg:text-[17px] caudex-bold mb-2 whitespace-nowrap text-right uppercase" style={{ color: '#87AE73' }}>Bestman</p>
+                  {bestman.names && bestman.names.map((name, index) => (
+                    <p key={index} className="text-[8.5px] sm:text-[12px] md:text-[14px] lg:text-[16px] font-poppins uppercase text-[#333333] whitespace-nowrap overflow-hidden text-ellipsis text-right">
+                      {name}
+                    </p>
+                  ))}
+                </div>
+              )}
+
+              {/* Maid of Honor */}
+              {maidOfHonor && (
+                <div ref={maidOfHonorRef} className="flex-1">
+                  <p className="text-[10px] sm:text-[13px] md:text-[15px] lg:text-[17px] caudex-bold mb-2 whitespace-nowrap text-left uppercase" style={{ color: '#87AE73' }}>Maid Of Honor</p>
+                  {maidOfHonor.names && maidOfHonor.names.map((name, index) => (
+                    <p key={index} className="text-[8.5px] sm:text-[12px] md:text-[14px] lg:text-[16px] font-poppins uppercase text-[#333333] whitespace-nowrap overflow-hidden text-ellipsis text-left">
+                      {name}
+                    </p>
+                  ))}
+                </div>
+              )}
+            </div>
 
             {/* Secondary Sponsors */}
             {secondarySponsors && (
               <div ref={secondarySponsorsRef} className="mb-6">
-                <h3 className="text-lg imperial-script-regular mb-6 text-center capitalize" style={{ color: '#800000' }}>Secondary Sponsors</h3>
+                <h3 className={`text-xl sm:text-2xl md:text-3xl lg:text-4xl imperial-script-regular mb-6 text-center capitalize whitespace-nowrap ${themeConfig.text.secondary}`}>Secondary Sponsors</h3>
 
-                {/* Bestman and Maid of Honor */}
-                <div className="flex flex-row gap-4 sm:gap-6 justify-center items-center mb-6">
-                  {/* Bestman */}
-                  {bestman && (
-                    <div ref={bestmanRef} className="flex-1">
-                      <p className="text-[10px] sm:text-sm md:text-base lg:text-lg alice-regular mb-2 text-right uppercase" style={{ color: '#800000' }}>Bestman</p>
-                      {bestman.names && bestman.names.map((name, index) => (
-                        <p key={index} className="text-[10px] sm:text-sm md:text-base lg:text-lg font-poppins uppercase text-[#333333] whitespace-nowrap overflow-hidden text-ellipsis text-right">
-                          {name}
-                        </p>
-                      ))}
+                {/* Three Sponsors in One Row */}
+                <div className="flex flex-row gap-4 sm:gap-6 justify-center items-start mb-6">
+                  {/* Candle Sponsors */}
+                  {candleSponsors && (
+                    <div className="flex-1">
+                      <div ref={candleSponsorsRef} className="flex flex-col gap-2 justify-center items-center">
+                        <p className="text-[10px] sm:text-[13px] md:text-[15px] lg:text-[17px] caudex-bold mb-2 whitespace-nowrap text-center uppercase" style={{ color: '#87AE73' }}>Candle</p>
+                        {candleSponsors.names && candleSponsors.names.map((name, index) => (
+                          <p key={index} className="text-[8.5px] sm:text-[12px] md:text-[14px] lg:text-[16px] font-poppins uppercase text-[#333333] whitespace-nowrap overflow-hidden text-ellipsis text-center">
+                            {name}
+                          </p>
+                        ))}
+                      </div>
                     </div>
                   )}
 
-                  {/* Maid of Honor */}
-                  {maidOfHonor && (
-                    <div ref={maidOfHonorRef} className="flex-1">
-                      <p className="text-[10px] sm:text-sm md:text-base lg:text-lg alice-regular mb-2 text-left uppercase" style={{ color: '#800000' }}>Maid Of Honor</p>
-                      {maidOfHonor.names && maidOfHonor.names.map((name, index) => (
-                        <p key={index} className="text-[10px] sm:text-sm md:text-base lg:text-lg font-poppins uppercase text-[#333333] whitespace-nowrap overflow-hidden text-ellipsis text-left">
-                          {name}
-                        </p>
-                      ))}
+                  {/* Cord Sponsors */}
+                  {cordSponsors && (
+                    <div className="flex-1">
+                      <div ref={cordSponsorsRef} className="flex flex-col gap-2 justify-center items-center">
+                        <p className="text-[10px] sm:text-[13px] md:text-[15px] lg:text-[17px] caudex-bold mb-2 whitespace-nowrap text-center uppercase" style={{ color: '#87AE73' }}>Cord</p>
+                        {cordSponsors.names && cordSponsors.names.map((name, index) => (
+                          <p key={index} className="text-[8.5px] sm:text-[12px] md:text-[14px] lg:text-[16px] font-poppins uppercase text-[#333333] whitespace-nowrap overflow-hidden text-ellipsis text-center">
+                            {name}
+                          </p>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Veil Sponsors */}
+                  {veilSponsors && (
+                    <div className="flex-1">
+                      <div ref={veilSponsorsRef} className="flex flex-col gap-2 justify-center items-center">
+                        <p className="text-[10px] sm:text-[13px] md:text-[15px] lg:text-[17px] caudex-bold mb-2 whitespace-nowrap text-center uppercase" style={{ color: '#87AE73' }}>Veil</p>
+                        {veilSponsors.names && veilSponsors.names.map((name, index) => (
+                          <p key={index} className="text-[8.5px] sm:text-[12px] md:text-[14px] lg:text-[16px] font-poppins uppercase text-[#333333] whitespace-nowrap overflow-hidden text-ellipsis text-center">
+                            {name}
+                          </p>
+                        ))}
+                      </div>
                     </div>
                   )}
                 </div>
 
-                <div className="flex flex-row gap-4 sm:gap-6 justify-center items-start">
+                <div className="flex flex-row gap-4 sm:gap-6 justify-center items-start mb-6">
                   {/* GROOMSMEN Column */}
                   <div className="flex-1">
-                    <p className="text-[10px] sm:text-sm md:text-base lg:text-lg alice-regular mb-2 text-right uppercase" style={{ color: '#800000' }}>Groomsmen</p>
+                    <p className="text-[10px] sm:text-[13px] md:text-[15px] lg:text-[17px] caudex-bold mb-2 whitespace-nowrap text-right uppercase" style={{ color: '#87AE73' }}>Groomsmen</p>
                     <div className="space-y-2">
                       {secondarySponsors.groomsmen && secondarySponsors.groomsmen.map((name, index) => (
-                        <p key={index} className="groomsmen-item text-[10px] sm:text-sm md:text-base lg:text-lg font-poppins uppercase text-[#333333] text-right whitespace-nowrap overflow-hidden text-ellipsis">
+                        <p key={index} className="groomsmen-item text-[8.5px] sm:text-[12px] md:text-[14px] lg:text-[16px] font-poppins uppercase text-[#333333] text-right whitespace-nowrap overflow-hidden text-ellipsis">
                           {name}
                         </p>
                       ))}
@@ -525,74 +621,89 @@ const Entourage = () => {
                   </div>
                   {/* BRIDESMAID Column */}
                   <div className="flex-1">
-                    <p className="text-[10px] sm:text-sm md:text-base lg:text-lg alice-regular mb-2 text-left uppercase" style={{ color: '#800000' }}>Bridesmaids</p>
+                    <p className="text-[10px] sm:text-[13px] md:text-[15px] lg:text-[17px] caudex-bold mb-2 whitespace-nowrap text-left uppercase" style={{ color: '#87AE73' }}>Bridesmaids</p>
                     <div className="space-y-2">
                       {secondarySponsors.bridesmaid && secondarySponsors.bridesmaid.map((name, index) => (
-                        <p key={index} className="bridesmaids-item text-[10px] sm:text-sm md:text-base lg:text-lg font-poppins uppercase text-[#333333] text-left whitespace-nowrap overflow-hidden text-ellipsis">
+                        <p key={index} className="bridesmaids-item text-[8.5px] sm:text-[12px] md:text-[14px] lg:text-[16px] font-poppins uppercase text-[#333333] text-left whitespace-nowrap overflow-hidden text-ellipsis">
                           {name}
                         </p>
                       ))}
                     </div>
                   </div>
                 </div>
+
+                {/* Bible Bearer, Ring Bearer, Coin Bearer */}
+                {(bibleBearer || ringBearer || coinBearer) && (
+                  <div className="mb-6">
+                    <div className="flex flex-col gap-6 justify-center items-center mt-6">
+                      {/* Bible Bearer */}
+                      {bibleBearer && (
+                        <div ref={bibleBearerRef}>
+                          <p className="text-[10px] sm:text-[13px] md:text-[15px] lg:text-[17px] caudex-bold mb-2 whitespace-nowrap text-center uppercase" style={{ color: '#87AE73' }}>Bible Bearer</p>
+                          {bibleBearer.names && bibleBearer.names.map((name, index) => (
+                            <p key={index} className="text-[8.5px] sm:text-[12px] md:text-[14px] lg:text-[16px] font-poppins uppercase text-[#333333] whitespace-nowrap overflow-hidden text-ellipsis text-center">
+                              {name}
+                            </p>
+                          ))}
+                        </div>
+                      )}
+
+                      {/* Ring Bearer */}
+                      {ringBearer && (
+                        <div ref={ringBearerRef}>
+                          <p className="text-[10px] sm:text-[13px] md:text-[15px] lg:text-[17px] caudex-bold mb-2 whitespace-nowrap text-center uppercase" style={{ color: '#87AE73' }}>Ring Bearer</p>
+                          {ringBearer.names && ringBearer.names.map((name, index) => (
+                            <p key={index} className="text-[8.5px] sm:text-[12px] md:text-[14px] lg:text-[16px] font-poppins uppercase text-[#333333] whitespace-nowrap overflow-hidden text-ellipsis text-center">
+                              {name}
+                            </p>
+                          ))}
+                        </div>
+                      )}
+
+                      {/* Coin Bearer */}
+                      {coinBearer && (
+                        <div ref={coinBearerRef}>
+                          <p className="text-[10px] sm:text-[13px] md:text-[15px] lg:text-[17px] caudex-bold mb-2 whitespace-nowrap text-center uppercase" style={{ color: '#87AE73' }}>Coin Bearer</p>
+                          {coinBearer.names && coinBearer.names.map((name, index) => (
+                            <p key={index} className="text-[8.5px] sm:text-[12px] md:text-[14px] lg:text-[16px] font-poppins uppercase text-[#333333] whitespace-nowrap overflow-hidden text-ellipsis text-center">
+                              {name}
+                            </p>
+                          ))}
+                        </div>
+                      )}
+
+                    </div>
+                  </div>
+                )}
               </div>
             )}
 
-            {/* Bible Bearer, Ring Bearer, Coin Bearer, and Flower Girls */}
-            {(bibleBearer || ringBearer || coinBearer || flowerGirls) && (
+            {/* Flower Girls */}
+            {littleFlowerGirls && (
               <div className="mb-6">
-                <div className="flex flex-col gap-6 justify-center items-center mt-6">
-                    {/* Bible Bearer */}
-                    {bibleBearer && (
-                      <div ref={bibleBearerRef}>
-                      <p className="text-[10px] sm:text-sm md:text-base lg:text-lg alice-regular mb-2 text-center uppercase" style={{ color: '#800000' }}>Bible Bearer</p>
-                        {bibleBearer.names && bibleBearer.names.map((name, index) => (
-                        <p key={index} className="text-[10px] sm:text-sm md:text-base lg:text-lg font-poppins uppercase text-[#333333] whitespace-nowrap overflow-hidden text-ellipsis text-center">
-                            {name}
-                          </p>
-                        ))}
-                      </div>
-                    )}
-
-                    {/* Ring Bearer */}
-                    {ringBearer && (
-                      <div ref={ringBearerRef}>
-                      <p className="text-[10px] sm:text-sm md:text-base lg:text-lg alice-regular mb-2 text-center uppercase" style={{ color: '#800000' }}>Ring Bearer</p>
-                        {ringBearer.names && ringBearer.names.map((name, index) => (
-                        <p key={index} className="text-[10px] sm:text-sm md:text-base lg:text-lg font-poppins uppercase text-[#333333] whitespace-nowrap overflow-hidden text-ellipsis text-center">
-                            {name}
-                          </p>
-                        ))}
-                      </div>
-                    )}
-
-                    {/* Coin Bearer */}
-                    {coinBearer && (
-                      <div ref={coinBearerRef}>
-                      <p className="text-[10px] sm:text-sm md:text-base lg:text-lg alice-regular mb-2 text-center uppercase" style={{ color: '#800000' }}>Coin Bearer</p>
-                        {coinBearer.names && coinBearer.names.map((name, index) => (
-                        <p key={index} className="text-[10px] sm:text-sm md:text-base lg:text-lg font-poppins uppercase text-[#333333] whitespace-nowrap overflow-hidden text-ellipsis text-center">
-                            {name}
-                          </p>
-                        ))}
-                      </div>
-                    )}
-
-                    {/* Flower Girls */}
-                    {flowerGirls && (
-                      <div ref={flowerGirlsRef}>
-                      <p className="text-[10px] sm:text-sm md:text-base lg:text-lg alice-regular mb-2 text-center uppercase" style={{ color: '#800000' }}>Flower Girls</p>
-                        {flowerGirls.names && flowerGirls.names.map((name, index) => (
-                        <p key={index} className="text-[10px] sm:text-sm md:text-base lg:text-lg font-poppins uppercase text-[#333333] whitespace-nowrap overflow-hidden text-ellipsis text-center">
-                            {name}
-                          </p>
-                        ))}
-                      </div>
-                    )}
-                  </div>
+                <div ref={littleFlowerGirlsRef} className="flex flex-col gap-2 justify-center items-center mt-6">
+                  <p className="text-[10px] sm:text-[13px] md:text-[15px] lg:text-[17px] caudex-bold mb-2 whitespace-nowrap text-center uppercase" style={{ color: '#87AE73' }}>FLOWER GIRLS</p>
+                  {littleFlowerGirls.names && littleFlowerGirls.names.map((name, index) => (
+                    <p key={index} className="text-[8.5px] sm:text-[12px] md:text-[14px] lg:text-[16px] font-poppins uppercase text-[#333333] whitespace-nowrap overflow-hidden text-ellipsis text-center">
+                      {name}
+                    </p>
+                  ))}
+                </div>
               </div>
             )}
           </div>
+        </div>
+
+        {/* Flower Banner - Bottom (absolute, full viewport width, container matches image size, flipped vertically) */}
+        <div
+          className="absolute bottom-0 flex items-center justify-center"
+          style={{ left: 0, width: '100vw' }}
+        >
+          <img 
+            src="/assets/images/graphics/flower-banner.png" 
+            alt="Flower banner" 
+            style={{ width: '100vw', height: 'auto', display: 'block', transform: 'scaleY(-1)', transformOrigin: 'center' }}
+          />
         </div>
       </section>
       

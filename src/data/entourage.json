@@ -1,117 +1,129 @@
 {
   "couple": {
     "groom": {
-      "name": "Jon Michael R. Dela Cruz"
+      "name": "John Francis Ochotorina"
     },
     "bride": {
-      "name": "Sofia Marie A. Santos"
+      "name": "Angela Domingo"
     }
   },
   "parents": {
     "groom": {
-      "father": "Roberto Dela Cruz",
-      "mother": "Maria Elena Dela Cruz"
+      "father": "MR. ANDRE BORONG",
+      "mother": "MRS. AMELIA SONGALIA"
     },
     "bride": {
-      "father": "Antonio Santos",
-      "mother": "Carmen Santos"
+      "father": "MR. DICOROSO DOMINGO",
+      "mother": "MRS. EVELYN DOMINGO"
     }
   },
   "entourageList": [
     {
       "category": "Principal Sponsors",
       "ninong": [
-        "Miguel Torres",
-        "Carlos Mendoza",
-        "Fernando Reyes",
-        "Rafael Villanueva",
-        "Eduardo Martinez",
-        "Jose Antonio Garcia",
-        "Dr. Luis Fernando Ramos",
-        "Ricardo Alcantara",
-        "Manuel Cruz Sr.",
-        "Alberto Fernandez",
-        "Rodrigo Bautista"
+        "MR. ARNEL BORONG",
+        "MR. RICO BORONG",
+        "MR. REY FUMAR",
+        "MR. ENRIQUE ALAAN"
       ],
       "ninang": [
-        "Isabel Torres",
-        "Maria Cristina Abad",
-        "Patricia Buenaventura",
-        "Rosa Martinez",
-        "Angelica Santos",
-        "Carmen Dela Rosa",
-        "Atty. Maria Elena Castillo",
-        "Catherine Pineda",
-        "Monica Reyes",
-        "Grace Fernandez",
-        "Lucia Villanueva"
-      ]
-    },
-    {
-      "category": "Secondary Sponsors",
-      "groomsmen": [
-        "Mark Anthony Rivera",
-        "Christian Mendoza",
-        "Jose Miguel Cruz",
-        "Michael Dela Paz",
-        "Benedicto Tan",
-        "Zachary Xavier Reyes",
-        "Jonathan Martinez"
-      ],
-      "bridesmaid": [
-        "Isabella Torres",
-        "Amanda Fernandez",
-        "Patricia Ann Cabrera",
-        "Diana Rose Ocampo",
-        "Lynette Macapagal",
-        "Francesca Dela Paz",
-        "Katherine Gomez"
+        "MRS. MA. JESUSA BORONG",
+        "MS. LEILA BORONG",
+        "MRS. LERMA FUMAR",
+        "MRS. GEMMA ALAAN"
       ]
     },
     {
       "category": "Bestman",
       "names": [
-        "Daniel Dela Cruz"
+        "MR. LANCE OCHOTORINA"
       ]
     },
     {
       "category": "Maid of Honor",
       "names": [
-        "Maria Isabel Santos"
+        "MS. PAMELA DOMINGO"
+      ]
+    },
+    {
+      "category": "Candle Sponsors",
+      "names": [
+        "MR. JOHN ANTONIO",
+        "DR. MICHAELA AGUILAR"
+      ]
+    },
+    {
+      "category": "Cord Sponsors",
+      "names": [
+        "MR. PAUL NEO",
+        "MS. ANDREA FUMAR"
+      ]
+    },
+    {
+      "category": "Veil Sponsors",
+      "names": [
+        "MR. MARK RAYO",
+        "MS. DANIELLE TOLLEDO"
+      ]
+    },
+    {
+      "category": "Secondary Sponsors",
+      "groomsmen": [
+        "MR. JOHN ANTONIO",
+        "MR. PAUL NEO",
+        "MR. MARK RAYO",
+        "MR. VANCE TOLLEDO",
+        "MR. VINCE TOLLEDO",
+        "MR. BRADNEY BORONG",
+        "MR. CURT BORONG"
+      ],
+      "bridesmaid": [
+        "MS. ANDREA FUMAR",
+        "DR. MARIA EVANGELINE MILLADO",
+        "DR. MICHAELA AGUILAR",
+        "DR. ANGELICA DAZO",
+        "DR. LEA DELA DINGCO",
+        "MS. DANIELLE TOLLEDO",
+        "MS. MAYNILYN TORRECER"
       ]
     },
     {
       "category": "Bible Bearer",
       "names": [
-        "Gabriel Tan"
+        "AZRIEL JOHN MAÑOZA"
       ]
     },
     {
       "category": "Ring Bearer",
       "names": [
-        "Ethan James Santos"
+        "EZEKIEL JEREMIAH LUMAGUIP"
       ]
     },
     {
       "category": "Coin Bearer",
       "names": [
-        "Nathaniel Soledad Cruz"
+        "EMMANUEL TORRECER"
       ]
     },
     {
-      "category": "Flower Girls",
+      "category": "Flower Boys",
+      "names": []
+    },
+    {
+      "category": "Junior Flower Girls",
+      "names": []
+    },
+    {
+      "category": "Little Flower Girls",
       "names": [
-        "Adrian Alvarez",
-        "Andrew Dimaculangan",
-        "Justin Ford Reyes"
+        "CHLOE FUMAR",
+        "VIOLET SONGALIA",
+        "VENICE SONGALIA"
       ]
     },
     {
       "category": "Here comes the bride",
-      "names": [
-        "Tita Rosario Torres",
-        "Vincent Torres"
-      ]
+      "names": []
     }
   ]
 }

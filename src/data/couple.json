@@ -1,23 +1,22 @@
 {
   "bride": {
-    "firstName": "Praise Joy",
-    "lastName": "Rita",
-    "fullName": "Praise Joy D. Rita"
+    "firstName": "Angela",
+    "lastName": "Domingo",
+    "fullName": "Angela Domingo"
   },
   "groom": {
-    "firstName": "Gil Carlos",
-    "lastName": "Santiago",
-    "fullName": "Gil Carlos T. Santiago"
+    "firstName": "John Francis",
+    "lastName": "Ochotorina",
+    "fullName": "John Francis Ochotorina"
   },
-  "together": "Jon & Sofia",
-  "nickname": "Jon and Sofia",
+  "together": "Angela & John Francis",
+  "nickname": "Angela & John Francis",
   "wedding": {
-    "date": "2026-11-06",
-    "time": "3:30 PM",
-    "dayOfWeek": "Friday",
-    "month": "November",
-    "day": "6",
+    "date": "2026-05-30",
+    "time": "09:30 AM",
+    "dayOfWeek": "Saturday",
+    "month": "May",
+    "day": "30",
     "year": "2026"
   }
 }
-

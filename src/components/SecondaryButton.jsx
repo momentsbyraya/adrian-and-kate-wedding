@@ -3,7 +3,7 @@ import { themeConfig } from '../config/themeConfig'
 
 const SecondaryButton = ({ children, href, onClick, className = '', target, rel, icon: Icon }) => {
   const baseClasses = 'inline-flex items-center gap-2 text-sm sm:text-base font-medium transition-all duration-300 hover:opacity-80 underline'
-  const colorStyle = { color: themeConfig.cssVariables['--primary-text'] }
+  const colorStyle = { color: themeConfig.cssVariables['--secondary-text'] }
   
   if (href) {
     return (

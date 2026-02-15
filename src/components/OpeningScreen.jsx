@@ -84,7 +84,8 @@ function OpeningScreen({ onEnvelopeOpen }) {
           backgroundImage: 'url(/assets/images/graphics/textured-bg-2.png)',
           backgroundSize: 'cover',
           backgroundPosition: 'center',
-          backgroundRepeat: 'no-repeat'
+          backgroundRepeat: 'no-repeat',
+          opacity: 0.5
         }}
       />
       <section className="cssletter flex flex-col items-center relative z-10 w-full py-8" style={{ minHeight: 'auto', height: 'auto' }}>
@@ -141,7 +142,7 @@ function OpeningScreen({ onEnvelopeOpen }) {
               textShadow: '0 2px 4px rgba(0, 0, 0, 0.1)'
             }}
           >
-            {couple.nickname}
+            Francis & Angela
           </h2>
           <p 
             className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-script mt-1"

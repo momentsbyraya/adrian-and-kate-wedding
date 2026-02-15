@@ -7,7 +7,7 @@ import RSVPModal from './components/RSVPModal'
 import DynamicTitle from './components/DynamicTitle'
 import OpeningScreen from './components/OpeningScreen'
 import Loader from './components/Loader'
-// import Watermark from './components/Watermark'
+import Watermark from './components/Watermark'
 import ScrollToTop from './components/ScrollToTop'
 import Details from './components/pages/Details'
 import Entourage from './components/pages/Entourage'
@@ -25,28 +25,24 @@ function AppContent() {
   useEffect(() => {
     const preloadImages = async () => {
       const criticalImages = [
-        // NavIndex images - all prenup photos used on home page
-        '/assets/images/prenup/APA_0856.JPG',  // Polaroid image
-        '/assets/images/prenup/APA_9774.JPG',  // RSVP container
-        '/assets/images/prenup/APA_0384.JPG',  // Moments polaroid 1
-        '/assets/images/prenup/APA_0141.JPG',  // Moments polaroid 2
+        // NavIndex images - prenup photos used on home page
+        '/assets/images/prenup/DSC_0303.jpeg',  // Polaroid image
+        '/assets/images/prenup/DSC_9886.jpeg',  // Moments polaroid 1
+        '/assets/images/prenup/DSC_9490.jpeg',  // Moments polaroid 2
         // NavIndex graphics - all decorative elements
-        '/assets/images/graphics/midnight-blue-envelope.png',
+        '/assets/images/graphics/envelope.png',
         '/assets/images/graphics/flower-1.png',
         '/assets/images/graphics/flower-3.png',
         '/assets/images/graphics/flower-4.png',
         '/assets/images/graphics/flower-5.png',
         '/assets/images/graphics/flower-7.png',
         '/assets/images/graphics/flower-8.png',
-        '/assets/images/graphics/teal-2.png',
         '/assets/images/graphics/textured-bg-2.png',
-        '/assets/images/graphics/bg-1.png',
+        '/assets/images/graphics/falling-flower.png',
         // OpeningScreen images
         '/assets/images/graphics/stamp.png',
         '/assets/images/graphics/cutlery-sketch.png',
-        '/assets/images/graphics/ring-sketch.png',
-        // Video background
-        '/assets/images/videos/video-bg.mp4'
+        '/assets/images/graphics/ring-sketch.png'
       ]
 
       // Preload fonts
@@ -132,7 +128,7 @@ function AppContent() {
   return (
     <div className="App min-h-screen wedding-gradient">
       <DynamicTitle />
-      {/* <Watermark /> */}
+      <Watermark />
       <ScrollToTop />
       {/* Loader - shows while preloading */}
       {isLoading && (

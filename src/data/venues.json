@@ -1,25 +1,25 @@
 {
   "ceremony": {
-    "name": "San Agustin Church",
-    "address": "General Luna St",
-    "city": "Intramuros",
-    "state": "Manila",
-    "zip": "1002, Philippines",
-    "time": "3:30 PM",
-    "details": "Schedule: 3:30 PM to 4:30 PM",
-    "googleMapsUrl": "https://maps.app.goo.gl/SanAgustinChurch",
-    "directionsUrl": "https://maps.app.goo.gl/SanAgustinChurch"
+    "name": "Minor Basilica and National Shrine of Our Lady of Mount Carmel",
+    "address": "",
+    "city": "",
+    "state": "",
+    "zip": "",
+    "time": "09:30 AM",
+    "details": "Ceremony starts at 09:30 AM",
+    "googleMapsUrl": "https://maps.app.goo.gl/MkVVRHtFk6KL1E3w8?g_st=ic",
+    "directionsUrl": "https://maps.app.goo.gl/MkVVRHtFk6KL1E3w8?g_st=ic"
   },
   "reception": {
-    "name": "Villa Escudero Gardens",
-    "address": "San Pablo City", 
-    "city": "Quezon",
-    "state": "Laguna",
-    "zip": "4000, Philippines",
-    "time": "5:00 PM",
-    "details": "Schedule: 5:00 PM to 10:00 PM",
-    "landmark": "Garden Reception",
-    "googleMapsUrl": "https://maps.app.goo.gl/VillaEscudero",
-    "directionsUrl": "https://maps.app.goo.gl/VillaEscudero"
+    "name": "Plaza Ibarra",
+    "address": "Timog Ave.",
+    "city": "Quezon City",
+    "state": "",
+    "zip": "",
+    "time": "12:00 PM",
+    "details": "Reception starts at 12:00 PM",
+    "landmark": "",
+    "googleMapsUrl": "https://maps.app.goo.gl/fUN6hrXL8r1fXDWS7?g_st=ic",
+    "directionsUrl": "https://maps.app.goo.gl/fUN6hrXL8r1fXDWS7?g_st=ic"
   }
-} 
+}

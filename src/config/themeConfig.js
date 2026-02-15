@@ -3,8 +3,8 @@ export const themeConfig = {
     // Background Colors
     backgrounds: {
         primary: 'bg-gray-900',        // Main dark background
-        secondary: 'bg-gray-800',      // Secondary dark background (modals, cards)
-        accent: 'bg-[#800000]',      // Accent background (Maroon)
+        secondary: 'bg-[#87AE73]',      // Secondary background (Sage Green)
+        accent: 'bg-[#D4A5A5]',      // Accent background (Dusty Pink)
         light: 'bg-white/50',          // Light overlay backgrounds
         theme: 'bg-[#dee5ed]',        // Custom theme color
         crumpledPaper: 'bg-[url("/assets/images/crumpled-paper.png")] bg-cover bg-center bg-no-repeat', // Crumpled paper background
@@ -12,9 +12,9 @@ export const themeConfig = {
 
     // Text Colors
     text: {
-        primary: 'text-[#800000]',     // Main heading text color (Maroon)
-        secondary: 'text-gray-300',    // Subheading and body text color
-        accent: 'text-[#800000]',    // Accent text color (Maroon)
+        primary: 'text-[#3A4A2D]',     // Main heading text color (Darkest Sage Green)
+        secondary: 'text-[#D4A5A5]',    // Subheading and body text color (Dusty Pink)
+        accent: 'text-[#D4A5A5]',    // Accent text color (Dusty Pink)
         muted: 'text-gray-400',        // Muted text color (icons, small text)
         dark: 'text-wedding-800',      // Dark text for light backgrounds
         theme: 'text-[#ad8369]',      // Custom theme text color
@@ -32,16 +32,16 @@ export const themeConfig = {
 
     // Button Colors
     buttons: {
-        primary: 'bg-[#800000] hover:bg-[#660000]',  // Primary button (Maroon)
-        secondary: 'border border-gray-600 hover:border-gray-400', // Secondary button
+        primary: 'bg-[#D4A5A5] hover:bg-[#B89090]',  // Primary button (Dusty Pink)
+        secondary: 'border border-[#87AE73] hover:border-[#6B8E5A]', // Secondary button (Sage Green)
         text: 'text-gray-300 hover:text-white', // Button text color
         theme: 'bg-[#ad8369] hover:bg-[#ad8369]/80', // Custom theme button
     },
 
     // Hover Effects
     hover: {
-        primary: 'hover:bg-[#660000]',     // Primary button hover (Dark Maroon)
-        secondary: 'hover:border-gray-400 hover:text-white', // Secondary button hover
+        primary: 'hover:bg-[#B89090]',     // Primary button hover (Darker Dusty Pink)
+        secondary: 'hover:border-[#6B8E5A] hover:text-white', // Secondary button hover (Darker Sage Green)
         theme: 'hover:bg-[#ad8369]/80',     // Custom theme hover
     },
 
@@ -54,7 +54,7 @@ export const themeConfig = {
 
     // Calendar Configuration
     calendar: {
-        weddingDate: '2026-02-22',          // Wedding date (YYYY-MM-DD format)
+        weddingDate: '2026-05-30',          // Wedding date (YYYY-MM-DD format)
         highlightColor: 'bg-[#6c756a]',     // Color for wedding date highlight
         heartColor: 'text-[#6c756a]',       // Color for heart icon
         textColor: 'text-gray-700',         // Calendar text color
@@ -71,15 +71,20 @@ export const themeConfig = {
     // Custom CSS Variables (for advanced customization)
     cssVariables: {
         '--primary-bg': '#111827',           // #111827 (gray-900)
-        '--secondary-bg': '#1f2937',        // #1f2937 (gray-800)
-        '--accent-bg': '#800000',           // #800000 (Maroon)
-        '--accent-hover': '#660000',        // #660000 (Dark Maroon Hover)
-        '--primary-text': '#800000',        // #800000 (Maroon)
-        '--secondary-text': '#d1d5db',      // #d1d5db (gray-300)
-        '--accent-text': '#800000',         // #800000 (Maroon)
+        '--secondary-bg': '#87AE73',        // #87AE73 (Sage Green)
+        '--accent-bg': '#D4A5A5',           // #D4A5A5 (Dusty Pink)
+        '--accent-hover': '#B89090',        // #B89090 (Darker Dusty Pink Hover)
+        '--primary-text': '#3A4A2D',        // #3A4A2D (Darkest Sage Green)
+        '--secondary-text': '#D4A5A5',      // #D4A5A5 (Dusty Pink)
+        '--accent-text': '#D4A5A5',         // #D4A5A5 (Dusty Pink)
         '--muted-text': '#9ca3af',          // #9ca3af (gray-400)
         '--border-color': '#C0C0C0',        // #C0C0C0 (Silver)
         '--custom-theme': '#C0C0C0',        // #C0C0C0 (Silver)
+        '--old-rose': '#C08081',            // #C08081 (Old Rose)
+        '--light-pink': '#F5C2C2',          // #F5C2C2 (Light Pink)
+        '--gold': '#D4AF37',                // #D4AF37 (Gold)
+        '--dusty-pink': '#D4A5A5',          // #D4A5A5 (Dusty Pink)
+        '--sage-green': '#87AE73'           // #87AE73 (Sage Green)
     }
 }
 

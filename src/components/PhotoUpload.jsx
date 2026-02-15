@@ -46,11 +46,24 @@ const PhotoUpload = () => {
             {/* Upload Title */}
             <div>
               <h3 className="relative inline-block px-6 upload-title">
-                <span 
-                  className="font-tebranos text-5xl sm:text-6xl md:text-7xl lg:text-8xl inline-block leading-none uppercase upload-title-text"
-                >
-                  OH SNAP!
-                </span>
+                <div className="flex items-end justify-center gap-2 sm:gap-4">
+                  <span 
+                    className="font-tebranos text-5xl sm:text-6xl md:text-7xl lg:text-8xl inline-block leading-none uppercase upload-title-text"
+                  >
+                    Snap
+                  </span>
+                  <span 
+                    className="font-tebranos text-3xl sm:text-4xl md:text-5xl lg:text-6xl inline-block leading-none lowercase upload-title-text"
+                    style={{ marginBottom: '0.2em' }}
+                  >
+                    AND
+                  </span>
+                  <span 
+                    className="font-tebranos text-5xl sm:text-6xl md:text-7xl lg:text-8xl inline-block leading-none uppercase upload-title-text"
+                  >
+                    Share
+                  </span>
+                </div>
               </h3>
             </div>
 
@@ -73,13 +86,13 @@ const PhotoUpload = () => {
               <div className="w-1/2 lg-custom:w-full lg-custom:h-fit lg-custom:flex lg-custom:flex-col lg-custom:justify-center lg-custom:items-center flex flex-col justify-between text-left lg-custom:text-center py-4 sm:py-6 upload-content-container">
                 {/* Description */}
                 <p className="text-sm sm:text-base font-albert font-thin text-[#333333] mb-4 text-left lg-custom:text-center">
-                  Share your photos and videos from our special day.
+                  Help us capture memories on our special day and share it with our hashtag
                 </p>
 
                 {/* Upload Button */}
                 <div className="flex justify-start lg-custom:justify-center items-center">
                   <SecondaryButton
-                    href="https://drive.google.com/drive/folders/1wEU4WKIRjYC0o5t3NlnNiboQUNmH5nN_?usp=sharing"
+                    href="https://drive.google.com/drive/folders/1NWSBG6dT-J5T1_mL5J9EA9JCyUz7Vtm9"
                     target="_blank"
                     rel="noopener noreferrer"
                     icon={ArrowRight}
@@ -88,6 +101,16 @@ const PhotoUpload = () => {
                   </SecondaryButton>
                 </div>
               </div>
+            </div>
+
+            {/* Hashtags - At the bottom */}
+            <div className="flex flex-col gap-1 mt-6 text-center">
+              <p className="text-lg sm:text-xl md:text-2xl font-boska text-[#333333]">
+                #JOHNextChapterWithANGELA
+              </p>
+              <p className="text-lg sm:text-xl md:text-2xl font-boska text-[#333333]">
+                #aJOHNuineLoveWithANGELA
+              </p>
             </div>
           </div>
         </div>

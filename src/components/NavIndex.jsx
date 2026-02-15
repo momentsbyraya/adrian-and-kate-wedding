@@ -69,11 +69,9 @@ const NavIndex = ({ onOpenRSVP }) => {
             
             // Flower 1 - animate after envelope
             if (flower1Ref.current) {
-              // Use more rotation on screens 992px and above
-              const rotationAngle = window.innerWidth >= 992 ? -35 : -25
               tl.fromTo(flower1Ref.current,
                 { opacity: 0, scale: 0, rotation: 0 },
-                { opacity: 1, scale: 1, rotation: rotationAngle, duration: 0.6, ease: "back.out(1.7)" },
+                { opacity: 1, scale: 1, rotation: 0, duration: 0.6, ease: "back.out(1.7)" },
                 "-=0.3"
               )
             }
@@ -207,7 +205,7 @@ const NavIndex = ({ onOpenRSVP }) => {
           {/* Midnight Blue Envelope Image */}
         <div ref={envelopeRef} className="flex justify-center relative envelope-container">
           <img 
-            src="/assets/images/graphics/red.png" 
+            src="/assets/images/graphics/envelope.png" 
             alt="Wedding Invitation" 
             className="w-[60vw] h-auto object-contain"
           />
@@ -216,7 +214,7 @@ const NavIndex = ({ onOpenRSVP }) => {
              ref={flower1Ref}
              src="/assets/images/graphics/flower-1.png" 
              alt="Flower decoration" 
-             className="absolute bottom-[0%] -left-[10%] w-[45vw] h-auto object-contain flower-1-rotate flower-1-container"
+             className="absolute bottom-[0%] -left-[5%] w-[38vw] h-auto object-contain flower-1-rotate flower-1-container"
            />
         </div>
 
@@ -253,7 +251,7 @@ const NavIndex = ({ onOpenRSVP }) => {
                   <p className="nanum-myeongjo-regular text-[#333333] mb-2 oval-text-for">
                     FOR THE
                   </p>
-                  <p className="imperial-script-regular mb-4 underline oval-text-entourage">
+                  <p className={`imperial-script-regular mb-4 underline oval-text-entourage ${themeConfig.text.primary}`}>
                     Entourage
                   </p>
                   <p className="nanum-myeongjo-regular text-[#333333] oval-text-click">
@@ -301,7 +299,7 @@ const NavIndex = ({ onOpenRSVP }) => {
               className="bg-white relative polaroid-container"
             >
               <img 
-                src="/assets/images/prenup/prenup-5.jpg" 
+                src="/assets/images/prenup/DSC_0303.jpeg" 
                 alt="Prenup photo" 
                 className="w-full object-cover polaroid-image"
               />
@@ -322,16 +320,16 @@ const NavIndex = ({ onOpenRSVP }) => {
             ref={rsvpContainerRef}
             className="bg-white flex flex-col cursor-pointer transition-transform duration-300 relative rsvp-container"
             onMouseEnter={(e) => {
-              e.currentTarget.style.transform = 'rotate(-10deg) scale(1.05)'
+              e.currentTarget.style.transform = 'scale(1.05)'
             }}
             onMouseLeave={(e) => {
-              e.currentTarget.style.transform = 'rotate(-10deg) scale(1)'
+              e.currentTarget.style.transform = 'scale(1)'
             }}
             onMouseDown={(e) => {
-              e.currentTarget.style.transform = 'rotate(-10deg) scale(1.1)'
+              e.currentTarget.style.transform = 'scale(1.1)'
             }}
             onMouseUp={(e) => {
-              e.currentTarget.style.transform = 'rotate(-10deg) scale(1.05)'
+              e.currentTarget.style.transform = 'scale(1.05)'
             }}
             onClick={() => {
               if (onOpenRSVP) {
@@ -339,15 +337,6 @@ const NavIndex = ({ onOpenRSVP }) => {
               }
             }}
           >
-            {/* Prenup Photo - 30% of container height */}
-            <div className="w-full overflow-hidden rsvp-photo-container">
-              <img 
-                src="/assets/images/prenup/prenup-6.jpg" 
-                alt="Prenup photo" 
-                className="w-full h-full object-cover rsvp-photo"
-              />
-            </div>
-            
             {/* Kindly RSVP Text */}
             <div className="flex-1 flex flex-col items-center justify-center px-4 py-4">
               <p className="nanum-myeongjo-regular text-center uppercase rsvp-text-kindly">
@@ -396,7 +385,7 @@ const NavIndex = ({ onOpenRSVP }) => {
               <p className="nanum-myeongjo-regular text-[#333333] details-text-view">
                 VIEW THE
               </p>
-                <p className="imperial-script-regular underline details-text-details">
+                <p className={`imperial-script-regular underline details-text-details ${themeConfig.text.primary}`}>
                   Details
                 </p>
             </div>
@@ -404,7 +393,7 @@ const NavIndex = ({ onOpenRSVP }) => {
         </div>
 
         {/* Three Polaroid Images Below RSVP and Details */}
-        <div ref={momentsImagesRef} className="flex justify-center items-start gap-0 relative moments-images-container">
+        <div ref={momentsImagesRef} className="flex justify-center items-start gap-4 sm:gap-6 relative moments-images-container mt-16 sm:mt-20 md:mt-24">
           {/* Flower 7 - Under the images */}
           <img 
             src="/assets/images/graphics/flower-7.png" 
@@ -449,7 +438,7 @@ const NavIndex = ({ onOpenRSVP }) => {
               }
             }}
           >
-             <span className="nanum-myeongjo-regular text-center underline pulsating-moments moments-text">
+             <span className={`nanum-myeongjo-regular text-center underline pulsating-moments moments-text ${themeConfig.text.primary}`}>
                OUR MOMENTS
              </span>
           </button>
@@ -479,7 +468,7 @@ const NavIndex = ({ onOpenRSVP }) => {
           >
             <div className="bg-white relative polaroid-1-container">
               <img 
-                src="/assets/images/prenup/prenup-7.jpg" 
+                src="/assets/images/prenup/DSC_9886.jpeg" 
                 alt="Prenup photo" 
                 className="w-full object-cover polaroid-1-image"
               />
@@ -511,7 +500,7 @@ const NavIndex = ({ onOpenRSVP }) => {
           >
             <div className="bg-white relative polaroid-2-container">
               <img 
-                src="/assets/images/prenup/prenup-4.jpg" 
+                src="/assets/images/prenup/DSC_9490.jpeg" 
                 alt="Prenup photo" 
                 className="w-full object-cover polaroid-2-image"
               />

@@ -44,40 +44,60 @@ const Moments = () => {
   const [startXThreePhotos, setStartXThreePhotos] = useState(0)
   const [scrollLeftThreePhotos, setScrollLeftThreePhotos] = useState(0)
 
-  // All prenup images
+  // All prenup images (excluding those used in NavIndex and Details)
+  // Excluded: DSC_0303.jpeg, DSC_9886.jpeg, DSC_9490.jpeg (NavIndex)
+  // Excluded: DSC_9004.jpeg, DSC_0186.jpeg, DSC_0347.jpeg (Details)
   const allPrenupImages = [
-    '/assets/images/prenup/prenup-4.jpg',
-    '/assets/images/prenup/prenup-5.jpg',
-    '/assets/images/prenup/prenup-6.jpg',
-    '/assets/images/prenup/prenup-7.jpg',
-    '/assets/images/prenup/prenup-8.jpg',
-    '/assets/images/prenup/prenup-9.jpg',
-    '/assets/images/prenup/prenup-10.jpg',
-    '/assets/images/prenup/prenup-11.jpg'
+    '/assets/images/prenup/DSC_0271.jpeg',
+    '/assets/images/prenup/DSC_0335.jpeg',
+    '/assets/images/prenup/DSC_0380.jpeg',
+    '/assets/images/prenup/DSC_8728.jpeg',
+    '/assets/images/prenup/DSC_8920.jpeg',
+    '/assets/images/prenup/DSC_9024.jpeg',
+    '/assets/images/prenup/DSC_9160.jpeg',
+    '/assets/images/prenup/DSC_9174.jpeg',
+    '/assets/images/prenup/DSC_9417.jpeg',
+    '/assets/images/prenup/DSC_9448.jpeg',
+    '/assets/images/prenup/DSC_9557.jpeg',
+    '/assets/images/prenup/DSC_9780.jpeg',
+    '/assets/images/prenup/DSC_9904.jpeg',
+    '/assets/images/prenup/DSC_9942.jpeg'
   ]
 
   // Images array for the lightbox (includes all images in same order)
   const lightboxImages = [
-    '/assets/images/prenup/prenup-4.jpg',
-    '/assets/images/prenup/prenup-5.jpg',
-    '/assets/images/prenup/prenup-6.jpg',
-    '/assets/images/prenup/prenup-7.jpg',
-    '/assets/images/prenup/prenup-8.jpg',
-    '/assets/images/prenup/prenup-9.jpg',
-    '/assets/images/prenup/prenup-10.jpg',
-    '/assets/images/prenup/prenup-11.jpg'
+    '/assets/images/prenup/DSC_0271.jpeg',
+    '/assets/images/prenup/DSC_0335.jpeg',
+    '/assets/images/prenup/DSC_0380.jpeg',
+    '/assets/images/prenup/DSC_8728.jpeg',
+    '/assets/images/prenup/DSC_8920.jpeg',
+    '/assets/images/prenup/DSC_9024.jpeg',
+    '/assets/images/prenup/DSC_9160.jpeg',
+    '/assets/images/prenup/DSC_9174.jpeg',
+    '/assets/images/prenup/DSC_9417.jpeg',
+    '/assets/images/prenup/DSC_9448.jpeg',
+    '/assets/images/prenup/DSC_9557.jpeg',
+    '/assets/images/prenup/DSC_9780.jpeg',
+    '/assets/images/prenup/DSC_9904.jpeg',
+    '/assets/images/prenup/DSC_9942.jpeg'
   ]
 
   // Gallery images for horizontal scroll
   const galleryImages = [
-    '/assets/images/prenup/prenup-4.jpg',
-    '/assets/images/prenup/prenup-5.jpg',
-    '/assets/images/prenup/prenup-6.jpg',
-    '/assets/images/prenup/prenup-7.jpg',
-    '/assets/images/prenup/prenup-8.jpg',
-    '/assets/images/prenup/prenup-9.jpg',
-    '/assets/images/prenup/prenup-10.jpg',
-    '/assets/images/prenup/prenup-11.jpg'
+    '/assets/images/prenup/DSC_0271.jpeg',
+    '/assets/images/prenup/DSC_0335.jpeg',
+    '/assets/images/prenup/DSC_0380.jpeg',
+    '/assets/images/prenup/DSC_8728.jpeg',
+    '/assets/images/prenup/DSC_8920.jpeg',
+    '/assets/images/prenup/DSC_9024.jpeg',
+    '/assets/images/prenup/DSC_9160.jpeg',
+    '/assets/images/prenup/DSC_9174.jpeg',
+    '/assets/images/prenup/DSC_9417.jpeg',
+    '/assets/images/prenup/DSC_9448.jpeg',
+    '/assets/images/prenup/DSC_9557.jpeg',
+    '/assets/images/prenup/DSC_9780.jpeg',
+    '/assets/images/prenup/DSC_9904.jpeg',
+    '/assets/images/prenup/DSC_9942.jpeg'
   ]
 
   // Polaroid images for the scrollable container
@@ -442,7 +462,7 @@ const Moments = () => {
         <div className="relative z-20 w-screen" style={{ width: '100vw' }}>
           <div className="relative w-full h-[250px] sm:h-[250px] md:h-[300px] lg:h-[350px]">
             <img 
-              src="/assets/images/prenup/prenup-3.png" 
+              src="/assets/images/prenup/prenup-2.png" 
               alt="Banner image"
               className="w-full h-full object-cover"
             />
@@ -480,7 +500,7 @@ const Moments = () => {
                 </h1>
                 {/* Love Story in Tebranos font */}
                 <h2 className="font-tebranos text-6xl sm:text-7xl md:text-8xl lg:text-9xl uppercase mb-4 -mt-6" style={{ 
-                  color: '#800000'
+                  color: '#D4A5A5'
                 }}>
                   Love Story
                 </h2>
@@ -494,7 +514,7 @@ const Moments = () => {
           <div ref={firstParagraphRef} className="relative z-20 w-full max-w-4xl px-8 sm:px-12 md:px-8 lg:px-16">
             <div className="alice-regular font-black text-[#333333] leading-relaxed text-center" style={{ fontWeight: 900, fontSize: '1rem', lineHeight: '1.8' }}>
               <p className="mb-4">
-                They met online—a simple swipe, a message, and just like that, their story began. What started as casual chats and getting to know each other turned into something real. They've laughed together, supported each other through ups and downs, and built something special. Through it all, they've grown closer and stronger, showing that sometimes the best connections happen when you least expect them.
+                We met in the quiet uncertainty of the 2021 pandemic, brought together by an unexpected coincidence—we both drove the same model of car. What began as a simple connection slowly turned into something deeper as the world outside stood still. In those early days, our conversations became our refuge, and love found its way into the pauses between lockdowns and long drives. Despite the distance and uncertainty, our bond grew naturally, grounded in comfort, laughter, and a growing sense that we had found something rare in each other.
               </p>
             </div>
           </div>
@@ -520,10 +540,10 @@ const Moments = () => {
                  border: 'none',
                  outline: 'none'
                }}>
-                 {/* Gold-1 Graphic Above Title */}
+                 {/* Falling Flower Graphic Above Title */}
                  <div className="flex justify-center items-center w-full mb-4">
                    <img 
-                     src="/assets/images/graphics/gold-1.png" 
+                     src="/assets/images/graphics/falling-flower.png" 
                      alt="Decorative graphic" 
                      className="h-auto"
                      style={{ maxWidth: '120px', width: 'auto' }}
@@ -533,11 +553,7 @@ const Moments = () => {
                    className="stylish-calligraphy text-5xl sm:text-6xl md:text-7xl lg:text-8xl inline-block" 
                    style={{
                      lineHeight: '1.2',
-                     background: 'linear-gradient(135deg, #FFD700 0%, #FFA500 25%, #FFD700 50%, #B8860B 75%, #DAA520 100%)',
-                     WebkitBackgroundClip: 'text',
-                     WebkitTextFillColor: 'transparent',
-                     backgroundClip: 'text',
-                     filter: 'drop-shadow(0 2px 4px rgba(218, 165, 32, 0.3))',
+                     color: '#333333',
                      display: 'inline-block',
                      paddingTop: '0.5rem',
                      paddingBottom: '0.5rem'
@@ -588,7 +604,8 @@ const Moments = () => {
                          style={{
                            width: '300px',
                            height: '300px',
-                           borderRadius: '0'
+                           borderRadius: '0',
+                           objectPosition: index === 4 ? 'center 30%' : index === 5 ? 'center 25%' : index === 11 ? 'center 25%' : index === 13 ? 'center top' : 'center center'
                          }}
                          width="300"
                          height="300"
@@ -612,28 +629,28 @@ const Moments = () => {
            <div ref={finalParagraphRef} className="relative z-20 w-full max-w-4xl px-8 sm:px-12 md:px-8 lg:px-16 mt-8 mx-auto">
              <div className="alice-regular font-black text-[#333333] leading-relaxed text-center" style={{ fontWeight: 900, fontSize: '1rem', lineHeight: '1.8' }}>
                <p className="mb-4">
-                 Join us in celebrating their extraordinary journey—a tale of serendipity, unexpected love, and the joy of two hearts making each other better. Together, they are thrilled to say, "I do," as they embrace a future full of promise and adventure.
+                 As time passed, we discovered how much we truly shared. We both loved dogs, enjoyed good food—especially meat and vegetables—and found joy in Mediterranean cuisine, eventually even developing a fondness for spicy dishes. We pushed ourselves together through Muay Thai, finding strength and balance not just in the sport but in our partnership. The work-from-home setup became another blessing, allowing us to build a rhythm of everyday life side by side. In all these simple, shared moments, our love deepened—steady, warm, and resilient, much like the time in which it began.
                </p>
              </div>
            </div>
 
-           {/* Final Photo - Full Width After Gallery */}
-           <div ref={endPhoto4Ref} className="relative z-20 w-screen mt-8">
-             <div className="relative">
-               <img
-                 src="/assets/images/prenup/prenup-11.jpg"
-                 alt="Love story photo"
-                 className="w-full h-auto object-cover cursor-pointer"
-                 loading="lazy"
-                 decoding="async"
-                 onClick={() => {
-                   const imageIndex = galleryImages.indexOf('/assets/images/prenup/prenup-11.jpg')
-                   setSelectedImage('/assets/images/prenup/prenup-11.jpg')
-                   setSelectedImageIndex(imageIndex !== -1 ? imageIndex : 0)
-                 }}
-               />
-             </div>
-           </div>
+          {/* Final Photo - Full Width After Gallery */}
+          <div ref={endPhoto4Ref} className="relative z-20 w-screen mt-8">
+            <div className="relative">
+              <img
+                src="/assets/images/prenup/DSC_9417.jpeg"
+                alt="Love story photo"
+                className="w-full h-auto object-cover cursor-pointer"
+                loading="lazy"
+                decoding="async"
+                onClick={() => {
+                  const imageIndex = galleryImages.indexOf('/assets/images/prenup/DSC_9417.jpeg')
+                  setSelectedImage('/assets/images/prenup/DSC_9417.jpeg')
+                  setSelectedImageIndex(imageIndex !== -1 ? imageIndex : 0)
+                }}
+              />
+            </div>
+          </div>
 
            {/* Second Moments Section - All 5 Polaroids in One Container */}
            {/* <div className="relative z-20 w-full mt-12 pb-12">
@@ -646,7 +663,7 @@ const Moments = () => {
                  }}
                >
                  <p 
-                   className="font-handwritten text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-[#800000] whitespace-nowrap"
+                   className="font-handwritten text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-[#D4A5A5] whitespace-nowrap"
                    style={{
                      position: 'absolute',
                      top: '5%',
@@ -657,7 +674,7 @@ const Moments = () => {
                    Forever
                  </p>
                  <p 
-                   className="font-handwritten text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-[#800000] whitespace-nowrap"
+                   className="font-handwritten text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-[#D4A5A5] whitespace-nowrap"
                    style={{
                      position: 'absolute',
                      top: '25%',
@@ -668,7 +685,7 @@ const Moments = () => {
                    Always
                  </p>
                  <p 
-                   className="font-handwritten text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-[#800000] whitespace-nowrap"
+                   className="font-handwritten text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-[#D4A5A5] whitespace-nowrap"
                    style={{
                      position: 'absolute',
                      bottom: '25%',
@@ -679,7 +696,7 @@ const Moments = () => {
                    Together
                  </p>
                  <p 
-                   className="font-handwritten text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-[#800000] whitespace-nowrap"
+                   className="font-handwritten text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-[#D4A5A5] whitespace-nowrap"
                    style={{
                      position: 'absolute',
                      bottom: '5%',
@@ -690,7 +707,7 @@ const Moments = () => {
                    Love
                  </p>
                  <p 
-                   className="font-handwritten text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-[#800000] whitespace-nowrap"
+                   className="font-handwritten text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-[#D4A5A5] whitespace-nowrap"
                    style={{
                      position: 'absolute',
                      top: '50%',
@@ -721,7 +738,7 @@ const Moments = () => {
                        }}
                      ></div>
                      <div className="p-2 text-center">
-                       <div className="text-sm sm:text-lg text-[#800000] font-handwritten">
+                       <div className="text-sm sm:text-lg text-[#D4A5A5] font-handwritten">
                          Memories
                        </div>
                      </div>
@@ -744,7 +761,7 @@ const Moments = () => {
                        }}
                      ></div>
                      <div className="p-2 text-center">
-                       <div className="text-sm sm:text-lg text-[#800000] font-handwritten">
+                       <div className="text-sm sm:text-lg text-[#D4A5A5] font-handwritten">
                          Together
                        </div>
                      </div>
@@ -767,7 +784,7 @@ const Moments = () => {
                        }}
                      ></div>
                      <div className="p-2 text-center">
-                       <div className="text-sm sm:text-lg text-[#800000] font-handwritten">
+                       <div className="text-sm sm:text-lg text-[#D4A5A5] font-handwritten">
                          Love
                        </div>
                      </div>
@@ -792,7 +809,7 @@ const Moments = () => {
                        }}
                      ></div>
                      <div className="p-2 text-center">
-                       <div className="text-sm sm:text-lg text-[#800000] font-handwritten">
+                       <div className="text-sm sm:text-lg text-[#D4A5A5] font-handwritten">
                          Forever
                        </div>
                      </div>
@@ -815,7 +832,7 @@ const Moments = () => {
                        }}
                      ></div>
                      <div className="p-2 text-center">
-                       <div className="text-sm sm:text-lg text-[#800000] font-handwritten">
+                       <div className="text-sm sm:text-lg text-[#D4A5A5] font-handwritten">
                          Always
                        </div>
                      </div>

@@ -1,36 +1,36 @@
 {
   "mainDressCode": {
     "title": "Dress Code",
-    "description": "Strictly formal. No slippers, shorts, jeans, tshirt, or white color. Colors: brown, black, teal green, blue, gray, or beige only."
+    "description": "Gentlemen: Barong tagalog (beige/ivory) / polo/ long sleeve/ slacks; ladies: long gown/ formal jumpsuit/ cocktail dress (avoid wearing white); shades of dusty pink, old rose, light pink, sage green, gold"
   },
   "sections": [
     {
       "title": "FORMAL ATTIRE",
       "type": "image",
       "image": "/assets/images/dresscode/blue.png",
-      "description": "Strictly formal. No slippers, shorts, jeans, tshirt, or white color. Colors: brown, black, teal green, blue, gray, or beige only.",
+      "description": "Gentlemen: Barong tagalog (beige/ivory) / polo/ long sleeve/ slacks; ladies: long gown/ formal jumpsuit/ cocktail dress (avoid wearing white); shades of dusty pink, old rose, light pink, sage green, gold",
       "colors": [
         {
-          "name": "Brown",
-          "hex": "#8B4513"
+          "name": "Dusty Pink",
+          "hex": "#D4A5A5"
         },
         {
-          "name": "Black",
-          "hex": "#000000"
+          "name": "Old Rose",
+          "hex": "#C08081"
         },
         {
-          "name": "Teal Green",
-          "hex": "#008080"
+          "name": "Light Pink",
+          "hex": "#F5C2C2"
         },
         {
-          "name": "Blue Gray",
-          "hex": "#708090"
+          "name": "Sage Green",
+          "hex": "#87AE73"
         },
         {
-          "name": "Beige",
-          "hex": "#D2B48C"
+          "name": "Gold",
+          "hex": "#D4AF37"
         }
       ]
     }
   ]
-} 
+}

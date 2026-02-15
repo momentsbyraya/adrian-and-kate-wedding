@@ -45,8 +45,8 @@
 :root {
   --envelope-x: 300px;
   --envelope-y: 200px;
-  --envelope-bg: #800000;
-  --envelope-shadow: #660000;
+  --envelope-bg: #D4A5A5;
+  --envelope-shadow: #B89090;
   --heart-bg: darkred;
   --heart-text: white;
   --letter-font: "Dancing Script", serif;
@@ -66,7 +66,7 @@
   }
   
   .envelope {
-    transform: rotate(-5deg) scale(0.85) !important;
+    transform: scale(0.85) !important;
   }
 }
 
@@ -88,7 +88,6 @@
   box-shadow: inset 0 0 30px -5px var(--envelope-shadow);
   transform-style: preserve-3d;
   perspective: 1000px;
-  transform: rotate(-5deg);
 }
 
 .envelope-flap {
@@ -348,14 +347,25 @@
   animation: zoomInAndFade 1.5s ease-in-out forwards;
 }
 
+/* Ensure Click me and couple name have no rotation */
+.click-me-container {
+  transform: none !important;
+}
+
+.couple-name-container {
+  transform: none !important;
+}
+
 /* Reduce gap between Click me and envelope on large screens */
 @media (min-width: 992px) {
   .click-me-container {
     margin-bottom: 1rem !important;
+    transform: none !important;
   }
   
   .couple-name-container {
     margin-top: 1rem !important;
+    transform: none !important;
   }
 }
 

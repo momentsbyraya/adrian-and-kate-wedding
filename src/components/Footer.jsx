@@ -16,7 +16,7 @@ const Footer = () => {
       
       {/* Footer text */}
       <div className="text-center">
-        <p className="text-sm sm:text-base font-albert font-thin transition-colors duration-300 hover:!text-[#f5f5f0] active:!text-[#f5f5f0]" style={{ color: themeConfig.cssVariables['--accent-text'] }}>
+        <p className={`text-sm sm:text-base font-albert font-thin transition-colors duration-300 hover:!text-[#f5f5f0] active:!text-[#f5f5f0] ${themeConfig.text.primary}`}>
           Made with <ion-icon name="heart" className="inline-block mx-1 align-middle" style={{ fontSize: '1em', verticalAlign: 'middle' }}></ion-icon> by Moments by Raya
         </p>
       </div>

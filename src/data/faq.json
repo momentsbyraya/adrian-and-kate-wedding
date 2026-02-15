@@ -1,16 +1,32 @@
 {
   "faqData": [
     {
-      "question": "Can guests take photos during the ceremony?",
-      "answer": "Yes, guests may take photos during the ceremony. We ask that these moments are not shared on social media. A QR code will be provided for uploading your photos. Thank you for your understanding."
+      "question": "When's the big day?",
+      "answer": "Mark your calendars for May 30, 2026 at Plaza Ibarra, Timog Ave., Quezon City —come early, happy, and ready to celebrate!"
     },
     {
-      "question": "What is the wedding dress code?",
-      "answer": "Our wedding follows a strict formal dress code. No slippers, shorts, jeans, tshirt, or white color. Colors allowed: Brown, black, teal green, blue, gray, or beige only. We kindly ask all guests to adhere to the dress code."
+      "question": "What's the dress code?",
+      "answer": "Dress to impress in: Shades of dusty pink, old rose, light pink, sage green, and gold! Just one rule: please don't wear white."
     },
     {
-      "question": "Are children allowed at the wedding?",
-      "answer": "While we love children, we are only able to accommodate those who are part of the entourage. We appreciate your understanding and cooperation."
+      "question": "Can I bring a plus one?",
+      "answer": "If your invitation says so, yes! Otherwise, we're keeping things cozy and intimate."
+    },
+    {
+      "question": "Kids or no kids?",
+      "answer": "This will be a grown‑ups event—check your invite for details."
+    },
+    {
+      "question": "Food situation?",
+      "answer": "Come hungry. There will be delicious food, drinks, and plenty of reasons to dance."
+    },
+    {
+      "question": "Photos—yes or no?",
+      "answer": "During the ceremony, we ask for phones down and hearts open. After that—snap away! And please don't forget to share your snaps in our shared drive."
+    },
+    {
+      "question": "Gifts?",
+      "answer": "No pressure at all—your love and laughter are more than enough. But if you desire to give nonetheless, a MONETARY GIFT is one we suggest."
     }
   ]
 }

@@ -31,8 +31,6 @@ const Details = () => {
   const faqRef = useRef(null)
   const faqTitleRef = useRef(null)
   const photoSectionRef = useRef(null)
-  const curvedDivider1Ref = useRef(null)
-  const curvedDivider2Ref = useRef(null)
   const curvedDivider3Ref = useRef(null)
   const faqItems = faqData
 
@@ -172,30 +170,6 @@ const Details = () => {
     }
 
     // Curved Divider animations
-    if (curvedDivider1Ref.current) {
-      ScrollTrigger.create({
-        trigger: curvedDivider1Ref.current,
-        start: "top 85%",
-        animation: gsap.fromTo(curvedDivider1Ref.current,
-          { opacity: 0, scaleY: 0 },
-          { opacity: 1, scaleY: 1, duration: 0.6, ease: "power2.out" }
-        ),
-        toggleActions: "play none none reverse"
-      })
-    }
-
-    if (curvedDivider2Ref.current) {
-      ScrollTrigger.create({
-        trigger: curvedDivider2Ref.current,
-        start: "top 85%",
-        animation: gsap.fromTo(curvedDivider2Ref.current,
-          { opacity: 0, scaleY: 0 },
-          { opacity: 1, scaleY: 1, duration: 0.6, ease: "power2.out" }
-        ),
-        toggleActions: "play none none reverse"
-      })
-    }
-
     if (curvedDivider3Ref.current) {
       ScrollTrigger.create({
         trigger: curvedDivider3Ref.current,
@@ -261,7 +235,7 @@ const Details = () => {
       ref={sectionRef}
       id="details"
       data-section="details"
-      className="relative pb-20 w-full overflow-hidden bg-white details-section"
+      className="relative w-full overflow-hidden bg-white details-section"
     >
       {/* Prenup Image at Top */}
       <ImageBanner 
@@ -286,58 +260,36 @@ const Details = () => {
           <Venue />
                   </div>
                 </div>
-                
-      {/* Curved Line Divider */}
-      <div ref={curvedDivider1Ref} className="relative w-full py-8 flex items-center justify-center">
-        <svg 
-          className="w-full h-16 sm:h-20 md:h-24" 
-          viewBox="0 0 1200 100" 
-          preserveAspectRatio="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path 
-            d="M0,50 Q300,20 600,50 T1200,50" 
-            stroke="#800000" 
-            strokeWidth="2" 
-            fill="none"
-            opacity="0.4"
-          />
+
+      {/* Wave Container */}
+      <div className="wave relative w-full" style={{ marginBottom: '-1px' }}>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" className="w-full h-auto" style={{ display: 'block' }}>
+          <path fill="#D4A5A5" fillOpacity="1" stroke="none" d="M0,192L60,165.3C120,139,240,85,360,90.7C480,96,600,160,720,197.3C840,235,960,245,1080,229.3C1200,213,1320,171,1380,149.3L1440,128L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"></path>
         </svg>
-            </div>
+      </div>
 
       {/* Content */}
-      <div className="relative z-20 flex items-center justify-center pt-12">
+      <div className="relative z-20 flex items-center justify-center" style={{ marginTop: '-1px' }}>
         <div className="max-w-xs sm:max-w-md lg:max-w-3xl w-full mx-auto">
           {/* Schedule Section */}
           <Schedule />
                     </div>
                 </div>
 
-      {/* Curved Line Divider */}
-      <div ref={curvedDivider2Ref} className="relative w-full py-8 flex items-center justify-center">
-        <svg 
-          className="w-full h-16 sm:h-20 md:h-24" 
-          viewBox="0 0 1200 100" 
-          preserveAspectRatio="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path 
-            d="M0,50 Q300,20 600,50 T1200,50" 
-            stroke="#800000" 
-            strokeWidth="2" 
-            fill="none"
-            opacity="0.4"
-          />
+      {/* Wave Container - Bottom Variation */}
+      <div className="wave wave-bottom relative w-full" style={{ marginTop: '-1px' }}>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" className="w-full h-auto" style={{ display: 'block' }}>
+          <path fill="#D4A5A5" fillOpacity="1" stroke="none" d="M0,192L60,165.3C120,139,240,85,360,90.7C480,96,600,160,720,197.3C840,235,960,245,1080,229.3C1200,213,1320,171,1380,149.3L1440,128L1440,0L1380,0C1320,0,1200,0,1080,0C960,0,840,0,720,0C600,0,480,0,360,0C240,0,120,0,60,0L0,0Z"></path>
         </svg>
-                    </div>
+      </div>
                     
       {/* Photo Section */}
       <div ref={photoSectionRef}>
       <PhotoSection
         images={[
-          { src: '/assets/images/prenup/prenup-4.jpg', alt: 'Photo 1', label: 'Memories' },
-          { src: '/assets/images/prenup/prenup-5.jpg', alt: 'Photo 2', label: 'Together' },
-          { src: '/assets/images/prenup/prenup-6.jpg', alt: 'Photo 3', label: 'Love' }
+          { src: '/assets/images/prenup/DSC_9004.jpeg', alt: 'Photo 1', label: 'Memories' },
+          { src: '/assets/images/prenup/DSC_0186.jpeg', alt: 'Photo 2', label: 'Together' },
+          { src: '/assets/images/prenup/DSC_0347.jpeg', alt: 'Photo 3', label: 'Love' }
         ]}
         paragraph="This is where our journey began, a moment captured in time that will forever hold a special place in our hearts."
         backgroundTexts={['Forever', 'Always', 'Together', 'Love', 'Us']}
@@ -354,7 +306,7 @@ const Details = () => {
         >
           <path 
             d="M0,50 Q300,20 600,50 T1200,50" 
-            stroke="#800000" 
+            stroke="#D4A5A5" 
             strokeWidth="2" 
             fill="none"
             opacity="0.4"
@@ -382,6 +334,7 @@ const Details = () => {
           <h3 ref={faqTitleRef} className="relative inline-block px-6 py-3 mb-12 text-center w-full">
             <span 
               className="font-tebranos text-5xl sm:text-6xl md:text-7xl lg:text-8xl inline-block leading-none uppercase faq-title-text"
+              style={{ lineHeight: '0.8' }}
             >
               Frequently Asked Questions
             </span>
@@ -409,11 +362,6 @@ const Details = () => {
             </div>
           )}
         </div>
-      </div>
-
-      {/* Graphics with horizontal lines */}
-      <div className="mt-12 relative z-20">
-        <Divider />
       </div>
 
     </section>
