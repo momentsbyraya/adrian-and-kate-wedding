@@ -1,22 +1,22 @@
 {
   "paymentMethods": [
     {
-      "name": "GCash - Angela Domingo",
+      "name": "GCash - John Francis Ochotorina",
       "image": "/assets/images/monetary-gifts/gcash-vride.png",
       "accountInfo": {
         "provider": "GCash",
         "accountNumber": "09957354408",
-        "accountName": "Angela Domingo",
+        "accountName": "John Francis Ochotorina",
         "qrCode": "/assets/images/monetary-gifts/gcash-vride.png"
       }
     },
     {
-      "name": "GCash - John Francis Ochotorina",
+      "name": "GCash - Angela Domingo",
       "image": "/assets/images/monetary-gifts/gcashgorrom.png",
       "accountInfo": {
         "provider": "GCash",
         "accountNumber": "09664291475",
-        "accountName": "John Francis Ochotorina",
+        "accountName": "Angela Domingo",
         "qrCode": "/assets/images/monetary-gifts/gcashgorrom.png"
       }
     }
