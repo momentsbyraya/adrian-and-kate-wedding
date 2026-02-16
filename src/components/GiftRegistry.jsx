@@ -126,15 +126,9 @@ const GiftRegistry = () => {
                             />
                           </div>
                         )}
-                        {/* Account Name */}
-                        {accountName && (
-                          <h4 className="text-lg sm:text-xl font-boska text-[#333333] mb-2">
-                            {accountName}
-                          </h4>
-                        )}
                         {/* Account Number with Copy Icon */}
                         {accountNumber && (
-                          <div className="flex items-center gap-2">
+                          <div className="flex items-center gap-2 mb-2">
                             <p className="text-sm sm:text-base font-albert text-[#333333] font-semibold">
                               {accountNumber}
                             </p>
@@ -150,6 +144,12 @@ const GiftRegistry = () => {
                               )}
                             </button>
                           </div>
+                        )}
+                        {/* Account Name */}
+                        {accountName && (
+                          <h4 className="text-lg sm:text-xl font-boska text-[#333333]">
+                            {accountName}
+                          </h4>
                         )}
                       </div>
                     )

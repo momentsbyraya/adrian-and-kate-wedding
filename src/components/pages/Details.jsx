@@ -260,13 +260,13 @@ const Details = () => {
           <Venue />
                   </div>
                 </div>
-
+                
       {/* Wave Container */}
       <div className="wave relative w-full" style={{ marginBottom: '-1px' }}>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" className="w-full h-auto" style={{ display: 'block' }}>
           <path fill="#D4A5A5" fillOpacity="1" stroke="none" d="M0,192L60,165.3C120,139,240,85,360,90.7C480,96,600,160,720,197.3C840,235,960,245,1080,229.3C1200,213,1320,171,1380,149.3L1440,128L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"></path>
         </svg>
-      </div>
+            </div>
 
       {/* Content */}
       <div className="relative z-20 flex items-center justify-center" style={{ marginTop: '-1px' }}>
@@ -281,7 +281,7 @@ const Details = () => {
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" className="w-full h-auto" style={{ display: 'block' }}>
           <path fill="#D4A5A5" fillOpacity="1" stroke="none" d="M0,192L60,165.3C120,139,240,85,360,90.7C480,96,600,160,720,197.3C840,235,960,245,1080,229.3C1200,213,1320,171,1380,149.3L1440,128L1440,0L1380,0C1320,0,1200,0,1080,0C960,0,840,0,720,0C600,0,480,0,360,0C240,0,120,0,60,0L0,0Z"></path>
         </svg>
-      </div>
+                    </div>
                     
       {/* Photo Section */}
       <div ref={photoSectionRef}>

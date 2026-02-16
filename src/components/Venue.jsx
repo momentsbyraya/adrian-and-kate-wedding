@@ -218,25 +218,17 @@ const Venue = () => {
               {/* Venue Image and Details - Side by side on mobile, stacked on 992px+ */}
               <div className="flex flex-row lg-custom:flex-col gap-6 md:gap-8 lg-custom:gap-6 items-start">
                 {/* Venue Details - First on mobile (left), second on desktop (bottom) */}
-                <div className="w-1/2 lg-custom:w-full flex flex-col justify-between text-right lg-custom:text-left venue-image-container order-1 lg-custom:order-2">
+                <div className="w-1/2 lg-custom:w-full flex flex-col justify-between text-center venue-image-container order-1 lg-custom:order-2">
                   {/* Venue Name and Location Container */}
-                  <div>
+                  <div className="flex-1 flex items-center justify-center">
                     {/* Venue Name */}
-                    <div className="text-lg sm:text-xl md:text-2xl font-boska text-[#333333] mb-2 text-right lg-custom:text-left">
+                    <div className="text-lg sm:text-xl md:text-2xl font-boska text-[#333333] text-center">
                       {reception.name}
                     </div>
-                    
-                     {/* Address */}
-                     <p className="text-sm sm:text-base font-albert font-thin text-[#333333] mb-4 text-right lg-custom:text-left">
-                       {reception.address && `${reception.address}, `}
-                       {reception.city}
-                       {reception.state && `, ${reception.state}`}
-                       {reception.zip && `, ${reception.zip}`}
-                     </p>
                   </div>
 
                   {/* Google Maps Link Button */}
-                  <div className="flex justify-end lg-custom:justify-start items-center">
+                  <div className="flex justify-center items-center">
                     <SecondaryButton
                       href={reception.googleMapsUrl}
                       target="_blank"

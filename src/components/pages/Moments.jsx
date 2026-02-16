@@ -61,7 +61,17 @@ const Moments = () => {
     '/assets/images/prenup/DSC_9557.jpeg',
     '/assets/images/prenup/DSC_9780.jpeg',
     '/assets/images/prenup/DSC_9904.jpeg',
-    '/assets/images/prenup/DSC_9942.jpeg'
+    '/assets/images/prenup/DSC_9942.jpeg',
+    '/assets/images/prenup/added/DSC_0297.jpeg',
+    '/assets/images/prenup/added/DSC_8622.jpeg',
+    '/assets/images/prenup/added/DSC_8691.jpeg',
+    '/assets/images/prenup/added/DSC_8805.jpeg',
+    '/assets/images/prenup/added/DSC_8894.jpeg',
+    '/assets/images/prenup/added/DSC_9192.jpeg',
+    '/assets/images/prenup/added/DSC_9438.jpeg',
+    '/assets/images/prenup/added/DSC_9697.jpeg',
+    '/assets/images/prenup/added/DSC_9747.jpeg',
+    '/assets/images/prenup/added/DSC_9937.jpeg'
   ]
 
   // Images array for the lightbox (includes all images in same order)
@@ -79,7 +89,17 @@ const Moments = () => {
     '/assets/images/prenup/DSC_9557.jpeg',
     '/assets/images/prenup/DSC_9780.jpeg',
     '/assets/images/prenup/DSC_9904.jpeg',
-    '/assets/images/prenup/DSC_9942.jpeg'
+    '/assets/images/prenup/DSC_9942.jpeg',
+    '/assets/images/prenup/added/DSC_0297.jpeg',
+    '/assets/images/prenup/added/DSC_8622.jpeg',
+    '/assets/images/prenup/added/DSC_8691.jpeg',
+    '/assets/images/prenup/added/DSC_8805.jpeg',
+    '/assets/images/prenup/added/DSC_8894.jpeg',
+    '/assets/images/prenup/added/DSC_9192.jpeg',
+    '/assets/images/prenup/added/DSC_9438.jpeg',
+    '/assets/images/prenup/added/DSC_9697.jpeg',
+    '/assets/images/prenup/added/DSC_9747.jpeg',
+    '/assets/images/prenup/added/DSC_9937.jpeg'
   ]
 
   // Gallery images for horizontal scroll
@@ -97,7 +117,17 @@ const Moments = () => {
     '/assets/images/prenup/DSC_9557.jpeg',
     '/assets/images/prenup/DSC_9780.jpeg',
     '/assets/images/prenup/DSC_9904.jpeg',
-    '/assets/images/prenup/DSC_9942.jpeg'
+    '/assets/images/prenup/DSC_9942.jpeg',
+    '/assets/images/prenup/added/DSC_0297.jpeg',
+    '/assets/images/prenup/added/DSC_8622.jpeg',
+    '/assets/images/prenup/added/DSC_8691.jpeg',
+    '/assets/images/prenup/added/DSC_8805.jpeg',
+    '/assets/images/prenup/added/DSC_8894.jpeg',
+    '/assets/images/prenup/added/DSC_9192.jpeg',
+    '/assets/images/prenup/added/DSC_9438.jpeg',
+    '/assets/images/prenup/added/DSC_9697.jpeg',
+    '/assets/images/prenup/added/DSC_9747.jpeg',
+    '/assets/images/prenup/added/DSC_9937.jpeg'
   ]
 
   // Polaroid images for the scrollable container
@@ -605,7 +635,7 @@ const Moments = () => {
                            width: '300px',
                            height: '300px',
                            borderRadius: '0',
-                           objectPosition: index === 4 ? 'center 30%' : index === 5 ? 'center 25%' : index === 11 ? 'center 25%' : index === 13 ? 'center top' : 'center center'
+                           objectPosition: index === 4 ? 'center 30%' : index === 5 ? 'center 25%' : index === 11 ? 'center 25%' : index === 13 ? 'center top' : index === 14 ? 'center 10%' : index === 19 ? '85% center' : 'center center'
                          }}
                          width="300"
                          height="300"

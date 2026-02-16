@@ -338,7 +338,7 @@ const Schedule = () => {
               <div className="text-sm sm:text-base md:text-lg font-albert timeline-event-description text-white">
                 Send off
               </div>
-            </div>
+              </div>
             <div className="absolute left-1/2 transform -translate-x-1/2 w-3 h-3 bg-white rounded-full z-10"></div>
             <div className="w-1/2 pl-6 text-left flex items-center justify-start">
             </div>

@@ -439,7 +439,7 @@ const Entourage = () => {
                     <p className={`font-tebranos text-4xl sm:text-5xl md:text-6xl lg:text-7xl uppercase leading-tight ${themeConfig.text.primary}`}>
                       {couple.groom.firstName}
                     </p>
-                    <p className={`font-ballet text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-tight -mt-4 ${themeConfig.text.secondary}`}>
+                    <p className="font-ballet text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-tight -mt-4" style={{ color: '#A06061' }}>
                       {couple.groom.lastName}
                     </p>
                   </div>
@@ -451,7 +451,7 @@ const Entourage = () => {
                     <p className={`font-tebranos text-4xl sm:text-5xl md:text-6xl lg:text-7xl uppercase leading-tight ${themeConfig.text.primary}`}>
                       {couple.bride.firstName}
                     </p>
-                    <p className={`font-ballet text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-tight -mt-4 ${themeConfig.text.secondary}`}>
+                    <p className="font-ballet text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-tight -mt-4" style={{ color: '#A06061' }}>
                       {couple.bride.lastName}
                     </p>
                   </div>
@@ -467,16 +467,16 @@ const Entourage = () => {
             <div ref={parentsRef} className="mb-6 flex flex-row gap-4 sm:gap-6 justify-center items-center">
               {/* Groom's Parents */}
               <div className="flex-1">
-                <p className="text-[10px] sm:text-[13px] md:text-[15px] lg:text-[17px] caudex-bold mb-2 whitespace-nowrap text-right uppercase" style={{ color: '#87AE73' }}>Groom's Parents</p>
-                <p className="text-[8.5px] sm:text-[12px] md:text-[14px] lg:text-[16px] font-poppins uppercase whitespace-nowrap overflow-hidden text-ellipsis text-right text-[#333333]">{entourage.parents.groom.father}</p>
-                <p className="text-[8.5px] sm:text-[12px] md:text-[14px] lg:text-[16px] font-poppins uppercase whitespace-nowrap overflow-hidden text-ellipsis text-right text-[#333333]">{entourage.parents.groom.mother}</p>
+                <p className="text-[11px] sm:text-[14px] md:text-[16px] lg:text-[18px] caudex-bold mb-2 whitespace-nowrap text-right uppercase" style={{ color: '#A06061' }}>Groom's Parents</p>
+                <p className="text-[9.5px] sm:text-[13px] md:text-[15px] lg:text-[17px] font-poppins uppercase whitespace-nowrap overflow-hidden text-ellipsis text-right text-[#333333]">{entourage.parents.groom.father}</p>
+                <p className="text-[9.5px] sm:text-[13px] md:text-[15px] lg:text-[17px] font-poppins uppercase whitespace-nowrap overflow-hidden text-ellipsis text-right text-[#333333]">{entourage.parents.groom.mother}</p>
               </div>
 
               {/* Bride's Parents */}
               <div className="flex-1">
-                <p className="text-[10px] sm:text-[13px] md:text-[15px] lg:text-[17px] caudex-bold mb-2 whitespace-nowrap text-left uppercase" style={{ color: '#87AE73' }}>Bride's Parents</p>
-                <p className="text-[8.5px] sm:text-[12px] md:text-[14px] lg:text-[16px] font-poppins uppercase whitespace-nowrap overflow-hidden text-ellipsis text-left text-[#333333]">{entourage.parents.bride.father}</p>
-                <p className="text-[8.5px] sm:text-[12px] md:text-[14px] lg:text-[16px] font-poppins uppercase whitespace-nowrap overflow-hidden text-ellipsis text-left text-[#333333]">{entourage.parents.bride.mother}</p>
+                <p className="text-[11px] sm:text-[14px] md:text-[16px] lg:text-[18px] caudex-bold mb-2 whitespace-nowrap text-left uppercase" style={{ color: '#A06061' }}>Bride's Parents</p>
+                <p className="text-[9.5px] sm:text-[13px] md:text-[15px] lg:text-[17px] font-poppins uppercase whitespace-nowrap overflow-hidden text-ellipsis text-left text-[#333333]">{entourage.parents.bride.father}</p>
+                <p className="text-[9.5px] sm:text-[13px] md:text-[15px] lg:text-[17px] font-poppins uppercase whitespace-nowrap overflow-hidden text-ellipsis text-left text-[#333333]">{entourage.parents.bride.mother}</p>
               </div>
             </div>
 
@@ -489,14 +489,14 @@ const Entourage = () => {
               
               return (
                 <div ref={principalSponsorsRef} className="mb-6">
-                  <h3 className={`text-xl sm:text-2xl md:text-3xl lg:text-4xl imperial-script-regular mb-6 text-center capitalize whitespace-nowrap ${themeConfig.text.secondary}`}>Principal Sponsors</h3>
+                  <h3 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl imperial-script-regular mb-6 text-center capitalize whitespace-nowrap" style={{ color: '#A06061' }}>Principal Sponsors</h3>
                   <div className="flex flex-row gap-4 sm:gap-6 justify-center items-start">
                     {/* NINONG Column */}
                     <div className="flex-1">
-                      <p className="text-[10px] sm:text-[13px] md:text-[15px] lg:text-[17px] caudex-bold mb-2 whitespace-nowrap text-right uppercase" style={{ color: '#87AE73' }}>NINONG</p>
+                      <p className="text-[11px] sm:text-[14px] md:text-[16px] lg:text-[18px] caudex-bold mb-2 whitespace-nowrap text-right uppercase" style={{ color: '#A06061' }}>NINONG</p>
                       <div className="space-y-2">
                         {ninongs.map((name, index) => (
-                          <p key={index} className="ninong-item text-[8.5px] sm:text-[12px] md:text-[14px] lg:text-[16px] font-poppins uppercase text-[#333333] text-right whitespace-nowrap overflow-hidden text-ellipsis">
+                          <p key={index} className="ninong-item text-[9.5px] sm:text-[13px] md:text-[15px] lg:text-[17px] font-poppins uppercase text-[#333333] text-right whitespace-nowrap overflow-hidden text-ellipsis">
                             {name}
                           </p>
                         ))}
@@ -504,10 +504,10 @@ const Entourage = () => {
                     </div>
                     {/* NINANG Column - Paired */}
                     <div className="flex-1">
-                      <p className="text-[10px] sm:text-[13px] md:text-[15px] lg:text-[17px] caudex-bold mb-2 whitespace-nowrap text-left uppercase" style={{ color: '#87AE73' }}>NINANG</p>
+                      <p className="text-[11px] sm:text-[14px] md:text-[16px] lg:text-[18px] caudex-bold mb-2 whitespace-nowrap text-left uppercase" style={{ color: '#A06061' }}>NINANG</p>
                       <div className="space-y-2">
                         {pairedNinangs.map((name, index) => (
-                          <p key={index} className="ninang-item text-[8.5px] sm:text-[12px] md:text-[14px] lg:text-[16px] font-poppins uppercase text-[#333333] text-left whitespace-nowrap overflow-hidden text-ellipsis">
+                          <p key={index} className="ninang-item text-[9.5px] sm:text-[13px] md:text-[15px] lg:text-[17px] font-poppins uppercase text-[#333333] text-left whitespace-nowrap overflow-hidden text-ellipsis">
                             {name}
                           </p>
                         ))}
@@ -519,7 +519,7 @@ const Entourage = () => {
                     <div className="mt-4 flex justify-center">
                       <div className="space-y-2">
                         {unpairedNinangs.map((name, index) => (
-                          <p key={`unpaired-${index}`} className="ninang-item text-[8.5px] sm:text-[12px] md:text-[14px] lg:text-[16px] font-poppins uppercase text-[#333333] text-center whitespace-nowrap overflow-hidden text-ellipsis">
+                          <p key={`unpaired-${index}`} className="ninang-item text-[9.5px] sm:text-[13px] md:text-[15px] lg:text-[17px] font-poppins uppercase text-[#333333] text-center whitespace-nowrap overflow-hidden text-ellipsis">
                             {name}
                           </p>
                         ))}
@@ -535,9 +535,9 @@ const Entourage = () => {
               {/* Bestman */}
               {bestman && (
                 <div ref={bestmanRef} className="flex-1">
-                  <p className="text-[10px] sm:text-[13px] md:text-[15px] lg:text-[17px] caudex-bold mb-2 whitespace-nowrap text-right uppercase" style={{ color: '#87AE73' }}>Bestman</p>
+                  <p className="text-[11px] sm:text-[14px] md:text-[16px] lg:text-[18px] caudex-bold mb-2 whitespace-nowrap text-right uppercase" style={{ color: '#A06061' }}>Bestman</p>
                   {bestman.names && bestman.names.map((name, index) => (
-                    <p key={index} className="text-[8.5px] sm:text-[12px] md:text-[14px] lg:text-[16px] font-poppins uppercase text-[#333333] whitespace-nowrap overflow-hidden text-ellipsis text-right">
+                    <p key={index} className="text-[9.5px] sm:text-[13px] md:text-[15px] lg:text-[17px] font-poppins uppercase text-[#333333] whitespace-nowrap overflow-hidden text-ellipsis text-right">
                       {name}
                     </p>
                   ))}
@@ -547,9 +547,9 @@ const Entourage = () => {
               {/* Maid of Honor */}
               {maidOfHonor && (
                 <div ref={maidOfHonorRef} className="flex-1">
-                  <p className="text-[10px] sm:text-[13px] md:text-[15px] lg:text-[17px] caudex-bold mb-2 whitespace-nowrap text-left uppercase" style={{ color: '#87AE73' }}>Maid Of Honor</p>
+                  <p className="text-[11px] sm:text-[14px] md:text-[16px] lg:text-[18px] caudex-bold mb-2 whitespace-nowrap text-left uppercase" style={{ color: '#A06061' }}>Maid Of Honor</p>
                   {maidOfHonor.names && maidOfHonor.names.map((name, index) => (
-                    <p key={index} className="text-[8.5px] sm:text-[12px] md:text-[14px] lg:text-[16px] font-poppins uppercase text-[#333333] whitespace-nowrap overflow-hidden text-ellipsis text-left">
+                    <p key={index} className="text-[9.5px] sm:text-[13px] md:text-[15px] lg:text-[17px] font-poppins uppercase text-[#333333] whitespace-nowrap overflow-hidden text-ellipsis text-left">
                       {name}
                     </p>
                   ))}
@@ -560,7 +560,7 @@ const Entourage = () => {
             {/* Secondary Sponsors */}
             {secondarySponsors && (
               <div ref={secondarySponsorsRef} className="mb-6">
-                <h3 className={`text-xl sm:text-2xl md:text-3xl lg:text-4xl imperial-script-regular mb-6 text-center capitalize whitespace-nowrap ${themeConfig.text.secondary}`}>Secondary Sponsors</h3>
+                <h3 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl imperial-script-regular mb-6 text-center capitalize whitespace-nowrap" style={{ color: '#A06061' }}>Secondary Sponsors</h3>
 
                 {/* Three Sponsors in One Row */}
                 <div className="flex flex-row gap-4 sm:gap-6 justify-center items-start mb-6">
@@ -568,9 +568,9 @@ const Entourage = () => {
                   {candleSponsors && (
                     <div className="flex-1">
                       <div ref={candleSponsorsRef} className="flex flex-col gap-2 justify-center items-center">
-                        <p className="text-[10px] sm:text-[13px] md:text-[15px] lg:text-[17px] caudex-bold mb-2 whitespace-nowrap text-center uppercase" style={{ color: '#87AE73' }}>Candle</p>
+                        <p className="text-[11px] sm:text-[14px] md:text-[16px] lg:text-[18px] caudex-bold mb-2 whitespace-nowrap text-center uppercase" style={{ color: '#A06061' }}>Candle</p>
                         {candleSponsors.names && candleSponsors.names.map((name, index) => (
-                          <p key={index} className="text-[8.5px] sm:text-[12px] md:text-[14px] lg:text-[16px] font-poppins uppercase text-[#333333] whitespace-nowrap overflow-hidden text-ellipsis text-center">
+                          <p key={index} className="text-[9.5px] sm:text-[13px] md:text-[15px] lg:text-[17px] font-poppins uppercase text-[#333333] whitespace-nowrap overflow-hidden text-ellipsis text-center">
                             {name}
                           </p>
                         ))}
@@ -582,9 +582,9 @@ const Entourage = () => {
                   {cordSponsors && (
                     <div className="flex-1">
                       <div ref={cordSponsorsRef} className="flex flex-col gap-2 justify-center items-center">
-                        <p className="text-[10px] sm:text-[13px] md:text-[15px] lg:text-[17px] caudex-bold mb-2 whitespace-nowrap text-center uppercase" style={{ color: '#87AE73' }}>Cord</p>
+                        <p className="text-[11px] sm:text-[14px] md:text-[16px] lg:text-[18px] caudex-bold mb-2 whitespace-nowrap text-center uppercase" style={{ color: '#A06061' }}>Cord</p>
                         {cordSponsors.names && cordSponsors.names.map((name, index) => (
-                          <p key={index} className="text-[8.5px] sm:text-[12px] md:text-[14px] lg:text-[16px] font-poppins uppercase text-[#333333] whitespace-nowrap overflow-hidden text-ellipsis text-center">
+                          <p key={index} className="text-[9.5px] sm:text-[13px] md:text-[15px] lg:text-[17px] font-poppins uppercase text-[#333333] whitespace-nowrap overflow-hidden text-ellipsis text-center">
                             {name}
                           </p>
                         ))}
@@ -596,9 +596,9 @@ const Entourage = () => {
                   {veilSponsors && (
                     <div className="flex-1">
                       <div ref={veilSponsorsRef} className="flex flex-col gap-2 justify-center items-center">
-                        <p className="text-[10px] sm:text-[13px] md:text-[15px] lg:text-[17px] caudex-bold mb-2 whitespace-nowrap text-center uppercase" style={{ color: '#87AE73' }}>Veil</p>
+                        <p className="text-[11px] sm:text-[14px] md:text-[16px] lg:text-[18px] caudex-bold mb-2 whitespace-nowrap text-center uppercase" style={{ color: '#A06061' }}>Veil</p>
                         {veilSponsors.names && veilSponsors.names.map((name, index) => (
-                          <p key={index} className="text-[8.5px] sm:text-[12px] md:text-[14px] lg:text-[16px] font-poppins uppercase text-[#333333] whitespace-nowrap overflow-hidden text-ellipsis text-center">
+                          <p key={index} className="text-[9.5px] sm:text-[13px] md:text-[15px] lg:text-[17px] font-poppins uppercase text-[#333333] whitespace-nowrap overflow-hidden text-ellipsis text-center">
                             {name}
                           </p>
                         ))}
@@ -609,22 +609,22 @@ const Entourage = () => {
 
                 <div className="flex flex-row gap-4 sm:gap-6 justify-center items-start mb-6">
                   {/* GROOMSMEN Column */}
-                  <div className="flex-1">
-                    <p className="text-[10px] sm:text-[13px] md:text-[15px] lg:text-[17px] caudex-bold mb-2 whitespace-nowrap text-right uppercase" style={{ color: '#87AE73' }}>Groomsmen</p>
+                  <div className="w-1/2 min-w-0">
+                    <p className="text-[11px] sm:text-[14px] md:text-[16px] lg:text-[18px] caudex-bold mb-2 whitespace-nowrap text-right uppercase" style={{ color: '#A06061' }}>Groomsmen</p>
                     <div className="space-y-2">
                       {secondarySponsors.groomsmen && secondarySponsors.groomsmen.map((name, index) => (
-                        <p key={index} className="groomsmen-item text-[8.5px] sm:text-[12px] md:text-[14px] lg:text-[16px] font-poppins uppercase text-[#333333] text-right whitespace-nowrap overflow-hidden text-ellipsis">
+                        <p key={index} className="groomsmen-item text-[9.5px] sm:text-[13px] md:text-[15px] lg:text-[17px] font-poppins uppercase text-[#333333] text-right whitespace-nowrap">
                           {name}
                         </p>
                       ))}
                     </div>
                   </div>
                   {/* BRIDESMAID Column */}
-                  <div className="flex-1">
-                    <p className="text-[10px] sm:text-[13px] md:text-[15px] lg:text-[17px] caudex-bold mb-2 whitespace-nowrap text-left uppercase" style={{ color: '#87AE73' }}>Bridesmaids</p>
+                  <div className="w-1/2 min-w-0">
+                    <p className="text-[11px] sm:text-[14px] md:text-[16px] lg:text-[18px] caudex-bold mb-2 whitespace-nowrap text-left uppercase" style={{ color: '#A06061' }}>Bridesmaids</p>
                     <div className="space-y-2">
                       {secondarySponsors.bridesmaid && secondarySponsors.bridesmaid.map((name, index) => (
-                        <p key={index} className="bridesmaids-item text-[8.5px] sm:text-[12px] md:text-[14px] lg:text-[16px] font-poppins uppercase text-[#333333] text-left whitespace-nowrap overflow-hidden text-ellipsis">
+                        <p key={index} className="bridesmaids-item text-[9.5px] sm:text-[13px] md:text-[15px] lg:text-[17px] font-poppins uppercase text-[#333333] text-left whitespace-nowrap">
                           {name}
                         </p>
                       ))}
@@ -639,9 +639,9 @@ const Entourage = () => {
                       {/* Bible Bearer */}
                       {bibleBearer && (
                         <div ref={bibleBearerRef}>
-                          <p className="text-[10px] sm:text-[13px] md:text-[15px] lg:text-[17px] caudex-bold mb-2 whitespace-nowrap text-center uppercase" style={{ color: '#87AE73' }}>Bible Bearer</p>
+                          <p className="text-[11px] sm:text-[14px] md:text-[16px] lg:text-[18px] caudex-bold mb-2 whitespace-nowrap text-center uppercase" style={{ color: '#A06061' }}>Bible Bearer</p>
                           {bibleBearer.names && bibleBearer.names.map((name, index) => (
-                            <p key={index} className="text-[8.5px] sm:text-[12px] md:text-[14px] lg:text-[16px] font-poppins uppercase text-[#333333] whitespace-nowrap overflow-hidden text-ellipsis text-center">
+                            <p key={index} className="text-[9.5px] sm:text-[13px] md:text-[15px] lg:text-[17px] font-poppins uppercase text-[#333333] whitespace-nowrap overflow-hidden text-ellipsis text-center">
                               {name}
                             </p>
                           ))}
@@ -651,9 +651,9 @@ const Entourage = () => {
                       {/* Ring Bearer */}
                       {ringBearer && (
                         <div ref={ringBearerRef}>
-                          <p className="text-[10px] sm:text-[13px] md:text-[15px] lg:text-[17px] caudex-bold mb-2 whitespace-nowrap text-center uppercase" style={{ color: '#87AE73' }}>Ring Bearer</p>
+                          <p className="text-[11px] sm:text-[14px] md:text-[16px] lg:text-[18px] caudex-bold mb-2 whitespace-nowrap text-center uppercase" style={{ color: '#A06061' }}>Ring Bearer</p>
                           {ringBearer.names && ringBearer.names.map((name, index) => (
-                            <p key={index} className="text-[8.5px] sm:text-[12px] md:text-[14px] lg:text-[16px] font-poppins uppercase text-[#333333] whitespace-nowrap overflow-hidden text-ellipsis text-center">
+                            <p key={index} className="text-[9.5px] sm:text-[13px] md:text-[15px] lg:text-[17px] font-poppins uppercase text-[#333333] whitespace-nowrap overflow-hidden text-ellipsis text-center">
                               {name}
                             </p>
                           ))}
@@ -663,9 +663,9 @@ const Entourage = () => {
                       {/* Coin Bearer */}
                       {coinBearer && (
                         <div ref={coinBearerRef}>
-                          <p className="text-[10px] sm:text-[13px] md:text-[15px] lg:text-[17px] caudex-bold mb-2 whitespace-nowrap text-center uppercase" style={{ color: '#87AE73' }}>Coin Bearer</p>
+                          <p className="text-[11px] sm:text-[14px] md:text-[16px] lg:text-[18px] caudex-bold mb-2 whitespace-nowrap text-center uppercase" style={{ color: '#A06061' }}>Coin Bearer</p>
                           {coinBearer.names && coinBearer.names.map((name, index) => (
-                            <p key={index} className="text-[8.5px] sm:text-[12px] md:text-[14px] lg:text-[16px] font-poppins uppercase text-[#333333] whitespace-nowrap overflow-hidden text-ellipsis text-center">
+                            <p key={index} className="text-[9.5px] sm:text-[13px] md:text-[15px] lg:text-[17px] font-poppins uppercase text-[#333333] whitespace-nowrap overflow-hidden text-ellipsis text-center">
                               {name}
                             </p>
                           ))}
@@ -682,9 +682,9 @@ const Entourage = () => {
             {littleFlowerGirls && (
               <div className="mb-6">
                 <div ref={littleFlowerGirlsRef} className="flex flex-col gap-2 justify-center items-center mt-6">
-                  <p className="text-[10px] sm:text-[13px] md:text-[15px] lg:text-[17px] caudex-bold mb-2 whitespace-nowrap text-center uppercase" style={{ color: '#87AE73' }}>FLOWER GIRLS</p>
+                  <p className="text-[11px] sm:text-[14px] md:text-[16px] lg:text-[18px] caudex-bold mb-2 whitespace-nowrap text-center uppercase" style={{ color: '#A06061' }}>FLOWER GIRLS</p>
                   {littleFlowerGirls.names && littleFlowerGirls.names.map((name, index) => (
-                    <p key={index} className="text-[8.5px] sm:text-[12px] md:text-[14px] lg:text-[16px] font-poppins uppercase text-[#333333] whitespace-nowrap overflow-hidden text-ellipsis text-center">
+                    <p key={index} className="text-[9.5px] sm:text-[13px] md:text-[15px] lg:text-[17px] font-poppins uppercase text-[#333333] whitespace-nowrap overflow-hidden text-ellipsis text-center">
                       {name}
                     </p>
                   ))}
