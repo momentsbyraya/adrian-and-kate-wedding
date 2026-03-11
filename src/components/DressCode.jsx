@@ -156,7 +156,7 @@ const DressCode = () => {
           </h3>
           <p className="text-base sm:text-lg font-albert font-thin italic dress-code-description">
             We would love to see you in your
-            semi formal to formal
+            comfiest attire
             that suits in our color motif
           </p>
         </div>
