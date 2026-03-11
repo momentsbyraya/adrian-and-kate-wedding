@@ -107,7 +107,7 @@ const FAQ = () => {
         className="relative w-full overflow-hidden bg-white details-section"
       >
         {/* FAQ Section */}
-        <div className="relative z-20 mt-20 faq-section">
+        <div className="relative z-20 faq-section">
           <div ref={faqRef} className="relative z-10 w-full px-8 sm:px-12 md:px-8 lg:px-16 py-12">
             <h3 ref={faqTitleRef} className="relative inline-block px-6 py-3 mb-12 text-center w-full">
               <span 

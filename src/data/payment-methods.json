@@ -1,23 +1,23 @@
 {
   "paymentMethods": [
     {
-      "name": "GCash - John Francis Ochotorina",
-      "image": "/assets/images/monetary-gifts/gcash-vride.png",
+      "name": "GCash - Yrel Leiy Edson S. Laurencio",
+      "image": "/assets/images/monetary-gifts/IMG_0740.JPG",
       "accountInfo": {
         "provider": "GCash",
-        "accountNumber": "09957354408",
-        "accountName": "John Francis Ochotorina",
-        "qrCode": "/assets/images/monetary-gifts/gcash-vride.png"
+        "accountNumber": "",
+        "accountName": "Yrel Leiy Edson S. Laurencio",
+        "qrCode": "/assets/images/monetary-gifts/IMG_0740.JPG"
       }
     },
     {
-      "name": "GCash - Angela Domingo",
-      "image": "/assets/images/monetary-gifts/gcashgorrom.png",
+      "name": "GCash - Faith Hannah P. Manantan",
+      "image": "/assets/images/monetary-gifts/IMG_0740.JPG",
       "accountInfo": {
         "provider": "GCash",
-        "accountNumber": "09664291475",
-        "accountName": "Angela Domingo",
-        "qrCode": "/assets/images/monetary-gifts/gcashgorrom.png"
+        "accountNumber": "",
+        "accountName": "Faith Hannah P. Manantan",
+        "qrCode": "/assets/images/monetary-gifts/IMG_0740.JPG"
       }
     }
   ]

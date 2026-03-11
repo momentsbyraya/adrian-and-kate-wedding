@@ -14,7 +14,7 @@
 
 .venue-title-text {
   line-height: 0.8;
-  color: #87AE73;
+  color: #3d2f25;
 }
 
 /* Venue Image Container */
@@ -36,7 +36,7 @@
   width: 100vw;
   margin-left: calc(-50vw + 50%);
   margin-right: calc(-50vw + 50%);
-  background-color: #d3bba1;
+  background-color: #9b7b6c;
 }
 
 .program-title-container {
@@ -83,17 +83,29 @@
 /* Dress Code */
 .dress-code-title-text {
   line-height: 0.8;
-  color: #87AE73;
+  color: #3d2f25;
   white-space: nowrap;
 }
 
 .dress-code-description {
-  color: #171717;
+  color: #3d2f25;
 }
 
 .dress-code-image-container {
-  max-width: 200px;
+  max-width: 250px;
   width: 100%;
+}
+
+@media (min-width: 640px) {
+  .dress-code-image-container {
+    max-width: 384px; /* sm:max-w-sm */
+  }
+}
+
+@media (min-width: 768px) {
+  .dress-code-image-container {
+    max-width: 448px; /* md:max-w-md */
+  }
 }
 
 .dress-code-image {
@@ -108,6 +120,53 @@
   margin-top: 0;
 }
 
+/* Dress Code content width */
+.dresscode-content {
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Attire Section Background */
+.attire-section {
+  background-color: #e3d1c3;
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  margin-right: calc(-50vw + 50%);
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.attire-section > .wave {
+  margin-left: calc(-1rem);
+  margin-right: calc(-1rem);
+  width: calc(100% + 2rem);
+}
+
+@media (min-width: 640px) {
+  .attire-section {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+  .attire-section > .wave {
+    margin-left: calc(-1.5rem);
+    margin-right: calc(-1.5rem);
+    width: calc(100% + 3rem);
+  }
+}
+
+@media (min-width: 768px) {
+  .attire-section {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+  .attire-section > .wave {
+    margin-left: calc(-2rem);
+    margin-right: calc(-2rem);
+    width: calc(100% + 4rem);
+  }
+}
+
 /* Gift Registry */
 .gift-registry-section {
   background-image: url(/assets/images/graphics/bg-1.png);
@@ -119,7 +178,7 @@
 
 .gift-registry-title-text {
   line-height: 0.8;
-  color: #3A4A2D;
+  color: #ffffff;
 }
 
 .gift-button {
@@ -138,7 +197,7 @@
 
 .upload-title-text {
   line-height: 0.8;
-  color: #87AE73;
+  color: #3d2f25;
 }
 
 .upload-qr-container {
@@ -163,7 +222,7 @@
   width: 100vw;
   margin-left: calc(-50vw + 50%);
   margin-right: calc(-50vw + 50%);
-  background-color: #87AE73;
+  background-color: #9b7b6c;
   position: relative;
   overflow: hidden;
 }
@@ -182,3 +241,4 @@
 .back-button {
   pointer-events: auto;
 }
+

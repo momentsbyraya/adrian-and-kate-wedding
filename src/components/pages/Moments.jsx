@@ -31,6 +31,7 @@ const Moments = () => {
   const endPhoto4Ref = useRef(null)
   const ry211ImageRef = useRef(null)
   const finalParagraphRef = useRef(null)
+  const polaroidImg2Ref = useRef(null)
   const [selectedImage, setSelectedImage] = useState(null)
   const [selectedImageIndex, setSelectedImageIndex] = useState(null)
   const [isVideoOpen, setIsVideoOpen] = useState(false)
@@ -44,90 +45,34 @@ const Moments = () => {
   const [startXThreePhotos, setStartXThreePhotos] = useState(0)
   const [scrollLeftThreePhotos, setScrollLeftThreePhotos] = useState(0)
 
-  // All prenup images (excluding those used in NavIndex and Details)
-  // Excluded: DSC_0303.jpeg, DSC_9886.jpeg, DSC_9490.jpeg (NavIndex)
-  // Excluded: DSC_9004.jpeg, DSC_0186.jpeg, DSC_0347.jpeg (Details)
+  // All prenup images from prenup folder (excluding prenup-*.png files and img2.jpg which is used as polaroid)
   const allPrenupImages = [
-    '/assets/images/prenup/DSC_0271.jpeg',
-    '/assets/images/prenup/DSC_0335.jpeg',
-    '/assets/images/prenup/DSC_0380.jpeg',
-    '/assets/images/prenup/DSC_8728.jpeg',
-    '/assets/images/prenup/DSC_8920.jpeg',
-    '/assets/images/prenup/DSC_9024.jpeg',
-    '/assets/images/prenup/DSC_9160.jpeg',
-    '/assets/images/prenup/DSC_9174.jpeg',
-    '/assets/images/prenup/DSC_9417.jpeg',
-    '/assets/images/prenup/DSC_9448.jpeg',
-    '/assets/images/prenup/DSC_9557.jpeg',
-    '/assets/images/prenup/DSC_9780.jpeg',
-    '/assets/images/prenup/DSC_9904.jpeg',
-    '/assets/images/prenup/DSC_9942.jpeg',
-    '/assets/images/prenup/added/DSC_0297.jpeg',
-    '/assets/images/prenup/added/DSC_8622.jpeg',
-    '/assets/images/prenup/added/DSC_8691.jpeg',
-    '/assets/images/prenup/added/DSC_8805.jpeg',
-    '/assets/images/prenup/added/DSC_8894.jpeg',
-    '/assets/images/prenup/added/DSC_9192.jpeg',
-    '/assets/images/prenup/added/DSC_9438.jpeg',
-    '/assets/images/prenup/added/DSC_9697.jpeg',
-    '/assets/images/prenup/added/DSC_9747.jpeg',
-    '/assets/images/prenup/added/DSC_9937.jpeg'
+    '/assets/images/prenup/img1.jpg',
+    '/assets/images/prenup/img3.jpeg',
+    '/assets/images/prenup/img4.jpeg',
+    '/assets/images/prenup/img5.jpg',
+    '/assets/images/prenup/img6.jpg',
+    '/assets/images/prenup/img7.jpg'
   ]
 
-  // Images array for the lightbox (includes all images in same order)
+  // Images array for the lightbox (includes all images in same order, excluding img2.jpg)
   const lightboxImages = [
-    '/assets/images/prenup/DSC_0271.jpeg',
-    '/assets/images/prenup/DSC_0335.jpeg',
-    '/assets/images/prenup/DSC_0380.jpeg',
-    '/assets/images/prenup/DSC_8728.jpeg',
-    '/assets/images/prenup/DSC_8920.jpeg',
-    '/assets/images/prenup/DSC_9024.jpeg',
-    '/assets/images/prenup/DSC_9160.jpeg',
-    '/assets/images/prenup/DSC_9174.jpeg',
-    '/assets/images/prenup/DSC_9417.jpeg',
-    '/assets/images/prenup/DSC_9448.jpeg',
-    '/assets/images/prenup/DSC_9557.jpeg',
-    '/assets/images/prenup/DSC_9780.jpeg',
-    '/assets/images/prenup/DSC_9904.jpeg',
-    '/assets/images/prenup/DSC_9942.jpeg',
-    '/assets/images/prenup/added/DSC_0297.jpeg',
-    '/assets/images/prenup/added/DSC_8622.jpeg',
-    '/assets/images/prenup/added/DSC_8691.jpeg',
-    '/assets/images/prenup/added/DSC_8805.jpeg',
-    '/assets/images/prenup/added/DSC_8894.jpeg',
-    '/assets/images/prenup/added/DSC_9192.jpeg',
-    '/assets/images/prenup/added/DSC_9438.jpeg',
-    '/assets/images/prenup/added/DSC_9697.jpeg',
-    '/assets/images/prenup/added/DSC_9747.jpeg',
-    '/assets/images/prenup/added/DSC_9937.jpeg'
+    '/assets/images/prenup/img1.jpg',
+    '/assets/images/prenup/img3.jpeg',
+    '/assets/images/prenup/img4.jpeg',
+    '/assets/images/prenup/img5.jpg',
+    '/assets/images/prenup/img6.jpg',
+    '/assets/images/prenup/img7.jpg'
   ]
 
-  // Gallery images for horizontal scroll
+  // Gallery images for horizontal scroll (excluding img2.jpg which is used as polaroid)
   const galleryImages = [
-    '/assets/images/prenup/DSC_0271.jpeg',
-    '/assets/images/prenup/DSC_0335.jpeg',
-    '/assets/images/prenup/DSC_0380.jpeg',
-    '/assets/images/prenup/DSC_8728.jpeg',
-    '/assets/images/prenup/DSC_8920.jpeg',
-    '/assets/images/prenup/DSC_9024.jpeg',
-    '/assets/images/prenup/DSC_9160.jpeg',
-    '/assets/images/prenup/DSC_9174.jpeg',
-    '/assets/images/prenup/DSC_9417.jpeg',
-    '/assets/images/prenup/DSC_9448.jpeg',
-    '/assets/images/prenup/DSC_9557.jpeg',
-    '/assets/images/prenup/DSC_9780.jpeg',
-    '/assets/images/prenup/DSC_9904.jpeg',
-    '/assets/images/prenup/DSC_9942.jpeg',
-    '/assets/images/prenup/added/DSC_0297.jpeg',
-    '/assets/images/prenup/added/DSC_8622.jpeg',
-    '/assets/images/prenup/added/DSC_8691.jpeg',
-    '/assets/images/prenup/added/DSC_8805.jpeg',
-    '/assets/images/prenup/added/DSC_8894.jpeg',
-    '/assets/images/prenup/added/DSC_9192.jpeg',
-    '/assets/images/prenup/added/DSC_9438.jpeg',
-    '/assets/images/prenup/added/DSC_9697.jpeg',
-    '/assets/images/prenup/added/DSC_9747.jpeg',
-    '/assets/images/prenup/added/DSC_9937.jpeg'
+    '/assets/images/prenup/img1.jpg',
+    '/assets/images/prenup/img3.jpeg',
+    '/assets/images/prenup/img4.jpeg',
+    '/assets/images/prenup/img5.jpg',
+    '/assets/images/prenup/img6.jpg',
+    '/assets/images/prenup/img7.jpg'
   ]
 
   // Polaroid images for the scrollable container
@@ -237,7 +182,8 @@ const Moments = () => {
       { ref: threePhotosRowRef },
       { ref: momentsTitleRef },
       { ref: momentsGridRef },
-      { ref: pImagesGridRef }
+      { ref: pImagesGridRef },
+      { ref: polaroidImg2Ref }
     ]
 
     scrollElements.forEach(({ ref }) => {
@@ -543,8 +489,40 @@ const Moments = () => {
         <div className="relative z-20 w-full flex flex-col items-center bg-white py-12">
           <div ref={firstParagraphRef} className="relative z-20 w-full max-w-4xl px-8 sm:px-12 md:px-8 lg:px-16">
             <div className="alice-regular font-black text-[#333333] leading-relaxed text-center" style={{ fontWeight: 900, fontSize: '1rem', lineHeight: '1.8' }}>
+              <p className="mb-4" style={{ fontStyle: 'italic', fontSize: '1.1rem', marginBottom: '1.5rem' }}>
+                A boy meets his childhood crush and a girl falls in love
+              </p>
               <p className="mb-4">
-                We met in the quiet uncertainty of the 2021 pandemic, brought together by an unexpected coincidence—we both drove the same model of car. What began as a simple connection slowly turned into something deeper as the world outside stood still. In those early days, our conversations became our refuge, and love found its way into the pauses between lockdowns and long drives. Despite the distance and uncertainty, our bond grew naturally, grounded in comfort, laughter, and a growing sense that we had found something rare in each other.
+                It felt like something written in the stars. We were just two little schoolmates, side by side from nursery through Grade 1, until life quietly pulled us apart when she transferred to another school.
+              </p>
+            </div>
+          </div>
+          
+          {/* Polaroid Image - img2 */}
+          <div ref={polaroidImg2Ref} className="relative z-20 w-full flex justify-center items-center py-8">
+            <div className="relative w-40 h-48 sm:w-60 sm:h-72 lg:w-72 lg:h-88 bg-white shadow-xl transform rotate-3 hover:scale-105 transition-transform duration-300" style={{ border: '4px solid white', borderTop: '4px solid white' }}>
+              <div 
+                className="w-full h-40 sm:h-60 lg:h-72 bg-cover bg-center"
+                style={{
+                  backgroundImage: 'url(/assets/images/prenup/img2.jpg)',
+                  borderTop: '4px solid white',
+                  borderLeft: '4px solid white',
+                  borderRight: '4px solid white'
+                }}
+              ></div>
+              <div className="p-2 text-center">
+                <div className="text-sm sm:text-lg text-[#D4A5A5] font-handwritten">
+                  Memories
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          {/* Second Paragraph */}
+          <div className="relative z-20 w-full max-w-4xl px-8 sm:px-12 md:px-8 lg:px-16">
+            <div className="alice-regular font-black text-[#333333] leading-relaxed text-center" style={{ fontWeight: 900, fontSize: '1rem', lineHeight: '1.8' }}>
+              <p className="mb-4">
+                Years passed—eight long, growing years—before fate brought us back together at a school reunion. What began as distant, awkward conversations slowly turned into a renewed friendship, and before we knew it, the innocent crush from childhood blossomed into our first true love.
               </p>
             </div>
           </div>
@@ -554,13 +532,19 @@ const Moments = () => {
            <div 
              ref={momentsGridRef} 
              className="relative z-20 w-full flex flex-col mt-8"
-             style={{
-               backgroundImage: 'url(/assets/images/graphics/bg-3.png)',
-               backgroundSize: '100% 80%',
-               backgroundPosition: 'center top',
-               backgroundRepeat: 'no-repeat'
-             }}
            >
+             {/* Background Image - Absolute positioned, layered under content */}
+             <div 
+               className="absolute top-0 left-0 w-full z-0"
+               style={{
+                 height: '75%',
+                 backgroundImage: 'url(/assets/images/graphics/bg-1.png)',
+                 backgroundSize: 'cover',
+                 backgroundPosition: 'center',
+                 backgroundRepeat: 'no-repeat'
+               }}
+             />
+             
              {/* Title - Full Width at Top */}
              <div className="relative z-20 w-full" style={{ border: 'none' }}>
                <h2 ref={momentsTitleRef} className="w-full text-center px-4" style={{
@@ -635,13 +619,13 @@ const Moments = () => {
                            width: '300px',
                            height: '300px',
                            borderRadius: '0',
-                           objectPosition: index === 4 ? 'center 30%' : index === 5 ? 'center 25%' : index === 11 ? 'center 25%' : index === 13 ? 'center top' : index === 14 ? 'center 10%' : index === 19 ? '85% center' : 'center center'
+                           objectPosition: 'center center'
                          }}
                          width="300"
                          height="300"
                          draggable="false"
                          loading={index < 4 ? "eager" : "lazy"}
-                         fetchPriority={index < 4 ? "high" : index < 8 ? "auto" : "low"}
+                         fetchPriority={index < 4 ? "high" : "auto"}
                          decoding="async"
                          onClick={() => {
                            handleGalleryImageClick(image, index)
@@ -659,7 +643,7 @@ const Moments = () => {
            <div ref={finalParagraphRef} className="relative z-20 w-full max-w-4xl px-8 sm:px-12 md:px-8 lg:px-16 mt-8 mx-auto">
              <div className="alice-regular font-black text-[#333333] leading-relaxed text-center" style={{ fontWeight: 900, fontSize: '1rem', lineHeight: '1.8' }}>
                <p className="mb-4">
-                 As time passed, we discovered how much we truly shared. We both loved dogs, enjoyed good food—especially meat and vegetables—and found joy in Mediterranean cuisine, eventually even developing a fondness for spicy dishes. We pushed ourselves together through Muay Thai, finding strength and balance not just in the sport but in our partnership. The work-from-home setup became another blessing, allowing us to build a rhythm of everyday life side by side. In all these simple, shared moments, our love deepened—steady, warm, and resilient, much like the time in which it began.
+                 Now, hand in hand, we stand on the edge of a brand-new chapter, ready to continue the love story that once began in a classroom long ago.
                </p>
              </div>
            </div>
@@ -668,14 +652,14 @@ const Moments = () => {
           <div ref={endPhoto4Ref} className="relative z-20 w-screen mt-8">
             <div className="relative">
               <img
-                src="/assets/images/prenup/DSC_9417.jpeg"
+                src="/assets/images/prenup/img5.jpg"
                 alt="Love story photo"
                 className="w-full h-auto object-cover cursor-pointer"
                 loading="lazy"
                 decoding="async"
                 onClick={() => {
-                  const imageIndex = galleryImages.indexOf('/assets/images/prenup/DSC_9417.jpeg')
-                  setSelectedImage('/assets/images/prenup/DSC_9417.jpeg')
+                  const imageIndex = galleryImages.indexOf('/assets/images/prenup/img5.jpg')
+                  setSelectedImage('/assets/images/prenup/img5.jpg')
                   setSelectedImageIndex(imageIndex !== -1 ? imageIndex : 0)
                 }}
               />

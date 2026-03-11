@@ -5,14 +5,22 @@
   },
   "sections": [
     {
-      "title": "FORMAL ATTIRE",
+      "title": "ALL WHITE",
       "type": "image",
-      "image": "/assets/images/dresscode/blue.png",
-      "description": "All white",
+      "image": "/assets/images/dresscode/guests.png",
+      "description": "Our dress code is all white. Feel free to come in any elegant shade of white that makes you feel your best.",
       "colors": [
         {
-          "name": "White",
+          "name": "Pure White",
           "hex": "#FFFFFF"
+        },
+        {
+          "name": "Soft Ivory",
+          "hex": "#F5F5F0"
+        },
+        {
+          "name": "Warm Cream",
+          "hex": "#E8E2D8"
         }
       ]
     }

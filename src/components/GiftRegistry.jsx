@@ -2,7 +2,7 @@ import React, { useRef, useEffect, useState } from 'react'
 import { createPortal } from 'react-dom'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { ArrowRight, X, Copy, Check } from 'lucide-react'
+import { ArrowRight, X } from 'lucide-react'
 import { paymentMethods as paymentMethodsData } from '../data'
 import { themeConfig } from '../config/themeConfig'
 import './pages/Details.css'
@@ -13,18 +13,7 @@ gsap.registerPlugin(ScrollTrigger)
 const GiftRegistry = () => {
   const giftRegistryRef = useRef(null)
   const [isGiftModalOpen, setIsGiftModalOpen] = useState(false)
-  const [copiedIndex, setCopiedIndex] = useState(null)
   const { paymentMethods } = paymentMethodsData
-
-  const handleCopy = async (text, index) => {
-    try {
-      await navigator.clipboard.writeText(text)
-      setCopiedIndex(index)
-      setTimeout(() => setCopiedIndex(null), 2000)
-    } catch (err) {
-      console.error('Failed to copy:', err)
-    }
-  }
 
   useEffect(() => {
     // Gift Registry animation
@@ -62,7 +51,7 @@ const GiftRegistry = () => {
               Couple's Request
             </span>
           </h3>
-          <p className="text-base sm:text-lg font-albert font-thin text-[#333333] max-w-3xl mx-auto leading-relaxed">
+          <p className="text-base sm:text-lg font-albert font-thin text-white max-w-3xl mx-auto leading-relaxed">
             We are blessed with everything we need, and your presence and prayers are the best gifts we could hope for. If you wish to offer something extra, a monetary gift would be much appreciated.
           </p>
         </div>
@@ -107,53 +96,16 @@ const GiftRegistry = () => {
 
             {/* Content */}
             <div className="p-6">
-              {paymentMethods && paymentMethods.length > 0 && (
-                <div className="space-y-8">
-                  {paymentMethods.map((method, index) => {
-                    // Extract name from "GCash - Name" format
-                    const accountName = method.accountInfo?.accountName || method.name?.split(' - ')[1] || method.name
-                    const accountNumber = method.accountInfo?.accountNumber
-                    
-                    return (
-                      <div key={index} className="flex flex-col items-center justify-center">
-                        {/* QR Code Image */}
-                        {method.accountInfo?.qrCode && (
-                          <div className="flex items-center justify-center mb-4">
-                            <img 
-                              src={method.accountInfo.qrCode} 
-                              alt={`${accountName} QR Code`}
-                              className="w-full max-w-xs h-auto object-contain"
-                            />
-                          </div>
-                        )}
-                        {/* Account Name */}
-                        {accountName && (
-                          <h4 className="text-lg sm:text-xl font-boska text-[#333333] mb-2">
-                            {accountName}
-                          </h4>
-                        )}
-                        {/* Account Number with Copy Icon */}
-                        {accountNumber && (
-                          <div className="flex items-center gap-2">
-                            <p className="text-sm sm:text-base font-albert text-[#333333] font-semibold">
-                              {accountNumber}
-                            </p>
-                            <button
-                              onClick={() => handleCopy(accountNumber, index)}
-                              className="p-1 hover:bg-gray-100 rounded transition-colors duration-200"
-                              title="Copy number"
-                            >
-                              {copiedIndex === index ? (
-                                <Check className="w-4 h-4 text-green-600" />
-                              ) : (
-                                <Copy className="w-4 h-4 text-gray-600" />
-                              )}
-                            </button>
-                          </div>
-                        )}
-                      </div>
-                    )
-                  })}
+              {paymentMethods && paymentMethods.length > 0 && paymentMethods[0]?.accountInfo?.qrCode && (
+                <div className="flex flex-col items-center justify-center">
+                  {/* QR Code Image Only - Show only first payment method */}
+                  <div className="flex items-center justify-center">
+                    <img 
+                      src={paymentMethods[0].accountInfo.qrCode} 
+                      alt="Payment QR Code"
+                      className="w-full max-w-xs h-auto object-contain"
+                    />
+                  </div>
                 </div>
               )}
             </div>

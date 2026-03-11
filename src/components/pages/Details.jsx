@@ -1,10 +1,9 @@
-import React, { useEffect, useRef, useMemo, useState } from 'react'
+import React, { useEffect, useRef, useMemo } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { MapPin, Clock, ArrowLeft, ArrowRight, ChevronDown, UtensilsCrossed, Palette, Users, Mail, Baby, Car, Camera, Gift, Heart } from 'lucide-react'
+import { ArrowLeft } from 'lucide-react'
 import { themeConfig } from '../../config/themeConfig'
-import { faq as faqData } from '../../data'
 import ImageBanner from '../ImageBanner'
 import Divider from '../Divider'
 import Line from '../Line'
@@ -22,53 +21,12 @@ gsap.registerPlugin(ScrollTrigger)
 
 const Details = () => {
   const navigate = useNavigate()
-  const [openFaqIndex, setOpenFaqIndex] = useState(null)
-  const [copiedIndex, setCopiedIndex] = useState(null)
   const sectionRef = useRef(null)
   const backButtonRef = useRef(null)
   const headerContentRef = useRef(null)
   const venueRef = useRef(null)
-  const faqRef = useRef(null)
-  const faqTitleRef = useRef(null)
   const photoSectionRef = useRef(null)
   const curvedDivider3Ref = useRef(null)
-  const faqItems = faqData
-
-  // Helper function to get icon and clean text for FAQ questions
-  const getFaqIconAndText = (question) => {
-    // Map question text patterns to icons
-    const questionIconMap = {
-      'Wedding Ceremony Location': MapPin,
-      'Wedding Reception Location': UtensilsCrossed,
-      'What time is the wedding?': Clock,
-      'What is the wedding theme and dress code?': Palette,
-      'Can I bring a plus one?': Users,
-      'Is RSVP required?': Mail,
-      'Are children allowed?': Baby,
-      'Is parking available?': Car,
-      'Can guests take photos or videos during the ceremony?': Camera,
-      'Is there a gift registry?': Gift,
-      'Final Reminder': Heart
-    }
-    
-    // Check for exact match first
-    if (questionIconMap[question]) {
-      return { Icon: questionIconMap[question], text: question }
-    }
-    
-    // Check for partial matches (in case of emoji prefixes or slight variations)
-    for (const [key, Icon] of Object.entries(questionIconMap)) {
-      if (question.includes(key) || key.includes(question.trim())) {
-        return { Icon, text: question.replace(/^[📍🥂⏰🎨👥✉️👶🚗📸🎁❤️]\s*/, '').trim() }
-      }
-    }
-    
-    // Remove any emoji at the start if present
-    const emojiPattern = /^[📍🥂⏰🎨👥✉️👶🚗📸🎁❤️]\s*/
-    const cleanText = question.replace(emojiPattern, '').trim()
-    
-    return { Icon: null, text: cleanText }
-  }
 
   // Random background position, rotation, and flip - Base layer (old-book-2)
   const bgStyleBase = useMemo(() => {
@@ -182,46 +140,6 @@ const Details = () => {
       })
     }
 
-    // FAQ section animation - title first, then items one after the other
-    if (faqRef.current && faqTitleRef.current) {
-      // Set initial states
-      gsap.set(faqTitleRef.current, { opacity: 0, y: 30 })
-        
-        ScrollTrigger.create({
-          trigger: faqRef.current,
-          start: "top 80%",
-          onEnter: () => {
-          // 1. Animate title first
-          gsap.to(faqTitleRef.current, {
-            opacity: 1,
-            y: 0,
-            duration: 0.8,
-            ease: "power2.out",
-            onComplete: () => {
-              // 2. After title animation, find and animate items one after the other
-              const faqItemsContainer = faqRef.current.querySelector('.space-y-6')
-              if (faqItemsContainer) {
-                const faqItems = Array.from(faqItemsContainer.children).filter(child => child.tagName === 'DIV')
-                
-                if (faqItems.length > 0) {
-                  // Set initial states for items
-                  gsap.set(faqItems, { opacity: 0, y: 30 })
-                  
-                  // Animate items one after the other
-            gsap.to(faqItems, {
-              opacity: 1,
-              y: 0,
-              duration: 0.6,
-              ease: "power2.out",
-                    stagger: 0.2
-            })
-                }
-              }
-          }
-        })
-      }
-      })
-    }
 
     // Cleanup function
     return () => {
@@ -264,7 +182,7 @@ const Details = () => {
       {/* Wave Container */}
       <div className="wave relative w-full" style={{ marginBottom: '-1px' }}>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" className="w-full h-auto" style={{ display: 'block' }}>
-          <path fill="#D4A5A5" fillOpacity="1" stroke="none" d="M0,192L60,165.3C120,139,240,85,360,90.7C480,96,600,160,720,197.3C840,235,960,245,1080,229.3C1200,213,1320,171,1380,149.3L1440,128L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"></path>
+          <path fill="#9b7b6c" fillOpacity="1" stroke="none" d="M0,192L60,165.3C120,139,240,85,360,90.7C480,96,600,160,720,197.3C840,235,960,245,1080,229.3C1200,213,1320,171,1380,149.3L1440,128L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"></path>
         </svg>
             </div>
 
@@ -279,7 +197,7 @@ const Details = () => {
       {/* Wave Container - Bottom Variation */}
       <div className="wave wave-bottom relative w-full" style={{ marginTop: '-1px' }}>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" className="w-full h-auto" style={{ display: 'block' }}>
-          <path fill="#D4A5A5" fillOpacity="1" stroke="none" d="M0,192L60,165.3C120,139,240,85,360,90.7C480,96,600,160,720,197.3C840,235,960,245,1080,229.3C1200,213,1320,171,1380,149.3L1440,128L1440,0L1380,0C1320,0,1200,0,1080,0C960,0,840,0,720,0C600,0,480,0,360,0C240,0,120,0,60,0L0,0Z"></path>
+          <path fill="#9b7b6c" fillOpacity="1" stroke="none" d="M0,192L60,165.3C120,139,240,85,360,90.7C480,96,600,160,720,197.3C840,235,960,245,1080,229.3C1200,213,1320,171,1380,149.3L1440,128L1440,0L1380,0C1320,0,1200,0,1080,0C960,0,840,0,720,0C600,0,480,0,360,0C240,0,120,0,60,0L0,0Z"></path>
         </svg>
                     </div>
                     
@@ -287,80 +205,45 @@ const Details = () => {
       <div ref={photoSectionRef}>
       <PhotoSection
         images={[
-          { src: '/assets/images/prenup/DSC_9004.jpeg', alt: 'Photo 1', label: 'Memories' },
-          { src: '/assets/images/prenup/DSC_0186.jpeg', alt: 'Photo 2', label: 'Together' },
-          { src: '/assets/images/prenup/DSC_0347.jpeg', alt: 'Photo 3', label: 'Love' }
+          { src: '/assets/images/prenup/img4.jpeg', alt: 'Photo 1', label: 'Memories' },
+          { src: '/assets/images/prenup/img1.jpg', alt: 'Photo 2', label: 'Together' },
+          { src: '/assets/images/prenup/img6.jpg', alt: 'Photo 3', label: 'Love' }
         ]}
         paragraph="This is where our journey began, a moment captured in time that will forever hold a special place in our hearts."
         backgroundTexts={['Forever', 'Always', 'Together', 'Love', 'Us']}
       />
               </div>
 
-      {/* Curved Line Divider */}
-      <div ref={curvedDivider3Ref} className="relative w-full py-8 flex items-center justify-center">
-        <svg 
-          className="w-full h-16 sm:h-20 md:h-24" 
-          viewBox="0 0 1200 100" 
-          preserveAspectRatio="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path 
-            d="M0,50 Q300,20 600,50 T1200,50" 
-            stroke="#D4A5A5" 
-            strokeWidth="2" 
-            fill="none"
-            opacity="0.4"
-          />
+      {/* Wave Container - Before Dress Code */}
+      <div className="wave relative w-full" style={{ marginBottom: '-1px' }}>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" className="w-full h-auto" style={{ display: 'block' }}>
+          <path fill="#e3d1c3" fillOpacity="1" stroke="none" d="M0,192L60,165.3C120,139,240,85,360,90.7C480,96,600,160,720,197.3C840,235,960,245,1080,229.3C1200,213,1320,171,1380,149.3L1440,128L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"></path>
         </svg>
-                  </div>
+      </div>
 
       {/* Content */}
-      <div className="relative z-20 flex items-center justify-center pt-12">
+      <div className="relative z-20 flex items-center justify-center" style={{ marginTop: '-1px' }}>
         <div className="max-w-xs sm:max-w-md lg:max-w-3xl w-full mx-auto">
           {/* Dress Code Section */}
           <DressCode />
+                    </div>
+                </div>
 
+      {/* Wave Container - Bottom Variation - After Dress Code */}
+      <div className="wave wave-bottom relative w-full" style={{ marginTop: '-1px' }}>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" className="w-full h-auto" style={{ display: 'block' }}>
+          <path fill="#e3d1c3" fillOpacity="1" stroke="none" d="M0,192L60,165.3C120,139,240,85,360,90.7C480,96,600,160,720,197.3C840,235,960,245,1080,229.3C1200,213,1320,171,1380,149.3L1440,128L1440,0L1380,0C1320,0,1200,0,1080,0C960,0,840,0,720,0C600,0,480,0,360,0C240,0,120,0,60,0L0,0Z"></path>
+        </svg>
+      </div>
+
+      {/* Content */}
+      <div className="relative z-20 flex items-center justify-center pt-12" style={{ marginTop: '-1px' }}>
+        <div className="max-w-xs sm:max-w-md lg:max-w-3xl w-full mx-auto">
           {/* Gift Registry Section */}
           <GiftRegistry />
 
           {/* Photo Upload Section */}
           <PhotoUpload />
-        </div>
-      </div>
-
-      {/* FAQ Section - Outside container */}
-      <div className="relative z-20 mt-20 faq-section">
-        <div ref={faqRef} className="relative z-10 w-full px-8 sm:px-12 md:px-8 lg:px-16">
-          <h3 ref={faqTitleRef} className="relative inline-block px-6 py-3 mb-12 text-center w-full">
-            <span 
-              className="font-tebranos text-5xl sm:text-6xl md:text-7xl lg:text-8xl inline-block leading-none uppercase faq-title-text"
-              style={{ lineHeight: '0.8' }}
-            >
-              Frequently Asked Questions
-            </span>
-          </h3>
-          {faqItems && faqItems.faqData && (
-            <div className="space-y-6 max-w-[600px] mx-auto">
-              {faqItems.faqData.map((item, index) => {
-                const { text } = getFaqIconAndText(item.question)
-                return (
-                  <div key={index}>
-                    <div className="mb-2">
-                      <p className="text-base sm:text-lg font-albert text-[#f5f5f0] mb-2 faq-question-bold">
-                        Q: {text}
-                      </p>
-                      <p className="text-sm sm:text-base font-albert font-thin text-[#f5f5f0] whitespace-pre-line">
-                        A: {item.answer}
-                      </p>
-                    </div>
-                    {index < faqItems.faqData.length - 1 && (
-                      <div className="h-px bg-[#f5f5f0]/30 mt-6"></div>
-                    )}
-                  </div>
-                )
-              })}
-            </div>
-          )}
         </div>
       </div>
 

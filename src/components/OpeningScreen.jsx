@@ -133,22 +133,22 @@ function OpeningScreen({ onEnvelopeOpen }) {
           </div>
         </div>
         {/* Couple name and date below envelope */}
-        <div ref={coupleNameRef} className="mt-12 sm:mt-16 md:mt-20 text-center couple-name-container">
+        <div ref={coupleNameRef} className="mt-10 sm:mt-14 md:mt-18 text-center couple-name-container">
           <h2 
-            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-script leading-tight"
+            className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-serif leading-tight"
             style={{ 
               color: '#171717', 
-              fontSize: 'clamp(1.5rem, 4vw, 48px)',
+              fontSize: 'clamp(1.25rem, 3.2vw, 40px)',
               textShadow: '0 2px 4px rgba(0, 0, 0, 0.1)'
             }}
           >
             {couple.together}
           </h2>
           <p 
-            className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-script mt-1"
+            className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-script mt-1"
             style={{ 
               color: '#171717', 
-              fontSize: 'clamp(1rem, 2.5vw, 30px)',
+              fontSize: 'clamp(0.9rem, 2vw, 24px)',
               textShadow: '0 2px 4px rgba(0, 0, 0, 0.1)'
             }}
           >

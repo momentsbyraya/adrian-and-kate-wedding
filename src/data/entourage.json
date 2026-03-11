@@ -1,129 +1,72 @@
 {
   "couple": {
     "groom": {
-      "name": "John Francis Ochotorina"
+      "name": "Yrel Leiy Edson S. Laurencio"
     },
     "bride": {
-      "name": "Angela Domingo"
+      "name": "Faith Hannah P. Manantan"
     }
   },
   "parents": {
     "groom": {
-      "father": "MR. ANDRE BORONG",
-      "mother": "MRS. AMELIA SONGALIA"
+      "father": "Mr. Edison S. Laurencio",
+      "mother": "Mrs. Rosalie S. Laurencio"
     },
     "bride": {
-      "father": "MR. DICOROSO DOMINGO",
-      "mother": "MRS. EVELYN DOMINGO"
+      "father": "The late Mr. Artemio T. Manantan",
+      "mother": "Mrs. Zenaida P. Manantan"
     }
   },
   "entourageList": [
     {
       "category": "Principal Sponsors",
       "ninong": [
-        "MR. ARNEL BORONG",
-        "MR. RICO BORONG",
-        "MR. REY FUMAR",
-        "MR. ENRIQUE ALAAN"
+        "Mr. Darius L. Jamora",
+        "Mr. Renato F. Magpantay"
       ],
       "ninang": [
-        "MRS. MA. JESUSA BORONG",
-        "MS. LEILA BORONG",
-        "MRS. LERMA FUMAR",
-        "MRS. GEMMA ALAAN"
+        "Mrs. Lilibeth P. Jamora",
+        "Mrs. Ana C. Magpantay",
+        "Ms. Lucylyn S. Laurencio",
+        "Mrs. Josephine S. Viado",
+        "Mr. Jimmy T. Salatan",
+        "Mrs. Loida L. Binuya",
+        "Engr. Jhun Lord M. Marzan",
+        "Mrs. Lorene L. Villafania"
       ]
     },
     {
       "category": "Bestman",
       "names": [
-        "MR. LANCE OCHOTORINA"
+        "Juan Samuel P. Salatan"
       ]
     },
     {
       "category": "Maid of Honor",
       "names": [
-        "MS. PAMELA DOMINGO"
+        "Yvaine Xaurielle S. Laurencio"
       ]
     },
     {
       "category": "Candle Sponsors",
       "names": [
-        "MR. JOHN ANTONIO",
-        "DR. MICHAELA AGUILAR"
-      ]
-    },
-    {
-      "category": "Cord Sponsors",
-      "names": [
-        "MR. PAUL NEO",
-        "MS. ANDREA FUMAR"
+        "Matthew M. Cayabyab",
+        "Blessy Jasiel L. Vinluan"
       ]
     },
     {
       "category": "Veil Sponsors",
       "names": [
-        "MR. MARK RAYO",
-        "MS. DANIELLE TOLLEDO"
+        "Andrei Liorenzo M. Salatan",
+        "Florence Angelica S. Viado"
       ]
     },
     {
-      "category": "Secondary Sponsors",
-      "groomsmen": [
-        "MR. JOHN ANTONIO",
-        "MR. PAUL NEO",
-        "MR. MARK RAYO",
-        "MR. VANCE TOLLEDO",
-        "MR. VINCE TOLLEDO",
-        "MR. BRADNEY BORONG",
-        "MR. CURT BORONG"
-      ],
-      "bridesmaid": [
-        "MS. ANDREA FUMAR",
-        "DR. MARIA EVANGELINE MILLADO",
-        "DR. MICHAELA AGUILAR",
-        "DR. ANGELICA DAZO",
-        "DR. LEA DELA DINGCO",
-        "MS. DANIELLE TOLLEDO",
-        "MS. MAYNILYN TORRECER"
-      ]
-    },
-    {
-      "category": "Bible Bearer",
+      "category": "Cord Sponsors",
       "names": [
-        "AZRIEL JOHN MAÑOZA"
+        "Noel D. Manantan",
+        "Paula Eunice P. Manantan"
       ]
-    },
-    {
-      "category": "Ring Bearer",
-      "names": [
-        "EZEKIEL JEREMIAH LUMAGUIP"
-      ]
-    },
-    {
-      "category": "Coin Bearer",
-      "names": [
-        "EMMANUEL TORRECER"
-      ]
-    },
-    {
-      "category": "Flower Boys",
-      "names": []
-    },
-    {
-      "category": "Junior Flower Girls",
-      "names": []
-    },
-    {
-      "category": "Little Flower Girls",
-      "names": [
-        "CHLOE FUMAR",
-        "VIOLET SONGALIA",
-        "VENICE SONGALIA"
-      ]
-    },
-    {
-      "category": "Here comes the bride",
-      "names": []
     }
   ]
 }

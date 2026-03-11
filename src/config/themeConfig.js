@@ -3,7 +3,8 @@ export const themeConfig = {
     // Background Colors
     backgrounds: {
         primary: 'bg-[#d3bba1]',        // Main dark background
-        secondary: 'bg-[#87AE73]',      // Secondary background (Sage Green)
+        secondary: 'bg-[#9b7b6c]',      // Secondary background (Taupe Brown)
+        tertiary: 'bg-[#e3d1c3]',       // Tertiary background (Attire section)
         accent: 'bg-[#D4A5A5]',      // Accent background (Dusty Pink)
         light: 'bg-white/50',          // Light overlay backgrounds
         theme: 'bg-[#dee5ed]',        // Custom theme color
@@ -71,7 +72,8 @@ export const themeConfig = {
     // Custom CSS Variables (for advanced customization)
     cssVariables: {
         '--primary-bg': '#d3bba1',           // #d3bba1 (Nude)
-        '--secondary-bg': '#87AE73',        // #87AE73 (Sage Green)
+        '--secondary-bg': '#9b7b6c',        // #9b7b6c (Taupe Brown)
+        '--tertiary-bg': '#e3d1c3',         // #e3d1c3 (Attire background)
         '--accent-bg': '#D4A5A5',           // #D4A5A5 (Dusty Pink)
         '--accent-hover': '#B89090',        // #B89090 (Darker Dusty Pink Hover)
         '--primary-text': '#3d2f25',        // #3d2f25 (Very Dark Brown)
