@@ -36,7 +36,7 @@
   width: 100vw;
   margin-left: calc(-50vw + 50%);
   margin-right: calc(-50vw + 50%);
-  background-color: #D4A5A5;
+  background-color: #d3bba1;
 }
 
 .program-title-container {
@@ -110,7 +110,7 @@
 
 /* Gift Registry */
 .gift-registry-section {
-  background-image: url(/assets/images/graphics/bg-4.png);
+  background-image: url(/assets/images/graphics/bg-1.png);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

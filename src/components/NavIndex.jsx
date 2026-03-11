@@ -299,7 +299,7 @@ const NavIndex = ({ onOpenRSVP }) => {
               className="bg-white relative polaroid-container"
             >
               <img 
-                src="/assets/images/prenup/DSC_0303.jpeg" 
+                src="/assets/images/prenup/img7.jpg" 
                 alt="Prenup photo" 
                 className="w-full object-cover polaroid-image"
               />
@@ -332,19 +332,30 @@ const NavIndex = ({ onOpenRSVP }) => {
               e.currentTarget.style.transform = 'scale(1.05)'
             }}
             onClick={() => {
-              if (onOpenRSVP) {
-                onOpenRSVP()
+              window.scrollTo(0, 0)
+              // Slide out animation before navigation
+              if (navRef.current) {
+                gsap.to(navRef.current, {
+                  x: '-100%',
+                  opacity: 0,
+                  duration: 0.5,
+                  ease: "power2.in",
+                  onComplete: () => {
+                    navigate('/faq')
+                    setTimeout(() => window.scrollTo(0, 0), 0)
+                  }
+                })
+              } else {
+                navigate('/faq')
+                setTimeout(() => window.scrollTo(0, 0), 0)
               }
             }}
           >
-            {/* Kindly RSVP Text */}
+            {/* FAQ Text */}
             <div className="flex-1 flex flex-col items-center justify-center px-4 py-4">
-              <p className="nanum-myeongjo-regular text-center uppercase rsvp-text-kindly">
-                Kindly
-              </p>
               <p className="text-center rsvp-text-container">
-                <span className="imperial-script-regular rsvp-text-r">R</span>
-                <span className="nanum-myeongjo-regular rsvp-text-svp">SVP</span>
+                <span className="imperial-script-regular rsvp-text-r">F</span>
+                <span className="nanum-myeongjo-regular rsvp-text-svp">AQ</span>
               </p>
             </div>
           </div>
@@ -353,6 +364,10 @@ const NavIndex = ({ onOpenRSVP }) => {
           <div 
             ref={detailsContainerRef}
             className="bg-white flex flex-col items-center justify-center cursor-pointer transition-transform duration-300 hover:scale-105 relative details-container"
+            style={{
+              borderTopColor: themeConfig.cssVariables['--primary-bg'],
+              borderBottomColor: themeConfig.cssVariables['--primary-bg']
+            }}
             onClick={() => {
               window.scrollTo(0, 0)
               // Slide out animation before navigation
@@ -468,7 +483,7 @@ const NavIndex = ({ onOpenRSVP }) => {
           >
             <div className="bg-white relative polaroid-1-container">
               <img 
-                src="/assets/images/prenup/DSC_9886.jpeg" 
+                src="/assets/images/prenup/img3.jpeg" 
                 alt="Prenup photo" 
                 className="w-full object-cover polaroid-1-image"
               />
@@ -500,7 +515,7 @@ const NavIndex = ({ onOpenRSVP }) => {
           >
             <div className="bg-white relative polaroid-2-container">
               <img 
-                src="/assets/images/prenup/DSC_9490.jpeg" 
+                src="/assets/images/prenup/img5.jpg" 
                 alt="Prenup photo" 
                 className="w-full object-cover polaroid-2-image"
               />

@@ -2,7 +2,7 @@
 export const themeConfig = {
     // Background Colors
     backgrounds: {
-        primary: 'bg-gray-900',        // Main dark background
+        primary: 'bg-[#d3bba1]',        // Main dark background
         secondary: 'bg-[#87AE73]',      // Secondary background (Sage Green)
         accent: 'bg-[#D4A5A5]',      // Accent background (Dusty Pink)
         light: 'bg-white/50',          // Light overlay backgrounds
@@ -12,7 +12,7 @@ export const themeConfig = {
 
     // Text Colors
     text: {
-        primary: 'text-[#3A4A2D]',     // Main heading text color (Darkest Sage Green)
+        primary: 'text-[#3d2f25]',     // Main heading text color (Very Dark Brown)
         secondary: 'text-[#D4A5A5]',    // Subheading and body text color (Dusty Pink)
         accent: 'text-[#D4A5A5]',    // Accent text color (Dusty Pink)
         muted: 'text-gray-400',        // Muted text color (icons, small text)
@@ -70,11 +70,11 @@ export const themeConfig = {
 
     // Custom CSS Variables (for advanced customization)
     cssVariables: {
-        '--primary-bg': '#111827',           // #111827 (gray-900)
+        '--primary-bg': '#d3bba1',           // #d3bba1 (Nude)
         '--secondary-bg': '#87AE73',        // #87AE73 (Sage Green)
         '--accent-bg': '#D4A5A5',           // #D4A5A5 (Dusty Pink)
         '--accent-hover': '#B89090',        // #B89090 (Darker Dusty Pink Hover)
-        '--primary-text': '#3A4A2D',        // #3A4A2D (Darkest Sage Green)
+        '--primary-text': '#3d2f25',        // #3d2f25 (Very Dark Brown)
         '--secondary-text': '#D4A5A5',      // #D4A5A5 (Dusty Pink)
         '--accent-text': '#D4A5A5',         // #D4A5A5 (Dusty Pink)
         '--muted-text': '#9ca3af',          // #9ca3af (gray-400)

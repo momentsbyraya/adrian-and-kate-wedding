@@ -12,6 +12,7 @@ import ScrollToTop from './components/ScrollToTop'
 import Details from './components/pages/Details'
 import Entourage from './components/pages/Entourage'
 import Moments from './components/pages/Moments'
+import FAQ from './components/pages/FAQ'
 import { AudioProvider, useAudio } from './contexts/AudioContext'
 
 function AppContent() {
@@ -148,6 +149,7 @@ function AppContent() {
             <Route path="/details" element={<Details />} />
             <Route path="/entourage" element={<Entourage />} />
             <Route path="/moments" element={<Moments />} />
+            <Route path="/faq" element={<FAQ />} />
           </Routes>
           <Footer />
         </>

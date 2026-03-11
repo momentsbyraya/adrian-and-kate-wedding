@@ -142,7 +142,7 @@ function OpeningScreen({ onEnvelopeOpen }) {
               textShadow: '0 2px 4px rgba(0, 0, 0, 0.1)'
             }}
           >
-            Francis & Angela
+            {couple.together}
           </h2>
           <p 
             className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-script mt-1"

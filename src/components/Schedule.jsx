@@ -236,109 +236,77 @@ const Schedule = () => {
           <div className="flex items-center relative min-h-[60px]">
             <div className="w-1/2 pr-6 text-right flex flex-col justify-center">
               <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl alice-regular mb-1 timeline-event-time text-white">
-                9:00 AM
-              </div>
-              <div className="border-b border-dashed border-white opacity-50 mb-1"></div>
-              <div className="text-sm sm:text-base md:text-lg font-albert timeline-event-description text-white">
-                Guest Gathering at the church
-              </div>
-            </div>
-            <div className="absolute left-1/2 transform -translate-x-1/2 w-3 h-3 bg-white rounded-full z-10"></div>
-            <div className="w-1/2 pl-6 text-left flex items-center justify-start">
-            </div>
-          </div>
-
-          {/* Event 2 - Wedding Ceremony */}
-          <div className="flex items-center relative min-h-[60px]">
-            <div className="w-1/2 pr-6 text-right flex items-center justify-end">
-            </div>
-            <div className="absolute left-1/2 transform -translate-x-1/2 w-3 h-3 bg-white rounded-full z-10"></div>
-            <div className="w-1/2 pl-6 text-left flex flex-col justify-center">
-              <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl alice-regular mb-1 timeline-event-time text-white">
-                9:30 AM
-              </div>
-              <div className="border-b border-dashed border-white opacity-50 mb-1"></div>
-              <div className="text-sm sm:text-base md:text-lg font-albert timeline-event-description text-white">
-                Start of wedding ceremony
-              </div>
-            </div>
-          </div>
-
-          {/* Event 3 - Registration and Cocktail Hour */}
-          <div className="flex items-center relative min-h-[60px]">
-            <div className="w-1/2 pr-6 text-right flex flex-col justify-center">
-              <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl alice-regular mb-1 timeline-event-time text-white">
-                12:00 PM
-              </div>
-              <div className="border-b border-dashed border-white opacity-50 mb-1"></div>
-              <div className="text-sm sm:text-base md:text-lg font-albert timeline-event-description text-white">
-                Registration and start of cocktail hour at Plaza Ibarra
-              </div>
-            </div>
-            <div className="absolute left-1/2 transform -translate-x-1/2 w-3 h-3 bg-white rounded-full z-10"></div>
-            <div className="w-1/2 pl-6 text-left flex items-center justify-start">
-            </div>
-          </div>
-
-          {/* Event 4 - Wedding Reception */}
-          <div className="flex items-center relative min-h-[60px]">
-            <div className="w-1/2 pr-6 text-right flex items-center justify-end">
-            </div>
-            <div className="absolute left-1/2 transform -translate-x-1/2 w-3 h-3 bg-white rounded-full z-10"></div>
-            <div className="w-1/2 pl-6 text-left flex flex-col justify-center">
-              <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl alice-regular mb-1 timeline-event-time text-white">
-                1:15 PM
-              </div>
-              <div className="border-b border-dashed border-white opacity-50 mb-1"></div>
-              <div className="text-sm sm:text-base md:text-lg font-albert timeline-event-description text-white">
-                Start of wedding reception
-              </div>
-            </div>
-          </div>
-
-          {/* Event 5 - Lunch */}
-          <div className="flex items-center relative min-h-[60px]">
-            <div className="w-1/2 pr-6 text-right flex flex-col justify-center">
-              <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl alice-regular mb-1 timeline-event-time text-white">
-                2:00 PM
-              </div>
-              <div className="border-b border-dashed border-white opacity-50 mb-1"></div>
-              <div className="text-sm sm:text-base md:text-lg font-albert timeline-event-description text-white">
-                Lunch
-              </div>
-            </div>
-            <div className="absolute left-1/2 transform -translate-x-1/2 w-3 h-3 bg-white rounded-full z-10"></div>
-            <div className="w-1/2 pl-6 text-left flex items-center justify-start">
-            </div>
-          </div>
-
-          {/* Event 6 - Socials */}
-          <div className="flex items-center relative min-h-[60px]">
-            <div className="w-1/2 pr-6 text-right flex items-center justify-end">
-            </div>
-            <div className="absolute left-1/2 transform -translate-x-1/2 w-3 h-3 bg-white rounded-full z-10"></div>
-            <div className="w-1/2 pl-6 text-left flex flex-col justify-center">
-              <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl alice-regular mb-1 timeline-event-time text-white">
-                4:00 PM
-              </div>
-              <div className="border-b border-dashed border-white opacity-50 mb-1"></div>
-              <div className="text-sm sm:text-base md:text-lg font-albert timeline-event-description text-white">
-                Socials
-              </div>
-            </div>
-          </div>
-
-          {/* Event 7 - Send Off */}
-          <div className="flex items-center relative min-h-[60px]">
-            <div className="w-1/2 pr-6 text-right flex flex-col justify-center">
-              <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl alice-regular mb-1 timeline-event-time text-white">
                 5:00 PM
               </div>
               <div className="border-b border-dashed border-white opacity-50 mb-1"></div>
               <div className="text-sm sm:text-base md:text-lg font-albert timeline-event-description text-white">
-                Send off
+                Guest Gathering
               </div>
+            </div>
+            <div className="absolute left-1/2 transform -translate-x-1/2 w-3 h-3 bg-white rounded-full z-10"></div>
+            <div className="w-1/2 pl-6 text-left flex items-center justify-start">
+            </div>
+          </div>
+
+          {/* Event 2 - Yacht Coasting */}
+          <div className="flex items-center relative min-h-[60px]">
+            <div className="w-1/2 pr-6 text-right flex items-center justify-end">
+            </div>
+            <div className="absolute left-1/2 transform -translate-x-1/2 w-3 h-3 bg-white rounded-full z-10"></div>
+            <div className="w-1/2 pl-6 text-left flex flex-col justify-center">
+              <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl alice-regular mb-1 timeline-event-time text-white">
+                5:30 PM
               </div>
+              <div className="border-b border-dashed border-white opacity-50 mb-1"></div>
+              <div className="text-sm sm:text-base md:text-lg font-albert timeline-event-description text-white">
+                Yacht Coasting
+              </div>
+            </div>
+          </div>
+
+          {/* Event 3 - Wedding Ceremony */}
+          <div className="flex items-center relative min-h-[60px]">
+            <div className="w-1/2 pr-6 text-right flex flex-col justify-center">
+              <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl alice-regular mb-1 timeline-event-time text-white">
+                5:40 PM
+              </div>
+              <div className="border-b border-dashed border-white opacity-50 mb-1"></div>
+              <div className="text-sm sm:text-base md:text-lg font-albert timeline-event-description text-white">
+                Wedding Ceremony
+              </div>
+            </div>
+            <div className="absolute left-1/2 transform -translate-x-1/2 w-3 h-3 bg-white rounded-full z-10"></div>
+            <div className="w-1/2 pl-6 text-left flex items-center justify-start">
+            </div>
+          </div>
+
+          {/* Event 4 - Dinner */}
+          <div className="flex items-center relative min-h-[60px]">
+            <div className="w-1/2 pr-6 text-right flex items-center justify-end">
+            </div>
+            <div className="absolute left-1/2 transform -translate-x-1/2 w-3 h-3 bg-white rounded-full z-10"></div>
+            <div className="w-1/2 pl-6 text-left flex flex-col justify-center">
+              <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl alice-regular mb-1 timeline-event-time text-white">
+                7:00 PM
+              </div>
+              <div className="border-b border-dashed border-white opacity-50 mb-1"></div>
+              <div className="text-sm sm:text-base md:text-lg font-albert timeline-event-description text-white">
+                Dinner
+              </div>
+            </div>
+          </div>
+
+          {/* Event 5 - Intimate Wedding Party Gathering */}
+          <div className="flex items-center relative min-h-[60px]">
+            <div className="w-1/2 pr-6 text-right flex flex-col justify-center">
+              <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl alice-regular mb-1 timeline-event-time text-white">
+                Onwards
+              </div>
+              <div className="border-b border-dashed border-white opacity-50 mb-1"></div>
+              <div className="text-sm sm:text-base md:text-lg font-albert timeline-event-description text-white">
+                Intimate wedding party gathering
+              </div>
+            </div>
             <div className="absolute left-1/2 transform -translate-x-1/2 w-3 h-3 bg-white rounded-full z-10"></div>
             <div className="w-1/2 pl-6 text-left flex items-center justify-start">
             </div>

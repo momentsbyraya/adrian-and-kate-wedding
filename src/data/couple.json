@@ -1,22 +1,22 @@
 {
   "bride": {
-    "firstName": "Angela",
-    "lastName": "Domingo",
-    "fullName": "Angela Domingo"
+    "firstName": "Faith Hannah",
+    "lastName": "Manantan",
+    "fullName": "Faith Hannah P. Manantan"
   },
   "groom": {
-    "firstName": "John Francis",
-    "lastName": "Ochotorina",
-    "fullName": "John Francis Ochotorina"
+    "firstName": "Yrel Leiy Edson",
+    "lastName": "Laurencio",
+    "fullName": "Yrel Leiy Edson S. Laurencio"
   },
-  "together": "Angela & John Francis",
-  "nickname": "Angela & John Francis",
+  "together": "Yrel Leiy Edson & Faith Hannah",
+  "nickname": "Yrel Leiy Edson & Faith Hannah",
   "wedding": {
-    "date": "2026-05-30",
-    "time": "09:30 AM",
-    "dayOfWeek": "Saturday",
-    "month": "May",
-    "day": "30",
+    "date": "2026-03-20",
+    "time": "5:00 PM",
+    "dayOfWeek": "Friday",
+    "month": "March",
+    "day": "20",
     "year": "2026"
   }
 }

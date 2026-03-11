@@ -1,34 +1,18 @@
 {
   "mainDressCode": {
     "title": "Dress Code",
-    "description": "Gentlemen: Barong tagalog (beige/ivory) / polo/ long sleeve/ slacks; ladies: long gown/ formal jumpsuit/ cocktail dress (avoid wearing white); shades of dusty pink, old rose, light pink, sage green, gold"
+    "description": "All white"
   },
   "sections": [
     {
       "title": "FORMAL ATTIRE",
       "type": "image",
       "image": "/assets/images/dresscode/blue.png",
-      "description": "Gentlemen: Barong tagalog (beige/ivory) / polo/ long sleeve/ slacks; ladies: long gown/ formal jumpsuit/ cocktail dress (avoid wearing white); shades of dusty pink, old rose, light pink, sage green, gold",
+      "description": "All white",
       "colors": [
         {
-          "name": "Dusty Pink",
-          "hex": "#D4A5A5"
-        },
-        {
-          "name": "Old Rose",
-          "hex": "#C08081"
-        },
-        {
-          "name": "Light Pink",
-          "hex": "#F5C2C2"
-        },
-        {
-          "name": "Sage Green",
-          "hex": "#87AE73"
-        },
-        {
-          "name": "Gold",
-          "hex": "#D4AF37"
+          "name": "White",
+          "hex": "#FFFFFF"
         }
       ]
     }
