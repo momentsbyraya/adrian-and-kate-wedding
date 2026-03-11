@@ -32,6 +32,7 @@ const Moments = () => {
   const ry211ImageRef = useRef(null)
   const finalParagraphRef = useRef(null)
   const polaroidImg2Ref = useRef(null)
+  const bannerImageRef = useRef(null)
   const [selectedImage, setSelectedImage] = useState(null)
   const [selectedImageIndex, setSelectedImageIndex] = useState(null)
   const [isVideoOpen, setIsVideoOpen] = useState(false)
@@ -399,6 +400,23 @@ const Moments = () => {
     }
   }, [isMobile])
 
+  // Apply object-position to banner image on screens 992px and above
+  useEffect(() => {
+    const handleBannerResize = () => {
+      if (bannerImageRef.current) {
+        if (window.innerWidth >= 992) {
+          bannerImageRef.current.style.objectPosition = 'center top'
+        } else {
+          bannerImageRef.current.style.objectPosition = 'center center'
+        }
+      }
+    }
+    
+    handleBannerResize() // Set initial value
+    window.addEventListener('resize', handleBannerResize)
+    return () => window.removeEventListener('resize', handleBannerResize)
+  }, [])
+
   // Video modal rotation animation (only on screens smaller than 768px)
   useEffect(() => {
     if (isVideoOpen && videoModalRef.current) {
@@ -438,6 +456,7 @@ const Moments = () => {
         <div className="relative z-20 w-screen" style={{ width: '100vw' }}>
           <div className="relative w-full h-[250px] sm:h-[250px] md:h-[300px] lg:h-[350px]">
             <img 
+              ref={bannerImageRef}
               src="/assets/images/prenup/prenup-2.png" 
               alt="Banner image"
               className="w-full h-full object-cover"
