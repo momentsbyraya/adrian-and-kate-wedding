@@ -299,9 +299,10 @@ const NavIndex = ({ onOpenRSVP }) => {
               className="bg-white relative polaroid-container"
             >
               <img 
-                src="/assets/images/prenup/img7.jpg" 
+                src="/assets/images/prenup/added/ISE09955.png" 
                 alt="Prenup photo" 
                 className="w-full object-cover polaroid-image"
+                style={{ objectPosition: 'center bottom' }}
               />
               
               {/* Flower 3 - Bottom Left (above the image) */}

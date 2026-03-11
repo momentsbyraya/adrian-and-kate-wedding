@@ -493,7 +493,6 @@ const Entourage = () => {
                   <div className="flex flex-row gap-4 sm:gap-6 justify-center items-start">
                     {/* NINONG Column */}
                     <div className="flex-1">
-                      <p className="text-[11px] sm:text-[14px] md:text-[16px] lg:text-[18px] caudex-bold mb-2 whitespace-nowrap text-right uppercase" style={{ color: '#A06061' }}>NINONG</p>
                       <div className="space-y-2">
                         {ninongs.map((name, index) => (
                           <p key={index} className="ninong-item text-[9.5px] sm:text-[13px] md:text-[15px] lg:text-[17px] font-poppins uppercase text-[#333333] text-right whitespace-nowrap">
@@ -504,7 +503,6 @@ const Entourage = () => {
                     </div>
                     {/* NINANG Column - Paired */}
                     <div className="flex-1">
-                      <p className="text-[11px] sm:text-[14px] md:text-[16px] lg:text-[18px] caudex-bold mb-2 whitespace-nowrap text-left uppercase" style={{ color: '#A06061' }}>NINANG</p>
                       <div className="space-y-2">
                         {pairedNinangs.map((name, index) => (
                           <p key={index} className="ninang-item text-[9.5px] sm:text-[13px] md:text-[15px] lg:text-[17px] font-poppins uppercase text-[#333333] text-left whitespace-nowrap">

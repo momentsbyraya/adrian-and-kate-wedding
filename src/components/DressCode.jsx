@@ -15,8 +15,7 @@ const DressCode = () => {
   
   const colorNames = {
     '#FFFFFF': 'Pure White',
-    '#F5F5F0': 'Soft Ivory',
-    '#E8E2D8': 'Warm Cream'
+    '#F5F5F0': 'Soft Ivory'
   }
 
   useEffect(() => {
@@ -127,7 +126,7 @@ const DressCode = () => {
     }
   }, [])
 
-  const whiteColors = ['#FFFFFF', '#F5F5F0', '#E8E2D8']
+  const whiteColors = ['#FFFFFF', '#F5F5F0']
 
   return (
     <div className="relative pb-20 sm:pb-24 md:pb-32 attire-section">

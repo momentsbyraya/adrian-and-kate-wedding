@@ -53,7 +53,12 @@ const Moments = () => {
     '/assets/images/prenup/img4.jpeg',
     '/assets/images/prenup/img5.jpg',
     '/assets/images/prenup/img6.jpg',
-    '/assets/images/prenup/img7.jpg'
+    '/assets/images/prenup/img7.jpg',
+    '/assets/images/prenup/added/HAIWE5388.JPG',
+    '/assets/images/prenup/added/IMG_4217.JPG',
+    '/assets/images/prenup/added/IMG_4841.jpg',
+    '/assets/images/prenup/added/IMG_5074.JPG',
+    '/assets/images/prenup/added/ISE09955.png'
   ]
 
   // Images array for the lightbox (includes all images in same order, excluding img2.jpg)
@@ -63,7 +68,12 @@ const Moments = () => {
     '/assets/images/prenup/img4.jpeg',
     '/assets/images/prenup/img5.jpg',
     '/assets/images/prenup/img6.jpg',
-    '/assets/images/prenup/img7.jpg'
+    '/assets/images/prenup/img7.jpg',
+    '/assets/images/prenup/added/HAIWE5388.JPG',
+    '/assets/images/prenup/added/IMG_4217.JPG',
+    '/assets/images/prenup/added/IMG_4841.jpg',
+    '/assets/images/prenup/added/IMG_5074.JPG',
+    '/assets/images/prenup/added/ISE09955.png'
   ]
 
   // Gallery images for horizontal scroll (excluding img2.jpg which is used as polaroid)
@@ -73,7 +83,12 @@ const Moments = () => {
     '/assets/images/prenup/img4.jpeg',
     '/assets/images/prenup/img5.jpg',
     '/assets/images/prenup/img6.jpg',
-    '/assets/images/prenup/img7.jpg'
+    '/assets/images/prenup/img7.jpg',
+    '/assets/images/prenup/added/HAIWE5388.JPG',
+    '/assets/images/prenup/added/IMG_4217.JPG',
+    '/assets/images/prenup/added/IMG_4841.jpg',
+    '/assets/images/prenup/added/IMG_5074.JPG',
+    '/assets/images/prenup/added/ISE09955.png'
   ]
 
   // Polaroid images for the scrollable container
