@@ -1,25 +1,25 @@
 {
   "ceremony": {
-    "name": "Watercraft Venture Corporation",
+    "name": "Salo de Cent",
     "address": "",
     "city": "",
     "state": "",
     "zip": "",
-    "time": "5:00 PM",
-    "details": "Ceremony starts at 5:00 PM",
-    "googleMapsUrl": "https://maps.app.goo.gl/D68QZgRA8HB37NfD8",
-    "directionsUrl": "https://maps.app.goo.gl/D68QZgRA8HB37NfD8"
+    "time": "5:30 PM",
+    "details": "Ceremony begins at 5:30 PM (17:30)",
+    "googleMapsUrl": "https://www.google.com/maps/place//data=!4m2!3m1!1s0x12a4a31ef7731bfb:0xe221a86f66ef21a8?entry=s&sa=X&ved=2ahUKEwjR8dK2qfuTAxVZ1AIHHWZ8BEcQ4kB6BAgZEAA&hl=en",
+    "directionsUrl": "https://www.google.com/maps/place//data=!4m2!3m1!1s0x12a4a31ef7731bfb:0xe221a86f66ef21a8?entry=s&sa=X&ved=2ahUKEwjR8dK2qfuTAxVZ1AIHHWZ8BEcQ4kB6BAgZEAA&hl=en"
   },
   "reception": {
-    "name": "Watercraft Venture Corporation",
+    "name": "Turo del Sol",
     "address": "",
     "city": "",
     "state": "",
     "zip": "",
-    "time": "6:30 PM",
-    "details": "Reception starts at 6:30 PM",
+    "time": "7:30 PM",
+    "details": "Reception begins at 7:30 PM (19:30)",
     "landmark": "",
-    "googleMapsUrl": "https://maps.app.goo.gl/D68QZgRA8HB37NfD8",
-    "directionsUrl": "https://maps.app.goo.gl/D68QZgRA8HB37NfD8"
+    "googleMapsUrl": "https://maps.google.com/maps/place//data=!4m2!3m1!1s0x12bb4a7455b062d7:0x3891ff1e67443df2?entry=s&sa=X&ved=2ahUKEwjj3P3uqvuTAxVVAvsDHQoVNI0Q4kB6BAgQEAA&hl=en",
+    "directionsUrl": "https://maps.google.com/maps/place//data=!4m2!3m1!1s0x12bb4a7455b062d7:0x3891ff1e67443df2?entry=s&sa=X&ved=2ahUKEwjj3P3uqvuTAxVVAvsDHQoVNI0Q4kB6BAgQEAA&hl=en"
   }
 }

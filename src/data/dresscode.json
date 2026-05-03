@@ -1,26 +1,26 @@
 {
   "mainDressCode": {
     "title": "Dress Code",
-    "description": "All white"
+    "description": "Coffee brown"
   },
   "sections": [
     {
-      "title": "ALL WHITE",
+      "title": "COFFEE BROWN",
       "type": "image",
       "image": "/assets/images/dresscode/guests.png",
-      "description": "Our dress code is all white. Feel free to come in any elegant shade of white that makes you feel your best.",
+      "description": "Our dress code is coffee brown. Feel free to come in any rich, elegant shade of coffee brown that makes you feel your best.",
       "colors": [
         {
-          "name": "Pure White",
-          "hex": "#FFFFFF"
+          "name": "Espresso",
+          "hex": "#2C1810"
         },
         {
-          "name": "Soft Ivory",
-          "hex": "#F5F5F0"
+          "name": "Coffee Bean",
+          "hex": "#4A3728"
         },
         {
-          "name": "Warm Cream",
-          "hex": "#E8E2D8"
+          "name": "Latte",
+          "hex": "#C4A484"
         }
       ]
     }

@@ -2,15 +2,27 @@
   "faqData": [
     {
       "question": "When's the big day?",
-      "answer": "Mark your calendars for March 20, 2026 at Watercraft Venture Corporation —come early, happy, and ready to celebrate!"
+      "answer": "Friday, October 9, 2026 — ceremony at 5:30 PM at Salo de Cent, then reception at 7:30 PM at Turo del Sol. Come celebrate with us!"
     },
     {
       "question": "What's the dress code?",
-      "answer": "We kindly request all guests to wear all white attire to match our wedding theme."
+      "answer": "We kindly request coffee brown attire in elegant shades that make you feel your best."
     },
     {
       "question": "Gifts?",
-      "answer": "No pressure at all—your love and laughter are more than enough. But if you desire to give nonetheless, a MONETARY GIFT is one we suggest."
+      "answer": "Sharing our wedding day with you is what matters most. If you desire to give nonetheless, monetary gifts are welcome during our first dance."
+    },
+    {
+      "question": "Food allergies or dietary needs?",
+      "answer": "Please let us know if you need a vegetarian meal. We also need to be mindful of a crustacean allergy when planning the menu."
+    },
+    {
+      "question": "Can I bring a plus-one?",
+      "answer": "Our celebration is intimate — invitations are addressed to those named on the invite only, so plus-ones are not included."
+    },
+    {
+      "question": "Are children welcome?",
+      "answer": "We love your little ones, but this will be an adults-only evening — only children who are specifically invited on your invitation may attend."
     }
   ]
 }

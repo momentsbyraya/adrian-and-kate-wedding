@@ -1,22 +1,22 @@
 {
   "paymentMethods": [
     {
-      "name": "GCash - Yrel Leiy Edson S. Laurencio",
+      "name": "GCash - Jennalyn Sacdalan",
       "image": "/assets/images/monetary-gifts/IMG_0740.JPG",
       "accountInfo": {
         "provider": "GCash",
         "accountNumber": "",
-        "accountName": "Yrel Leiy Edson S. Laurencio",
+        "accountName": "Jennalyn Sacdalan",
         "qrCode": "/assets/images/monetary-gifts/IMG_0740.JPG"
       }
     },
     {
-      "name": "GCash - Faith Hannah P. Manantan",
+      "name": "GCash - Jenalyn Estenor",
       "image": "/assets/images/monetary-gifts/IMG_0740.JPG",
       "accountInfo": {
         "provider": "GCash",
         "accountNumber": "",
-        "accountName": "Faith Hannah P. Manantan",
+        "accountName": "Jenalyn Estenor",
         "qrCode": "/assets/images/monetary-gifts/IMG_0740.JPG"
       }
     }

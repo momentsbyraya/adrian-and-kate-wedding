@@ -183,10 +183,10 @@ const DressCode = () => {
                 {/* Text & Swatches Below */}
                 <div className="w-full max-w-xl mx-auto text-center dresscode-content">
                   <div className="w-full">
-                    <div className="text-lg sm:text-xl md:text-2xl font-boska text-[#3d2f25] mb-2">
+                    <div className="text-lg sm:text-xl md:text-2xl font-boska text-[#2c1810] mb-2">
                       All White
                     </div>
-                    <p className="text-sm sm:text-base font-albert font-thin italic text-[#3d2f25] mb-3">
+                    <p className="text-sm sm:text-base font-albert font-thin italic text-[#2c1810] mb-3">
                       Our dress code is all white. Feel free to come in any elegant shade of white that makes you feel your best.
                     </p>
                     <div className="flex gap-2 justify-center">

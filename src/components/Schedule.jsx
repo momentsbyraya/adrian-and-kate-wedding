@@ -2,7 +2,6 @@ import React, { useRef, useEffect } from 'react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { couple } from '../data'
-import { themeConfig } from '../config/themeConfig'
 import './pages/Details.css'
 
 // Register ScrollTrigger plugin
@@ -202,7 +201,7 @@ const Schedule = () => {
                       >
                         <path 
                           d="M50,85 C30,70 10,50 10,30 C10,15 22,5 35,5 C42,5 48,8 50,12 C52,8 58,5 65,5 C78,5 90,15 90,30 C90,50 70,70 50,85 Z" 
-                          fill="#3d2f25"
+                          fill="#2c1810"
                         />
                       </svg>
                       <span className="absolute inset-0 flex items-center justify-center text-white font-boska font-semibold text-xl sm:text-2xl heart-day-number">
@@ -232,15 +231,15 @@ const Schedule = () => {
 
         {/* Timeline Events */}
         <div ref={eventsRef} className="space-y-12 sm:space-y-16 md:space-y-20 lg:space-y-24">
-          {/* Event 1 - Guest Gathering */}
+          {/* Reception — appetizers & cocktails */}
           <div className="flex items-center relative min-h-[60px]">
             <div className="w-1/2 pr-6 text-right flex flex-col justify-center">
               <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl alice-regular mb-1 timeline-event-time text-white">
-                5:00 PM
+                7:30 PM
               </div>
               <div className="border-b border-dashed border-white opacity-50 mb-1"></div>
               <div className="text-sm sm:text-base md:text-lg font-albert timeline-event-description text-white">
-                Guest Gathering
+                Appetizers &amp; Cocktails
               </div>
             </div>
             <div className="absolute left-1/2 transform -translate-x-1/2 w-3 h-3 bg-white rounded-full z-10"></div>
@@ -248,46 +247,14 @@ const Schedule = () => {
             </div>
           </div>
 
-          {/* Event 2 - Yacht Coasting */}
+          {/* Dinner */}
           <div className="flex items-center relative min-h-[60px]">
             <div className="w-1/2 pr-6 text-right flex items-center justify-end">
             </div>
             <div className="absolute left-1/2 transform -translate-x-1/2 w-3 h-3 bg-white rounded-full z-10"></div>
             <div className="w-1/2 pl-6 text-left flex flex-col justify-center">
               <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl alice-regular mb-1 timeline-event-time text-white">
-                5:30 PM
-              </div>
-              <div className="border-b border-dashed border-white opacity-50 mb-1"></div>
-              <div className="text-sm sm:text-base md:text-lg font-albert timeline-event-description text-white">
-                Yacht Coasting
-              </div>
-            </div>
-          </div>
-
-          {/* Event 3 - Wedding Ceremony */}
-          <div className="flex items-center relative min-h-[60px]">
-            <div className="w-1/2 pr-6 text-right flex flex-col justify-center">
-              <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl alice-regular mb-1 timeline-event-time text-white">
-                5:40 PM
-              </div>
-              <div className="border-b border-dashed border-white opacity-50 mb-1"></div>
-              <div className="text-sm sm:text-base md:text-lg font-albert timeline-event-description text-white">
-                Wedding Ceremony
-              </div>
-            </div>
-            <div className="absolute left-1/2 transform -translate-x-1/2 w-3 h-3 bg-white rounded-full z-10"></div>
-            <div className="w-1/2 pl-6 text-left flex items-center justify-start">
-            </div>
-          </div>
-
-          {/* Event 4 - Dinner */}
-          <div className="flex items-center relative min-h-[60px]">
-            <div className="w-1/2 pr-6 text-right flex items-center justify-end">
-            </div>
-            <div className="absolute left-1/2 transform -translate-x-1/2 w-3 h-3 bg-white rounded-full z-10"></div>
-            <div className="w-1/2 pl-6 text-left flex flex-col justify-center">
-              <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl alice-regular mb-1 timeline-event-time text-white">
-                7:00 PM
+                9:30 PM
               </div>
               <div className="border-b border-dashed border-white opacity-50 mb-1"></div>
               <div className="text-sm sm:text-base md:text-lg font-albert timeline-event-description text-white">
@@ -296,15 +263,15 @@ const Schedule = () => {
             </div>
           </div>
 
-          {/* Event 5 - Intimate Wedding Party Gathering */}
+          {/* Disco */}
           <div className="flex items-center relative min-h-[60px]">
             <div className="w-1/2 pr-6 text-right flex flex-col justify-center">
               <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl alice-regular mb-1 timeline-event-time text-white">
-                Onwards
+                11:00 PM
               </div>
               <div className="border-b border-dashed border-white opacity-50 mb-1"></div>
               <div className="text-sm sm:text-base md:text-lg font-albert timeline-event-description text-white">
-                Intimate wedding party gathering
+                Disco <span className="opacity-90">(2 hours)</span>
               </div>
             </div>
             <div className="absolute left-1/2 transform -translate-x-1/2 w-3 h-3 bg-white rounded-full z-10"></div>

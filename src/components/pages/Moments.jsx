@@ -5,6 +5,7 @@ import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { ArrowLeft, ArrowRight, X, ChevronLeft, ChevronRight, Play } from 'lucide-react'
 import { useAudio } from '../../contexts/AudioContext'
+import { loveStory } from '../../data'
 import GradientLayer from '../GradientLayer'
 import PhotoSection from '../PhotoSection'
 
@@ -30,7 +31,6 @@ const Moments = () => {
   const galleryImagesRef = useRef(null)
   const endPhoto4Ref = useRef(null)
   const ry211ImageRef = useRef(null)
-  const finalParagraphRef = useRef(null)
   const polaroidImg2Ref = useRef(null)
   const bannerImageRef = useRef(null)
   const [selectedImage, setSelectedImage] = useState(null)
@@ -157,38 +157,6 @@ const Moments = () => {
         }
       }, 800) // Delay to allow page animation to complete
     }
-
-    // Scroll animations for paragraphs with slide-in effect
-    const paragraphRefs = [
-      { ref: finalParagraphRef, direction: 'left' }
-    ]
-
-    paragraphRefs.forEach(({ ref, direction }) => {
-      if (ref.current) {
-        const xValue = direction === 'left' ? -50 : 50
-        gsap.fromTo(
-          ref.current,
-          {
-            opacity: 0,
-            x: xValue,
-            y: 30
-          },
-          {
-            opacity: 1,
-            x: 0,
-            y: 0,
-            duration: 0.8,
-            ease: "power2.out",
-            scrollTrigger: {
-              trigger: ref.current,
-              start: "top 85%",
-              end: "top 50%",
-              toggleActions: "play none none none"
-            }
-          }
-        )
-      }
-    })
 
     // Scroll animations for other elements
     const scrollElements = [
@@ -523,12 +491,16 @@ const Moments = () => {
         <div className="relative z-20 w-full flex flex-col items-center bg-white py-12">
           <div ref={firstParagraphRef} className="relative z-20 w-full max-w-4xl px-8 sm:px-12 md:px-8 lg:px-16">
             <div className="alice-regular font-black text-[#333333] leading-relaxed text-center" style={{ fontWeight: 900, fontSize: '1rem', lineHeight: '1.8' }}>
-              <p className="mb-4" style={{ fontStyle: 'italic', fontSize: '1.1rem', marginBottom: '1.5rem' }}>
-                A boy meets his childhood crush and a girl falls in love
-              </p>
-              <p className="mb-4">
-                It felt like something written in the stars. We were just two little schoolmates, side by side from nursery through Grade 1, until life quietly pulled us apart when she transferred to another school.
-              </p>
+              {loveStory.story.split(/\n\n+/).map((block, i) => (
+                <p key={i} className="mb-4" style={i === 0 ? { fontStyle: 'italic', fontSize: '1.15rem', marginBottom: '1.5rem' } : undefined}>
+                  {block.trim().split('\n').map((line, j) => (
+                    <React.Fragment key={j}>
+                      {j > 0 && <br />}
+                      {line}
+                    </React.Fragment>
+                  ))}
+                </p>
+              ))}
             </div>
           </div>
           
@@ -552,14 +524,6 @@ const Moments = () => {
             </div>
           </div>
           
-          {/* Second Paragraph */}
-          <div className="relative z-20 w-full max-w-4xl px-8 sm:px-12 md:px-8 lg:px-16">
-            <div className="alice-regular font-black text-[#333333] leading-relaxed text-center" style={{ fontWeight: 900, fontSize: '1rem', lineHeight: '1.8' }}>
-              <p className="mb-4">
-                Years passed—eight long, growing years—before fate brought us back together at a school reunion. What began as distant, awkward conversations slowly turned into a renewed friendship, and before we knew it, the innocent crush from childhood blossomed into our first true love.
-              </p>
-            </div>
-          </div>
         </div>
 
            {/* Moments Gallery Section */}
@@ -671,15 +635,6 @@ const Moments = () => {
                </div>
              </div>
 
-           </div>
-
-           {/* Story text before final photo */}
-           <div ref={finalParagraphRef} className="relative z-20 w-full max-w-4xl px-8 sm:px-12 md:px-8 lg:px-16 mt-8 mx-auto">
-             <div className="alice-regular font-black text-[#333333] leading-relaxed text-center" style={{ fontWeight: 900, fontSize: '1rem', lineHeight: '1.8' }}>
-               <p className="mb-4">
-                 Now, hand in hand, we stand on the edge of a brand-new chapter, ready to continue the love story that once began in a classroom long ago.
-               </p>
-             </div>
            </div>
 
           {/* Final Photo - Full Width After Gallery */}

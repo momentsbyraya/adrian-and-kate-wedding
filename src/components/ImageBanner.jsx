@@ -44,7 +44,7 @@ const ImageBanner = ({ src, alt = "Banner image" }) => {
               </h1>
               {/* Details in Tebranos font */}
               <h2 className="font-tebranos text-6xl sm:text-7xl md:text-8xl lg:text-9xl uppercase mb-4 -mt-6" style={{ 
-                color: '#3d2f25'
+                color: '#2c1810'
               }}>
                 Details
               </h2>

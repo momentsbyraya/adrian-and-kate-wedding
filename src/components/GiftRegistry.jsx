@@ -52,7 +52,7 @@ const GiftRegistry = () => {
             </span>
           </h3>
           <p className="text-base sm:text-lg font-albert font-thin text-white max-w-3xl mx-auto leading-relaxed">
-            We are blessed with everything we need, and your presence and prayers are the best gifts we could hope for. If you wish to offer something extra, a monetary gift would be much appreciated.
+            Sharing our wedding day with you is what matters most. If you desire to give nonetheless, monetary gifts are welcome during our first dance.
           </p>
         </div>
         

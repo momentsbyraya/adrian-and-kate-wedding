@@ -22,11 +22,11 @@ export const weddingConfig = {
 
   // RSVP Information
   rsvp: {
-    deadline: "2026-05-15",
+    deadline: "2026-09-01",
     email: "",
     phone: "",
     website: "",
-    message: "Please RSVP by May 15th, 2026"
+    message: "Please RSVP by September 1st, 2026"
   },
 
   // Theme and Styling

@@ -333,30 +333,26 @@ const NavIndex = ({ onOpenRSVP }) => {
               e.currentTarget.style.transform = 'scale(1.05)'
             }}
             onClick={() => {
-              window.scrollTo(0, 0)
-              // Slide out animation before navigation
-              if (navRef.current) {
-                gsap.to(navRef.current, {
-                  x: '-100%',
-                  opacity: 0,
-                  duration: 0.5,
-                  ease: "power2.in",
-                  onComplete: () => {
-                    navigate('/faq')
-                    setTimeout(() => window.scrollTo(0, 0), 0)
-                  }
-                })
-              } else {
-                navigate('/faq')
-                setTimeout(() => window.scrollTo(0, 0), 0)
+              if (onOpenRSVP) {
+                onOpenRSVP()
+                return
               }
             }}
+            role="button"
+            tabIndex={0}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault()
+                onOpenRSVP?.()
+              }
+            }}
+            aria-label="Open RSVP"
           >
-            {/* FAQ Text */}
+            {/* RSVP card */}
             <div className="flex-1 flex flex-col items-center justify-center px-4 py-4">
               <p className="text-center rsvp-text-container">
-                <span className="imperial-script-regular rsvp-text-r">F</span>
-                <span className="nanum-myeongjo-regular rsvp-text-svp">AQ</span>
+                <span className="imperial-script-regular rsvp-text-r">R</span>
+                <span className="nanum-myeongjo-regular rsvp-text-svp">SVP</span>
               </p>
             </div>
           </div>

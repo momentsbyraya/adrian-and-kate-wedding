@@ -1,10 +1,10 @@
-// Theme Configuration - Easy to customize colors
+// Theme Configuration - Easy to customize colors (coffee brown palette)
 export const themeConfig = {
     // Background Colors
     backgrounds: {
-        primary: 'bg-[#d3bba1]',        // Main dark background
-        secondary: 'bg-[#9b7b6c]',      // Secondary background (Taupe Brown)
-        tertiary: 'bg-[#e3d1c3]',       // Tertiary background (Attire section)
+        primary: 'bg-[#c9ae91]',        // Main background (coffee latte)
+        secondary: 'bg-[#5c4033]',      // Secondary background (dark coffee brown)
+        tertiary: 'bg-[#e8d4c4]',       // Tertiary background (Attire section)
         accent: 'bg-[#D4A5A5]',      // Accent background (Dusty Pink)
         light: 'bg-white/50',          // Light overlay backgrounds
         theme: 'bg-[#dee5ed]',        // Custom theme color
@@ -13,12 +13,12 @@ export const themeConfig = {
 
     // Text Colors
     text: {
-        primary: 'text-[#3d2f25]',     // Main heading text color (Very Dark Brown)
+        primary: 'text-[#2c1810]',     // Main heading text (espresso / coffee brown)
         secondary: 'text-[#D4A5A5]',    // Subheading and body text color (Dusty Pink)
         accent: 'text-[#D4A5A5]',    // Accent text color (Dusty Pink)
         muted: 'text-gray-400',        // Muted text color (icons, small text)
         dark: 'text-wedding-800',      // Dark text for light backgrounds
-        theme: 'text-[#ad8369]',      // Custom theme text color
+        theme: 'text-[#7a5230]',      // Custom theme text (medium coffee brown)
         pause: 'text-[#dcdcdc]',      // Pause button text color
         custom: 'text-[#44484d]',     // Custom text color
     },
@@ -28,7 +28,7 @@ export const themeConfig = {
         primary: 'border-gray-700',    // Main border color
         secondary: 'border-gray-600',  // Secondary border color
         accent: 'border-wedding-300',  // Accent border color
-        theme: 'border-[#ad8369]',    // Custom theme border color
+        theme: 'border-[#7a5230]',    // Custom theme border (coffee brown)
     },
 
     // Button Colors
@@ -36,14 +36,14 @@ export const themeConfig = {
         primary: 'bg-[#D4A5A5] hover:bg-[#B89090]',  // Primary button (Dusty Pink)
         secondary: 'border border-[#87AE73] hover:border-[#6B8E5A]', // Secondary button (Sage Green)
         text: 'text-gray-300 hover:text-white', // Button text color
-        theme: 'bg-[#ad8369] hover:bg-[#ad8369]/80', // Custom theme button
+        theme: 'bg-[#7a5230] hover:bg-[#7a5230]/80', // Custom theme button (coffee brown)
     },
 
     // Hover Effects
     hover: {
         primary: 'hover:bg-[#B89090]',     // Primary button hover (Darker Dusty Pink)
         secondary: 'hover:border-[#6B8E5A] hover:text-white', // Secondary button hover (Darker Sage Green)
-        theme: 'hover:bg-[#ad8369]/80',     // Custom theme hover
+        theme: 'hover:bg-[#7a5230]/80',     // Custom theme hover
     },
 
     // Container Configuration
@@ -55,33 +55,33 @@ export const themeConfig = {
 
     // Calendar Configuration
     calendar: {
-        weddingDate: '2026-05-30',          // Wedding date (YYYY-MM-DD format)
-        highlightColor: 'bg-[#6c756a]',     // Color for wedding date highlight
-        heartColor: 'text-[#6c756a]',       // Color for heart icon
+        weddingDate: '2026-10-09',          // Wedding date (YYYY-MM-DD format)
+        highlightColor: 'bg-[#5c4033]',     // Coffee brown highlight
+        heartColor: 'text-[#5c4033]',       // Heart icon
         textColor: 'text-gray-700',         // Calendar text color
         headerColor: 'text-gray-800',       // Month header color
         dayNamesColor: 'text-gray-600',     // Day names color
-        background: 'bg-[#6c756a]',         // Calendar background color
+        background: 'bg-[#5c4033]',         // Calendar background
     },
 
     // Paragraph Configuration
     paragraph: {
-        background: 'bg-[#f4f5ef]',         // Paragraph background color
+        background: 'bg-[#f6f0eb]',         // Warm neutral behind copy
     },
 
     // Custom CSS Variables (for advanced customization)
     cssVariables: {
-        '--primary-bg': '#d3bba1',           // #d3bba1 (Nude)
-        '--secondary-bg': '#9b7b6c',        // #9b7b6c (Taupe Brown)
-        '--tertiary-bg': '#e3d1c3',         // #e3d1c3 (Attire background)
+        '--primary-bg': '#c9ae91',           // Coffee latte
+        '--secondary-bg': '#5c4033',        // Dark coffee brown
+        '--tertiary-bg': '#e8d4c4',         // Light coffee / sand
         '--accent-bg': '#D4A5A5',           // #D4A5A5 (Dusty Pink)
         '--accent-hover': '#B89090',        // #B89090 (Darker Dusty Pink Hover)
-        '--primary-text': '#3d2f25',        // #3d2f25 (Very Dark Brown)
+        '--primary-text': '#2c1810',        // Espresso
         '--secondary-text': '#D4A5A5',      // #D4A5A5 (Dusty Pink)
         '--accent-text': '#D4A5A5',         // #D4A5A5 (Dusty Pink)
         '--muted-text': '#9ca3af',          // #9ca3af (gray-400)
         '--border-color': '#C0C0C0',        // #C0C0C0 (Silver)
-        '--custom-theme': '#C0C0C0',        // #C0C0C0 (Silver)
+        '--custom-theme': '#7a5230',        // Medium coffee brown
         '--old-rose': '#C08081',            // #C08081 (Old Rose)
         '--light-pink': '#F5C2C2',          // #F5C2C2 (Light Pink)
         '--gold': '#D4AF37',                // #D4AF37 (Gold)
@@ -146,4 +146,4 @@ export const applyThemePreset = (presetName) => {
     if (preset) {
         Object.assign(themeConfig, preset)
     }
-} 
+}

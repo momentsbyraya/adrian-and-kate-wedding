@@ -170,8 +170,8 @@
   width: 50vw;
   height: 35vw;
   background-color: #f5f5f0;
-  border-top: 6px solid var(--primary-bg, #d3bba1);
-  border-bottom: 6px solid var(--primary-bg, #d3bba1);
+  border-top: 6px solid var(--primary-bg, #c9ae91);
+  border-bottom: 6px solid var(--primary-bg, #c9ae91);
   opacity: 0;
   transform: translateY(30px);
 }
