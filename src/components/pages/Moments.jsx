@@ -473,7 +473,7 @@ const Moments = () => {
             <div className="absolute bottom-0 left-0 w-full flex flex-col justify-center items-center pb-0.5 z-10">
               <div className="w-full text-center">
                 {/* Our in Ballet font */}
-                <h1 className="font-ballet text-5xl sm:text-6xl md:text-7xl lg:text-8xl mb-2" style={{ color: '#333333' }}>
+                <h1 className="font-ballet text-5xl sm:text-6xl md:text-7xl lg:text-8xl mb-2" style={{ color: '#6F4827' }}>
                   Our
                 </h1>
                 {/* Love Story in Tebranos font */}
@@ -490,7 +490,7 @@ const Moments = () => {
         {/* Love Story Section */}
         <div className="relative z-20 w-full flex flex-col items-center bg-white py-12">
           <div ref={firstParagraphRef} className="relative z-20 w-full max-w-4xl px-8 sm:px-12 md:px-8 lg:px-16">
-            <div className="alice-regular font-black text-[#333333] leading-relaxed text-center" style={{ fontWeight: 900, fontSize: '1rem', lineHeight: '1.8' }}>
+            <div className="alice-regular font-black text-[#6F4827] leading-relaxed text-center" style={{ fontWeight: 900, fontSize: '1rem', lineHeight: '1.8' }}>
               {loveStory.story.split(/\n\n+/).map((block, i) => (
                 <p key={i} className="mb-4" style={i === 0 ? { fontStyle: 'italic', fontSize: '1.15rem', marginBottom: '1.5rem' } : undefined}>
                   {block.trim().split('\n').map((line, j) => (
@@ -565,7 +565,7 @@ const Moments = () => {
                    className="stylish-calligraphy text-5xl sm:text-6xl md:text-7xl lg:text-8xl inline-block" 
                    style={{
                      lineHeight: '1.2',
-                     color: '#333333',
+                     color: '#6F4827',
                      display: 'inline-block',
                      paddingTop: '0.5rem',
                      paddingBottom: '0.5rem'
@@ -865,7 +865,7 @@ const Moments = () => {
             navigate('/')
           }
         }}
-        className="fixed bottom-12 right-6 z-[100] w-14 h-14 bg-[#333333] text-white rounded-full shadow-lg hover:bg-[#333333]/80 hover:scale-110 transition-all duration-300 flex items-center justify-center group"
+        className="fixed bottom-12 right-6 z-[100] w-14 h-14 bg-[#6F4827] text-white rounded-full shadow-lg hover:bg-[#6F4827]/80 hover:scale-110 transition-all duration-300 flex items-center justify-center group"
         aria-label="Back to home"
         style={{ pointerEvents: 'auto' }}
       >

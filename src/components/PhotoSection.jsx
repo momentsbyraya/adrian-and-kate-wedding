@@ -288,7 +288,7 @@ const PhotoSection = ({
         
         {/* Paragraph */}
         {paragraph && (
-          <p className="text-base sm:text-lg font-albert font-thin text-[#333333] text-center max-w-xl mx-auto leading-relaxed">
+          <p className="text-base sm:text-lg font-albert font-thin text-[#6F4827] text-center max-w-xl mx-auto leading-relaxed">
             {paragraph}
           </p>
         )}

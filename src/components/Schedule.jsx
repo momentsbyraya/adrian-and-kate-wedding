@@ -201,7 +201,7 @@ const Schedule = () => {
                       >
                         <path 
                           d="M50,85 C30,70 10,50 10,30 C10,15 22,5 35,5 C42,5 48,8 50,12 C52,8 58,5 65,5 C78,5 90,15 90,30 C90,50 70,70 50,85 Z" 
-                          fill="#2c1810"
+                          fill="#6F4827"
                         />
                       </svg>
                       <span className="absolute inset-0 flex items-center justify-center text-white font-boska font-semibold text-xl sm:text-2xl heart-day-number">

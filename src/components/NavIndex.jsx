@@ -248,13 +248,13 @@ const NavIndex = ({ onOpenRSVP }) => {
               <div className="rounded-[50%] w-full h-full flex flex-col items-center justify-center relative oval-border">
                 {/* Text Content */}
                 <div className="text-center px-4">
-                  <p className="nanum-myeongjo-regular text-[#333333] mb-2 oval-text-for">
+                  <p className="nanum-myeongjo-regular text-[#6F4827] mb-2 oval-text-for">
                     FOR THE
                   </p>
                   <p className={`imperial-script-regular mb-4 underline oval-text-entourage ${themeConfig.text.primary}`}>
                     Entourage
                   </p>
-                  <p className="nanum-myeongjo-regular text-[#333333] oval-text-click">
+                  <p className="nanum-myeongjo-regular text-[#6F4827] oval-text-click">
                     CLICK HERE
                   </p>
                 </div>
@@ -394,7 +394,7 @@ const NavIndex = ({ onOpenRSVP }) => {
             
             {/* Text Content */}
             <div className="text-center px-4 relative z-10">
-              <p className="nanum-myeongjo-regular text-[#333333] details-text-view">
+              <p className="nanum-myeongjo-regular text-[#6F4827] details-text-view">
                 VIEW THE
               </p>
                 <p className={`imperial-script-regular underline details-text-details ${themeConfig.text.primary}`}>
@@ -542,7 +542,7 @@ const NavIndex = ({ onOpenRSVP }) => {
                   >
                     {/* Box with Section Name */}
                     <div 
-                      className="px-4 py-6 rounded-lg border-2 text-center min-h-[80px] flex items-center justify-center bg-white border-[#333333]/30 text-[#333333] shadow-sm"
+                      className="px-4 py-6 rounded-lg border-2 text-center min-h-[80px] flex items-center justify-center bg-white border-[#6F4827]/30 text-[#6F4827] shadow-sm"
                     >
                       <span className="text-sm sm:text-base font-albert font-medium">
                         {section.name}
@@ -568,8 +568,8 @@ const NavIndex = ({ onOpenRSVP }) => {
                   <div 
                     className={`px-4 py-6 rounded-lg border-2 transition-all duration-300 text-center min-h-[80px] flex items-center justify-center ${
                       isActive
-                        ? 'bg-[#333333] border-[#333333] text-white shadow-lg'
-                        : 'bg-white border-[#333333]/40 text-[#333333] hover:border-[#333333]/60 hover:bg-white shadow-md'
+                        ? 'bg-[#6F4827] border-[#6F4827] text-white shadow-lg'
+                        : 'bg-white border-[#6F4827]/40 text-[#6F4827] hover:border-[#6F4827]/60 hover:bg-white shadow-md'
                     }`}
                   >
                     <span className="text-sm sm:text-base font-albert font-medium">
@@ -579,7 +579,7 @@ const NavIndex = ({ onOpenRSVP }) => {
                   
                   {/* Active indicator dot */}
                   {isActive && (
-                    <div className="absolute -top-1 -right-1 w-3 h-3 bg-[#333333] rounded-full border-2 border-white" />
+                    <div className="absolute -top-1 -right-1 w-3 h-3 bg-[#6F4827] rounded-full border-2 border-white" />
                   )}
                 </button>
               )

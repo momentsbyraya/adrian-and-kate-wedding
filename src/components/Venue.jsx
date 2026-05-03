@@ -114,13 +114,13 @@ const Venue = () => {
         {/* Venue Details */}
         <div className="venue-content-container">
           {/* Venue Name */}
-          <div className="text-lg sm:text-xl md:text-2xl font-boska text-[#333333] mb-4 text-center">
+          <div className="text-lg sm:text-xl md:text-2xl font-boska text-[#6F4827] mb-4 text-center">
             {ceremony.name}
           </div>
           
           {/* Ceremony and Reception Times */}
           <div className="mb-6">
-            <p className="text-sm sm:text-base font-albert text-[#333333] text-center">
+            <p className="text-sm sm:text-base font-albert text-[#6F4827] text-center">
               <span className="font-semibold">Ceremony:</span> {ceremony.time} | <span className="font-semibold">Reception:</span> {reception.time}
             </p>
           </div>

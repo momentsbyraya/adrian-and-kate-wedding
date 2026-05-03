@@ -14,7 +14,7 @@
 
 .venue-title-text {
   line-height: 0.8;
-  color: #2c1810;
+  color: #6F4827;
 }
 
 /* Venue Image Container */
@@ -36,7 +36,7 @@
   width: 100vw;
   margin-left: calc(-50vw + 50%);
   margin-right: calc(-50vw + 50%);
-  background-color: #5c4033;
+  background-color: #6F4827;
 }
 
 .program-title-container {
@@ -73,7 +73,7 @@
 }
 
 .timeline-event-time {
-  color: #333333;
+  color: #6F4827;
 }
 
 .timeline-event-description {
@@ -83,12 +83,12 @@
 /* Dress Code */
 .dress-code-title-text {
   line-height: 0.8;
-  color: #2c1810;
+  color: #ffffff;
   white-space: nowrap;
 }
 
 .dress-code-description {
-  color: #2c1810;
+  color: #ffffff;
 }
 
 .dress-code-image-container {
@@ -129,7 +129,7 @@
 
 /* Attire Section Background */
 .attire-section {
-  background-color: #e8d4c4;
+  background-color: #6F4827;
   width: 100vw;
   margin-left: calc(-50vw + 50%);
   margin-right: calc(-50vw + 50%);
@@ -197,7 +197,7 @@
 
 .upload-title-text {
   line-height: 0.8;
-  color: #2c1810;
+  color: #6F4827;
 }
 
 .upload-qr-container {
@@ -222,7 +222,7 @@
   width: 100vw;
   margin-left: calc(-50vw + 50%);
   margin-right: calc(-50vw + 50%);
-  background-color: #5c4033;
+  background-color: #6F4827;
   position: relative;
   overflow: hidden;
 }

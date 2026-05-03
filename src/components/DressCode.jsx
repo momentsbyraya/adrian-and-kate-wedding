@@ -133,7 +133,7 @@ const DressCode = () => {
       {/* Top Wave - Attire Section */}
       <div className="wave relative w-full" style={{ marginBottom: '-1px' }}>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" className="w-full h-auto" style={{ display: 'block' }}>
-          <path fill="#e3d1c3" fillOpacity="1" stroke="none" d="M0,192L60,165.3C120,139,240,85,360,90.7C480,96,600,160,720,197.3C840,235,960,245,1080,229.3C1200,213,1320,171,1380,149.3L1440,128L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"></path>
+          <path fill="#FFFFFF" fillOpacity="1" stroke="none" d="M0,192L60,165.3C120,139,240,85,360,90.7C480,96,600,160,720,197.3C840,235,960,245,1080,229.3C1200,213,1320,171,1380,149.3L1440,128L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"></path>
         </svg>
       </div>
 
@@ -183,10 +183,10 @@ const DressCode = () => {
                 {/* Text & Swatches Below */}
                 <div className="w-full max-w-xl mx-auto text-center dresscode-content">
                   <div className="w-full">
-                    <div className="text-lg sm:text-xl md:text-2xl font-boska text-[#2c1810] mb-2">
+                    <div className="text-lg sm:text-xl md:text-2xl font-boska text-white mb-2">
                       All White
                     </div>
-                    <p className="text-sm sm:text-base font-albert font-thin italic text-[#2c1810] mb-3">
+                    <p className="text-sm sm:text-base font-albert font-thin italic text-white mb-3">
                       Our dress code is all white. Feel free to come in any elegant shade of white that makes you feel your best.
                     </p>
                     <div className="flex gap-2 justify-center">
@@ -200,9 +200,9 @@ const DressCode = () => {
                         >
                           <div className="w-6 h-6 sm:w-8 sm:h-8 border border-gray-300 rounded cursor-pointer" style={{ backgroundColor: color }}></div>
                           {activeTooltip === `white-${index}` && (
-                            <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-2 py-1 bg-[#333333] text-white text-xs rounded whitespace-nowrap z-[9999] pointer-events-none color-swatch-tooltip" style={{ position: 'absolute' }}>
+                            <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-2 py-1 bg-[#6F4827] text-white text-xs rounded whitespace-nowrap z-[9999] pointer-events-none color-swatch-tooltip" style={{ position: 'absolute' }}>
                               {colorNames[color]}
-                              <div className="absolute top-full left-1/2 transform -translate-x-1/2 -mt-1 border-4 border-transparent border-t-[#333333]"></div>
+                              <div className="absolute top-full left-1/2 transform -translate-x-1/2 -mt-1 border-4 border-transparent border-t-[#6F4827]"></div>
                             </div>
                           )}
                         </div>
@@ -219,7 +219,7 @@ const DressCode = () => {
       {/* Bottom Wave - Attire Section */}
       <div className="wave wave-bottom relative w-full" style={{ marginTop: '-1px' }}>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" className="w-full h-auto" style={{ display: 'block' }}>
-          <path fill="#e3d1c3" fillOpacity="1" stroke="none" d="M0,192L60,165.3C120,139,240,85,360,90.7C480,96,600,160,720,197.3C840,235,960,245,1080,229.3C1200,213,1320,171,1380,149.3L1440,128L1440,0L1380,0C1320,0,1200,0,1080,0C960,0,840,0,720,0C600,0,480,0,360,0C240,0,120,0,60,0L0,0Z"></path>
+          <path fill="#FFFFFF" fillOpacity="1" stroke="none" d="M0,192L60,165.3C120,139,240,85,360,90.7C480,96,600,160,720,197.3C840,235,960,245,1080,229.3C1200,213,1320,171,1380,149.3L1440,128L1440,0L1380,0C1320,0,1200,0,1080,0C960,0,840,0,720,0C600,0,480,0,360,0C240,0,120,0,60,0L0,0Z"></path>
         </svg>
       </div>
     </div>

@@ -22,12 +22,12 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #bfa094;
+  background: #6F4827;
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #a18072;
+  background: #6F4827;
 }
 
 /* Print styles */
@@ -45,8 +45,9 @@
 :root {
   --envelope-x: 300px;
   --envelope-y: 200px;
-  --envelope-bg: #c9ae91;
-  --envelope-shadow: #B89090;
+  --envelope-bg: #6F4827;
+  /* Inset shadow for fold depth on dark envelope */
+  --envelope-shadow: rgba(0, 0, 0, 0.35);
   --heart-bg: darkred;
   --heart-text: white;
   --letter-font: "Dancing Script", serif;
@@ -54,7 +55,7 @@
   --letter-y: calc(250px - 1rem - 10px);
   --letter-bg: AntiqueWhite;
   --letter-shadow: BurlyWood;
-  --letter-text: #180d07;
+  --letter-text: #6F4827;
 }
 
 @media (min-width: 650px) {
