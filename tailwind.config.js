@@ -76,6 +76,7 @@ export default {
         'sans': ['Inter', 'sans-serif'],
         'script': ['Great Vibes', 'cursive'],
         'antsvalley': ['Great Vibes', 'cursive'], // Using Great Vibes as fallback for antsvalley
+        'foglihten': ['Foglihten', 'serif'],
       },
       animation: {
         'fade-in': 'fadeIn 0.6s ease-in-out',

@@ -16,15 +16,14 @@ const RSVPModal = ({ isOpen, onClose }) => {
       
       // Modal entrance animation
       gsap.set([overlayRef.current, contentRef.current], { opacity: 0 })
-      gsap.set(contentRef.current, { scale: 0.8, y: 50 })
+      gsap.set(contentRef.current, { y: 16 })
       
-      gsap.to(overlayRef.current, { opacity: 1, duration: 0.3, ease: "power2.out" })
-      gsap.to(contentRef.current, { 
-        opacity: 1, 
-        scale: 1, 
-        y: 0, 
-        duration: 0.4, 
-        ease: "back.out(1.7)" 
+      gsap.to(overlayRef.current, { opacity: 1, duration: 0.25, ease: "power2.out" })
+      gsap.to(contentRef.current, {
+        opacity: 1,
+        y: 0,
+        duration: 0.35,
+        ease: "power2.out"
       })
     } else {
       // Re-enable body scroll when modal is closed
@@ -40,12 +39,11 @@ const RSVPModal = ({ isOpen, onClose }) => {
   const handleClose = () => {
     // Modal exit animation
     gsap.to(overlayRef.current, { opacity: 0, duration: 0.2, ease: "power2.out" })
-    gsap.to(contentRef.current, { 
-      opacity: 0, 
-      scale: 0.8, 
-      y: 50, 
-      duration: 0.3, 
-      ease: "power2.out" 
+    gsap.to(contentRef.current, {
+      opacity: 0,
+      y: 16,
+      duration: 0.25,
+      ease: "power2.out"
     }).then(() => {
       onClose()
     })
@@ -60,44 +58,36 @@ const RSVPModal = ({ isOpen, onClose }) => {
   if (!isOpen) return null
 
   return createPortal(
-    <div 
+    <div
       ref={modalRef}
-      className="fixed inset-0 z-50 flex items-center justify-center p-4"
-      style={{ position: 'fixed', top: 0, left: 0, right: 0, bottom: 0 }}
+      className="fixed inset-0 z-50"
     >
-      {/* Overlay */}
       <div
         ref={overlayRef}
-        className="absolute inset-0 bg-black/60 backdrop-blur-sm"
+        className="absolute inset-0 z-0 bg-black/60 backdrop-blur-sm"
         onClick={handleOverlayClick}
       />
-      
-      {/* Modal Content */}
+
       <div
         ref={contentRef}
-        className={`relative ${themeConfig.paragraph.background} rounded-2xl shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-hidden`}
+        className={`absolute inset-0 z-10 flex flex-col overflow-hidden ${themeConfig.paragraph.background}`}
       >
-        {/* Header */}
-        <div className="flex items-center justify-between p-6 border-b border-gray-300/50">
-          <h2 className="text-2xl font-leckerli font-light text-gray-900/70">RSVP</h2>
+        <div className="flex shrink-0 items-center justify-between border-b border-gray-200/80 px-4 py-3 sm:px-6 sm:py-4">
+          <h2 className="text-xl sm:text-2xl font-leckerli font-light text-gray-900/80">RSVP</h2>
           <button
+            type="button"
             onClick={handleClose}
-            className="p-2 text-gray-700 hover:text-gray-900 hover:bg-gray-200/50 rounded-full transition-colors duration-200"
+            className="rounded-full p-2 text-gray-700 transition-colors duration-200 hover:bg-gray-200/60 hover:text-gray-900"
+            aria-label="Close RSVP"
           >
-            <X className="w-6 h-6" />
+            <X className="h-6 w-6" />
           </button>
         </div>
-        
-        {/* Content */}
-        <div className="p-6">
-          <div className="w-full h-[600px] rounded-lg overflow-hidden">
-            <iframe
-              src="https://forms.gle/vhBum1JjSShJ2EnXA"
-              className="w-full h-full border-0"
-              title="RSVP Form"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            />
-          </div>
+
+        <div className="flex min-h-0 flex-1 flex-col items-center justify-center px-6 py-12">
+          <p className="text-center text-2xl sm:text-3xl font-albert font-medium tracking-wide text-[#6F4827]">
+            TO BE ADDED
+          </p>
         </div>
       </div>
     </div>,

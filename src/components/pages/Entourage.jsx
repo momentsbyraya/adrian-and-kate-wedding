@@ -1,8 +1,7 @@
 import React, { useEffect, useLayoutEffect, useRef } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { ArrowLeft } from 'lucide-react'
 import { entourage, couple } from '../../data'
 import { themeConfig } from '../../config/themeConfig'
 import './Entourage.css'
@@ -11,9 +10,7 @@ import './Entourage.css'
 gsap.registerPlugin(ScrollTrigger)
 
 const Entourage = () => {
-  const navigate = useNavigate()
   const sectionRef = useRef(null)
-  const backButtonRef = useRef(null)
   const headerRef = useRef(null)
   const groomRef = useRef(null)
   const brideRef = useRef(null)
@@ -29,30 +26,20 @@ const Entourage = () => {
   const cordSponsorsRef = useRef(null)
   const candleSponsorsRef = useRef(null)
   const littleFlowerGirlsRef = useRef(null)
+  const specialMentionsRef = useRef(null)
   const flowersContainerRef = useRef(null)
 
   useLayoutEffect(() => {
-    const pageLoadTime = performance.now()
-    console.log('Current page: Entourage')
-    console.log('Page load time:', pageLoadTime, 'ms')
-    
     // Start falling flowers animation immediately when page opens
     // The first flower (delay-0) starts immediately, others follow with their delays
     const startAnimations = () => {
-      const animationStartTime = performance.now()
-      const timeSincePageLoad = ((animationStartTime - pageLoadTime) / 1000).toFixed(2)
-      
       if (flowersContainerRef.current) {
         const flowers = flowersContainerRef.current.querySelectorAll('.falling-flower')
-        console.log('Found flowers:', flowers.length)
-        
+
         if (flowers.length > 0) {
-          let delayZeroFound = false
-          flowers.forEach((flower, index) => {
+          flowers.forEach((flower) => {
             // Remove any existing animation delay for delay-0 to start immediately
             if (flower.classList.contains('delay-0')) {
-              delayZeroFound = true
-              
               // Force restart animation by removing and re-adding
               flower.style.animation = 'none'
               void flower.offsetWidth // Force reflow
@@ -92,70 +79,52 @@ const Entourage = () => {
               }
               
               flower.style.animation = `${animationName} ${duration}s linear infinite`
-              
-              // Check computed styles to verify what's actually applied
-              const computedStyle = window.getComputedStyle(flower)
-              const computedDelay = computedStyle.animationDelay
-              const computedPlayState = computedStyle.animationPlayState
-              const computedOpacity = computedStyle.opacity
-              const computedTop = computedStyle.top
-              const computedTransform = computedStyle.transform
-              
-              console.log(`Flower ${index} (delay-0): Animation started at ${timeSincePageLoad}s`)
-              console.log(`  - Computed animation-delay: ${computedDelay}`)
-              console.log(`  - Computed animation-play-state: ${computedPlayState}`)
-              console.log(`  - Computed opacity: ${computedOpacity}`)
-              console.log(`  - Computed top: ${computedTop}`)
-              console.log(`  - Computed transform: ${computedTransform}`)
-              console.log(`  - Element visible: ${flower.offsetParent !== null}`)
             } else {
-              const delay = flower.classList.toString().match(/delay-(\d+)/)?.[1] || 'unknown'
               flower.style.animationPlayState = 'running'
-              
-              // Check computed styles for other flowers too
-              const computedStyle = window.getComputedStyle(flower)
-              const computedDelay = computedStyle.animationDelay
-              
-              console.log(`Flower ${index} (delay-${delay}): Animation play state set at ${timeSincePageLoad}s`)
-              console.log(`  - Computed animation-delay: ${computedDelay}`)
             }
             // Trigger reflow to ensure animation starts
             void flower.offsetWidth
           })
-          
-          if (!delayZeroFound) {
-            console.warn('WARNING: No delay-0 flower found!')
-          }
-          
-          console.log(`Snow effect started after: ${timeSincePageLoad}sec`)
-        } else {
-          console.warn('No flowers found in container!')
         }
-      } else {
-        console.warn('Flowers container ref is null!')
       }
     }
-    
-    // Try immediately
-    console.log('Attempting to start animations immediately...')
+
     startAnimations()
-    
-    // Also try on next frame in case DOM isn't ready
+
     requestAnimationFrame(() => {
-      console.log('Attempting to start animations on next frame...')
       startAnimations()
     })
   }, [])
 
-  useEffect(() => {
-    // Set initial hidden states to prevent glimpse
+  // Global wrappers use overflow-x: hidden; lift while on this page so long lines are not clipped
+  useLayoutEffect(() => {
+    const html = document.documentElement
+    const body = document.body
+    const appEl = document.querySelector('.App')
+    const prev = {
+      html: html.style.overflowX,
+      body: body.style.overflowX,
+      app: appEl ? appEl.style.overflowX : ''
+    }
+    html.style.overflowX = 'visible'
+    body.style.overflowX = 'visible'
+    if (appEl) appEl.style.overflowX = 'visible'
+    return () => {
+      html.style.overflowX = prev.html
+      body.style.overflowX = prev.body
+      if (appEl) appEl.style.overflowX = prev.app
+    }
+  }, [])
+
+  /* Hide Entourage slide-in pose before paint. Do NOT use React inline transform/opacity
+     on the section — React re-renders would overwrite GSAP and block the exit tween + navigate. */
+  useLayoutEffect(() => {
     if (sectionRef.current) {
       gsap.set(sectionRef.current, { x: '100%', opacity: 0 })
     }
-    if (backButtonRef.current) {
-      gsap.set(backButtonRef.current, { opacity: 0, scale: 0 })
-    }
-    
+  }, [])
+
+  useEffect(() => {
     // Set initial hidden states for all name elements to prevent flash
     const allNameElements = sectionRef.current?.querySelectorAll('p.font-poppins, .ninong-item, .ninang-item, .groomsmen-item, .bridesmaids-item')
     if (allNameElements && allNameElements.length > 0) {
@@ -167,14 +136,6 @@ const Entourage = () => {
       gsap.fromTo(sectionRef.current,
         { x: '100%', opacity: 0 },
         { x: 0, opacity: 1, duration: 0.6, ease: "power2.out" }
-      )
-    }
-
-    // Back button fade-in animation after page slides in
-    if (backButtonRef.current) {
-      gsap.fromTo(backButtonRef.current,
-        { opacity: 0, scale: 0 },
-        { opacity: 1, scale: 1, duration: 0.4, ease: "back.out(1.7)", delay: 0.6 }
       )
     }
 
@@ -201,8 +162,8 @@ const Entourage = () => {
     
     // Parents section - collect rows
     if (parentsRef.current) {
-      const groomParents = parentsRef.current.querySelectorAll('.flex-1:first-child p.font-poppins')
-      const brideParents = parentsRef.current.querySelectorAll('.flex-1:last-child p.font-poppins')
+      const groomParents = parentsRef.current.querySelectorAll('.family-col-groom p.font-poppins')
+      const brideParents = parentsRef.current.querySelectorAll('.family-col-bride p.font-poppins')
       
       if (groomParents.length > 0 && brideParents.length > 0) {
         const maxLength = Math.max(groomParents.length, brideParents.length)
@@ -220,7 +181,7 @@ const Entourage = () => {
       }
     }
 
-    // Principal Sponsors - collect rows
+    // Principal Sponsors — paired rows use .ninong-item / .ninang-item inside row wrappers
     if (principalSponsorsRef.current) {
       const ninongElements = principalSponsorsRef.current?.querySelectorAll('.ninong-item')
       const ninangElements = principalSponsorsRef.current?.querySelectorAll('.ninang-item')
@@ -240,22 +201,13 @@ const Entourage = () => {
           }
         }
 
-        // Collect unpaired ninangs
-        const unpairedNinangs = principalSponsorsRef.current?.querySelectorAll('.mt-4 .ninang-item')
-        if (unpairedNinangs && unpairedNinangs.length > 0) {
-          gsap.set(unpairedNinangs, { opacity: 0, y: 20 })
-          Array.from(unpairedNinangs).forEach(ninang => {
-            allNameRows.push({ elements: [ninang], time: currentTime })
-            currentTime += 0.1
-          })
-        }
       }
     }
 
-    // Bestman and Maid of Honor - collect rows (after Secondary Sponsors title)
-    if (bestmanRef.current && maidOfHonorRef.current) {
-      const bestmanNames = bestmanRef.current.querySelectorAll('p.font-poppins')
-      const maidOfHonorNames = maidOfHonorRef.current.querySelectorAll('p.font-poppins')
+    // Bestman and Maid of Honor - collect rows
+    if (bestmanRef.current || maidOfHonorRef.current) {
+      const bestmanNames = bestmanRef.current?.querySelectorAll('p.font-poppins') ?? []
+      const maidOfHonorNames = maidOfHonorRef.current?.querySelectorAll('p.font-poppins') ?? []
       
       if (bestmanNames.length > 0 || maidOfHonorNames.length > 0) {
         const maxLength = Math.max(bestmanNames.length, maidOfHonorNames.length)
@@ -273,20 +225,7 @@ const Entourage = () => {
       }
     }
 
-    // Secondary Sponsors - collect Candle, Cord, Veil Sponsors (single column - one name per row)
-    const sponsorRefs = [candleSponsorsRef, cordSponsorsRef, veilSponsorsRef].filter(ref => ref.current)
-    sponsorRefs.forEach(ref => {
-      const names = ref.current.querySelectorAll('p.font-poppins')
-      if (names.length > 0) {
-        gsap.set(names, { opacity: 0, y: 20 })
-        Array.from(names).forEach(name => {
-          allNameRows.push({ elements: [name], time: currentTime })
-          currentTime += 0.1
-        })
-      }
-    })
-    
-    // Groomsmen + Bridesmaids - collect rows
+    // Groomsmen + Bridesmaids - collect rows (before candle / veil / cord on page)
     if (secondarySponsorsRef.current) {
       const groomsmenElements = secondarySponsorsRef.current?.querySelectorAll('.groomsmen-item')
       const bridesmaidsElements = secondarySponsorsRef.current?.querySelectorAll('.bridesmaids-item')
@@ -304,6 +243,30 @@ const Entourage = () => {
             currentTime += 0.2
           }
         }
+      }
+    }
+
+    // Candle, Veil, Cord — two-column rows use p.font-poppins
+    const sponsorRefs = [candleSponsorsRef, veilSponsorsRef, cordSponsorsRef].filter(ref => ref.current)
+    sponsorRefs.forEach(ref => {
+      const names = ref.current.querySelectorAll('p.font-poppins')
+      if (names.length > 0) {
+        gsap.set(names, { opacity: 0, y: 20 })
+        Array.from(names).forEach(name => {
+          allNameRows.push({ elements: [name], time: currentTime })
+          currentTime += 0.1
+        })
+      }
+    })
+
+    if (specialMentionsRef.current) {
+      const paras = specialMentionsRef.current.querySelectorAll('p.special-mention-text')
+      if (paras.length > 0) {
+        gsap.set(paras, { opacity: 0, y: 20 })
+        Array.from(paras).forEach((p) => {
+          allNameRows.push({ elements: [p], time: currentTime })
+          currentTime += 0.1
+        })
       }
     }
     
@@ -334,9 +297,11 @@ const Entourage = () => {
 
     
     // Animate all collected rows sequentially when any section comes into view
-    if (allNameRows.length > 0 && parentsRef.current) {
+    const nameAnimationTrigger =
+      parentsRef.current || principalSponsorsRef.current || sectionRef.current
+    if (allNameRows.length > 0 && nameAnimationTrigger) {
       ScrollTrigger.create({
-        trigger: parentsRef.current,
+        trigger: nameAnimationTrigger,
         start: "top 80%",
         onEnter: () => {
           const masterTl = gsap.timeline()
@@ -373,8 +338,8 @@ const Entourage = () => {
 
   return (
     <>
-      {/* Falling Snow Effect - Falling Flower (fixed to viewport, independent of scroll) */}
-      <div ref={flowersContainerRef}>
+      {/* Falling Snow Effect — pointer-events none */}
+      <div ref={flowersContainerRef} className="pointer-events-none">
         {[...Array(20)].map((_, i) => {
           const leftPosition = `${(i * 5) % 100}%`
           const sizeClass = i % 3 === 0 ? 'size-small' : i % 3 === 1 ? 'size-medium' : 'size-large'
@@ -408,27 +373,14 @@ const Entourage = () => {
         ref={sectionRef}
         id="entourage"
         data-section="entourage"
-        className="relative w-full overflow-hidden px-6 py-32 sm:py-40 md:py-44 lg:py-52"
-        style={{ 
-          opacity: 0, 
-          transform: 'translateX(100%)'
-        }}
+        className="relative w-full overflow-visible px-6 py-32 sm:py-40 md:py-44 lg:py-52"
       >
-        {/* Flower Banner - Top (absolute, full viewport width, container matches image size) */}
-        <div
-          className="absolute top-0 flex items-center justify-center"
-          style={{ left: 0, width: '100vw' }}
-        >
-          <img 
-            src="/assets/images/graphics/flower-banner.png" 
-            alt="Flower banner"
-            style={{ width: '100vw', height: 'auto', display: 'block' }}
-          />
-        </div>
+        <div className="absolute inset-0 z-0 bg-cover bg-no-repeat entourage-bg" aria-hidden />
+        <div className="absolute inset-0 z-[1] entourage-overlay" aria-hidden />
 
         {/* Content */}
-        <div className="relative z-20 flex items-center justify-center py-12">
-          <div className="max-w-xs sm:max-w-md lg:max-w-4xl w-full mx-auto px-4 sm:px-6 md:px-6 lg:px-8">
+        <div className="entourage-foreground relative z-20 flex flex-col items-center justify-center overflow-visible py-12">
+          <div className="mx-auto w-max max-w-none min-w-max px-4 sm:px-6 md:px-6 lg:px-8">
             {/* Header Section */}
             <div className="text-center mb-12">
               <h2 ref={headerRef} className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl mb-8">
@@ -463,247 +415,347 @@ const Entourage = () => {
               </h2>
             </div>
 
-            {/* Parents Section */}
-            <div ref={parentsRef} className="mb-6 flex flex-row gap-4 sm:gap-6 justify-center items-center">
-              {/* Groom's Parents */}
-              <div className="flex-1 min-w-0">
-                <p className="text-[11px] sm:text-[14px] md:text-[16px] lg:text-[18px] caudex-bold mb-2 whitespace-nowrap text-right uppercase" style={{ color: '#6F4827' }}>Groom's Parents</p>
-                <p className="text-[9.5px] sm:text-[13px] md:text-[15px] lg:text-[17px] font-poppins uppercase whitespace-nowrap text-right text-[#6F4827]">{entourage.parents.groom.father}</p>
-                <p className="text-[9.5px] sm:text-[13px] md:text-[15px] lg:text-[17px] font-poppins uppercase whitespace-nowrap text-right text-[#6F4827]">{entourage.parents.groom.mother}</p>
-              </div>
-
-              {/* Bride's Parents */}
-              <div className="flex-1 min-w-0">
-                <p className="text-[11px] sm:text-[14px] md:text-[16px] lg:text-[18px] caudex-bold mb-2 whitespace-nowrap text-left uppercase" style={{ color: '#6F4827' }}>Bride's Parents</p>
-                <p className="text-[9.5px] sm:text-[13px] md:text-[15px] lg:text-[17px] font-poppins uppercase whitespace-nowrap text-left text-[#6F4827]">{entourage.parents.bride.father}</p>
-                <p className="text-[9.5px] sm:text-[13px] md:text-[15px] lg:text-[17px] font-poppins uppercase whitespace-nowrap text-left text-[#6F4827]">{entourage.parents.bride.mother}</p>
-              </div>
-            </div>
-
-            {/* Principal Sponsors */}
-            {principalSponsors && (() => {
-              const ninongs = principalSponsors.ninong || []
-              const ninangs = principalSponsors.ninang || []
-              const pairedNinangs = ninangs.slice(0, ninongs.length)
-              const unpairedNinangs = ninangs.slice(ninongs.length)
-              
-              return (
-                <div ref={principalSponsorsRef} className="mb-6">
-                  <h3 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl imperial-script-regular mb-6 text-center capitalize whitespace-nowrap" style={{ color: '#6F4827' }}>Principal Sponsors</h3>
-                  <div className="flex flex-row gap-4 sm:gap-6 justify-center items-start">
-                    {/* NINONG Column */}
-                    <div className="flex-1">
-                      <div className="space-y-2">
-                        {ninongs.map((name, index) => (
-                          <p key={index} className="ninong-item text-[9.5px] sm:text-[13px] md:text-[15px] lg:text-[17px] font-poppins uppercase text-[#6F4827] text-right whitespace-nowrap">
-                            {name}
-                          </p>
-                        ))}
-                      </div>
+            {/* Family (groom / bride sides) */}
+            {entourage.familyMembers && (
+              <div ref={parentsRef} className="mb-8 flex flex-row gap-4 sm:gap-6 justify-center items-start shrink-0">
+                <div className="family-col-groom shrink-0 min-w-max">
+                  {entourage.familyMembers.groomSide.map((entry, index) => (
+                    <div key={`groom-${index}`} className="mb-3 text-right">
+                      <p className="text-[10px] sm:text-[13px] md:text-[15px] lg:text-[17px] caudex-bold mb-1 uppercase whitespace-nowrap text-[#6F4827]">{entry.role}</p>
+                      <p className="text-[8.5px] sm:text-[12px] md:text-[14px] lg:text-[16px] font-poppins uppercase text-[#6F4827] whitespace-nowrap">{entry.name}</p>
                     </div>
-                    {/* NINANG Column - Paired */}
-                    <div className="flex-1">
-                      <div className="space-y-2">
-                        {pairedNinangs.map((name, index) => (
-                          <p key={index} className="ninang-item text-[9.5px] sm:text-[13px] md:text-[15px] lg:text-[17px] font-poppins uppercase text-[#6F4827] text-left whitespace-nowrap">
-                            {name}
-                          </p>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                  {/* Unpaired NINANGs - Centered */}
-                  {unpairedNinangs.length > 0 && (
-                    <div className="mt-4 flex justify-center">
-                      <div className="space-y-2">
-                        {unpairedNinangs.map((name, index) => (
-                          <p key={`unpaired-${index}`} className="ninang-item text-[9.5px] sm:text-[13px] md:text-[15px] lg:text-[17px] font-poppins uppercase text-[#6F4827] text-center whitespace-nowrap">
-                            {name}
-                          </p>
-                        ))}
-                      </div>
-                    </div>
-                  )}
-                </div>
-              )
-            })()}
-
-            {/* To stand our side - Title */}
-            <div className="mb-4">
-              <h3 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl imperial-script-regular text-center capitalize whitespace-nowrap" style={{ color: '#6F4827' }}>
-                To stand our side
-              </h3>
-            </div>
-
-            {/* Bestman and Maid of Honor */}
-            <div className="mb-6 flex flex-row gap-4 sm:gap-6 justify-center items-center">
-              {/* Bestman */}
-              {bestman && (
-                <div ref={bestmanRef} className="flex-1">
-                  <p className="text-[11px] sm:text-[14px] md:text-[16px] lg:text-[18px] caudex-bold mb-2 whitespace-nowrap text-right uppercase" style={{ color: '#6F4827' }}>Bestman</p>
-                  {bestman.names && bestman.names.map((name, index) => (
-                    <p key={index} className="text-[9.5px] sm:text-[13px] md:text-[15px] lg:text-[17px] font-poppins uppercase text-[#6F4827] whitespace-nowrap text-right">
-                      {name}
-                    </p>
                   ))}
                 </div>
-              )}
-
-              {/* Maid of Honor */}
-              {maidOfHonor && (
-                <div ref={maidOfHonorRef} className="flex-1">
-                  <p className="text-[11px] sm:text-[14px] md:text-[16px] lg:text-[18px] caudex-bold mb-2 whitespace-nowrap text-left uppercase" style={{ color: '#6F4827' }}>Maid Of Honor</p>
-                  {maidOfHonor.names && maidOfHonor.names.map((name, index) => (
-                    <p key={index} className="text-[9.5px] sm:text-[13px] md:text-[15px] lg:text-[17px] font-poppins uppercase text-[#6F4827] whitespace-nowrap text-left">
-                      {name}
-                    </p>
-                  ))}
-                </div>
-              )}
-            </div>
-
-            {/* Secondary Sponsors */}
-            <div className="mb-6">
-              <h3 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl imperial-script-regular mb-6 text-center capitalize whitespace-nowrap" style={{ color: '#6F4827' }}>Secondary Sponsors</h3>
-
-              {/* Stacked Categories - All Centered */}
-              <div className="flex flex-col gap-6 items-center">
-                {/* Sand Sponsors */}
-                {candleSponsors && (
-                  <div ref={candleSponsorsRef} className="flex flex-col gap-2 justify-center items-center">
-                    <p className="text-[11px] sm:text-[14px] md:text-[16px] lg:text-[18px] caudex-bold mb-2 whitespace-nowrap text-center uppercase" style={{ color: '#6F4827' }}>Sand</p>
-                    {candleSponsors.names && candleSponsors.names.map((name, index) => (
-                      <p key={index} className="text-[9.5px] sm:text-[13px] md:text-[15px] lg:text-[17px] font-poppins uppercase text-[#6F4827] whitespace-nowrap text-center">
-                        {name}
-                      </p>
-                    ))}
-                  </div>
-                )}
-
-                {/* Veil Sponsors */}
-                {veilSponsors && (
-                  <div ref={veilSponsorsRef} className="flex flex-col gap-2 justify-center items-center">
-                    <p className="text-[11px] sm:text-[14px] md:text-[16px] lg:text-[18px] caudex-bold mb-2 whitespace-nowrap text-center uppercase" style={{ color: '#6F4827' }}>Veil</p>
-                    {veilSponsors.names && veilSponsors.names.map((name, index) => (
-                      <p key={index} className="text-[9.5px] sm:text-[13px] md:text-[15px] lg:text-[17px] font-poppins uppercase text-[#6F4827] whitespace-nowrap text-center">
-                        {name}
-                      </p>
-                    ))}
-                  </div>
-                )}
-
-                {/* Cord Sponsors */}
-                {cordSponsors && (
-                  <div ref={cordSponsorsRef} className="flex flex-col gap-2 justify-center items-center">
-                    <p className="text-[11px] sm:text-[14px] md:text-[16px] lg:text-[18px] caudex-bold mb-2 whitespace-nowrap text-center uppercase" style={{ color: '#6F4827' }}>Cord</p>
-                    {cordSponsors.names && cordSponsors.names.map((name, index) => (
-                      <p key={index} className="text-[9.5px] sm:text-[13px] md:text-[15px] lg:text-[17px] font-poppins uppercase text-[#6F4827] whitespace-nowrap text-center">
-                        {name}
-                      </p>
-                    ))}
-                  </div>
-                )}
-              </div>
-            </div>
-
-                {/* Bible Bearer, Ring Bearer, Coin Bearer */}
-                {(bibleBearer || ringBearer || coinBearer) && (
-                  <div className="mb-6">
-                    <div className="flex flex-col gap-6 justify-center items-center mt-6">
-                      {/* Bible Bearer */}
-                      {bibleBearer && (
-                        <div ref={bibleBearerRef}>
-                          <p className="text-[11px] sm:text-[14px] md:text-[16px] lg:text-[18px] caudex-bold mb-2 whitespace-nowrap text-center uppercase" style={{ color: '#6F4827' }}>Bible Bearer</p>
-                          {bibleBearer.names && bibleBearer.names.map((name, index) => (
-                            <p key={index} className="text-[9.5px] sm:text-[13px] md:text-[15px] lg:text-[17px] font-poppins uppercase text-[#6F4827] whitespace-nowrap text-center">
-                              {name}
-                            </p>
-                          ))}
-                        </div>
-                      )}
-
-                      {/* Ring Bearer */}
-                      {ringBearer && (
-                        <div ref={ringBearerRef}>
-                          <p className="text-[11px] sm:text-[14px] md:text-[16px] lg:text-[18px] caudex-bold mb-2 whitespace-nowrap text-center uppercase" style={{ color: '#6F4827' }}>Ring Bearer</p>
-                          {ringBearer.names && ringBearer.names.map((name, index) => (
-                            <p key={index} className="text-[9.5px] sm:text-[13px] md:text-[15px] lg:text-[17px] font-poppins uppercase text-[#6F4827] whitespace-nowrap text-center">
-                              {name}
-                            </p>
-                          ))}
-                        </div>
-                      )}
-
-                      {/* Coin Bearer */}
-                      {coinBearer && (
-                        <div ref={coinBearerRef}>
-                          <p className="text-[11px] sm:text-[14px] md:text-[16px] lg:text-[18px] caudex-bold mb-2 whitespace-nowrap text-center uppercase" style={{ color: '#6F4827' }}>Coin Bearer</p>
-                          {coinBearer.names && coinBearer.names.map((name, index) => (
-                            <p key={index} className="text-[9.5px] sm:text-[13px] md:text-[15px] lg:text-[17px] font-poppins uppercase text-[#6F4827] whitespace-nowrap text-center">
-                              {name}
-                            </p>
-                          ))}
-                        </div>
-                      )}
-
+                <div className="family-col-bride shrink-0 min-w-max">
+                  {entourage.familyMembers.brideSide.map((entry, index) => (
+                    <div key={`bride-${index}`} className="mb-3 text-left">
+                      <p className="text-[10px] sm:text-[13px] md:text-[15px] lg:text-[17px] caudex-bold mb-1 uppercase whitespace-nowrap text-[#6F4827]">{entry.role}</p>
+                      <p className="text-[8.5px] sm:text-[12px] md:text-[14px] lg:text-[16px] font-poppins uppercase text-[#6F4827] whitespace-nowrap">{entry.name}</p>
                     </div>
-                  </div>
-                )}
-
-            {/* Flower Girls */}
-            {littleFlowerGirls && (
-              <div className="mb-6">
-                <div ref={littleFlowerGirlsRef} className="flex flex-col gap-2 justify-center items-center mt-6">
-                  <p className="text-[11px] sm:text-[14px] md:text-[16px] lg:text-[18px] caudex-bold mb-2 whitespace-nowrap text-center uppercase" style={{ color: '#6F4827' }}>FLOWER GIRLS</p>
-                  {littleFlowerGirls.names && littleFlowerGirls.names.map((name, index) => (
-                    <p key={index} className="text-[9.5px] sm:text-[13px] md:text-[15px] lg:text-[17px] font-poppins uppercase text-[#6F4827] whitespace-nowrap text-center">
-                      {name}
-                    </p>
                   ))}
                 </div>
               </div>
             )}
-          </div>
-        </div>
 
-        {/* Flower Banner - Bottom (absolute, full viewport width, container matches image size, flipped vertically) */}
-        <div
-          className="absolute bottom-0 flex items-center justify-center"
-          style={{ left: 0, width: '100vw' }}
-        >
-          <img 
-            src="/assets/images/graphics/flower-banner.png" 
-            alt="Flower banner" 
-            style={{ width: '100vw', height: 'auto', display: 'block', transform: 'scaleY(-1)', transformOrigin: 'center' }}
-          />
+            {/* Principal witnesses */}
+            {principalSponsors && (() => {
+              const ninongs = principalSponsors.ninong || []
+              const ninangs = principalSponsors.ninang || []
+              const rowCount = Math.max(ninongs.length, ninangs.length)
+
+              return (
+                <div ref={principalSponsorsRef} className="mb-8 w-full max-w-5xl shrink-0 mx-auto px-1 sm:px-2">
+                  <h3 className="sponsor-role-title-wrap text-[10px] sm:text-[13px] md:text-[15px] lg:text-[17px] caudex-bold mb-4 px-2 text-center uppercase text-[#6F4827]">
+                    {principalSponsors.displayTitle || 'Principal Sponsors'}
+                  </h3>
+                  <div className="space-y-2 w-full">
+                    {Array.from({ length: rowCount }).map((_, index) => {
+                      const ninongName = (ninongs[index] ?? '').trim()
+                      const ninangName = (ninangs[index] ?? '').trim()
+                      const both = ninongName && ninangName
+                      const onlyNinong = ninongName && !ninangName
+                      const onlyNinang = ninangName && !ninongName
+
+                      if (both) {
+                        return (
+                          <div
+                            key={index}
+                            className="grid w-full grid-cols-2 gap-x-4 sm:gap-x-6 items-start"
+                          >
+                            <div className="flex min-w-0 justify-end overflow-visible">
+                              <p className="ninong-item text-[8.5px] sm:text-[12px] md:text-[14px] lg:text-[16px] font-poppins uppercase text-[#6F4827] text-right whitespace-nowrap">
+                                {ninongs[index]}
+                              </p>
+                            </div>
+                            <div className="flex min-w-0 justify-start overflow-visible">
+                              <p className="ninang-item text-[8.5px] sm:text-[12px] md:text-[14px] lg:text-[16px] font-poppins uppercase text-[#6F4827] text-left whitespace-nowrap">
+                                {ninangs[index]}
+                              </p>
+                            </div>
+                          </div>
+                        )
+                      }
+
+                      if (onlyNinong) {
+                        return (
+                          <div key={index} className="flex w-full justify-center overflow-visible">
+                            <p className="ninong-item text-[8.5px] sm:text-[12px] md:text-[14px] lg:text-[16px] font-poppins uppercase text-[#6F4827] text-center whitespace-nowrap">
+                              {ninongs[index]}
+                            </p>
+                          </div>
+                        )
+                      }
+
+                      if (onlyNinang) {
+                        return (
+                          <div key={index} className="flex w-full justify-center overflow-visible">
+                            <p className="ninang-item text-[8.5px] sm:text-[12px] md:text-[14px] lg:text-[16px] font-poppins uppercase text-[#6F4827] text-center whitespace-nowrap">
+                              {ninangs[index]}
+                            </p>
+                          </div>
+                        )
+                      }
+
+                      return (
+                        <div key={index} className="min-h-[1.25rem] sm:min-h-[1.375rem]" aria-hidden />
+                      )
+                    })}
+                  </div>
+                </div>
+              )
+            })()}
+
+            {(bestman || maidOfHonor) && (
+              <>
+                <div className="mb-4">
+                  <h3 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl imperial-script-regular text-center capitalize whitespace-nowrap" style={{ color: '#6F4827' }}>
+                    To stand our side
+                  </h3>
+                </div>
+
+                <div className="mb-6 flex flex-row gap-4 sm:gap-6 justify-center items-center shrink-0 min-w-max">
+                  {bestman && (
+                    <div ref={bestmanRef} className="shrink-0 min-w-max">
+                      <p className="text-[10px] sm:text-[13px] md:text-[15px] lg:text-[17px] caudex-bold mb-2 whitespace-nowrap text-right uppercase" style={{ color: '#6F4827' }}>Bestman</p>
+                      {bestman.names && bestman.names.map((name, index) => (
+                        <p key={index} className="text-[8.5px] sm:text-[12px] md:text-[14px] lg:text-[16px] font-poppins uppercase text-[#6F4827] whitespace-nowrap text-right">
+                          {name}
+                        </p>
+                      ))}
+                    </div>
+                  )}
+
+                  {maidOfHonor && (
+                    <div ref={maidOfHonorRef} className="shrink-0 min-w-max">
+                      <p className="text-[10px] sm:text-[13px] md:text-[15px] lg:text-[17px] caudex-bold mb-2 whitespace-nowrap text-left uppercase" style={{ color: '#6F4827' }}>Maid Of Honor</p>
+                      {maidOfHonor.names && maidOfHonor.names.map((name, index) => (
+                        <p key={index} className="text-[8.5px] sm:text-[12px] md:text-[14px] lg:text-[16px] font-poppins uppercase text-[#6F4827] whitespace-nowrap text-left">
+                          {name}
+                        </p>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              </>
+            )}
+
+            {/* Groomsmen & Bridesmaids — 50 / 50 columns */}
+            {secondarySponsors && secondarySponsors.groomsmen && secondarySponsors.bridesmaids && (
+              <div ref={secondarySponsorsRef} className="mb-8 w-full max-w-5xl shrink-0 mx-auto px-1 sm:px-2">
+                <div className="mb-4 grid w-full grid-cols-2 gap-x-4 sm:gap-x-6 items-start">
+                  <p className="text-[10px] sm:text-[13px] md:text-[15px] lg:text-[17px] caudex-bold text-right uppercase whitespace-nowrap text-[#6F4827]">
+                    Groomsmen
+                  </p>
+                  <p className="text-[10px] sm:text-[13px] md:text-[15px] lg:text-[17px] caudex-bold text-left uppercase whitespace-nowrap text-[#6F4827]">
+                    Bridesmaids
+                  </p>
+                </div>
+                <div className="w-full space-y-2">
+                  {Array.from({ length: Math.max(secondarySponsors.groomsmen.length, secondarySponsors.bridesmaids.length) }).map((_, index) => (
+                    <div key={index} className="grid w-full grid-cols-2 gap-x-4 sm:gap-x-6 items-start">
+                      <div className="flex min-w-0 justify-end overflow-visible">
+                        {secondarySponsors.groomsmen[index] ? (
+                          <p className="groomsmen-item text-[8.5px] sm:text-[12px] md:text-[14px] lg:text-[16px] font-poppins uppercase text-[#6F4827] text-right whitespace-nowrap">
+                            {secondarySponsors.groomsmen[index]}
+                          </p>
+                        ) : null}
+                      </div>
+                      <div className="flex min-w-0 justify-start overflow-visible">
+                        {secondarySponsors.bridesmaids[index] ? (
+                          <p className="bridesmaids-item text-[8.5px] sm:text-[12px] md:text-[14px] lg:text-[16px] font-poppins uppercase text-[#6F4827] text-left whitespace-nowrap">
+                            {secondarySponsors.bridesmaids[index]}
+                          </p>
+                        ) : null}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            <div className="mb-8 flex flex-col items-center gap-6">
+              {candleSponsors && candleSponsors.names && candleSponsors.names.length >= 2 && (
+                <div ref={candleSponsorsRef} className="flex w-full max-w-5xl flex-col items-center text-center">
+                  <p className="text-[10px] sm:text-[13px] md:text-[15px] lg:text-[17px] caudex-bold mb-1 uppercase whitespace-nowrap text-[#6F4827]">
+                    {candleSponsors.label || 'Candle sponsors'}
+                  </p>
+                  <div className="flex flex-row gap-4 sm:gap-6 justify-center items-start shrink-0 min-w-max">
+                    <p className="shrink-0 min-w-max text-[8.5px] sm:text-[12px] md:text-[14px] lg:text-[16px] font-poppins uppercase text-[#6F4827] text-right whitespace-nowrap">{candleSponsors.names[0]}</p>
+                    <p className="shrink-0 min-w-max text-[8.5px] sm:text-[12px] md:text-[14px] lg:text-[16px] font-poppins uppercase text-[#6F4827] text-left whitespace-nowrap">{candleSponsors.names[1]}</p>
+                  </div>
+                </div>
+              )}
+
+              {veilSponsors && veilSponsors.names && veilSponsors.names.length >= 2 && (
+                <div ref={veilSponsorsRef} className="flex w-full max-w-5xl flex-col items-center text-center">
+                  <p className="text-[10px] sm:text-[13px] md:text-[15px] lg:text-[17px] caudex-bold mb-1 uppercase whitespace-nowrap text-[#6F4827]">
+                    {veilSponsors.label || 'Veil sponsors'}
+                  </p>
+                  <div className="flex flex-row gap-4 sm:gap-6 justify-center items-start shrink-0 min-w-max">
+                    <p className="shrink-0 min-w-max text-[8.5px] sm:text-[12px] md:text-[14px] lg:text-[16px] font-poppins uppercase text-[#6F4827] text-right whitespace-nowrap">{veilSponsors.names[0]}</p>
+                    <p className="shrink-0 min-w-max text-[8.5px] sm:text-[12px] md:text-[14px] lg:text-[16px] font-poppins uppercase text-[#6F4827] text-left whitespace-nowrap">{veilSponsors.names[1]}</p>
+                  </div>
+                </div>
+              )}
+
+              {cordSponsors && cordSponsors.names && cordSponsors.names.length >= 2 && (
+                <div ref={cordSponsorsRef} className="flex w-full max-w-5xl flex-col items-center text-center">
+                  <p className="sponsor-role-title-wrap text-[10px] sm:text-[13px] md:text-[15px] lg:text-[17px] caudex-bold mb-1 uppercase text-[#6F4827]">
+                    {cordSponsors.label || 'Cord sponsors'}
+                  </p>
+                  <div className="flex flex-row gap-4 sm:gap-6 justify-center items-start shrink-0 min-w-max">
+                    <p className="shrink-0 min-w-max text-[8.5px] sm:text-[12px] md:text-[14px] lg:text-[16px] font-poppins uppercase text-[#6F4827] text-right whitespace-nowrap">{cordSponsors.names[0]}</p>
+                    <p className="shrink-0 min-w-max text-[8.5px] sm:text-[12px] md:text-[14px] lg:text-[16px] font-poppins uppercase text-[#6F4827] text-left whitespace-nowrap">{cordSponsors.names[1]}</p>
+                  </div>
+                </div>
+              )}
+            </div>
+          </div>
+
+            <div
+              ref={specialMentionsRef}
+              className="entourage-wrap-prose mx-auto mb-8 w-full min-w-0 max-w-[min(40rem,calc(100vw-3rem))] shrink-0 px-4 sm:px-6"
+            >
+              {entourage.specialMentions && entourage.specialMentions.length > 0 && (
+                <div className="flex flex-col gap-5">
+                  {entourage.specialMentions.map((entry, index) => {
+                    const isStructured =
+                      entry &&
+                      typeof entry === 'object' &&
+                      ('before' in entry ||
+                        'name' in entry ||
+                        'names' in entry ||
+                        'after' in entry)
+
+                    if (!isStructured) {
+                      const line = typeof entry === 'string' ? entry : String(entry)
+                      return (
+                        <p
+                          key={index}
+                          className="special-mention-text max-w-full whitespace-normal text-center text-[10px] sm:text-[13px] md:text-[15px] font-poppins leading-relaxed text-[#6F4827]"
+                        >
+                          {line}
+                        </p>
+                      )
+                    }
+
+                    const before = entry.before ?? ''
+                    const name = entry.name ?? ''
+                    const namesArr = Array.isArray(entry.names)
+                      ? entry.names.map((n) => String(n).trim()).filter(Boolean)
+                      : []
+                    const after = (entry.after ?? '').trim()
+
+                    const nameBlock =
+                      namesArr.length > 0 ? (
+                        <>
+                          <br />
+                          {namesArr.map((n, i) => (
+                            <React.Fragment key={i}>
+                              {i > 0 ? <br /> : null}
+                              <span className="special-mention-name">{n}</span>
+                            </React.Fragment>
+                          ))}
+                        </>
+                      ) : name ? (
+                        <>
+                          <br />
+                          <span className="special-mention-name">{name}</span>
+                        </>
+                      ) : null
+
+                    return (
+                      <p
+                        key={index}
+                        className="special-mention-text max-w-full whitespace-normal text-center text-[10px] sm:text-[13px] md:text-[15px] font-poppins leading-relaxed text-[#6F4827]"
+                      >
+                        {before}
+                        {nameBlock}
+                        {after ? (
+                          <>
+                            <br />
+                            {after}
+                          </>
+                        ) : null}
+                      </p>
+                    )
+                  })}
+                </div>
+              )}
+
+              {littleFlowerGirls && (
+                <div ref={littleFlowerGirlsRef} className="mt-8 flex flex-col items-center gap-3 text-center">
+                  {littleFlowerGirls.label && (
+                    <p className="little-flower-intro max-w-full text-center text-[10px] sm:text-[13px] md:text-[15px] font-poppins leading-relaxed text-[#6F4827]">
+                      {littleFlowerGirls.label}
+                    </p>
+                  )}
+                  {littleFlowerGirls.names && littleFlowerGirls.names.length > 0
+                    ? littleFlowerGirls.names.map((name, index) => (
+                        <p
+                          key={index}
+                          className="little-flower-line max-w-full text-center text-[8.5px] sm:text-[12px] md:text-[14px] lg:text-[16px] font-poppins text-[#6F4827]"
+                        >
+                          {name}
+                        </p>
+                      ))
+                    : null}
+                </div>
+              )}
+            </div>
+
+            {/* Bible Bearer, Ring Bearer, Coin Bearer */}
+            {(bibleBearer || ringBearer || coinBearer) && (
+              <div className="mb-6">
+                <div className="flex flex-col gap-6 justify-center items-center mt-6">
+                  {bibleBearer && (
+                    <div ref={bibleBearerRef}>
+                      <p className="text-[10px] sm:text-[13px] md:text-[15px] lg:text-[17px] caudex-bold mb-2 whitespace-nowrap text-center uppercase" style={{ color: '#6F4827' }}>Bible Bearer</p>
+                      {bibleBearer.names && bibleBearer.names.map((name, index) => (
+                        <p key={index} className="text-[8.5px] sm:text-[12px] md:text-[14px] lg:text-[16px] font-poppins uppercase text-[#6F4827] whitespace-nowrap text-center">
+                          {name}
+                        </p>
+                      ))}
+                    </div>
+                  )}
+
+                  {ringBearer && (
+                    <div ref={ringBearerRef}>
+                      <p className="text-[10px] sm:text-[13px] md:text-[15px] lg:text-[17px] caudex-bold mb-2 whitespace-nowrap text-center uppercase" style={{ color: '#6F4827' }}>Ring Bearer</p>
+                      {ringBearer.names && ringBearer.names.map((name, index) => (
+                        <p key={index} className="text-[8.5px] sm:text-[12px] md:text-[14px] lg:text-[16px] font-poppins uppercase text-[#6F4827] whitespace-nowrap text-center">
+                          {name}
+                        </p>
+                      ))}
+                    </div>
+                  )}
+
+                  {coinBearer && (
+                    <div ref={coinBearerRef}>
+                      <p className="text-[10px] sm:text-[13px] md:text-[15px] lg:text-[17px] caudex-bold mb-2 whitespace-nowrap text-center uppercase" style={{ color: '#6F4827' }}>Coin Bearer</p>
+                      {coinBearer.names && coinBearer.names.map((name, index) => (
+                        <p key={index} className="text-[8.5px] sm:text-[12px] md:text-[14px] lg:text-[16px] font-poppins uppercase text-[#6F4827] whitespace-nowrap text-center">
+                          {name}
+                        </p>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              </div>
+            )}
+
+            <div className="relative z-[50] mt-12 sm:mt-16 flex w-full justify-center pb-8 sm:pb-10">
+              <Link
+                id="entourage-back-link"
+                to="/"
+                replace
+                className="entourage-back-link inline-block caudex-bold text-sm sm:text-base md:text-lg uppercase tracking-[0.12em] underline decoration-white/90 underline-offset-[0.35em] transition-opacity duration-300 hover:opacity-90 active:opacity-75"
+              >
+                Back
+              </Link>
+            </div>
         </div>
       </section>
-      
-      {/* Back Button - Circular, Bottom Right - Outside section to avoid transform issues */}
-      <button
-        ref={backButtonRef}
-        onClick={() => {
-          // Slide out page to the left before navigating
-          if (sectionRef.current) {
-            gsap.to(sectionRef.current, {
-              x: '-100%',
-              opacity: 0,
-              duration: 0.5,
-              ease: "power2.in",
-              onComplete: () => {
-                navigate('/')
-              }
-            })
-          } else {
-            navigate('/')
-          }
-        }}
-        className="fixed bottom-12 right-6 z-[100] w-14 h-14 bg-[#6F4827] text-white rounded-full shadow-lg hover:bg-[#6F4827]/80 hover:scale-110 transition-all duration-300 flex items-center justify-center group"
-        aria-label="Back to home"
-        style={{ pointerEvents: 'auto' }}
-      >
-        <ArrowLeft className="w-6 h-6 group-hover:-translate-x-1 transition-transform duration-300" />
-      </button>
     </>
   )
 }

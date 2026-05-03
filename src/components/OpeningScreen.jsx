@@ -1,25 +1,32 @@
 import React, { useRef, useEffect } from 'react'
 import { gsap } from 'gsap'
-import { couple } from '../data'
-import { weddingConfig } from '../config/weddingConfig'
+import { themeConfig } from '../config/themeConfig'
+
+/** Same three prenup shots — used by grid and (when enabled) stack layout */
+const OPENING_PRENUP_IMAGES = [
+  '/assets/images/prenup/DSC02410.jpg', // row 1 (top)
+  '/assets/images/prenup/DSC02746.jpg',
+  '/assets/images/prenup/DSC02496.jpg',
+]
+
+/** `'grid'` — three full-width rows. `'stack'` — rotated stack (kept for later). */
+const OPENING_BG_MODE = 'grid'
 
 function OpeningScreen({ onEnvelopeOpen }) {
   const envelopeRef = useRef(null)
   const openingSectionRef = useRef(null)
   const clickMeRef = useRef(null)
   const coupleNameRef = useRef(null)
+  const stampRef = useRef(null)
 
   // Animate text and envelope on mount
   useEffect(() => {
-    // Set initial hidden states
     if (clickMeRef.current) gsap.set(clickMeRef.current, { opacity: 0, y: -30 })
     if (envelopeRef.current) gsap.set(envelopeRef.current, { opacity: 0, scale: 0.8 })
     if (coupleNameRef.current) gsap.set(coupleNameRef.current, { opacity: 0, y: 30 })
 
-    // Create animation timeline
     const tl = gsap.timeline({ delay: 0.3 })
 
-    // Animate "Click me!" text - fade in and slide down
     if (clickMeRef.current) {
       tl.to(clickMeRef.current, {
         opacity: 1,
@@ -29,7 +36,6 @@ function OpeningScreen({ onEnvelopeOpen }) {
       })
     }
 
-    // Animate envelope - fade in, scale up with bounce
     if (envelopeRef.current) {
       tl.to(envelopeRef.current, {
         opacity: 1,
@@ -39,7 +45,6 @@ function OpeningScreen({ onEnvelopeOpen }) {
       }, "-=0.4")
     }
 
-    // Animate couple name and date - fade in and slide up
     if (coupleNameRef.current) {
       tl.to(coupleNameRef.current, {
         opacity: 1,
@@ -48,66 +53,87 @@ function OpeningScreen({ onEnvelopeOpen }) {
         ease: "power2.out"
       }, "-=0.6")
     }
+
+    if (stampRef.current) {
+      gsap.to(stampRef.current, {
+        rotation: 360,
+        duration: 8,
+        ease: "none",
+        repeat: -1
+      })
+    }
   }, [])
 
   const handleEnvelopeClick = () => {
     const envelope = envelopeRef.current
     const openingSection = openingSectionRef.current
-    
+
     if (envelope) {
       envelope.classList.add('active')
-      // Letter translation: 0.3s delay + 0.8s duration = 1.1s total
-      // Wait 1 second after letter finishes translating
       setTimeout(() => {
         if (openingSection) {
           openingSection.classList.add('zooming-out')
-          // After zoom and fadeout animation completes, reveal invitation
           setTimeout(() => {
             if (onEnvelopeOpen) {
               onEnvelopeOpen()
             }
-          }, 1500) // Animation duration
+          }, 1500)
         }
-      }, 2100) // 1.1s (letter animation) + 1000ms (1 second wait)
+      }, 2100)
     }
   }
 
   return (
-    <div 
+    <div
       ref={openingSectionRef}
       className="fixed inset-0 z-[9999] flex items-center justify-center opening-section"
+      style={themeConfig.cssVariables}
     >
-      {/* Background Image */}
-      <div
-        className="absolute inset-0 z-0 w-full h-full"
-        style={{
-          backgroundImage: 'url(/assets/images/graphics/textured-bg-2.png)',
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          backgroundRepeat: 'no-repeat',
-          opacity: 0.5
-        }}
-      />
+      {OPENING_BG_MODE === 'stack' ? (
+        <div className="opening-stack-wrap" aria-hidden="true">
+          <div className="opening-stack-inner">
+            {OPENING_PRENUP_IMAGES.map((src, i) => (
+              <img
+                key={src}
+                src={src}
+                alt=""
+                className={`opening-stack-img opening-stack-img--${i === 0 ? 'back' : i === 1 ? 'mid' : 'front'}`}
+              />
+            ))}
+          </div>
+        </div>
+      ) : (
+        <div className="opening-bg-grid" aria-hidden="true">
+          {OPENING_PRENUP_IMAGES.map((src) => (
+            <div key={src} className="opening-bg-grid-row">
+              <img src={src} alt="" className="opening-bg-grid-img" />
+            </div>
+          ))}
+        </div>
+      )}
+      <div className="absolute inset-0 bg-[#8C6A3B]/35 z-[1]" />
       <section className="cssletter flex flex-col items-center relative z-10 w-full py-8" style={{ minHeight: 'auto', height: 'auto' }}>
-        {/* Click me text */}
-        <div ref={clickMeRef} className="mb-12 sm:mb-16 md:mb-20 lg:mb-24 text-center click-me-container">
-          <p className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold" style={{ fontFamily: 'var(--letter-font)', color: '#171717' }}>
-            Click me!
+        <div ref={clickMeRef} className="mb-4 sm:mb-6 md:mb-8 lg:mb-10 text-center click-me-container">
+          <p className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-foglihten uppercase leading-tight" style={{ color: '#EDEDDD' }}>
+            YOU ARE CORDIALLY
+          </p>
+          <p className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl xl:text-[10rem] leading-tight" style={{ fontFamily: 'Pinyon Script, cursive', color: '#F5F5DC' }}>
+            Invited
           </p>
         </div>
         <div className="envelope" ref={envelopeRef}>
-          <button 
-            className="heart stamp-button" 
-            id="openEnvelope" 
+          <button
+            className="heart stamp-button"
+            id="openEnvelope"
             aria-label="Open Envelope"
             onClick={handleEnvelopeClick}
           >
-            <img 
-              src="/assets/images/graphics/stamp.png" 
-              alt="Stamp" 
+            <img
+              ref={stampRef}
+              src="/assets/images/graphics/stamp.png"
+              alt="Stamp"
               className="stamp-image"
               onError={(e) => {
-                // Hide stamp if image doesn't exist
                 e.target.style.display = 'none'
               }}
             />
@@ -118,41 +144,32 @@ function OpeningScreen({ onEnvelopeOpen }) {
             <div className="envelope-right"></div>
             <div className="envelope-bottom"></div>
           </div>
-          {/* Letter that slides up when envelope opens */}
           <div className="envelope-letter envelope-letter-centered">
-            <p className="text-2xl sm:text-3xl md:text-4xl font-bold">You are invited!</p>
-            <img 
-              src="/assets/images/graphics/cutlery-sketch.png" 
-              alt="Cutlery sketch" 
+            <p className="opening-envelope-invite text-lg sm:text-xl md:text-2xl font-bold px-2 leading-snug">
+              Celebrate with Us
+            </p>
+            <img
+              src="/assets/images/graphics/cutlery-sketch.png"
+              alt="Cutlery sketch"
               className="mt-4 w-20 sm:w-24 md:w-28 h-auto mx-auto"
               onError={(e) => {
-                // Use ring-sketch as fallback if cutlery-sketch doesn't exist
                 e.target.src = '/assets/images/graphics/ring-sketch.png'
               }}
             />
           </div>
         </div>
-        {/* Couple name and date below envelope */}
-        <div ref={coupleNameRef} className="mt-10 sm:mt-14 md:mt-18 text-center couple-name-container">
-          <h2 
-            className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-serif leading-tight"
-            style={{ 
-              color: '#171717', 
-              fontSize: 'clamp(1.25rem, 3.2vw, 40px)',
-              textShadow: '0 2px 4px rgba(0, 0, 0, 0.1)'
+        <div ref={coupleNameRef} className="mt-4 sm:mt-6 md:mt-8 text-center couple-name-container">
+          <p
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-foglihten uppercase leading-tight"
+            style={{
+              color: '#EDEDDD',
+              fontSize: 'clamp(1.5rem, 4vw, 48px)',
+              textShadow: 'none',
+              cursor: 'pointer'
             }}
+            onClick={handleEnvelopeClick}
           >
-            {couple.together}
-          </h2>
-          <p 
-            className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-script mt-1"
-            style={{ 
-              color: '#171717', 
-              fontSize: 'clamp(0.9rem, 2vw, 24px)',
-              textShadow: '0 2px 4px rgba(0, 0, 0, 0.1)'
-            }}
-          >
-            {new Date(weddingConfig.wedding.date).toLocaleDateString('en-GB', { day: '2-digit', month: '2-digit', year: 'numeric' }).replace(/\//g, '.')}
+            CLICK TO OPEN
           </p>
         </div>
       </section>
@@ -161,4 +178,3 @@ function OpeningScreen({ onEnvelopeOpen }) {
 }
 
 export default OpeningScreen
-

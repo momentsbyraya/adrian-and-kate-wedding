@@ -7,13 +7,14 @@ import RSVPModal from './components/RSVPModal'
 import DynamicTitle from './components/DynamicTitle'
 import OpeningScreen from './components/OpeningScreen'
 import Loader from './components/Loader'
-// import Watermark from './components/Watermark'
+import Watermark from './components/Watermark'
 import ScrollToTop from './components/ScrollToTop'
 import Details from './components/pages/Details'
 import Entourage from './components/pages/Entourage'
 import Moments from './components/pages/Moments'
 import FAQ from './components/pages/FAQ'
-import { AudioProvider, useAudio } from './contexts/AudioContext'
+import AudioProvider from './contexts/AudioProvider'
+import { useAudio } from './hooks/useAudio'
 
 function AppContent() {
   const [isRSVPModalOpen, setIsRSVPModalOpen] = useState(false)
@@ -27,9 +28,7 @@ function AppContent() {
     const preloadImages = async () => {
       const criticalImages = [
         // NavIndex images - prenup photos used on home page
-        '/assets/images/prenup/DSC_0303.jpeg',  // Polaroid image
-        '/assets/images/prenup/DSC_9886.jpeg',  // Moments polaroid 1
-        '/assets/images/prenup/DSC_9490.jpeg',  // Moments polaroid 2
+        '/assets/images/prenup/DSC02678.jpg',
         // NavIndex graphics - all decorative elements
         '/assets/images/graphics/envelope.png',
         '/assets/images/graphics/flower-1.png',
@@ -40,6 +39,17 @@ function AppContent() {
         '/assets/images/graphics/flower-8.png',
         '/assets/images/graphics/textured-bg-2.png',
         '/assets/images/graphics/falling-flower.png',
+        '/assets/images/graphics/white-blur.png',
+        // NavIndex polaroids (top + OUR MOMENTS row)
+        '/assets/images/prenup/DSC02479.jpg',
+        '/assets/images/prenup/DSC02410.jpg',
+        '/assets/images/prenup/DSC02456.jpg',
+        // OpeningScreen grid (shares DSC02410 with NavIndex)
+        '/assets/images/prenup/DSC02746.jpg',
+        '/assets/images/prenup/DSC02496.jpg',
+        // Details PhotoSection (prenup shots not used on NavIndex)
+        '/assets/images/prenup/DSC02419.jpg',
+        '/assets/images/prenup/DSC02483.jpg',
         // OpeningScreen images
         '/assets/images/graphics/stamp.png',
         '/assets/images/graphics/cutlery-sketch.png',
@@ -51,8 +61,8 @@ function AppContent() {
         if (document.fonts && document.fonts.ready) {
           try {
             await document.fonts.ready
-          } catch (e) {
-            console.warn('Font loading error:', e)
+          } catch {
+            /* ignore */
           }
         }
       }
@@ -80,7 +90,6 @@ function AppContent() {
               }
             }
             img.onerror = () => {
-              console.warn(`Failed to load image: ${src}`)
               resolve() // Resolve even on error to not block loading
             }
             img.src = src
@@ -95,18 +104,7 @@ function AppContent() {
 
       // Wait for all critical resources to load
       // Use Promise.allSettled to ensure we don't block on individual failures
-      const results = await Promise.allSettled([
-        Promise.all(imagePromises),
-        fontPromise
-      ])
-
-      // Check if critical images loaded successfully
-      const imageResults = results[0]
-      if (imageResults.status === 'fulfilled') {
-        console.log('All critical images loaded')
-      } else {
-        console.warn('Some images failed to load:', imageResults.reason)
-      }
+      await Promise.allSettled([Promise.all(imagePromises), fontPromise])
 
       // Additional delay to ensure browser has processed all resources
       // This helps prevent lag when NavIndex first renders
@@ -129,7 +127,6 @@ function AppContent() {
   return (
     <div className="App min-h-screen wedding-gradient">
       <DynamicTitle />
-      {/* <Watermark /> */}
       <ScrollToTop />
       {/* Loader - shows while preloading */}
       {isLoading && (
@@ -155,6 +152,7 @@ function AppContent() {
         </>
       )}
       <RSVPModal isOpen={isRSVPModalOpen} onClose={() => setIsRSVPModalOpen(false)} />
+      <Watermark />
     </div>
   )
 }

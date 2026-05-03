@@ -14,5 +14,8 @@
     "church": "/assets/images/venues/church.svg",
     "reception": "/assets/images/venues/reception.svg"
   },
+  "graphics": {
+    "bannerWhiteBlur": "/assets/images/graphics/white-blur.png"
+  },
   "favicon": "/assets/images/favicon.png"
 } 

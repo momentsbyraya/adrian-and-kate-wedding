@@ -125,3 +125,84 @@
 .falling-flower.delay-14 {
   animation-delay: 14s;
 }
+
+/* Full-section background — prenup photo (sharp; brown wash on top) */
+.entourage-bg {
+  background-image: url(/assets/images/prenup/DSC02746.jpg);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+/* Chocolate brown wash over photo */
+.entourage-overlay {
+  background-color: rgba(62, 38, 24, 0.82);
+  pointer-events: none;
+}
+
+/* Do not clip titles or names — let page extend horizontally if needed */
+#entourage {
+  overflow: visible;
+}
+
+#entourage .entourage-foreground {
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
+  overflow: visible;
+  width: 100%;
+  max-width: none;
+}
+
+/* Names & body copy: softer white (not full #fff) */
+#entourage .entourage-foreground * {
+  color: rgba(255, 255, 255, 0.78) !important;
+  white-space: nowrap !important;
+  text-overflow: clip !important;
+  overflow: visible !important;
+}
+
+/* Category / section titles only: full white */
+#entourage .entourage-foreground h3,
+#entourage .entourage-foreground .caudex-bold,
+#entourage .entourage-foreground .imperial-script-regular {
+  color: #ffffff !important;
+}
+
+/* Narrative + flower copy — must beat #entourage .entourage-foreground * { nowrap } */
+#entourage .entourage-foreground .entourage-wrap-prose {
+  width: 100%;
+  max-width: min(100%, 40rem);
+  min-width: 0;
+}
+
+#entourage .entourage-foreground .entourage-wrap-prose,
+#entourage .entourage-foreground .entourage-wrap-prose * {
+  white-space: normal !important;
+  overflow-wrap: break-word !important;
+  word-wrap: break-word !important;
+}
+
+#entourage .entourage-foreground .special-mention-name {
+  font-family: inherit;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}
+
+/* Long category titles (principal witnesses, cord, etc.): caudex role style, allow wrap */
+#entourage .entourage-foreground .sponsor-role-title-wrap {
+  white-space: normal !important;
+}
+
+/* Footer “Back” to home — beats muted foreground color on descendants */
+#entourage .entourage-foreground .entourage-back-link {
+  position: relative;
+  z-index: 50;
+  color: #ffffff !important;
+  white-space: normal !important;
+  background-color: transparent;
+  cursor: pointer;
+  pointer-events: auto;
+}
+

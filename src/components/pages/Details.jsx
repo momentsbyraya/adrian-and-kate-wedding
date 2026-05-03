@@ -14,6 +14,7 @@ import Schedule from '../Schedule'
 import DressCode from '../DressCode'
 import GiftRegistry from '../GiftRegistry'
 import PhotoUpload from '../PhotoUpload'
+import FAQSection from '../FAQSection'
 import './Details.css'
 
 // Register ScrollTrigger plugin
@@ -157,7 +158,7 @@ const Details = () => {
     >
       {/* Prenup Image at Top */}
       <ImageBanner 
-        src="/assets/images/prenup/prenup-1.png" 
+        src="/assets/images/prenup/DSC02456.jpg" 
         alt="Prenup photo"
       />
       
@@ -205,19 +206,19 @@ const Details = () => {
       <div ref={photoSectionRef}>
       <PhotoSection
         images={[
-          { src: '/assets/images/prenup/img4.jpeg', alt: 'Photo 1', label: 'Memories' },
-          { src: '/assets/images/prenup/img1.jpg', alt: 'Photo 2', label: 'Together' },
-          { src: '/assets/images/prenup/img6.jpg', alt: 'Photo 3', label: 'Love' }
+          { src: '/assets/images/prenup/DSC02483.jpg', alt: 'Prenup photo', label: 'Memories' },
+          { src: '/assets/images/prenup/DSC02419.jpg', alt: 'Prenup photo', label: 'Together' },
+          { src: '/assets/images/prenup/DSC02496.jpg', alt: 'Prenup photo', label: 'Love' }
         ]}
         paragraph="This is where our journey began, a moment captured in time that will forever hold a special place in our hearts."
         backgroundTexts={['Forever', 'Always', 'Together', 'Love', 'Us']}
       />
               </div>
 
-      {/* Wave Container - Before Dress Code */}
+      {/* Wave Container - Before Dress Code (coffee brown) */}
       <div className="wave relative w-full" style={{ marginBottom: '-1px' }}>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" className="w-full h-auto" style={{ display: 'block' }}>
-          <path fill="#FFFFFF" fillOpacity="1" stroke="none" d="M0,192L60,165.3C120,139,240,85,360,90.7C480,96,600,160,720,197.3C840,235,960,245,1080,229.3C1200,213,1320,171,1380,149.3L1440,128L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"></path>
+          <path fill="#6F4827" fillOpacity="1" stroke="none" d="M0,192L60,165.3C120,139,240,85,360,90.7C480,96,600,160,720,197.3C840,235,960,245,1080,229.3C1200,213,1320,171,1380,149.3L1440,128L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"></path>
         </svg>
       </div>
 
@@ -229,22 +230,23 @@ const Details = () => {
                     </div>
                 </div>
 
-      {/* Wave Container - Bottom Variation - After Dress Code */}
+      {/* Wave Container - Bottom Variation - After Dress Code (coffee #6F4827 — same as wave above dress code) */}
       <div className="wave wave-bottom relative w-full" style={{ marginTop: '-1px' }}>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" className="w-full h-auto" style={{ display: 'block' }}>
-          <path fill="#FFFFFF" fillOpacity="1" stroke="none" d="M0,192L60,165.3C120,139,240,85,360,90.7C480,96,600,160,720,197.3C840,235,960,245,1080,229.3C1200,213,1320,171,1380,149.3L1440,128L1440,0L1380,0C1320,0,1200,0,1080,0C960,0,840,0,720,0C600,0,480,0,360,0C240,0,120,0,60,0L0,0Z"></path>
+          <path fill="#6F4827" fillOpacity="1" stroke="none" d="M0,192L60,165.3C120,139,240,85,360,90.7C480,96,600,160,720,197.3C840,235,960,245,1080,229.3C1200,213,1320,171,1380,149.3L1440,128L1440,0L1380,0C1320,0,1200,0,1080,0C960,0,840,0,720,0C600,0,480,0,360,0C240,0,120,0,60,0L0,0Z"></path>
         </svg>
       </div>
 
-      {/* Content */}
-      <div className="relative z-20 flex items-center justify-center pt-12" style={{ marginTop: '-1px' }}>
+      {/* Content — gift, photo upload (Oh snap), then FAQ */}
+      <div
+        className="relative z-20 flex flex-col items-center justify-center pt-12"
+        style={{ marginTop: '-1px' }}
+      >
         <div className="max-w-xs sm:max-w-md lg:max-w-3xl w-full mx-auto">
-          {/* Gift Registry Section */}
           <GiftRegistry />
-
-          {/* Photo Upload Section */}
           <PhotoUpload />
         </div>
+        <FAQSection id="faq" />
       </div>
 
     </section>

@@ -192,8 +192,8 @@ const NavIndex = ({ onOpenRSVP }) => {
       {/* Background Image */}
       <div className="absolute inset-0 bg-cover bg-no-repeat nav-index-bg" />
       
-      {/* Blurry White Overlay */}
-      <div className="absolute inset-0 backdrop-blur-sm nav-index-overlay" />
+      {/* Light wash for readability over blurred photo */}
+      <div className="absolute inset-0 nav-index-overlay" />
       
       <div 
         ref={navRef}
@@ -299,7 +299,7 @@ const NavIndex = ({ onOpenRSVP }) => {
               className="bg-white relative polaroid-container"
             >
               <img 
-                src="/assets/images/prenup/added/ISE09955.png" 
+                src="/assets/images/prenup/DSC02479.jpg" 
                 alt="Prenup photo" 
                 className="w-full object-cover polaroid-image"
                 style={{ objectPosition: 'center bottom' }}
@@ -421,7 +421,6 @@ const NavIndex = ({ onOpenRSVP }) => {
             onClick={(e) => {
               e.preventDefault()
               e.stopPropagation()
-              console.log('OUR MOMENTS clicked, navigating to /moments')
               // Slide out animation before navigation
               if (navRef.current) {
                 gsap.to(navRef.current, {
@@ -430,27 +429,23 @@ const NavIndex = ({ onOpenRSVP }) => {
                   duration: 0.5,
                   ease: "power2.in",
                   onComplete: () => {
-                    console.log('Animation complete, navigating...')
                     try {
                       navigate('/moments')
-                    } catch (error) {
-                      console.error('Navigation error:', error)
+                    } catch {
                       window.location.href = '/moments'
                     }
                   }
                 })
               } else {
-                console.log('No navRef, navigating directly...')
                 try {
                   navigate('/moments')
-                } catch (error) {
-                  console.error('Navigation error:', error)
+                } catch {
                   window.location.href = '/moments'
                 }
               }
             }}
           >
-             <span className={`nanum-myeongjo-regular text-center underline pulsating-moments moments-text ${themeConfig.text.primary}`}>
+             <span className="nanum-myeongjo-regular text-center underline pulsating-moments moments-text text-white">
                OUR MOMENTS
              </span>
           </button>
@@ -480,7 +475,7 @@ const NavIndex = ({ onOpenRSVP }) => {
           >
             <div className="bg-white relative polaroid-1-container">
               <img 
-                src="/assets/images/prenup/img3.jpeg" 
+                src="/assets/images/prenup/DSC02410.jpg" 
                 alt="Prenup photo" 
                 className="w-full object-cover polaroid-1-image"
               />
@@ -512,7 +507,7 @@ const NavIndex = ({ onOpenRSVP }) => {
           >
             <div className="bg-white relative polaroid-2-container">
               <img 
-                src="/assets/images/prenup/img5.jpg" 
+                src="/assets/images/prenup/DSC02456.jpg" 
                 alt="Prenup photo" 
                 className="w-full object-cover polaroid-2-image"
               />

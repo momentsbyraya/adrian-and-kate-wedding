@@ -1,4 +1,5 @@
 import React from 'react'
+import { images } from '../data'
 import GradientLayer from './GradientLayer'
 
 const ImageBanner = ({ src, alt = "Banner image" }) => {
@@ -17,6 +18,14 @@ const ImageBanner = ({ src, alt = "Banner image" }) => {
           <GradientLayer height="h-8" opacity={0.3} gradientId="whiteGradient4" />
           <GradientLayer height="h-6" opacity={0.25} gradientId="whiteGradient5" />
           <GradientLayer height="h-4" opacity={0.2} gradientId="whiteGradient6" />
+
+          {/* Full-bleed white blur at bottom — asset from `images.json` → graphics */}
+          <img
+            src={images.graphics.bannerWhiteBlur}
+            alt=""
+            className="pointer-events-none absolute bottom-0 left-1/2 z-[8] h-36 w-screen max-w-none -translate-x-1/2 object-cover object-bottom sm:h-40 md:h-44"
+            aria-hidden
+          />
           
           {/* Solid transition SVG at bottom */}
           <svg 
@@ -39,13 +48,14 @@ const ImageBanner = ({ src, alt = "Banner image" }) => {
           <div className="absolute bottom-0 left-0 w-full flex flex-col justify-center items-center pb-0.5 z-10">
             <div className="w-full text-center">
               {/* The in Ballet font */}
-              <h1 className="font-ballet text-5xl sm:text-6xl md:text-7xl lg:text-8xl mb-2" style={{ color: '#6F4827' }}>
+              <h1 className="font-ballet mb-2 text-5xl sm:text-6xl md:text-7xl lg:text-8xl" style={{ color: '#6F4827' }}>
                 The
               </h1>
               {/* Details in Tebranos font */}
-              <h2 className="font-tebranos text-6xl sm:text-7xl md:text-8xl lg:text-9xl uppercase mb-4 -mt-6" style={{ 
-                color: '#6F4827'
-              }}>
+              <h2
+                className="font-tebranos -mt-6 mb-4 text-6xl uppercase sm:text-7xl md:text-8xl lg:text-9xl"
+                style={{ color: '#6F4827' }}
+              >
                 Details
               </h2>
             </div>

@@ -1,72 +1,102 @@
 {
-  "couple": {
-    "groom": {
-      "name": "Yrel Leiy Edson S. Laurencio"
-    },
-    "bride": {
-      "name": "Faith Hannah P. Manantan"
-    }
+  "familyMembers": {
+    "groomSide": [
+      { "role": "Mother of the Groom", "name": "Anita Sacdalan" },
+      { "role": "Brother of the Groom", "name": "Baylon Sacdalan" }
+    ],
+    "brideSide": [
+      { "role": "Brother of the Bride", "name": "Jerico Estenor" },
+      { "role": "Sister-in-law of the Bride", "name": "Therese Gail Estenor" }
+    ]
   },
-  "parents": {
-    "groom": {
-      "father": "Mr. Edison S. Laurencio",
-      "mother": "Mrs. Rosalie S. Laurencio"
+  "specialMentions": [
+    {
+      "before": "Our big day wouldn't be complete without",
+      "name": "Adam Rene",
+      "after": "to bring us our wedding ring"
     },
-    "bride": {
-      "father": "The late Mr. Artemio T. Manantan",
-      "mother": "Mrs. Zenaida P. Manantan"
+    {
+      "before": "Hand in hand",
+      "name": "Luci and Hansi",
+      "after": "will carry our treasure to prosper our marriage"
+    },
+    {
+      "before": "Bless be the little hands of",
+      "name": "Clara",
+      "after": "who will carry our holy bible to strengthen our faith"
+    },
+    {
+      "before": "Our aisle will be showered with petals by our little godchildren",
+      "names": [
+        "Aeshan Ziahreign",
+        "Aleesha Chloe",
+        "Sherestine Aislah"
+      ],
+      "after": ""
     }
-  },
+  ],
   "entourageList": [
     {
       "category": "Principal Sponsors",
+      "displayTitle": "To stand as our principal witnesses",
       "ninong": [
-        "Mr. Darius L. Jamora",
-        "Mr. Renato F. Magpantay"
+        "Tito Ramon De Jesus",
+        "Mr. Jun Cañadido",
+        "Mr. Ronnie Amos",
+        "",
+        "",
+        "Mr. Al Jocson",
+        "Mr. Arnel Guirre"
       ],
       "ninang": [
-        "Mrs. Lilibeth P. Jamora",
-        "Mrs. Ana C. Magpantay",
-        "Ms. Lucylyn S. Laurencio",
-        "Mrs. Josephine S. Viado",
-        "Mr. Jimmy T. Salatan",
-        "Mrs. Loida L. Binuya",
-        "Mr. Jhun Lord M. Marzan",
-        "Mrs. Lorene L. Villafania"
+        "Tita Carina Rueda",
+        "Mrs. Rose Dimaculangan",
+        "Mrs. Bevvy Joan Terry",
+        "Mrs. Edith Manalo Malveda",
+        "Tita Imelda Abeledo",
+        "Ms. Arlene Santander Lim",
+        ""
       ]
     },
     {
-      "category": "Bestman",
-      "names": [
-        "Juan Samuel P. Salatan"
-      ]
-    },
-    {
-      "category": "Maid of Honor",
-      "names": [
-        "Yvaine Xaurielle S. Laurencio"
+      "category": "Secondary Sponsors",
+      "groomsmen": [
+        "Glady Balmes",
+        "Engelbert Zeymour Set",
+        "Brendel Winnie Rabanal",
+        "James Mark Mina",
+        "Jack Jacinto",
+        "Vash Enrade",
+        "Majorca Laquindanum",
+        "Vina Ziga",
+        "Kj Respondo"
+      ],
+      "bridesmaids": [
+        "Maricar Franial",
+        "Thea Gabrielle Varias",
+        "Maricel Arcibal",
+        "Che Cabanaoan",
+        "Issai Jacinto",
+        "Stephanie De Austria",
+        "Marissa Molejon",
+        "Vivian Laquesta",
+        "Annie Nobleza"
       ]
     },
     {
       "category": "Candle Sponsors",
-      "names": [
-        "Matthew M. Cayabyab",
-        "Blessy Jasiel L. Vinluan"
-      ]
+      "label": "To light our path",
+      "names": ["Mary Ann Duque", "Jocelyn Set"]
     },
     {
       "category": "Veil Sponsors",
-      "names": [
-        "Andrei Liorenzo M. Salatan",
-        "Florence Angelica S. Viado"
-      ]
+      "label": "To clothe us as one",
+      "names": ["Jerico Estenor", "Therese Gail Estenor"]
     },
     {
       "category": "Cord Sponsors",
-      "names": [
-        "Noel D. Manantan",
-        "Paula Eunice P. Manantan"
-      ]
+      "label": "To bind us as together always and forever",
+      "names": ["Edgar Reyes", "Myrna Sacdalan Reyes"]
     }
   ]
 }

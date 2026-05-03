@@ -1,15 +1,18 @@
 /* NavIndex Component Styles */
 
-/* Background */
+/* Background — prenup photo, blurred (content stays sharp above z-10) */
 .nav-index-bg {
-  background-image: url(/assets/images/graphics/textured-bg-2.png);
+  background-image: url(/assets/images/prenup/DSC02678.jpg);
   background-position: center;
   background-size: cover;
+  background-repeat: no-repeat;
   opacity: 1;
+  filter: blur(6px);
+  transform: scale(1.05);
 }
 
 .nav-index-overlay {
-  background-color: rgba(255, 255, 255, 0);
+  background-color: rgba(255, 255, 255, 0.25);
 }
 
 /* Envelope Container */
@@ -148,13 +151,14 @@
 .rsvp-text-kindly {
   font-size: clamp(0.625rem, 1vw, 1rem);
   margin-bottom: 0;
-  color: #6F4827;
+  color: #ffffff;
 }
 
 .rsvp-text-container {
-  color: #6F4827;
+  color: #ffffff;
   margin-top: 0;
   line-height: 0.8;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.45);
 }
 
 .rsvp-text-r {
@@ -231,11 +235,35 @@
 
 .moments-text {
   font-size: clamp(0.75rem, 1.2vw, 1.25rem);
-  color: var(--primary-text, #6F4827);
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff;
+  /* Bright white read + soft halo (countdown-style depth) */
+  text-shadow:
+    0 0 1px rgba(255, 255, 255, 1),
+    0 0 12px rgba(255, 255, 255, 0.55),
+    0 1px 4px rgba(0, 0, 0, 0.5);
+  text-decoration-color: rgba(255, 255, 255, 0.98);
   text-decoration-thickness: 1px;
   text-underline-offset: 0.15em;
   margin: 0;
   pointer-events: none;
+}
+
+/* Pulse scale only — global pulsating-moments dips opacity to 0.9 and dulls white */
+@keyframes pulsate-moments-nav {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.12);
+    opacity: 1;
+  }
+}
+
+.moments-text.pulsating-moments {
+  animation: pulsate-moments-nav 2s ease-in-out infinite;
 }
 
 /* Polaroid Image 1 */

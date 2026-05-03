@@ -22,14 +22,6 @@
   aspect-ratio: 1 / 1;
 }
 
-/* On screens 992px and above, venue content container should fit content height */
-@media (min-width: 992px) {
-  .venue-image-container.flex.flex-col {
-    aspect-ratio: auto;
-    height: fit-content;
-  }
-}
-
 /* Program Section */
 .program-section {
   padding: 0 0 2rem 0;
@@ -127,6 +119,25 @@
   margin-right: auto;
 }
 
+/* Dress code rows: media + copy side by side (same idea as Venue / location) */
+.dresscode-layout .dresscode-content {
+  width: 100%;
+  max-width: none;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.dresscode-layout .dresscode-image-container {
+  max-width: none;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+}
+
+.dresscode-category-divider {
+  margin: 0;
+  flex-shrink: 0;
+}
+
 /* Attire Section Background */
 .attire-section {
   background-color: #6F4827;
@@ -181,17 +192,9 @@
   color: #ffffff;
 }
 
-.gift-button {
-  min-width: 200px;
-}
-
-.gift-button-border {
-  margin: 4px;
-}
-
 /* Upload Section */
 .upload-title {
-  padding-top: 4rem;
+  padding-top: 0.35rem;
   padding-bottom: 0.75rem;
 }
 

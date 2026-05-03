@@ -45,6 +45,13 @@ const PhotoUpload = () => {
           >
             {/* Upload Title */}
             <div>
+              <div className="flex justify-center mb-2">
+                <img
+                  src="/assets/images/graphics/camera-sketch.png"
+                  alt="Camera sketch"
+                  className="w-20 h-20 sm:w-28 sm:h-28 md:w-32 md:h-32 object-contain"
+                />
+              </div>
               <h3 className="relative inline-block px-6 upload-title">
                 <div className="flex items-end justify-center gap-2 sm:gap-4">
                   <span 
@@ -92,7 +99,7 @@ const PhotoUpload = () => {
                 {/* Upload Button */}
                 <div className="flex justify-start lg-custom:justify-center items-center">
                   <SecondaryButton
-                    href="https://drive.google.com/drive/folders/1nnO1agu7zUB5ikEXmeqWYqKfAI4acKhW?usp=sharing"
+                    href="https://drive.google.com/drive/folders/1Rpm9KCyFbECHnbB16rcpTh9uTCK1RwBN?usp=sharing"
                     target="_blank"
                     rel="noopener noreferrer"
                     icon={ArrowRight}

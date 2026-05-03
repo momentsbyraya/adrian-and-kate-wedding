@@ -37,7 +37,7 @@ function copyAssetsPlugin() {
 }
 
 // https://vitejs.dev/config/
-export default defineConfig({
+export default defineConfig(({ mode }) => ({
   plugins: [react(), copyAssetsPlugin()],
   server: {
     port: 3000,
@@ -53,5 +53,9 @@ export default defineConfig({
     outDir: 'dist',
     sourcemap: true
   },
+  /** Production builds: strip console/debugger so shipped JS stays quiet. */
+  esbuild: {
+    drop: mode === 'production' ? ['console', 'debugger'] : []
+  },
   publicDir: 'assets'
-}) 
+}))

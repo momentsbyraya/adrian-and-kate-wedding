@@ -3,103 +3,84 @@ import { useNavigate } from 'react-router-dom'
 import { createPortal } from 'react-dom'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { ArrowLeft, ArrowRight, X, ChevronLeft, ChevronRight, Play } from 'lucide-react'
-import { useAudio } from '../../contexts/AudioContext'
-import { loveStory } from '../../data'
+import { ArrowLeft, X, ChevronLeft, ChevronRight } from 'lucide-react'
+import { useAudio } from '../../hooks/useAudio'
+import { loveStory, images } from '../../data'
 import GradientLayer from '../GradientLayer'
-import PhotoSection from '../PhotoSection'
 
 // Register ScrollTrigger plugin
 gsap.registerPlugin(ScrollTrigger)
 
 const Moments = () => {
   const navigate = useNavigate()
-  const { pause, play, isPlaying, audioRef } = useAudio()
+  const { pause, audioRef } = useAudio()
   const sectionRef = useRef(null)
   const backButtonRef = useRef(null)
-  const polaroidScrollRef = useRef(null)
-  const threePhotosScrollRef = useRef(null)
   const firstParagraphRef = useRef(null)
-  const textBeforeImagesRef = useRef(null)
-  const polaroidContainerRef = useRef(null)
-  const fourthParagraphRef = useRef(null)
-  const threePhotosRowRef = useRef(null)
   const momentsTitleRef = useRef(null)
   const momentsGridRef = useRef(null)
-  const pImagesGridRef = useRef(null)
-  const galleryScrollContainerRef = useRef(null)
-  const galleryImagesRef = useRef(null)
-  const endPhoto4Ref = useRef(null)
-  const ry211ImageRef = useRef(null)
-  const polaroidImg2Ref = useRef(null)
-  const bannerImageRef = useRef(null)
+  const galleryGridImageRefs = useRef([])
   const [selectedImage, setSelectedImage] = useState(null)
   const [selectedImageIndex, setSelectedImageIndex] = useState(null)
   const [isVideoOpen, setIsVideoOpen] = useState(false)
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768)
   const videoModalRef = useRef(null)
   const wasPlayingBeforeVideo = useRef(false)
-  const [isDragging, setIsDragging] = useState(false)
-  const [startX, setStartX] = useState(0)
-  const [scrollLeft, setScrollLeft] = useState(0)
-  const [isDraggingThreePhotos, setIsDraggingThreePhotos] = useState(false)
-  const [startXThreePhotos, setStartXThreePhotos] = useState(0)
-  const [scrollLeftThreePhotos, setScrollLeftThreePhotos] = useState(0)
 
-  // All prenup images from prenup folder (excluding prenup-*.png files and img2.jpg which is used as polaroid)
-  const allPrenupImages = [
-    '/assets/images/prenup/img1.jpg',
-    '/assets/images/prenup/img3.jpeg',
-    '/assets/images/prenup/img4.jpeg',
-    '/assets/images/prenup/img5.jpg',
-    '/assets/images/prenup/img6.jpg',
-    '/assets/images/prenup/img7.jpg',
-    '/assets/images/prenup/added/HAIWE5388.JPG',
-    '/assets/images/prenup/added/IMG_4217.JPG',
-    '/assets/images/prenup/added/IMG_4841.jpg',
-    '/assets/images/prenup/added/IMG_5074.JPG',
-    '/assets/images/prenup/added/ISE09955.png'
+  /** Prenup folder — filenames only; `DSC02410` is the top banner so it is not repeated here. */
+  const prenupGalleryFilenames = [
+    'DSC02419.jpg',
+    'DSC02456.jpg',
+    'DSC02479.jpg',
+    'DSC02483.jpg',
+    'DSC02496.jpg',
+    'DSC02678.jpg',
+    'DSC02746.jpg',
   ]
 
-  // Images array for the lightbox (includes all images in same order, excluding img2.jpg)
-  const lightboxImages = [
-    '/assets/images/prenup/img1.jpg',
-    '/assets/images/prenup/img3.jpeg',
-    '/assets/images/prenup/img4.jpeg',
-    '/assets/images/prenup/img5.jpg',
-    '/assets/images/prenup/img6.jpg',
-    '/assets/images/prenup/img7.jpg',
-    '/assets/images/prenup/added/HAIWE5388.JPG',
-    '/assets/images/prenup/added/IMG_4217.JPG',
-    '/assets/images/prenup/added/IMG_4841.jpg',
-    '/assets/images/prenup/added/IMG_5074.JPG',
-    '/assets/images/prenup/added/ISE09955.png'
+  const galleryImageUrls = prenupGalleryFilenames.map(
+    (name) => `/assets/images/prenup/${encodeURIComponent(name)}`
+  )
+
+  const lightboxImages = galleryImageUrls
+
+  const mainGalleryImages =
+    galleryImageUrls.length >= 2
+      ? galleryImageUrls.slice(0, -2)
+      : galleryImageUrls
+  const lastTwoGalleryImages =
+    galleryImageUrls.length >= 2 ? galleryImageUrls.slice(-2) : []
+
+  const gridColumnPattern = [
+    'span 3',
+    'span 1',
+    'span 2',
+    'span 2',
+    'span 1',
+    'span 3',
+    'span 1',
+    'span 2',
+    'span 2',
+    'span 1',
   ]
 
-  // Gallery images for horizontal scroll (excluding img2.jpg which is used as polaroid)
-  const galleryImages = [
-    '/assets/images/prenup/img1.jpg',
-    '/assets/images/prenup/img3.jpeg',
-    '/assets/images/prenup/img4.jpeg',
-    '/assets/images/prenup/img5.jpg',
-    '/assets/images/prenup/img6.jpg',
-    '/assets/images/prenup/img7.jpg',
-    '/assets/images/prenup/added/HAIWE5388.JPG',
-    '/assets/images/prenup/added/IMG_4217.JPG',
-    '/assets/images/prenup/added/IMG_4841.jpg',
-    '/assets/images/prenup/added/IMG_5074.JPG',
-    '/assets/images/prenup/added/ISE09955.png'
-  ]
+  const gridColumnForIndex = (index) => {
+    const n = mainGalleryImages.length
+    if (n === 4 && index === 3) return 'span 3'
+    return gridColumnPattern[index % gridColumnPattern.length]
+  }
 
-  // Polaroid images for the scrollable container
-  const polaroidImages = [
-    { src: '/assets/images/prenup/P1.jpg', rotation: -5, index: 3 },
-    { src: '/assets/images/prenup/P2.jpg', rotation: 5, index: 4 },
-    { src: '/assets/images/prenup/P3.jpg', rotation: -3, index: 5 },
-    { src: '/assets/images/prenup/P4.jpg', rotation: 3, index: 6 },
-    { src: '/assets/images/prenup/P5.jpg', rotation: -4, index: 7 },
-    { src: '/assets/images/prenup/P6.jpg', rotation: 2, index: 8 }
-  ]
+  const galleryTileClass = (isFullWidthRow) =>
+    isFullWidthRow
+      ? 'max-h-[220px] min-h-[11rem] cursor-pointer overflow-hidden sm:max-h-[260px] sm:min-h-[13rem] md:max-h-[400px] md:min-h-[17rem] lg:max-h-[440px] lg:min-h-[18rem]'
+      : 'max-h-[150px] cursor-pointer overflow-hidden md:max-h-[260px] lg:max-h-[300px]'
+
+  const galleryTileStyle = {
+    height: '100%',
+    willChange: 'transform',
+    backfaceVisibility: 'hidden',
+    transform: 'translateZ(0)',
+  }
 
   useEffect(() => {
     // Set initial hidden states to prevent glimpse
@@ -134,124 +115,55 @@ const Moments = () => {
       )
     }
 
-    // Scroll to center the 2nd photo on load
-    if (polaroidScrollRef.current) {
-      setTimeout(() => {
-        const container = polaroidScrollRef.current
-        if (container) {
-          const scrollWidth = container.scrollWidth
-          const clientWidth = container.clientWidth
-          // Center the 2nd photo (index 1)
-          // Each photo is 200px wide + 16px gap (gap-4)
-          const photoWidth = 200
-          const gap = 16
-          const secondPhotoIndex = 1
-          // Calculate the position of the 2nd photo's center
-          const secondPhotoCenter = (secondPhotoIndex * (photoWidth + gap)) + (photoWidth / 2)
-          // Scroll to center the photo in the viewport
-          const scrollPosition = secondPhotoCenter - (clientWidth / 2)
-          container.scrollTo({
-            left: Math.max(0, Math.min(scrollPosition, scrollWidth - clientWidth)),
-            behavior: 'smooth'
-          })
-        }
-      }, 800) // Delay to allow page animation to complete
-    }
-
-    // Scroll animations for other elements
-    const scrollElements = [
-      { ref: textBeforeImagesRef },
-      { ref: polaroidContainerRef },
-      { ref: fourthParagraphRef },
-      { ref: threePhotosRowRef },
-      { ref: momentsTitleRef },
-      { ref: momentsGridRef },
-      { ref: pImagesGridRef },
-      { ref: polaroidImg2Ref }
-    ]
-
-    scrollElements.forEach(({ ref }) => {
-      if (ref.current) {
-        gsap.fromTo(
-          ref.current,
-          {
-            opacity: 0,
-            y: 50
-          },
-          {
-            opacity: 1,
-            y: 0,
-            duration: 0.8,
-            ease: "power2.out",
-            scrollTrigger: {
-              trigger: ref.current,
-              start: "top 85%",
-              end: "top 50%",
-              toggleActions: "play none none none"
-            }
-          }
-        )
-      }
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: momentsTitleRef.current,
+        start: 'top 80%',
+        end: 'bottom 20%',
+        toggleActions: 'play none none reverse',
+      },
     })
 
-
-    // Gallery animations
-    if (momentsGridRef.current) {
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: momentsGridRef.current,
-          start: "top 50%",
-          end: "bottom 20%",
-          toggleActions: "play none none reverse"
-        }
-      })
-
-      // Animate Gallery heading
-      if (momentsTitleRef.current) {
-        tl.fromTo(momentsTitleRef.current,
-          { opacity: 0, y: 30 },
-          { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" }
-        )
-      }
-
-      // Animate gallery images container - slide from right
-      if (galleryImagesRef.current) {
-        tl.fromTo(galleryImagesRef.current,
-          { opacity: 0, x: 100 },
-          { opacity: 1, x: 0, duration: 0.8, ease: "power2.out" },
-          "-=0.2"
-        )
-      }
-    }
-
-    // Scroll animation for R&Y-209 photo after gallery
-    if (endPhoto4Ref.current) {
-      gsap.fromTo(
-        endPhoto4Ref.current,
-        {
-          opacity: 0,
-          y: 50
-        },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.8,
-          ease: "power2.out",
-          scrollTrigger: {
-            trigger: endPhoto4Ref.current,
-            start: "top 85%",
-            end: "top 50%",
-            toggleActions: "play none none none"
-          }
-        }
+    if (momentsTitleRef.current) {
+      tl.fromTo(
+        momentsTitleRef.current,
+        { opacity: 0, y: 30 },
+        { opacity: 1, y: 0, duration: 0.8, ease: 'power2.out' }
       )
     }
 
-    // Cleanup function
+    galleryGridImageRefs.current.forEach((ref, index) => {
+      if (!ref) return
+      const isFromLeft = index % 2 === 0
+      const xValue = isFromLeft ? -100 : 100
+      gsap.set(ref, { opacity: 0, x: xValue, force3D: true })
+      ScrollTrigger.create({
+        trigger: ref,
+        start: 'top 85%',
+        animation: gsap.to(ref, {
+          opacity: 1,
+          x: 0,
+          duration: 0.8,
+          ease: 'power2.out',
+          force3D: true,
+        }),
+        toggleActions: 'play none none reverse',
+      })
+    })
+
     return () => {
-      ScrollTrigger.getAll().forEach(trigger => trigger.kill())
+      tl.kill()
+      ScrollTrigger.getAll().forEach((trigger) => {
+        const tr = trigger.vars && trigger.vars.trigger
+        if (
+          tr === momentsTitleRef.current ||
+          galleryGridImageRefs.current.includes(tr)
+        ) {
+          trigger.kill()
+        }
+      })
     }
-  }, [])
+  }, [prenupGalleryFilenames.length])
 
   // Function to handle video modal open
   const handleVideoOpen = () => {
@@ -274,94 +186,40 @@ const Moments = () => {
     if (wasPlayingBeforeVideo.current) {
       setTimeout(() => {
         if (audioRef.current) {
-          audioRef.current.play().catch(error => {
-            console.log('Could not resume music:', error)
-          })
+          audioRef.current.play().catch(() => {})
         }
         wasPlayingBeforeVideo.current = false
       }, 300)
     }
   }
 
-  // Gallery drag handlers
-  const handleGalleryMouseDown = (e) => {
-    if (!galleryScrollContainerRef.current) return
-    setIsDragging(true)
-    setStartX(e.pageX - galleryScrollContainerRef.current.offsetLeft)
-    setScrollLeft(galleryScrollContainerRef.current.scrollLeft)
-    galleryScrollContainerRef.current.style.cursor = 'grabbing'
-    galleryScrollContainerRef.current.style.userSelect = 'none'
-  }
-
-  const handleGalleryMouseLeave = () => {
-    setIsDragging(false)
-    if (galleryScrollContainerRef.current) {
-      galleryScrollContainerRef.current.style.cursor = 'grab'
-      galleryScrollContainerRef.current.style.userSelect = 'auto'
-    }
-  }
-
-  const handleGalleryMouseUp = () => {
-    setIsDragging(false)
-    if (galleryScrollContainerRef.current) {
-      galleryScrollContainerRef.current.style.cursor = 'grab'
-      galleryScrollContainerRef.current.style.userSelect = 'auto'
-    }
-  }
-
-  const handleGalleryMouseMove = (e) => {
-    if (!isDragging || !galleryScrollContainerRef.current) return
-    e.preventDefault()
-    const x = e.pageX - galleryScrollContainerRef.current.offsetLeft
-    const walk = (x - startX) * 2
-    galleryScrollContainerRef.current.scrollLeft = scrollLeft - walk
-  }
-
-  // Touch events for mobile
-  const handleGalleryTouchStart = (e) => {
-    if (!galleryScrollContainerRef.current) return
-    setIsDragging(true)
-    setStartX(e.touches[0].pageX - galleryScrollContainerRef.current.offsetLeft)
-    setScrollLeft(galleryScrollContainerRef.current.scrollLeft)
-  }
-
-  const handleGalleryTouchMove = (e) => {
-    if (!isDragging || !galleryScrollContainerRef.current) return
-    const x = e.touches[0].pageX - galleryScrollContainerRef.current.offsetLeft
-    const walk = (x - startX) * 2
-    galleryScrollContainerRef.current.scrollLeft = scrollLeft - walk
-  }
-
-  const handleGalleryTouchEnd = () => {
-    setIsDragging(false)
-  }
-
-  // Gallery image click handler
-  const handleGalleryImageClick = (image, index) => {
+  const openLightbox = (image, indexInLightbox) => {
     setSelectedImage(image)
-    setSelectedImageIndex(index)
+    setSelectedImageIndex(indexInLightbox)
   }
 
-  // Gallery lightbox navigation - uses galleryImages to match gallery order
-  const handleGalleryPrevious = () => {
-    if (selectedImageIndex !== null && selectedImageIndex > 0) {
-      const newIndex = selectedImageIndex - 1
-      setSelectedImage(galleryImages[newIndex])
-      setSelectedImageIndex(newIndex)
-    }
-  }
-
-  const handleGalleryNext = () => {
-    if (selectedImageIndex !== null && selectedImageIndex < galleryImages.length - 1) {
-      const newIndex = selectedImageIndex + 1
-      setSelectedImage(galleryImages[newIndex])
-      setSelectedImageIndex(newIndex)
-    }
-  }
-
-  const handleGalleryClose = () => {
+  const handleLightboxClose = () => {
     setSelectedImage(null)
     setSelectedImageIndex(null)
+  }
+
+  const handleLightboxPrevious = () => {
+    if (selectedImageIndex !== null && selectedImageIndex > 0) {
+      const newIndex = selectedImageIndex - 1
+      setSelectedImage(lightboxImages[newIndex])
+      setSelectedImageIndex(newIndex)
+    }
+  }
+
+  const handleLightboxNext = () => {
+    if (
+      selectedImageIndex !== null &&
+      selectedImageIndex < lightboxImages.length - 1
+    ) {
+      const newIndex = selectedImageIndex + 1
+      setSelectedImage(lightboxImages[newIndex])
+      setSelectedImageIndex(newIndex)
+    }
   }
 
   // Track screen size
@@ -372,32 +230,6 @@ const Moments = () => {
     
     window.addEventListener('resize', handleResize)
     return () => window.removeEventListener('resize', handleResize)
-  }, [])
-
-  // Apply object-position to R&Y-211 image on desktop
-  useEffect(() => {
-    if (ry211ImageRef.current && !isMobile) {
-      ry211ImageRef.current.style.objectPosition = '15% center'
-    } else if (ry211ImageRef.current && isMobile) {
-      ry211ImageRef.current.style.objectPosition = 'center center'
-    }
-  }, [isMobile])
-
-  // Apply object-position to banner image on screens 992px and above
-  useEffect(() => {
-    const handleBannerResize = () => {
-      if (bannerImageRef.current) {
-        if (window.innerWidth >= 992) {
-          bannerImageRef.current.style.objectPosition = 'center top'
-        } else {
-          bannerImageRef.current.style.objectPosition = 'center center'
-        }
-      }
-    }
-    
-    handleBannerResize() // Set initial value
-    window.addEventListener('resize', handleBannerResize)
-    return () => window.removeEventListener('resize', handleBannerResize)
   }, [])
 
   // Video modal rotation animation (only on screens smaller than 768px)
@@ -438,11 +270,10 @@ const Moments = () => {
         {/* Image Banner - Similar to Details page */}
         <div className="relative z-20 w-screen" style={{ width: '100vw' }}>
           <div className="relative w-full h-[250px] sm:h-[250px] md:h-[300px] lg:h-[350px]">
-            <img 
-              ref={bannerImageRef}
-              src="/assets/images/prenup/prenup-2.png" 
+            <img
+              src="/assets/images/prenup/DSC02410.jpg"
               alt="Banner image"
-              className="w-full h-full object-cover"
+              className="h-full w-full object-cover object-bottom"
             />
             {/* Soft transparent white gradient layers at bottom */}
             <GradientLayer height="h-32" opacity={0.7} gradientId="whiteGradient1" />
@@ -451,6 +282,14 @@ const Moments = () => {
             <GradientLayer height="h-8" opacity={0.3} gradientId="whiteGradient4" />
             <GradientLayer height="h-6" opacity={0.25} gradientId="whiteGradient5" />
             <GradientLayer height="h-4" opacity={0.2} gradientId="whiteGradient6" />
+
+            {/* Full-bleed white blur at bottom — asset from `images.json` → graphics */}
+            <img
+              src={images.graphics.bannerWhiteBlur}
+              alt=""
+              className="pointer-events-none absolute bottom-0 left-1/2 z-[8] h-36 w-screen max-w-none -translate-x-1/2 object-cover object-bottom sm:h-40 md:h-44"
+              aria-hidden
+            />
             
             {/* Solid transition SVG at bottom */}
             <svg 
@@ -473,12 +312,12 @@ const Moments = () => {
             <div className="absolute bottom-0 left-0 w-full flex flex-col justify-center items-center pb-0.5 z-10">
               <div className="w-full text-center">
                 {/* Our in Ballet font */}
-                <h1 className="font-ballet text-5xl sm:text-6xl md:text-7xl lg:text-8xl mb-2" style={{ color: '#6F4827' }}>
+                <h1 className="font-ballet text-5xl sm:text-6xl md:text-7xl lg:text-8xl mb-2" style={{ color: '#4E342E' }}>
                   Our
                 </h1>
                 {/* Love Story in Tebranos font */}
-                <h2 className="font-tebranos text-6xl sm:text-7xl md:text-8xl lg:text-9xl uppercase mb-4 -mt-6" style={{ 
-                  color: '#D4A5A5'
+                <h2 className="font-tebranos text-6xl sm:text-7xl md:text-8xl lg:text-9xl uppercase mb-4 -mt-6" style={{
+                  color: '#4E342E'
                 }}>
                   Love Story
                 </h2>
@@ -503,157 +342,141 @@ const Moments = () => {
               ))}
             </div>
           </div>
-          
-          {/* Polaroid Image - img2 */}
-          <div ref={polaroidImg2Ref} className="relative z-20 w-full flex justify-center items-center py-8">
-            <div className="relative w-40 h-48 sm:w-60 sm:h-72 lg:w-72 lg:h-88 bg-white shadow-xl transform rotate-3 hover:scale-105 transition-transform duration-300" style={{ border: '4px solid white', borderTop: '4px solid white' }}>
-              <div 
-                className="w-full h-40 sm:h-60 lg:h-72 bg-cover bg-center"
-                style={{
-                  backgroundImage: 'url(/assets/images/prenup/img2.jpg)',
-                  borderTop: '4px solid white',
-                  borderLeft: '4px solid white',
-                  borderRight: '4px solid white'
-                }}
-              ></div>
-              <div className="p-2 text-center">
-                <div className="text-sm sm:text-lg text-[#D4A5A5] font-handwritten">
-                  Memories
-                </div>
-              </div>
-            </div>
-          </div>
-          
         </div>
 
-           {/* Moments Gallery Section */}
-           <div 
-             ref={momentsGridRef} 
-             className="relative z-20 w-full flex flex-col mt-8"
+           {/* Moments gallery — title then single masonry grid (all prenup photos) */}
+           <div
+             ref={momentsGridRef}
+             className="relative z-20 mt-8 flex w-full flex-col"
            >
-             {/* Background Image - Absolute positioned, layered under content */}
-             <div 
-               className="absolute top-0 left-0 w-full z-0"
-               style={{
-                 height: '75%',
-                 backgroundImage: 'url(/assets/images/graphics/bg-1.png)',
-                 backgroundSize: 'cover',
-                 backgroundPosition: 'center',
-                 backgroundRepeat: 'no-repeat'
-               }}
-             />
-             
-             {/* Title - Full Width at Top */}
-             <div className="relative z-20 w-full" style={{ border: 'none' }}>
-               <h2 ref={momentsTitleRef} className="w-full text-center px-4" style={{
-                 paddingTop: '4rem',
-                 paddingBottom: '4rem',
-                 overflow: 'visible',
-                 border: 'none',
-                 outline: 'none'
-               }}>
-                 {/* Falling Flower Graphic Above Title */}
-                 <div className="flex justify-center items-center w-full mb-4">
-                   <img 
-                     src="/assets/images/graphics/falling-flower.png" 
-                     alt="Decorative graphic" 
-                     className="h-auto"
-                     style={{ maxWidth: '120px', width: 'auto' }}
-                 />
-               </div>
-                 <span 
-                   className="stylish-calligraphy text-5xl sm:text-6xl md:text-7xl lg:text-8xl inline-block" 
-                   style={{
-                     lineHeight: '1.2',
-                     color: '#6F4827',
-                     display: 'inline-block',
-                     paddingTop: '0.5rem',
-                     paddingBottom: '0.5rem'
-                   }}
-                 >
-                   Moments
-                 </span>
-               </h2>
-               </div>
-
-             {/* Content Container */}
-             <div 
-               className="w-full flex flex-col relative z-10"
-             >
-               {/* Horizontal Scrollable Images */}
-               <div 
-                 ref={galleryImagesRef}
-                 className="w-full"
-               >
-                 <div 
-                   ref={galleryScrollContainerRef}
-                   className="w-full overflow-x-auto"
-                   style={{
-                     scrollbarWidth: 'none',
-                     msOverflowStyle: 'none',
-                     cursor: 'grab'
-                   }}
-                   onMouseDown={handleGalleryMouseDown}
-                   onMouseLeave={handleGalleryMouseLeave}
-                   onMouseUp={handleGalleryMouseUp}
-                   onMouseMove={handleGalleryMouseMove}
-                   onTouchStart={handleGalleryTouchStart}
-                   onTouchMove={handleGalleryTouchMove}
-                   onTouchEnd={handleGalleryTouchEnd}
-                 >
-                   <style>{`
-                     div::-webkit-scrollbar {
-                       display: none;
-                     }
-                   `}</style>
-                   <div className="flex gap-4 px-4" style={{ minHeight: '300px' }}>
-                     {galleryImages.map((image, index) => (
-                       <img
-                         key={index}
-                         src={image}
-                         alt={`Gallery ${index + 1}`}
-                         className="flex-shrink-0 object-cover cursor-pointer"
-                         style={{
-                           width: '300px',
-                           height: '300px',
-                           borderRadius: '0',
-                           objectPosition: 'center center'
-                         }}
-                         width="300"
-                         height="300"
-                         draggable="false"
-                         loading={index < 4 ? "eager" : "lazy"}
-                         fetchPriority={index < 4 ? "high" : "auto"}
-                         decoding="async"
-                         onClick={() => {
-                           handleGalleryImageClick(image, index)
-                         }}
-                       />
-                     ))}
-               </div>
+             <div className="relative z-20 flex w-full items-center justify-center pt-12 pb-6">
+               <div className="relative z-10 mx-auto w-full max-w-md px-8 sm:max-w-xl sm:px-12 lg:max-w-4xl lg:px-16">
+                 <div ref={momentsTitleRef} className="text-center">
+                   <div className="mb-4 flex w-full items-center justify-center">
+                     <img
+                       src="/assets/images/graphics/falling-flower.png"
+                       alt=""
+                       className="h-auto w-auto"
+                       style={{ maxWidth: '120px' }}
+                       aria-hidden
+                     />
+                   </div>
+                   <h2
+                     className="w-full px-4 text-center"
+                     style={{ border: 'none', outline: 'none' }}
+                   >
+                     <span
+                       className="stylish-calligraphy inline-block text-5xl sm:text-6xl md:text-7xl lg:text-8xl"
+                       style={{ lineHeight: '1.2', color: '#4E342E' }}
+                     >
+                       Our Moments
+                     </span>
+                   </h2>
                  </div>
                </div>
              </div>
 
-           </div>
+             {galleryImageUrls.length > 0 && (
+               <div className="relative z-20 flex w-full items-center justify-center pb-12 pt-2">
+                 <div className="mx-auto w-full max-w-7xl px-8 sm:px-12 lg:px-16">
+                   <div className="flex flex-col gap-2 sm:gap-3 md:gap-4">
+                     {mainGalleryImages.length > 0 && (
+                       <div className="grid auto-rows-auto grid-cols-3 gap-2 sm:gap-3 md:gap-4">
+                         {mainGalleryImages.map((image, index) => {
+                           const gridColumn = gridColumnForIndex(index)
+                           const isFullWidthRow = gridColumn === 'span 3'
+                           return (
+                             <div
+                               key={image}
+                               ref={(el) => {
+                                 galleryGridImageRefs.current[index] = el
+                               }}
+                               className={galleryTileClass(isFullWidthRow)}
+                               style={{
+                                 gridColumn,
+                                 ...galleryTileStyle,
+                               }}
+                               onClick={() => openLightbox(image, index)}
+                             >
+                               <img
+                                 src={image}
+                                 alt={`Gallery ${index + 1}`}
+                                 className="h-full w-full object-cover object-center transition-transform duration-300 hover:scale-105"
+                                 style={{
+                                   height: '100%',
+                                   willChange: 'transform',
+                                   backfaceVisibility: 'hidden',
+                                 }}
+                                 loading="lazy"
+                               />
+                             </div>
+                           )
+                         })}
+                       </div>
+                     )}
 
-          {/* Final Photo - Full Width After Gallery */}
-          <div ref={endPhoto4Ref} className="relative z-20 w-screen mt-8">
-            <div className="relative">
-              <img
-                src="/assets/images/prenup/img5.jpg"
-                alt="Love story photo"
-                className="w-full h-auto object-cover cursor-pointer"
-                loading="lazy"
-                decoding="async"
-                onClick={() => {
-                  const imageIndex = galleryImages.indexOf('/assets/images/prenup/img5.jpg')
-                  setSelectedImage('/assets/images/prenup/img5.jpg')
-                  setSelectedImageIndex(imageIndex !== -1 ? imageIndex : 0)
-                }}
-              />
-            </div>
-          </div>
+                     {lastTwoGalleryImages.length === 2 && (
+                       <div className="grid grid-cols-5 gap-2 sm:gap-3 md:gap-4">
+                         <div
+                           ref={(el) => {
+                             galleryGridImageRefs.current[mainGalleryImages.length] =
+                               el
+                           }}
+                           className={`${galleryTileClass(false)} col-span-2`}
+                           style={galleryTileStyle}
+                           onClick={() =>
+                             openLightbox(
+                               lastTwoGalleryImages[0],
+                               mainGalleryImages.length
+                             )
+                           }
+                         >
+                           <img
+                             src={lastTwoGalleryImages[0]}
+                             alt={`Gallery ${mainGalleryImages.length + 1}`}
+                             className="h-full w-full object-cover object-center transition-transform duration-300 hover:scale-105"
+                             style={{
+                               height: '100%',
+                               willChange: 'transform',
+                               backfaceVisibility: 'hidden',
+                             }}
+                             loading="lazy"
+                           />
+                         </div>
+                         <div
+                           ref={(el) => {
+                             galleryGridImageRefs.current[
+                               mainGalleryImages.length + 1
+                             ] = el
+                           }}
+                           className={`${galleryTileClass(false)} col-span-3`}
+                           style={galleryTileStyle}
+                           onClick={() =>
+                             openLightbox(
+                               lastTwoGalleryImages[1],
+                               mainGalleryImages.length + 1
+                             )
+                           }
+                         >
+                           <img
+                             src={lastTwoGalleryImages[1]}
+                             alt={`Gallery ${mainGalleryImages.length + 2}`}
+                             className="h-full w-full object-cover object-center transition-transform duration-300 hover:scale-105"
+                             style={{
+                               height: '100%',
+                               willChange: 'transform',
+                               backfaceVisibility: 'hidden',
+                             }}
+                             loading="lazy"
+                           />
+                         </div>
+                       </div>
+                     )}
+                   </div>
+                 </div>
+               </div>
+             )}
+           </div>
 
            {/* Second Moments Section - All 5 Polaroids in One Container */}
            {/* <div className="relative z-20 w-full mt-12 pb-12">
@@ -921,61 +744,75 @@ const Moments = () => {
         document.body
       )}
 
-      {/* Image Lightbox Modal */}
-      {selectedImage && createPortal(
-        <div
-          className="fixed inset-0 z-[10000] flex items-center justify-center bg-black/60"
-          onClick={handleGalleryClose}
-        >
-          {/* Close Icon - Top Left */}
-          <button
-            onClick={(e) => {
-              e.stopPropagation()
-              handleGalleryClose()
-            }}
-            className="absolute top-4 left-4 z-10 p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors duration-200"
-          >
-            <X className="w-6 h-6 text-white" />
-          </button>
+      {/* Image lightbox — same behavior as reference Moments (prev/next, edge disable) */}
+      {selectedImage &&
+        createPortal(
+          <div className="fixed inset-0 z-[10000] flex items-center justify-center p-4">
+            <div
+              className="absolute inset-0 bg-black/80 backdrop-blur-sm"
+              onClick={handleLightboxClose}
+            />
 
-          {/* Previous Button - Left */}
-          {selectedImageIndex !== null && selectedImageIndex > 0 && (
             <button
-              onClick={(e) => {
-                e.stopPropagation()
-                handleGalleryPrevious()
-              }}
-              className="absolute left-4 top-1/2 transform -translate-y-1/2 z-10 p-3 rounded-full bg-white/10 hover:bg-white/20 transition-colors duration-200"
+              type="button"
+              onClick={handleLightboxClose}
+              className="absolute top-4 right-4 z-20 flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-white/20 transition-colors duration-200 hover:bg-white/30"
+              aria-label="Close"
             >
-              <ChevronLeft className="w-8 h-8 text-white" />
+              <X className="h-6 w-6 text-white" />
             </button>
-          )}
 
-          {/* Next Button - Right */}
-          {selectedImageIndex !== null && selectedImageIndex < galleryImages.length - 1 && (
-            <button
-              onClick={(e) => {
-                e.stopPropagation()
-                handleGalleryNext()
-              }}
-              className="absolute right-4 top-1/2 transform -translate-y-1/2 z-10 p-3 rounded-full bg-white/10 hover:bg-white/20 transition-colors duration-200"
-            >
-              <ChevronRight className="w-8 h-8 text-white" />
-            </button>
-          )}
+            {selectedImageIndex !== null && (
+              <button
+                type="button"
+                onClick={(e) => {
+                  e.stopPropagation()
+                  handleLightboxPrevious()
+                }}
+                disabled={selectedImageIndex === 0}
+                className="absolute left-4 top-1/2 z-20 flex h-12 w-12 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full bg-white/20 transition-opacity duration-200 hover:bg-white/30 disabled:cursor-not-allowed disabled:opacity-30"
+                style={{ pointerEvents: 'auto' }}
+                aria-label="Previous image"
+              >
+                <ChevronLeft
+                  className="h-10 w-10 text-white"
+                  style={{ filter: 'drop-shadow(0 2px 6px rgba(0, 0, 0, 0.7))' }}
+                />
+              </button>
+            )}
 
-          {/* Full Image */}
-          <img
-            src={selectedImage}
-            alt="Gallery full view"
-            className="max-w-[90vw] max-h-[90vh] object-contain"
-            loading="eager"
-            decoding="async"
-            onClick={(e) => e.stopPropagation()}
-          />
-        </div>,
-        document.body
-      )}
+            {selectedImageIndex !== null && (
+              <button
+                type="button"
+                onClick={(e) => {
+                  e.stopPropagation()
+                  handleLightboxNext()
+                }}
+                disabled={selectedImageIndex === lightboxImages.length - 1}
+                className="absolute right-4 top-1/2 z-20 flex h-12 w-12 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full bg-white/20 transition-opacity duration-200 hover:bg-white/30 disabled:cursor-not-allowed disabled:opacity-30"
+                style={{ pointerEvents: 'auto' }}
+                aria-label="Next image"
+              >
+                <ChevronRight
+                  className="h-10 w-10 text-white"
+                  style={{ filter: 'drop-shadow(0 2px 6px rgba(0, 0, 0, 0.7))' }}
+                />
+              </button>
+            )}
+
+            <div className="relative z-10 flex max-h-[90vh] w-full max-w-7xl items-center justify-center">
+              <img
+                src={selectedImage}
+                alt="Full size image"
+                className="max-h-[90vh] w-auto max-w-full object-contain"
+                loading="eager"
+                decoding="async"
+                onClick={(e) => e.stopPropagation()}
+              />
+            </div>
+          </div>,
+          document.body
+        )}
     </>
   )
 }

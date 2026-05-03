@@ -107,6 +107,15 @@
   font-display: swap;
 }
 
+/* Custom Font - Foglihten (opening screen, matches Mylha & Jerald layout) */
+@font-face {
+  font-family: 'Foglihten';
+  src: url('/assets/fonts/Foglihtenno06-VyZB.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 /* Custom Font - Stylish Calligraphy */
 @font-face {
   font-family: 'StylishCalligraphy';
@@ -141,6 +150,18 @@ body {
   line-height: 1.6;
   color: #6F4827;
   background-color: #ffffff;
+}
+
+/* Above #root + loader (10000): portals mount here via createPortal (Entourage FAB, etc.) */
+#overlay-root {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 10050;
+}
+
+#overlay-root > * {
+  pointer-events: auto;
 }
 
 @layer base {

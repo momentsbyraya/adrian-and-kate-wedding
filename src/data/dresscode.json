@@ -1,27 +1,29 @@
 {
   "mainDressCode": {
     "title": "Dress Code",
-    "description": "Coffee brown"
+    "description": "Entourage in coffee brown; guests in nude."
   },
   "sections": [
     {
-      "title": "COFFEE BROWN",
-      "type": "image",
-      "image": "/assets/images/dresscode/guests.png",
-      "description": "Our dress code is coffee brown. Feel free to come in any rich, elegant shade of coffee brown that makes you feel your best.",
+      "id": "entourage",
+      "title": "Entourage",
+      "image": "/assets/images/dresscode/entourage.png",
+      "description": "Please wear coffee brown—from deep espresso to warm camel—so our wedding party looks cohesive in every photo and moment.",
       "colors": [
-        {
-          "name": "Espresso",
-          "hex": "#6F4827"
-        },
-        {
-          "name": "Coffee Bean",
-          "hex": "#6F4827"
-        },
-        {
-          "name": "Latte",
-          "hex": "#6F4827"
-        }
+        { "name": "Espresso", "hex": "#6F4827" },
+        { "name": "Mocha", "hex": "#5C3D21" },
+        { "name": "Camel", "hex": "#8B6F47" }
+      ]
+    },
+    {
+      "id": "guests",
+      "title": "Guests",
+      "image": "/assets/images/dresscode/guests.png",
+      "description": "We invite you in nude tones—soft blush, sand, and champagne—elegant shades that complement the day without matching the entourage palette.",
+      "colors": [
+        { "name": "Blush Nude", "hex": "#E8D4C4" },
+        { "name": "Sand Nude", "hex": "#D4BCA8" },
+        { "name": "Champagne Nude", "hex": "#C9A995" }
       ]
     }
   ]
