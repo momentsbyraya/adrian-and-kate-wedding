@@ -1,29 +1,19 @@
 {
   "mainDressCode": {
     "title": "Dress Code",
-    "description": "Entourage in coffee brown; guests in nude."
+    "description": "Guests: light pink and light blue — wear either palette or a thoughtful mix so the room feels balanced and bright."
   },
   "sections": [
-    {
-      "id": "entourage",
-      "title": "Entourage",
-      "image": "/assets/images/dresscode/entourage.png",
-      "description": "Please wear coffee brown—from deep espresso to warm camel—so our wedding party looks cohesive in every photo and moment.",
-      "colors": [
-        { "name": "Espresso", "hex": "#6F4827" },
-        { "name": "Mocha", "hex": "#5C3D21" },
-        { "name": "Camel", "hex": "#8B6F47" }
-      ]
-    },
     {
       "id": "guests",
       "title": "Guests",
       "image": "/assets/images/dresscode/guests.png",
-      "description": "We invite you in nude tones—soft blush, sand, and champagne—elegant shades that complement the day without matching the entourage palette.",
+      "description": "We invite you in light pink and light blue — petal pink, shell pink, sky blue, or ice blue all fit beautifully. Pick one as your main look, or blend both in your outfit.",
       "colors": [
-        { "name": "Blush Nude", "hex": "#E8D4C4" },
-        { "name": "Sand Nude", "hex": "#D4BCA8" },
-        { "name": "Champagne Nude", "hex": "#C9A995" }
+        { "name": "Light Pink", "hex": "#FAD6E0" },
+        { "name": "Petal Pink", "hex": "#FCE4EC" },
+        { "name": "Light Blue", "hex": "#D8EEF8" },
+        { "name": "Ice Blue", "hex": "#E8F6FC" }
       ]
     }
   ]

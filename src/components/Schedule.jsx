@@ -2,9 +2,9 @@ import React, { useRef, useEffect } from 'react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { couple } from '../data'
+import { WEDDING_BLUSH, WEDDING_TEXT_DARK_BLUE } from '../config/themeConfig'
 import './pages/Details.css'
 
-// Register ScrollTrigger plugin
 gsap.registerPlugin(ScrollTrigger)
 
 const Schedule = () => {
@@ -15,7 +15,6 @@ const Schedule = () => {
   const dateSelectorRef = useRef(null)
 
   useEffect(() => {
-    // Schedule title animation
     if (scheduleTitleRef.current) {
       ScrollTrigger.create({
         trigger: scheduleTitleRef.current,
@@ -28,7 +27,6 @@ const Schedule = () => {
       })
     }
 
-    // Date Selector animation - heart, number, nearest boxes, furthest boxes
     if (dateSelectorRef.current) {
       const flexContainer = dateSelectorRef.current.querySelector('.flex.items-center')
       if (flexContainer) {
@@ -37,11 +35,9 @@ const Schedule = () => {
         const heartSvg = heartContainer?.querySelector('svg')
         const heartNumber = heartContainer?.querySelector('.heart-day-number')
         
-        // Find boxes by their position in the array
         const nearestBoxes = allItems.filter((item, idx) => {
           const isHeart = item.querySelector('svg')
           if (isHeart) return false
-          // Find the heart's index
           const heartIndex = allItems.findIndex(i => i.querySelector('svg'))
           return idx === heartIndex - 1 || idx === heartIndex + 1
         })
@@ -49,12 +45,10 @@ const Schedule = () => {
         const furthestBoxes = allItems.filter((item, idx) => {
           const isHeart = item.querySelector('svg')
           if (isHeart) return false
-          // Find the heart's index
           const heartIndex = allItems.findIndex(i => i.querySelector('svg'))
           return idx === 0 || idx === allItems.length - 1
         })
         
-        // Set initial states
         if (heartSvg) {
           gsap.set(heartSvg, { opacity: 0, scale: 0 })
         }
@@ -72,7 +66,6 @@ const Schedule = () => {
           trigger: dateSelectorRef.current,
           start: "top 75%",
           onEnter: () => {
-            // 1. Animate heart SVG first
             if (heartSvg) {
               gsap.to(heartSvg, {
                 opacity: 1,
@@ -82,7 +75,6 @@ const Schedule = () => {
               })
             }
             
-            // 2. Animate number inside heart
             if (heartNumber) {
               gsap.to(heartNumber, {
                 opacity: 1,
@@ -93,7 +85,6 @@ const Schedule = () => {
               })
             }
             
-            // 3. Animate nearest boxes
             gsap.to(nearestBoxes, {
               opacity: 1,
               x: 0,
@@ -103,7 +94,6 @@ const Schedule = () => {
               stagger: 0.1
             })
             
-            // 4. Animate furthest boxes
             gsap.to(furthestBoxes, {
               opacity: 1,
               x: 0,
@@ -117,7 +107,6 @@ const Schedule = () => {
       }
     }
 
-    // Timeline line expansion from top to bottom
     if (lineRef.current) {
       ScrollTrigger.create({
         trigger: timelineRef.current,
@@ -130,7 +119,6 @@ const Schedule = () => {
       })
     }
 
-    // Events animate in with stagger
     if (eventsRef.current) {
       const eventItems = eventsRef.current.querySelectorAll('div.flex.items-center')
       if (eventItems.length > 0) {
@@ -151,7 +139,6 @@ const Schedule = () => {
       }
     }
 
-    // Cleanup function
     return () => {
       ScrollTrigger.getAll().forEach(trigger => {
         if (trigger.vars && (
@@ -168,7 +155,6 @@ const Schedule = () => {
 
   return (
     <div className="relative program-section">
-      {/* Program Title */}
       <div ref={scheduleTitleRef} className="relative z-10 mb-12 sm:mb-16 program-title-container">
         <h3 className="px-6 py-3">
           <span 
@@ -177,13 +163,18 @@ const Schedule = () => {
             Order of Events
           </span>
         </h3>
-        <p className="text-sm sm:text-base md:text-lg font-albert text-white text-center mt-4 mx-auto px-4 program-description">
-          Join us as we celebrate this special day together
+        <p
+          className="text-sm sm:text-base md:text-lg font-albert text-center mt-4 mx-auto px-4 program-description"
+          style={{ color: WEDDING_TEXT_DARK_BLUE }}
+        >
+          Ceremony at 2:30 PM, then join us for reception from 4:30 PM to 9:00 PM
         </p>
         
-        {/* Date Selector */}
         <div ref={dateSelectorRef} className="flex flex-col items-center mt-8">
-          <p className="text-base sm:text-lg font-boska mb-4 date-month-year text-white">
+          <p
+            className="text-base sm:text-lg font-boska mb-4 date-month-year"
+            style={{ color: WEDDING_TEXT_DARK_BLUE }}
+          >
             {couple.wedding.month} {couple.wedding.year}
           </p>
           <div className="flex items-center gap-3 sm:gap-4">
@@ -201,18 +192,21 @@ const Schedule = () => {
                       >
                         <path 
                           d="M50,85 C30,70 10,50 10,30 C10,15 22,5 35,5 C42,5 48,8 50,12 C52,8 58,5 65,5 C78,5 90,15 90,30 C90,50 70,70 50,85 Z" 
-                          fill="#B8997A"
+                          fill={WEDDING_BLUSH}
                         />
                       </svg>
-                      <span className="absolute inset-0 flex items-center justify-center text-white font-boska font-semibold text-xl sm:text-2xl heart-day-number">
+                      <span
+                        className="absolute inset-0 flex items-center justify-center font-boska font-semibold text-xl sm:text-2xl heart-day-number"
+                        style={{ color: WEDDING_TEXT_DARK_BLUE }}
+                      >
                         {day}
                       </span>
                     </div>
                   ) : (
-                    <div 
-                      className={`flex items-center justify-center rounded-lg border ${isBesideHeart ? 'w-12 h-12 sm:w-14 sm:h-14 border-white/60' : 'w-10 h-10 sm:w-12 sm:h-12 border-white/30'}`}
+                    <div
+                      className={`flex items-center justify-center rounded-lg border border-[#1e4566]/35 ${isBesideHeart ? 'w-12 h-12 sm:w-14 sm:h-14 border-[#1e4566]/45' : 'w-10 h-10 sm:w-12 sm:h-12'}`}
                     >
-                      <span className="text-white font-boska text-base sm:text-lg">
+                      <span className="font-boska text-base sm:text-lg" style={{ color: WEDDING_TEXT_DARK_BLUE }}>
                         {day}
                       </span>
                     </div>
@@ -224,74 +218,55 @@ const Schedule = () => {
         </div>
       </div>
 
-      {/* Vertical Timeline */}
       <div ref={timelineRef} className="relative max-w-md sm:max-w-xl lg:max-w-2xl w-full mx-auto z-10 timeline-container">
-        {/* Central Vertical Line - White */}
-        <div ref={lineRef} className="absolute left-1/2 top-0 bottom-0 w-px bg-white transform -translate-x-1/2"></div>
+        <div
+          ref={lineRef}
+          className="absolute left-1/2 top-0 bottom-0 w-px transform -translate-x-1/2 bg-[#1e4566]/35"
+        />
 
-        {/* Timeline Events */}
         <div ref={eventsRef} className="space-y-12 sm:space-y-16 md:space-y-20 lg:space-y-24">
-          {/* Ceremony */}
           <div className="flex items-center relative min-h-[60px]">
             <div className="w-1/2 pr-6 text-right flex items-center justify-end">
             </div>
-            <div className="absolute left-1/2 transform -translate-x-1/2 w-3 h-3 bg-white rounded-full z-10"></div>
+            <div className="absolute left-1/2 z-10 h-3 w-3 -translate-x-1/2 transform rounded-full bg-[#1e4566]" />
             <div className="w-1/2 pl-6 text-left flex flex-col justify-center">
-              <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl alice-regular mb-1 timeline-event-time text-white">
-                5:30 PM
+              <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl alice-regular mb-1 timeline-event-time">
+                2:30 PM
               </div>
-              <div className="border-b border-dashed border-white opacity-50 mb-1"></div>
-              <div className="text-sm sm:text-base md:text-lg font-albert timeline-event-description text-white">
+              <div className="mb-1 border-b border-dashed border-[#1e4566]/40" />
+              <div className="text-sm sm:text-base md:text-lg font-albert timeline-event-description">
                 Ceremony
               </div>
             </div>
           </div>
 
-          {/* Reception — appetizers & cocktails */}
           <div className="flex items-center relative min-h-[60px]">
             <div className="w-1/2 pr-6 text-right flex flex-col justify-center">
-              <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl alice-regular mb-1 timeline-event-time text-white">
-                7:30 PM
+              <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl alice-regular mb-1 timeline-event-time">
+                4:30 PM
               </div>
-              <div className="border-b border-dashed border-white opacity-50 mb-1"></div>
-              <div className="text-sm sm:text-base md:text-lg font-albert timeline-event-description text-white">
-                Appetizers &amp; Cocktails
+              <div className="mb-1 border-b border-dashed border-[#1e4566]/40" />
+              <div className="text-sm sm:text-base md:text-lg font-albert timeline-event-description">
+                Reception begins
               </div>
             </div>
-            <div className="absolute left-1/2 transform -translate-x-1/2 w-3 h-3 bg-white rounded-full z-10"></div>
+            <div className="absolute left-1/2 z-10 h-3 w-3 -translate-x-1/2 transform rounded-full bg-[#1e4566]" />
             <div className="w-1/2 pl-6 text-left flex items-center justify-start">
             </div>
           </div>
 
-          {/* Dinner */}
           <div className="flex items-center relative min-h-[60px]">
             <div className="w-1/2 pr-6 text-right flex items-center justify-end">
             </div>
-            <div className="absolute left-1/2 transform -translate-x-1/2 w-3 h-3 bg-white rounded-full z-10"></div>
+            <div className="absolute left-1/2 z-10 h-3 w-3 -translate-x-1/2 transform rounded-full bg-[#1e4566]" />
             <div className="w-1/2 pl-6 text-left flex flex-col justify-center">
-              <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl alice-regular mb-1 timeline-event-time text-white">
-                9:30 PM
+              <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl alice-regular mb-1 timeline-event-time">
+                9:00 PM
               </div>
-              <div className="border-b border-dashed border-white opacity-50 mb-1"></div>
-              <div className="text-sm sm:text-base md:text-lg font-albert timeline-event-description text-white">
-                Dinner
+              <div className="mb-1 border-b border-dashed border-[#1e4566]/40" />
+              <div className="text-sm sm:text-base md:text-lg font-albert timeline-event-description">
+                Celebration concludes
               </div>
-            </div>
-          </div>
-
-          {/* Disco */}
-          <div className="flex items-center relative min-h-[60px]">
-            <div className="w-1/2 pr-6 text-right flex flex-col justify-center">
-              <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl alice-regular mb-1 timeline-event-time text-white">
-                11:00 PM
-              </div>
-              <div className="border-b border-dashed border-white opacity-50 mb-1"></div>
-              <div className="text-sm sm:text-base md:text-lg font-albert timeline-event-description text-white">
-                Disco <span className="opacity-90">(2 hours)</span>
-              </div>
-            </div>
-            <div className="absolute left-1/2 transform -translate-x-1/2 w-3 h-3 bg-white rounded-full z-10"></div>
-            <div className="w-1/2 pl-6 text-left flex items-center justify-start">
             </div>
           </div>
         </div>

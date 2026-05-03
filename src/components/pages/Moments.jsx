@@ -3,9 +3,14 @@ import { useNavigate } from 'react-router-dom'
 import { createPortal } from 'react-dom'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { ArrowLeft, X, ChevronLeft, ChevronRight } from 'lucide-react'
+import { X, ChevronLeft, ChevronRight } from 'lucide-react'
 import { useAudio } from '../../hooks/useAudio'
 import { loveStory, images } from '../../data'
+import {
+  prenupMomentsBannerFilename,
+  prenupMomentsGalleryFilenames,
+  prenupUrl,
+} from '../../data/prenup'
 import GradientLayer from '../GradientLayer'
 
 // Register ScrollTrigger plugin
@@ -27,20 +32,10 @@ const Moments = () => {
   const videoModalRef = useRef(null)
   const wasPlayingBeforeVideo = useRef(false)
 
-  /** Prenup folder — filenames only; `DSC02410` is the top banner so it is not repeated here. */
-  const prenupGalleryFilenames = [
-    'DSC02419.jpg',
-    'DSC02456.jpg',
-    'DSC02479.jpg',
-    'DSC02483.jpg',
-    'DSC02496.jpg',
-    'DSC02678.jpg',
-    'DSC02746.jpg',
-  ]
+  /** Masonry + lightbox — all entries in `prenupMomentsGalleryFilenames` (full prenup set). */
+  const prenupGalleryFilenames = prenupMomentsGalleryFilenames
 
-  const galleryImageUrls = prenupGalleryFilenames.map(
-    (name) => `/assets/images/prenup/${encodeURIComponent(name)}`
-  )
+  const galleryImageUrls = prenupGalleryFilenames.map(prenupUrl)
 
   const lightboxImages = galleryImageUrls
 
@@ -271,9 +266,9 @@ const Moments = () => {
         <div className="relative z-20 w-screen" style={{ width: '100vw' }}>
           <div className="relative w-full h-[250px] sm:h-[250px] md:h-[300px] lg:h-[350px]">
             <img
-              src="/assets/images/prenup/DSC02410.jpg"
+              src={prenupUrl(prenupMomentsBannerFilename)}
               alt="Banner image"
-              className="h-full w-full object-cover object-bottom"
+              className="h-full w-full object-cover object-[50%_28%] sm:object-[50%_32%] md:object-[50%_36%]"
             />
             {/* Soft transparent white gradient layers at bottom */}
             <GradientLayer height="h-32" opacity={0.7} gradientId="whiteGradient1" />
@@ -283,7 +278,7 @@ const Moments = () => {
             <GradientLayer height="h-6" opacity={0.25} gradientId="whiteGradient5" />
             <GradientLayer height="h-4" opacity={0.2} gradientId="whiteGradient6" />
 
-            {/* Full-bleed white blur at bottom — asset from `images.json` → graphics */}
+            {/* Full-bleed white blur at bottom (from images.json graphics) */}
             <img
               src={images.graphics.bannerWhiteBlur}
               alt=""
@@ -329,7 +324,7 @@ const Moments = () => {
         {/* Love Story Section */}
         <div className="relative z-20 w-full flex flex-col items-center bg-white py-12">
           <div ref={firstParagraphRef} className="relative z-20 w-full max-w-4xl px-8 sm:px-12 md:px-8 lg:px-16">
-            <div className="alice-regular font-black text-[#6F4827] leading-relaxed text-center" style={{ fontWeight: 900, fontSize: '1rem', lineHeight: '1.8' }}>
+            <div className="alice-regular font-black text-[#1e4566] leading-relaxed text-center" style={{ fontWeight: 900, fontSize: '1rem', lineHeight: '1.8' }}>
               {loveStory.story.split(/\n\n+/).map((block, i) => (
                 <p key={i} className="mb-4" style={i === 0 ? { fontStyle: 'italic', fontSize: '1.15rem', marginBottom: '1.5rem' } : undefined}>
                   {block.trim().split('\n').map((line, j) => (
@@ -344,7 +339,7 @@ const Moments = () => {
           </div>
         </div>
 
-           {/* Moments gallery — title then single masonry grid (all prenup photos) */}
+           {/* Moments gallery: title then single masonry grid (all prenup photos) */}
            <div
              ref={momentsGridRef}
              className="relative z-20 mt-8 flex w-full flex-col"
@@ -401,7 +396,7 @@ const Moments = () => {
                                <img
                                  src={image}
                                  alt={`Gallery ${index + 1}`}
-                                 className="h-full w-full object-cover object-center transition-transform duration-300 hover:scale-105"
+                                 className="h-full w-full object-cover object-top transition-transform duration-300 hover:scale-105"
                                  style={{
                                    height: '100%',
                                    willChange: 'transform',
@@ -434,7 +429,7 @@ const Moments = () => {
                            <img
                              src={lastTwoGalleryImages[0]}
                              alt={`Gallery ${mainGalleryImages.length + 1}`}
-                             className="h-full w-full object-cover object-center transition-transform duration-300 hover:scale-105"
+                             className="h-full w-full object-cover object-top transition-transform duration-300 hover:scale-105"
                              style={{
                                height: '100%',
                                willChange: 'transform',
@@ -461,7 +456,7 @@ const Moments = () => {
                            <img
                              src={lastTwoGalleryImages[1]}
                              alt={`Gallery ${mainGalleryImages.length + 2}`}
-                             className="h-full w-full object-cover object-center transition-transform duration-300 hover:scale-105"
+                             className="h-full w-full object-cover object-top transition-transform duration-300 hover:scale-105"
                              style={{
                                height: '100%',
                                willChange: 'transform',
@@ -489,7 +484,7 @@ const Moments = () => {
                  }}
                >
                  <p 
-                   className="font-handwritten text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-[#D4A5A5] whitespace-nowrap"
+                   className="font-handwritten text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-[#8b4a5c] whitespace-nowrap"
                    style={{
                      position: 'absolute',
                      top: '5%',
@@ -500,7 +495,7 @@ const Moments = () => {
                    Forever
                  </p>
                  <p 
-                   className="font-handwritten text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-[#D4A5A5] whitespace-nowrap"
+                   className="font-handwritten text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-[#8b4a5c] whitespace-nowrap"
                    style={{
                      position: 'absolute',
                      top: '25%',
@@ -511,7 +506,7 @@ const Moments = () => {
                    Always
                  </p>
                  <p 
-                   className="font-handwritten text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-[#D4A5A5] whitespace-nowrap"
+                   className="font-handwritten text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-[#8b4a5c] whitespace-nowrap"
                    style={{
                      position: 'absolute',
                      bottom: '25%',
@@ -522,7 +517,7 @@ const Moments = () => {
                    Together
                  </p>
                  <p 
-                   className="font-handwritten text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-[#D4A5A5] whitespace-nowrap"
+                   className="font-handwritten text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-[#8b4a5c] whitespace-nowrap"
                    style={{
                      position: 'absolute',
                      bottom: '5%',
@@ -533,7 +528,7 @@ const Moments = () => {
                    Love
                  </p>
                  <p 
-                   className="font-handwritten text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-[#D4A5A5] whitespace-nowrap"
+                   className="font-handwritten text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-[#8b4a5c] whitespace-nowrap"
                    style={{
                      position: 'absolute',
                      top: '50%',
@@ -564,7 +559,7 @@ const Moments = () => {
                        }}
                      ></div>
                      <div className="p-2 text-center">
-                       <div className="text-sm sm:text-lg text-[#D4A5A5] font-handwritten">
+                       <div className="text-sm sm:text-lg text-[#8b4a5c] font-handwritten">
                          Memories
                        </div>
                      </div>
@@ -587,7 +582,7 @@ const Moments = () => {
                        }}
                      ></div>
                      <div className="p-2 text-center">
-                       <div className="text-sm sm:text-lg text-[#D4A5A5] font-handwritten">
+                       <div className="text-sm sm:text-lg text-[#8b4a5c] font-handwritten">
                          Together
                        </div>
                      </div>
@@ -610,7 +605,7 @@ const Moments = () => {
                        }}
                      ></div>
                      <div className="p-2 text-center">
-                       <div className="text-sm sm:text-lg text-[#D4A5A5] font-handwritten">
+                       <div className="text-sm sm:text-lg text-[#8b4a5c] font-handwritten">
                          Love
                        </div>
                      </div>
@@ -635,7 +630,7 @@ const Moments = () => {
                        }}
                      ></div>
                      <div className="p-2 text-center">
-                       <div className="text-sm sm:text-lg text-[#D4A5A5] font-handwritten">
+                       <div className="text-sm sm:text-lg text-[#8b4a5c] font-handwritten">
                          Forever
                        </div>
                      </div>
@@ -658,7 +653,7 @@ const Moments = () => {
                        }}
                      ></div>
                      <div className="p-2 text-center">
-                       <div className="text-sm sm:text-lg text-[#D4A5A5] font-handwritten">
+                       <div className="text-sm sm:text-lg text-[#8b4a5c] font-handwritten">
                          Always
                        </div>
                      </div>
@@ -672,6 +667,7 @@ const Moments = () => {
       {/* Back Button - Circular, Bottom Right - Outside section to avoid transform issues */}
       <button
         ref={backButtonRef}
+        type="button"
         onClick={() => {
           // Slide out page to the left before navigating
           if (sectionRef.current) {
@@ -688,11 +684,10 @@ const Moments = () => {
             navigate('/')
           }
         }}
-        className="fixed bottom-12 right-6 z-[100] w-14 h-14 bg-[#6F4827] text-white rounded-full shadow-lg hover:bg-[#6F4827]/80 hover:scale-110 transition-all duration-300 flex items-center justify-center group"
-        aria-label="Back to home"
+        className="back-button fixed bottom-12 right-6 z-[100] inline-flex aspect-square size-16 shrink-0 items-center justify-center rounded-full bg-[#B8E4F7] font-albert text-xs font-semibold uppercase leading-none tracking-[0.12em] text-[#1e4566] shadow-lg underline decoration-[#1e4566]/50 underline-offset-[0.25em] transition-colors duration-300 hover:bg-[#D8EEF8] sm:size-[4.25rem] sm:text-sm sm:tracking-[0.14em]"
         style={{ pointerEvents: 'auto' }}
       >
-        <ArrowLeft className="w-6 h-6 group-hover:-translate-x-1 transition-transform duration-300" />
+        Back
       </button>
 
       {/* Video Modal */}
@@ -744,7 +739,7 @@ const Moments = () => {
         document.body
       )}
 
-      {/* Image lightbox — same behavior as reference Moments (prev/next, edge disable) */}
+      {/* Image lightbox: same behavior as reference Moments (prev/next, edge disable) */}
       {selectedImage &&
         createPortal(
           <div className="fixed inset-0 z-[10000] flex items-center justify-center p-4">
@@ -818,3 +813,4 @@ const Moments = () => {
 }
 
 export default Moments
+

@@ -22,18 +22,18 @@ export const weddingConfig = {
 
   // RSVP Information
   rsvp: {
-    deadline: "2026-09-01",
+    deadline: "2026-06-25",
     email: "",
     phone: "",
     website: "",
-    message: "Please RSVP by September 1st, 2026"
+    message: "Please RSVP by June 25th, 2026"
   },
 
   // Theme and Styling
   theme: {
-    primaryColor: "midnight-blue-600",
-    secondaryColor: "silver-500",
-    accentColor: "midnight-blue-600",
+    primaryColor: "blush-pink",
+    secondaryColor: "light-blue",
+    accentColor: "light-blue",
     fontFamily: "serif",
     style: "elegant" // Options: elegant, modern, rustic, vintage
   },
@@ -52,18 +52,18 @@ export const weddingConfig = {
 
   // Additional Information
   details: {
-    hashtag: "#JohnsonWilliams2024",
-    website: "https://johnsonwilliams.com",
-    registry: "https://registry.example.com",
+    hashtag: "#KevinAndRea2026",
+    website: "",
+    registry: "",
     message: "We're excited to celebrate our special day with you!",
     covidInfo: "We're following local health guidelines. Please stay home if you're feeling unwell."
   },
 
   // Social Media
   social: {
-    instagram: "@johnsonwilliams",
-    facebook: "JohnsonWilliamsWedding",
-    twitter: "@johnsonwilliams"
+    instagram: "",
+    facebook: "",
+    twitter: ""
   }
 };
 

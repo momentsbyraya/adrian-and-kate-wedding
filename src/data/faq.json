@@ -1,20 +1,16 @@
 {
   "faqData": [
     {
-      "question": "What's the dress code?",
-      "answer": "Entourage in coffee brown—from deep espresso to warm camel. Guests in nude tones: soft blush, sand, and champagne—elegant shades that complement the day without matching the entourage palette."
+      "question": "What is the dress code?",
+      "answer": "Guests are invited in light pink and light blue. Choose one as your main color, or combine both in a tasteful mix. We kindly ask that you stay within this palette so the celebration feels cohesive in photos."
     },
     {
-      "question": "Food allergies or dietary needs?",
-      "answer": "Please let us know if you need a vegetarian meal. We also need to be mindful of a crustacean allergy when planning the menu."
-    },
-    {
-      "question": "Can I bring a plus-one?",
-      "answer": "Our celebration is intimate — invitations are addressed to those named on the invite only, so plus-ones are not included."
+      "question": "May I bring a plus-one?",
+      "answer": "Our wedding is intimate. Invitations are addressed to the guests named on the envelope only; plus-ones are not included."
     },
     {
       "question": "Are children welcome?",
-      "answer": "We love your little ones, but this will be an adults-only evening — only children who are specifically invited on your invitation may attend."
+      "answer": "We love your little ones, but this will be an adults-only celebration. Thank you for making childcare arrangements."
     }
   ]
 }

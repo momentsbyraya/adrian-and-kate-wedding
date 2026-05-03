@@ -1,23 +1,14 @@
 {
   "paymentMethods": [
     {
-      "name": "GCash - Jennalyn Sacdalan",
-      "image": "/assets/images/monetary-gifts/IMG_0740.JPG",
+      "name": "BDO — Rea Ebalo",
+      "image": "/assets/images/qr/qr-code.png",
       "accountInfo": {
-        "provider": "GCash",
-        "accountNumber": "",
-        "accountName": "Jennalyn Sacdalan",
-        "qrCode": "/assets/images/monetary-gifts/IMG_0740.JPG"
-      }
-    },
-    {
-      "name": "GCash - Jenalyn Estenor",
-      "image": "/assets/images/monetary-gifts/IMG_0740.JPG",
-      "accountInfo": {
-        "provider": "GCash",
-        "accountNumber": "",
-        "accountName": "Jenalyn Estenor",
-        "qrCode": "/assets/images/monetary-gifts/IMG_0740.JPG"
+        "provider": "BDO",
+        "accountNumber": "007170487389",
+        "accountName": "Rea Ebalo",
+        "qrCode": "/assets/images/qr/qr-code.png",
+        "giftImage": "/assets/images/monetary-gifts/IMG_6303.jpeg"
       }
     }
   ]

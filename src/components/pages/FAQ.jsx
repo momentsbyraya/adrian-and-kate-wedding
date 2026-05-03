@@ -2,7 +2,6 @@ import React, { useEffect, useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { ArrowLeft } from 'lucide-react'
 import FAQSection from '../FAQSection'
 import './Details.css'
 
@@ -55,9 +54,10 @@ const FAQ = () => {
         <FAQSection id="faq" />
       </section>
 
-      {/* Back Button - Circular, Bottom Right */}
+      {/* Back */}
       <button
         ref={backButtonRef}
+        type="button"
         onClick={() => {
           // Slide out page to the left before navigating
           if (sectionRef.current) {
@@ -74,13 +74,13 @@ const FAQ = () => {
             navigate('/')
           }
         }}
-        className="fixed bottom-12 right-6 z-[100] w-14 h-14 bg-[#6F4827] text-white rounded-full shadow-lg hover:bg-[#6F4827]/80 hover:scale-110 transition-all duration-300 flex items-center justify-center group back-button"
-        aria-label="Back to home"
+        className="back-button fixed bottom-12 right-6 z-[100] inline-flex aspect-square size-16 shrink-0 items-center justify-center rounded-full bg-[#B8E4F7] font-albert text-xs font-semibold uppercase leading-none tracking-[0.12em] text-[#1e4566] shadow-lg underline decoration-[#1e4566]/50 underline-offset-[0.25em] transition-colors duration-300 hover:bg-[#D8EEF8] sm:size-[4.25rem] sm:text-sm sm:tracking-[0.14em]"
       >
-        <ArrowLeft className="w-6 h-6 group-hover:-translate-x-1 transition-transform duration-300" />
+        Back
       </button>
     </>
   )
 }
 
 export default FAQ
+

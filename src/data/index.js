@@ -8,4 +8,6 @@ export { default as paymentMethods } from './payment-methods.json'
 export { default as loveStory } from './love-story.json'
 export { default as couple } from './couple.json'
 export { default as couples } from './couples.json'
-export { default as audio } from './audio.json' 
+export { default as audio } from './audio.json'
+
+export * from './prenup'

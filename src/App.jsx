@@ -15,6 +15,7 @@ import Moments from './components/pages/Moments'
 import FAQ from './components/pages/FAQ'
 import AudioProvider from './contexts/AudioProvider'
 import { useAudio } from './hooks/useAudio'
+import { prenupAllUrls } from './data/prenup'
 
 function AppContent() {
   const [isRSVPModalOpen, setIsRSVPModalOpen] = useState(false)
@@ -27,8 +28,7 @@ function AppContent() {
   useEffect(() => {
     const preloadImages = async () => {
       const criticalImages = [
-        // NavIndex images - prenup photos used on home page
-        '/assets/images/prenup/DSC02678.jpg',
+        ...prenupAllUrls,
         // NavIndex graphics - all decorative elements
         '/assets/images/graphics/envelope.png',
         '/assets/images/graphics/flower-1.png',
@@ -39,21 +39,13 @@ function AppContent() {
         '/assets/images/graphics/flower-8.png',
         '/assets/images/graphics/textured-bg-2.png',
         '/assets/images/graphics/falling-flower.png',
+        '/assets/images/graphics/flower-banner.png',
         '/assets/images/graphics/white-blur.png',
-        // NavIndex polaroids (top + OUR MOMENTS row)
-        '/assets/images/prenup/DSC02479.jpg',
-        '/assets/images/prenup/DSC02410.jpg',
-        '/assets/images/prenup/DSC02456.jpg',
-        // OpeningScreen grid (shares DSC02410 with NavIndex)
-        '/assets/images/prenup/DSC02746.jpg',
-        '/assets/images/prenup/DSC02496.jpg',
-        // Details PhotoSection (prenup shots not used on NavIndex)
-        '/assets/images/prenup/DSC02419.jpg',
-        '/assets/images/prenup/DSC02483.jpg',
         // OpeningScreen images
         '/assets/images/graphics/stamp.png',
         '/assets/images/graphics/cutlery-sketch.png',
-        '/assets/images/graphics/ring-sketch.png'
+        '/assets/images/graphics/ring-sketch.png',
+        '/assets/images/qr/qr-code.png'
       ]
 
       // Preload fonts

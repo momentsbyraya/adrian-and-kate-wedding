@@ -6,10 +6,10 @@ const ImageBanner = ({ src, alt = "Banner image" }) => {
   return (
     <div className="relative z-20 w-screen" style={{ width: '100vw' }}>
       <div className="relative w-full h-[250px] sm:h-[250px] md:h-[300px] lg:h-[350px]">
-          <img 
-            src={src} 
-            alt={alt} 
-            className="w-full h-full object-cover"
+          <img
+            src={src}
+            alt={alt}
+            className="h-full w-full object-cover object-[50%_28%] sm:object-[50%_32%] md:object-[50%_36%]"
           />
           {/* Soft transparent white gradient layers at bottom */}
           <GradientLayer height="h-32" opacity={0.7} gradientId="whiteGradient1" />
@@ -19,7 +19,7 @@ const ImageBanner = ({ src, alt = "Banner image" }) => {
           <GradientLayer height="h-6" opacity={0.25} gradientId="whiteGradient5" />
           <GradientLayer height="h-4" opacity={0.2} gradientId="whiteGradient6" />
 
-          {/* Full-bleed white blur at bottom — asset from `images.json` → graphics */}
+          {/* Full-bleed white blur at bottom (from images.json graphics) */}
           <img
             src={images.graphics.bannerWhiteBlur}
             alt=""
@@ -44,17 +44,17 @@ const ImageBanner = ({ src, alt = "Banner image" }) => {
             <rect width="100%" height="100%" fill="url(#solidTransition)" />
           </svg>
           
-          {/* Details Title at bottom */}
-          <div className="absolute bottom-0 left-0 w-full flex flex-col justify-center items-center pb-0.5 z-10">
+          {/* Details Title — slightly inset from bottom edge */}
+          <div className="absolute bottom-0 left-0 flex w-full flex-col items-center justify-end pb-6 sm:pb-8 md:pb-10 z-10">
             <div className="w-full text-center">
               {/* The in Ballet font */}
-              <h1 className="font-ballet mb-2 text-5xl sm:text-6xl md:text-7xl lg:text-8xl" style={{ color: '#6F4827' }}>
+              <h1 className="font-ballet mb-2 text-5xl sm:text-6xl md:text-7xl lg:text-8xl" style={{ color: '#1e4566' }}>
                 The
               </h1>
               {/* Details in Tebranos font */}
               <h2
                 className="font-tebranos -mt-6 mb-4 text-6xl uppercase sm:text-7xl md:text-8xl lg:text-9xl"
-                style={{ color: '#6F4827' }}
+                style={{ color: '#1e4566' }}
               >
                 Details
               </h2>
@@ -66,3 +66,4 @@ const ImageBanner = ({ src, alt = "Banner image" }) => {
 }
 
 export default ImageBanner
+

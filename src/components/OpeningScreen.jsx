@@ -1,13 +1,10 @@
 import React, { useRef, useEffect } from 'react'
 import { gsap } from 'gsap'
 import { themeConfig } from '../config/themeConfig'
+import { prenupOpeningUrls } from '../data/prenup'
 
-/** Same three prenup shots — used by grid and (when enabled) stack layout */
-const OPENING_PRENUP_IMAGES = [
-  '/assets/images/prenup/DSC02410.jpg', // row 1 (top)
-  '/assets/images/prenup/DSC02746.jpg',
-  '/assets/images/prenup/DSC02496.jpg',
-]
+/** Three prenup shots — grid / stack layouts (see `src/data/prenup.js`). */
+const OPENING_PRENUP_IMAGES = prenupOpeningUrls
 
 /** `'grid'` — three full-width rows. `'stack'` — rotated stack (kept for later). */
 const OPENING_BG_MODE = 'grid'
@@ -111,7 +108,7 @@ function OpeningScreen({ onEnvelopeOpen }) {
           ))}
         </div>
       )}
-      <div className="absolute inset-0 bg-[#8C6A3B]/35 z-[1]" />
+      <div className="absolute inset-0 z-[1] bg-black/35 pointer-events-none" aria-hidden />
       <section className="cssletter flex flex-col items-center relative z-10 w-full py-8" style={{ minHeight: 'auto', height: 'auto' }}>
         <div ref={clickMeRef} className="mb-4 sm:mb-6 md:mb-8 lg:mb-10 text-center click-me-container">
           <p className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-foglihten uppercase leading-tight" style={{ color: '#EDEDDD' }}>

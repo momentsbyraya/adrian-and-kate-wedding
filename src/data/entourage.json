@@ -1,102 +1,58 @@
 {
-  "familyMembers": {
-    "groomSide": [
-      { "role": "Mother of the Groom", "name": "Anita Sacdalan" },
-      { "role": "Brother of the Groom", "name": "Baylon Sacdalan" }
-    ],
-    "brideSide": [
-      { "role": "Brother of the Bride", "name": "Jerico Estenor" },
-      { "role": "Sister-in-law of the Bride", "name": "Therese Gail Estenor" }
-    ]
-  },
-  "specialMentions": [
+  "blocks": [
     {
-      "before": "Our big day wouldn't be complete without",
-      "name": "Adam Rene",
-      "after": "to bring us our wedding ring"
+      "t": "parentsTwoCol",
+      "left": {
+        "title": "Parents of groom",
+        "lines": ["Mrs. Lerma Ebalo", "Mr. Arnel Ebalo 🕊️", "Mr. Jayson Ebalo"]
+      },
+      "right": {
+        "title": "Parents of Bride",
+        "lines": ["Mrs. Naida Enteria", "Mr. Nestor Enteria"]
+      }
     },
     {
-      "before": "Hand in hand",
-      "name": "Luci and Hansi",
-      "after": "will carry our treasure to prosper our marriage"
+      "t": "rolesTwoCol",
+      "left": { "title": "Best Man", "lines": ["Mr. Jhonray Aguilar"] },
+      "right": { "title": "Maid of Honor", "lines": ["Ms. Rhicca Broniola"] }
     },
+    { "t": "hl", "text": "Principal Sponsor" },
     {
-      "before": "Bless be the little hands of",
-      "name": "Clara",
-      "after": "who will carry our holy bible to strengthen our faith"
-    },
-    {
-      "before": "Our aisle will be showered with petals by our little godchildren",
-      "names": [
-        "Aeshan Ziahreign",
-        "Aleesha Chloe",
-        "Sherestine Aislah"
-      ],
-      "after": ""
-    }
-  ],
-  "entourageList": [
-    {
-      "category": "Principal Sponsors",
-      "displayTitle": "To stand as our principal witnesses",
-      "ninong": [
-        "Tito Ramon De Jesus",
-        "Mr. Jun Cañadido",
-        "Mr. Ronnie Amos",
-        "",
-        "",
-        "Mr. Al Jocson",
-        "Mr. Arnel Guirre"
-      ],
-      "ninang": [
-        "Tita Carina Rueda",
-        "Mrs. Rose Dimaculangan",
-        "Mrs. Bevvy Joan Terry",
-        "Mrs. Edith Manalo Malveda",
-        "Tita Imelda Abeledo",
-        "Ms. Arlene Santander Lim",
-        ""
+      "t": "principal",
+      "rows": [
+        ["Mr. Alejandro Castillo", "Mrs. Myrna Loma"],
+        ["Mr. Wilfredo Enteria", "Mrs. Sylvia Bulanadi"],
+        ["Mr. Pedrito Duave"],
+        ["Mrs. Lulu Guillartes"],
+        ["Mrs. Amelia Reyes"],
+        ["Mr. Emmanuelle Reyes"],
+        ["Mr. Manny De Leon"],
+        ["Mrs. Imelda Juangco"]
       ]
     },
+    { "t": "hl", "text": "Secondary Sponsors" },
+    { "t": "subhl", "text": "Candle" },
+    { "t": "pairRow", "left": "Ms. Carmi Venturina", "right": "Mr. Jerome Eresmas" },
+    { "t": "subhl", "text": "Veil" },
+    { "t": "pairRow", "left": "Ms. Erica Paula Comia", "right": "Mr. Cherrieben Bellen" },
+    { "t": "subhl", "text": "Cord" },
+    { "t": "pairRow", "left": "Ms. Airose Ignacio", "right": "Mr. Marvin Carpio" },
     {
-      "category": "Secondary Sponsors",
-      "groomsmen": [
-        "Glady Balmes",
-        "Engelbert Zeymour Set",
-        "Brendel Winnie Rabanal",
-        "James Mark Mina",
-        "Jack Jacinto",
-        "Vash Enrade",
-        "Majorca Laquindanum",
-        "Vina Ziga",
-        "Kj Respondo"
-      ],
-      "bridesmaids": [
-        "Maricar Franial",
-        "Thea Gabrielle Varias",
-        "Maricel Arcibal",
-        "Che Cabanaoan",
-        "Issai Jacinto",
-        "Stephanie De Austria",
-        "Marissa Molejon",
-        "Vivian Laquesta",
-        "Annie Nobleza"
+      "t": "twoCol",
+      "leftTitle": "Grooms man",
+      "rightTitle": "Bridesmaid",
+      "rows": [
+        ["Renz Enteria", "Rianne Enteria"],
+        ["Rexzel Enteria", "Sophia Almira Adamus"]
       ]
     },
-    {
-      "category": "Candle Sponsors",
-      "label": "To light our path",
-      "names": ["Mary Ann Duque", "Jocelyn Set"]
-    },
-    {
-      "category": "Veil Sponsors",
-      "label": "To clothe us as one",
-      "names": ["Jerico Estenor", "Therese Gail Estenor"]
-    },
-    {
-      "category": "Cord Sponsors",
-      "label": "To bind us as together always and forever",
-      "names": ["Edgar Reyes", "Myrna Sacdalan Reyes"]
-    }
+    { "t": "hl", "text": "Ring bearer" },
+    { "t": "p", "lines": ["Keann Raiven Ebalo"] },
+    { "t": "hl", "text": "Coin bearer" },
+    { "t": "p", "lines": ["Rycel Enteria"] },
+    { "t": "hl", "text": "Bible bearer" },
+    { "t": "p", "lines": ["Rowan Nixon Enteria"] },
+    { "t": "hl", "text": "Flower girls" },
+    { "t": "p", "lines": ["Rachel Enteria", "Riezel Fae Enteria"] }
   ]
 }

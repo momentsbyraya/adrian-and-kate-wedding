@@ -1,22 +1,22 @@
 {
   "bride": {
-    "firstName": "Jenalyn",
-    "lastName": "Estenor",
-    "fullName": "Jenalyn Estenor"
+    "firstName": "Rea",
+    "lastName": "Enteria",
+    "fullName": "Rea Enteria"
   },
   "groom": {
-    "firstName": "Jennalyn",
-    "lastName": "Sacdalan",
-    "fullName": "Jennalyn Sacdalan"
+    "firstName": "Kevin",
+    "lastName": "Ebalo",
+    "fullName": "Kevin Ebalo"
   },
-  "together": "Jenna & Jen",
-  "nickname": "Jenna & Jen",
+  "together": "Kevin & Rea",
+  "nickname": "Kevin & Rea",
   "wedding": {
-    "date": "2026-10-09",
-    "time": "5:30 PM",
+    "date": "2026-07-03",
+    "time": "2:30 PM",
     "dayOfWeek": "Friday",
-    "month": "October",
-    "day": "9",
+    "month": "July",
+    "day": "3",
     "year": "2026"
   }
 }

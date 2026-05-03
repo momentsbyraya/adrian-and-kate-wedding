@@ -85,7 +85,7 @@ const RSVPModal = ({ isOpen, onClose }) => {
         </div>
 
         <div className="flex min-h-0 flex-1 flex-col items-center justify-center px-6 py-12">
-          <p className="text-center text-2xl sm:text-3xl font-albert font-medium tracking-wide text-[#6F4827]">
+          <p className="text-center text-lg font-albert font-semibold tracking-[0.08em] text-gray-900/85 sm:text-xl">
             TO BE ADDED
           </p>
         </div>

@@ -19,7 +19,7 @@
 }
 
 .preloader span {
-  --c: #6F4827;
+  --c: #1e4566;
   position: absolute;
   display: block;
   height: 64px;
@@ -77,14 +77,14 @@
   height: 16px;
   width: 64px;
   border-radius: 50%;
-  background-color: #6F4827;
-  border: 1px solid #6F4827;
+  background-color: #1e4566;
+  border: 1px solid #1e4566;
   animation: shadow 2.3s cubic-bezier(0.75, 0, 0.5, 1) infinite;
 }
 
 @keyframes shadow {
   50% {
     transform: translateX(-50%) scale(0.5);
-    border-color: #6F4827;
+    border-color: #1e4566;
   }
 }

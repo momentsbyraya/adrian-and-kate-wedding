@@ -1,25 +1,25 @@
 {
   "ceremony": {
-    "name": "Salo de Cent",
+    "name": "St. Mary Magdalene Church",
     "address": "",
     "city": "",
     "state": "",
     "zip": "",
-    "time": "5:30 PM",
-    "details": "Ceremony begins at 5:30 PM (17:30)",
-    "googleMapsUrl": "https://www.google.com/maps/place//data=!4m2!3m1!1s0x12a4a31ef7731bfb:0xe221a86f66ef21a8?entry=s&sa=X&ved=2ahUKEwjR8dK2qfuTAxVZ1AIHHWZ8BEcQ4kB6BAgZEAA&hl=en",
-    "directionsUrl": "https://www.google.com/maps/place//data=!4m2!3m1!1s0x12a4a31ef7731bfb:0xe221a86f66ef21a8?entry=s&sa=X&ved=2ahUKEwjR8dK2qfuTAxVZ1AIHHWZ8BEcQ4kB6BAgZEAA&hl=en"
+    "time": "2:30 PM",
+    "details": "Ceremony begins at 2:30 PM.",
+    "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=St+Mary+Magdalene+Church+Tanay+Rizal",
+    "directionsUrl": "https://www.google.com/maps/search/?api=1&query=St+Mary+Magdalene+Church+Tanay+Rizal"
   },
   "reception": {
-    "name": "Turo del Sol",
+    "name": "Simple Restaurant",
     "address": "",
-    "city": "",
-    "state": "",
+    "city": "Tanay",
+    "state": "Rizal",
     "zip": "",
-    "time": "7:30 PM",
-    "details": "Reception begins at 7:30 PM (19:30)",
+    "time": "4:30 PM",
+    "details": "Reception begins at 4:30 PM. Celebration runs until 9:00 PM.",
     "landmark": "",
-    "googleMapsUrl": "https://maps.google.com/maps/place//data=!4m2!3m1!1s0x12bb4a7455b062d7:0x3891ff1e67443df2?entry=s&sa=X&ved=2ahUKEwjj3P3uqvuTAxVVAvsDHQoVNI0Q4kB6BAgQEAA&hl=en",
-    "directionsUrl": "https://maps.google.com/maps/place//data=!4m2!3m1!1s0x12bb4a7455b062d7:0x3891ff1e67443df2?entry=s&sa=X&ved=2ahUKEwjj3P3uqvuTAxVVAvsDHQoVNI0Q4kB6BAgQEAA&hl=en"
+    "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Simple+Restaurant+Tanay+Rizal",
+    "directionsUrl": "https://www.google.com/maps/search/?api=1&query=Simple+Restaurant+Tanay+Rizal"
   }
 }

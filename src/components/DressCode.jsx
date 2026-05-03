@@ -2,6 +2,7 @@ import React, { useRef, useEffect, useState } from 'react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { dresscode } from '../data'
+import { themeConfig } from '../config/themeConfig'
 import './pages/Details.css'
 
 gsap.registerPlugin(ScrollTrigger)
@@ -29,10 +30,14 @@ const DressCodeCategoryRow = ({
   const contentBlock = (
     <div className="dresscode-content flex w-1/2 min-w-0 flex-col items-center justify-center px-1 text-center sm:px-2">
       <div className="w-full">
-        <div className="text-base font-boska text-white sm:text-lg md:text-xl lg:text-2xl mb-1 sm:mb-2">
+        <div
+          className={`mb-1 text-base font-boska sm:mb-2 sm:text-lg md:text-xl lg:text-2xl ${themeConfig.text.secondary}`}
+        >
           {section.title}
         </div>
-        <p className="mb-2 text-xs font-albert font-thin italic text-white sm:mb-3 sm:text-sm md:text-base">
+        <p
+          className={`mb-2 text-xs font-albert font-thin italic sm:mb-3 sm:text-sm md:text-base ${themeConfig.text.secondary}`}
+        >
           {section.description}
         </p>
         {section.colors?.length > 0 && (
@@ -48,16 +53,16 @@ const DressCodeCategoryRow = ({
                   onClick={() => setActiveTooltip(activeTooltip === tipId ? null : tipId)}
                 >
                   <div
-                    className="h-5 w-5 cursor-pointer rounded border border-white/40 sm:h-7 sm:w-7"
+                    className="h-5 w-5 cursor-pointer rounded border border-[#8b4a5c]/35 sm:h-7 sm:w-7"
                     style={{ backgroundColor: color.hex }}
                   />
                   {activeTooltip === tipId && (
                     <div
-                      className="color-swatch-tooltip pointer-events-none absolute bottom-full left-1/2 z-[9999] mb-2 -translate-x-1/2 transform whitespace-nowrap rounded bg-[#6F4827] px-2 py-1 text-xs text-white"
+                      className={`color-swatch-tooltip pointer-events-none absolute bottom-full left-1/2 z-[9999] mb-2 -translate-x-1/2 transform whitespace-nowrap rounded bg-[#B8E4F7] px-2 py-1 text-xs ${themeConfig.text.secondary}`}
                       style={{ position: 'absolute' }}
                     >
                       {color.name}
-                      <div className="absolute left-1/2 top-full -mt-1 -translate-x-1/2 transform border-4 border-transparent border-t-[#6F4827]" />
+                      <div className="absolute left-1/2 top-full -mt-1 -translate-x-1/2 transform border-4 border-transparent border-t-[#B8E4F7]" />
                     </div>
                   )}
                 </div>
@@ -88,11 +93,11 @@ const DressCodeCategoryRow = ({
 
 const DressCode = () => {
   const dressCodeTitleRef = useRef(null)
-  const category1Ref = useRef(null)
-  const category2Ref = useRef(null)
+  const rowRefs = useRef([])
   const [activeTooltip, setActiveTooltip] = useState(null)
 
   const sections = dresscode.sections ?? []
+  const attireIntro = dresscode.mainDressCode?.description ?? ''
 
   useEffect(() => {
     if (dressCodeTitleRef.current) {
@@ -108,9 +113,9 @@ const DressCode = () => {
       })
     }
 
-    const setupCategoryScroll = (ref, imageOnRight) => {
-      if (!ref.current) return
-      const flexContainer = ref.current.querySelector('.dresscode-layout')
+    const setupCategoryScroll = (element, imageOnRight) => {
+      if (!element) return
+      const flexContainer = element.querySelector('.dresscode-layout')
       if (!flexContainer) return
       const imageEl = flexContainer.querySelector('.dresscode-image-container')
       const contentEl = flexContainer.querySelector('.dresscode-content')
@@ -122,7 +127,7 @@ const DressCode = () => {
         if (contentEl) gsap.set(contentEl, { opacity: 0, x: 30 })
       }
       ScrollTrigger.create({
-        trigger: ref.current,
+        trigger: element,
         start: 'top 75%',
         onEnter: () => {
           if (imageEl) {
@@ -141,22 +146,21 @@ const DressCode = () => {
       })
     }
 
-    setupCategoryScroll(category1Ref, false)
-    setupCategoryScroll(category2Ref, true)
+    sections.forEach((_, i) => {
+      const el = rowRefs.current[i]
+      if (el) setupCategoryScroll(el, i % 2 === 1)
+    })
 
     return () => {
       ScrollTrigger.getAll().forEach((trigger) => {
-        if (
-          trigger.vars &&
-          (trigger.vars.trigger === dressCodeTitleRef.current ||
-            trigger.vars.trigger === category1Ref.current ||
-            trigger.vars.trigger === category2Ref.current)
-        ) {
+        const t = trigger.vars?.trigger
+        if (!t) return
+        if (t === dressCodeTitleRef.current || rowRefs.current.includes(t)) {
           trigger.kill()
         }
       })
     }
-  }, [])
+  }, [sections.length])
 
   return (
     <div className="relative pb-20 sm:pb-24 md:pb-32 attire-section">
@@ -174,52 +178,36 @@ const DressCode = () => {
               The Attire
             </span>
           </h3>
-          <p className="text-base sm:text-lg font-albert font-thin italic dress-code-description">
-            Entourage: coffee brown. Guests: nude—please dress to match the guide below.
+          <p className="text-base sm:text-lg font-albert font-thin italic dress-code-description max-w-2xl mx-auto px-2">
+            {attireIntro}
           </p>
         </div>
       </div>
 
       <div className="mx-auto flex w-full max-w-5xl flex-col items-stretch gap-12 px-3 sm:gap-16 sm:px-4 md:gap-20">
-        {sections[0] && (
-          <div ref={category1Ref} className="min-w-0 transition-opacity duration-500 ease-in-out">
-            <DressCodeCategoryRow
-              section={sections[0]}
-              imageFirst
-              activeTooltip={activeTooltip}
-              setActiveTooltip={setActiveTooltip}
-            />
-          </div>
-        )}
-
-        {sections[0] && sections[1] && (
-          <hr
-            className="dresscode-category-divider w-full border-0 border-t border-dashed border-white/35"
-            aria-hidden="true"
-          />
-        )}
-
-        {sections[1] && (
-          <div ref={category2Ref} className="min-w-0 transition-opacity duration-500 ease-in-out">
-            <DressCodeCategoryRow
-              section={sections[1]}
-              imageFirst={false}
-              activeTooltip={activeTooltip}
-              setActiveTooltip={setActiveTooltip}
-            />
-          </div>
-        )}
-      </div>
-
-      <div className="wave wave-bottom relative w-full" style={{ marginTop: '-1px' }}>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" className="w-full h-auto" style={{ display: 'block' }}>
-          <path
-            fill="#6F4827"
-            fillOpacity="1"
-            stroke="none"
-            d="M0,192L60,165.3C120,139,240,85,360,90.7C480,96,600,160,720,197.3C840,235,960,245,1080,229.3C1200,213,1320,171,1380,149.3L1440,128L1440,0L1380,0C1320,0,1200,0,1080,0C960,0,840,0,720,0C600,0,480,0,360,0C240,0,120,0,60,0L0,0Z"
-          />
-        </svg>
+        {sections.map((section, i) => (
+          <React.Fragment key={section.id}>
+            {i > 0 && (
+              <hr
+                className="dresscode-category-divider w-full border-0 border-t border-dashed border-[#8b4a5c]/30"
+                aria-hidden="true"
+              />
+            )}
+            <div
+              ref={(el) => {
+                rowRefs.current[i] = el
+              }}
+              className="min-w-0 transition-opacity duration-500 ease-in-out"
+            >
+              <DressCodeCategoryRow
+                section={section}
+                imageFirst={i % 2 === 0}
+                activeTooltip={activeTooltip}
+                setActiveTooltip={setActiveTooltip}
+              />
+            </div>
+          </React.Fragment>
+        ))}
       </div>
     </div>
   )

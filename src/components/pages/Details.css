@@ -14,7 +14,7 @@
 
 .venue-title-text {
   line-height: 0.8;
-  color: #6F4827;
+  color: #1e4566;
 }
 
 /* Venue Image Container */
@@ -22,13 +22,13 @@
   aspect-ratio: 1 / 1;
 }
 
-/* Program Section */
+/* Program Section — light blue */
 .program-section {
   padding: 0 0 2rem 0;
   width: 100vw;
   margin-left: calc(-50vw + 50%);
   margin-right: calc(-50vw + 50%);
-  background-color: #6F4827;
+  background-color: #d8eef8;
 }
 
 .program-title-container {
@@ -41,7 +41,7 @@
 
 .program-title-text {
   line-height: 0.8;
-  color: #ffffff;
+  color: #1e4566;
   display: block;
   text-align: center;
 }
@@ -65,22 +65,22 @@
 }
 
 .timeline-event-time {
-  color: #6F4827;
+  color: #1e4566;
 }
 
 .timeline-event-description {
-  color: #ffffff;
+  color: #1e4566;
 }
 
 /* Dress Code */
 .dress-code-title-text {
   line-height: 0.8;
-  color: #ffffff;
+  color: #8b4a5c;
   white-space: nowrap;
 }
 
 .dress-code-description {
-  color: #ffffff;
+  color: #8b4a5c;
 }
 
 .dress-code-image-container {
@@ -138,9 +138,9 @@
   flex-shrink: 0;
 }
 
-/* Attire Section Background */
+/* Attire Section — light pink */
 .attire-section {
-  background-color: #6F4827;
+  background-color: #fad6e0;
   width: 100vw;
   margin-left: calc(-50vw + 50%);
   margin-right: calc(-50vw + 50%);
@@ -189,7 +189,16 @@
 
 .gift-registry-title-text {
   line-height: 0.8;
-  color: #ffffff;
+  color: #1e4566;
+}
+
+.gift-registry-body {
+  color: #1e4566;
+}
+
+.gift-send-button:focus-visible {
+  outline: 2px solid #1e4566;
+  outline-offset: 3px;
 }
 
 /* Upload Section */
@@ -200,7 +209,7 @@
 
 .upload-title-text {
   line-height: 0.8;
-  color: #6F4827;
+  color: #1e4566;
 }
 
 .upload-qr-container {
@@ -219,20 +228,20 @@
   }
 }
 
-/* FAQ Section */
+/* FAQ Section — light blue band */
 .faq-section {
   padding: 4rem 0 4rem 0;
   width: 100vw;
   margin-left: calc(-50vw + 50%);
   margin-right: calc(-50vw + 50%);
-  background-color: #6F4827;
+  background-color: #d8eef8;
   position: relative;
   overflow: hidden;
 }
 
 .faq-title-text {
   line-height: 0.8;
-  color: #ffffff;
+  color: #1e4566;
 }
 
 /* Modal */
@@ -244,4 +253,3 @@
 .back-button {
   pointer-events: auto;
 }
-

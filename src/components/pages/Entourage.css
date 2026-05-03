@@ -126,17 +126,37 @@
   animation-delay: 14s;
 }
 
-/* Full-section background — prenup photo (sharp; brown wash on top) */
+/* Full-bleed decorative strips framing the section */
+.entourage-flower-banner-img {
+  display: block;
+  width: 100vw;
+  max-width: none;
+  height: auto;
+}
+
+.entourage-flower-banner-img--flip {
+  transform: scaleY(-1);
+  transform-origin: center center;
+}
+
+/* Ordered block list: allow wrapping for long sponsor lines */
+#entourage .entourage-content-stack .entourage-anim-name,
+#entourage .entourage-content-stack .entourage-block-hl,
+#entourage .entourage-content-stack .sponsor-role-title-wrap {
+  white-space: normal !important;
+}
+
+/* Full-section background — same art as RSVP / Details (`bg-1.png`) */
 .entourage-bg {
-  background-image: url(/assets/images/prenup/DSC02746.jpg);
+  background-image: url(/assets/images/graphics/bg-1.png);
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
 }
 
-/* Chocolate brown wash over photo */
+/* Light pink wash (#FAD6E0 blush) at 50% over bg */
 .entourage-overlay {
-  background-color: rgba(62, 38, 24, 0.82);
+  background-color: rgba(250, 214, 224, 0.5);
   pointer-events: none;
 }
 
@@ -146,25 +166,39 @@
 }
 
 #entourage .entourage-foreground {
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.35);
   overflow: visible;
   width: 100%;
   max-width: none;
 }
 
-/* Names & body copy: softer white (not full #fff) */
+/* Fallback layout text rules (colour comes from `.entourage-content-stack` below) */
 #entourage .entourage-foreground * {
-  color: rgba(255, 255, 255, 0.78) !important;
   white-space: nowrap !important;
   text-overflow: clip !important;
   overflow: visible !important;
 }
 
-/* Category / section titles only: full white */
-#entourage .entourage-foreground h3,
-#entourage .entourage-foreground .caudex-bold,
-#entourage .entourage-foreground .imperial-script-regular {
-  color: #ffffff !important;
+/* Category / section headings — dark rose / dark red */
+#entourage .entourage-content-stack h2.imperial-script-regular,
+#entourage .entourage-content-stack h3,
+#entourage .entourage-content-stack .entourage-block-hl,
+#entourage .entourage-content-stack .sponsor-role-title-wrap.caudex-bold,
+#entourage .entourage-content-stack .sponsor-role-title-wrap {
+  color: #8b4a5c !important;
+}
+
+/* Names & body lines — same hue, slightly lighter */
+#entourage .entourage-content-stack .entourage-anim-name {
+  color: #4f7899 !important;
+}
+
+/* Parents columns: keep name lines visually tight (no extra block gaps) */
+#entourage .entourage-content-stack .family-col-groom > p.entourage-anim-name,
+#entourage .entourage-content-stack .family-col-bride > p.entourage-anim-name {
+  margin: 0 !important;
+  padding: 0 !important;
+  line-height: 1.18 !important;
 }
 
 /* Narrative + flower copy — must beat #entourage .entourage-foreground * { nowrap } */
@@ -195,14 +229,19 @@
   white-space: normal !important;
 }
 
-/* Footer “Back” to home — beats muted foreground color on descendants */
+/* “Back” to home */
 #entourage .entourage-foreground .entourage-back-link {
   position: relative;
   z-index: 50;
-  color: #ffffff !important;
+  color: #8b4a5c !important;
   white-space: normal !important;
   background-color: transparent;
   cursor: pointer;
   pointer-events: auto;
+}
+
+#entourage .entourage-foreground .entourage-back-link:hover,
+#entourage .entourage-foreground .entourage-back-link:active {
+  color: #743e4d !important;
 }
 

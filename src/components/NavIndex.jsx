@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react'
 import { useNavigate, useLocation } from 'react-router-dom'
 import { gsap } from 'gsap'
 import { themeConfig } from '../config/themeConfig'
-import { couple } from '../data'
+import { couple, prenupHomePolaroidUrls } from '../data'
 import Counter from './Counter'
 import { getTimeUntilWedding } from '../utils/countdown'
 import './NavIndex.css'
@@ -248,13 +248,13 @@ const NavIndex = ({ onOpenRSVP }) => {
               <div className="rounded-[50%] w-full h-full flex flex-col items-center justify-center relative oval-border">
                 {/* Text Content */}
                 <div className="text-center px-4">
-                  <p className="nanum-myeongjo-regular text-[#6F4827] mb-2 oval-text-for">
+                  <p className="nanum-myeongjo-regular text-[#1e4566] mb-2 oval-text-for">
                     FOR THE
                   </p>
                   <p className={`imperial-script-regular mb-4 underline oval-text-entourage ${themeConfig.text.primary}`}>
                     Entourage
                   </p>
-                  <p className="nanum-myeongjo-regular text-[#6F4827] oval-text-click">
+                  <p className="nanum-myeongjo-regular text-[#1e4566] oval-text-click">
                     CLICK HERE
                   </p>
                 </div>
@@ -299,7 +299,7 @@ const NavIndex = ({ onOpenRSVP }) => {
               className="bg-white relative polaroid-container"
             >
               <img 
-                src="/assets/images/prenup/DSC02479.jpg" 
+                src={prenupHomePolaroidUrls[0]} 
                 alt="Prenup photo" 
                 className="w-full object-cover polaroid-image"
                 style={{ objectPosition: 'center bottom' }}
@@ -394,12 +394,12 @@ const NavIndex = ({ onOpenRSVP }) => {
             
             {/* Text Content */}
             <div className="text-center px-4 relative z-10">
-              <p className="nanum-myeongjo-regular text-[#6F4827] details-text-view">
+              <p className={`nanum-myeongjo-regular details-text-view ${themeConfig.text.primary}`}>
                 VIEW THE
               </p>
-                <p className={`imperial-script-regular underline details-text-details ${themeConfig.text.primary}`}>
-                  Details
-                </p>
+              <p className={`imperial-script-regular underline details-text-details ${themeConfig.text.primary}`}>
+                Details
+              </p>
             </div>
           </div>
         </div>
@@ -475,7 +475,7 @@ const NavIndex = ({ onOpenRSVP }) => {
           >
             <div className="bg-white relative polaroid-1-container">
               <img 
-                src="/assets/images/prenup/DSC02410.jpg" 
+                src={prenupHomePolaroidUrls[1]} 
                 alt="Prenup photo" 
                 className="w-full object-cover polaroid-1-image"
               />
@@ -507,7 +507,7 @@ const NavIndex = ({ onOpenRSVP }) => {
           >
             <div className="bg-white relative polaroid-2-container">
               <img 
-                src="/assets/images/prenup/DSC02456.jpg" 
+                src={prenupHomePolaroidUrls[2]} 
                 alt="Prenup photo" 
                 className="w-full object-cover polaroid-2-image"
               />
@@ -537,7 +537,7 @@ const NavIndex = ({ onOpenRSVP }) => {
                   >
                     {/* Box with Section Name */}
                     <div 
-                      className="px-4 py-6 rounded-lg border-2 text-center min-h-[80px] flex items-center justify-center bg-white border-[#6F4827]/30 text-[#6F4827] shadow-sm"
+                      className="px-4 py-6 rounded-lg border-2 text-center min-h-[80px] flex items-center justify-center bg-white border-[#1e4566]/30 text-[#1e4566] shadow-sm"
                     >
                       <span className="text-sm sm:text-base font-albert font-medium">
                         {section.name}
@@ -563,8 +563,8 @@ const NavIndex = ({ onOpenRSVP }) => {
                   <div 
                     className={`px-4 py-6 rounded-lg border-2 transition-all duration-300 text-center min-h-[80px] flex items-center justify-center ${
                       isActive
-                        ? 'bg-[#6F4827] border-[#6F4827] text-white shadow-lg'
-                        : 'bg-white border-[#6F4827]/40 text-[#6F4827] hover:border-[#6F4827]/60 hover:bg-white shadow-md'
+                        ? 'bg-[#D8EEF8] border-[#B8E4F7] text-[#1e4566] shadow-lg'
+                        : 'bg-white border-[#B8E4F7]/60 text-[#1e4566] hover:border-[#B8E4F7] hover:bg-[#FAD6E0]/40 shadow-md'
                     }`}
                   >
                     <span className="text-sm sm:text-base font-albert font-medium">
@@ -574,7 +574,7 @@ const NavIndex = ({ onOpenRSVP }) => {
                   
                   {/* Active indicator dot */}
                   {isActive && (
-                    <div className="absolute -top-1 -right-1 w-3 h-3 bg-[#6F4827] rounded-full border-2 border-white" />
+                    <div className="absolute -top-1 -right-1 w-3 h-3 bg-[#F5B8CC] rounded-full border-2 border-white" />
                   )}
                 </button>
               )
@@ -592,4 +592,5 @@ const NavIndex = ({ onOpenRSVP }) => {
 }
 
 export default NavIndex
+
 

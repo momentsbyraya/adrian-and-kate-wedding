@@ -92,14 +92,14 @@ const PhotoUpload = () => {
               {/* Upload Details - 50% width on mobile, full width on 992px+ */}
               <div className="w-1/2 lg-custom:w-full lg-custom:h-fit lg-custom:flex lg-custom:flex-col lg-custom:justify-center lg-custom:items-center flex flex-col justify-between text-left lg-custom:text-center py-4 sm:py-6 upload-content-container">
                 {/* Description */}
-                <p className="text-sm sm:text-base font-albert font-thin text-[#6F4827] mb-4 text-left lg-custom:text-center">
+                <p className="text-sm sm:text-base font-albert font-thin text-[#1e4566] mb-4 text-left lg-custom:text-center">
                   Help us capture memories on our special day
                 </p>
 
                 {/* Upload Button */}
                 <div className="flex justify-start lg-custom:justify-center items-center">
                   <SecondaryButton
-                    href="https://drive.google.com/drive/folders/1Rpm9KCyFbECHnbB16rcpTh9uTCK1RwBN?usp=sharing"
+                    href="https://drive.google.com/drive/folders/1lDGVzPiyAr5q3SHNE_GyedQb0MA_Xg2V?usp=sharing"
                     target="_blank"
                     rel="noopener noreferrer"
                     icon={ArrowRight}
@@ -117,3 +117,4 @@ const PhotoUpload = () => {
 }
 
 export default PhotoUpload
+

@@ -2,6 +2,8 @@ import React, { useEffect, useRef } from 'react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
+import { prenupPhotoSectionDefaults } from '../data/prenup'
+
 // Register ScrollTrigger plugin
 gsap.registerPlugin(ScrollTrigger)
 
@@ -18,11 +20,7 @@ const PhotoSection = ({
   const texts = backgroundTexts.length > 0 ? backgroundTexts : defaultTexts
   
   // Default images if none provided
-  const defaultImages = [
-    { src: '/assets/images/prenup/APA_0891.JPG', alt: 'Photo 1', label: 'Memories' },
-    { src: '/assets/images/prenup/APA_0891.JPG', alt: 'Photo 2', label: 'Together' },
-    { src: '/assets/images/prenup/APA_0891.JPG', alt: 'Photo 3', label: 'Love' }
-  ]
+  const defaultImages = prenupPhotoSectionDefaults
   const displayImages = images.length > 0 ? images : defaultImages
   
   useEffect(() => {
@@ -214,15 +212,16 @@ const PhotoSection = ({
                 borderTop: '4px solid white'
               }}
             >
-              <div 
-                className="w-full h-40 sm:h-60 lg:h-72 bg-cover bg-center"
+              <div
+                className="w-full h-40 sm:h-60 lg:h-72 bg-cover"
                 style={{
                   backgroundImage: `url(${displayImages[0].src})`,
+                  backgroundPosition: displayImages[0].backgroundPosition ?? 'center center',
                   borderTop: '4px solid white',
                   borderLeft: '4px solid white',
                   borderRight: '4px solid white'
                 }}
-              ></div>
+              />
               <div className="p-2 text-center">
                 <div className="text-sm sm:text-lg text-[#D4A5A5] font-handwritten">
                   {displayImages[0].label || 'Memories'}
@@ -241,15 +240,16 @@ const PhotoSection = ({
                 borderTop: '4px solid white'
               }}
             >
-              <div 
-                className="w-full h-40 sm:h-60 lg:h-72 bg-cover bg-center"
+              <div
+                className="w-full h-40 sm:h-60 lg:h-72 bg-cover"
                 style={{
                   backgroundImage: `url(${displayImages[1].src})`,
+                  backgroundPosition: displayImages[1].backgroundPosition ?? 'center center',
                   borderTop: '4px solid white',
                   borderLeft: '4px solid white',
                   borderRight: '4px solid white'
                 }}
-              ></div>
+              />
               <div className="p-2 text-center">
                 <div className="text-sm sm:text-lg text-[#D4A5A5] font-handwritten">
                   {displayImages[1].label || 'Together'}
@@ -268,15 +268,16 @@ const PhotoSection = ({
                 borderTop: '4px solid white'
               }}
             >
-              <div 
-                className="w-full h-40 sm:h-60 lg:h-72 bg-cover bg-center"
+              <div
+                className="w-full h-40 sm:h-60 lg:h-72 bg-cover"
                 style={{
                   backgroundImage: `url(${displayImages[2].src})`,
+                  backgroundPosition: displayImages[2].backgroundPosition ?? 'center center',
                   borderTop: '4px solid white',
                   borderLeft: '4px solid white',
                   borderRight: '4px solid white'
                 }}
-              ></div>
+              />
               <div className="p-2 text-center">
                 <div className="text-sm sm:text-lg text-[#D4A5A5] font-handwritten">
                   {displayImages[2].label || 'Love'}
@@ -288,7 +289,7 @@ const PhotoSection = ({
         
         {/* Paragraph */}
         {paragraph && (
-          <p className="text-base sm:text-lg font-albert font-thin text-[#6F4827] text-center max-w-xl mx-auto leading-relaxed">
+          <p className="text-base sm:text-lg font-albert font-thin text-[#1e4566] text-center max-w-xl mx-auto leading-relaxed">
             {paragraph}
           </p>
         )}
@@ -298,3 +299,4 @@ const PhotoSection = ({
 }
 
 export default PhotoSection
+
