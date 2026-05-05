@@ -154,9 +154,9 @@
   background-repeat: no-repeat;
 }
 
-/* Light pink wash (#FAD6E0 blush) at 50% over bg */
+/* Light pink wash (#F7DAE7 blush) at 50% over bg */
 .entourage-overlay {
-  background-color: rgba(250, 214, 224, 0.5);
+  background-color: rgba(247, 218, 231, 0.5);
   pointer-events: none;
 }
 

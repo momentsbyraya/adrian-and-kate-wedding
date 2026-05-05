@@ -58,11 +58,11 @@ const DressCodeCategoryRow = ({
                   />
                   {activeTooltip === tipId && (
                     <div
-                      className={`color-swatch-tooltip pointer-events-none absolute bottom-full left-1/2 z-[9999] mb-2 -translate-x-1/2 transform whitespace-nowrap rounded bg-[#B8E4F7] px-2 py-1 text-xs ${themeConfig.text.secondary}`}
+                      className={`color-swatch-tooltip pointer-events-none absolute bottom-full left-1/2 z-[9999] mb-2 -translate-x-1/2 transform whitespace-nowrap rounded bg-[#c6d7f4] px-2 py-1 text-xs ${themeConfig.text.secondary}`}
                       style={{ position: 'absolute' }}
                     >
                       {color.name}
-                      <div className="absolute left-1/2 top-full -mt-1 -translate-x-1/2 transform border-4 border-transparent border-t-[#B8E4F7]" />
+                      <div className="absolute left-1/2 top-full -mt-1 -translate-x-1/2 transform border-4 border-transparent border-t-[#c6d7f4]" />
                     </div>
                   )}
                 </div>

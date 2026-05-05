@@ -109,6 +109,10 @@ const PhotoUpload = () => {
                 </div>
               </div>
             </div>
+
+            <p className="mt-6 text-center font-albert text-sm sm:text-base font-semibold text-[#1e4566]">
+              #KEVINmarrieshisgREAtlove
+            </p>
           </div>
         </div>
       </div>

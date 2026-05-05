@@ -28,7 +28,7 @@
   width: 100vw;
   margin-left: calc(-50vw + 50%);
   margin-right: calc(-50vw + 50%);
-  background-color: #d8eef8;
+  background-color: #c6d7f4;
 }
 
 .program-title-container {
@@ -140,7 +140,7 @@
 
 /* Attire Section — light pink */
 .attire-section {
-  background-color: #fad6e0;
+  background-color: #f7dae7;
   width: 100vw;
   margin-left: calc(-50vw + 50%);
   margin-right: calc(-50vw + 50%);
@@ -234,7 +234,7 @@
   width: 100vw;
   margin-left: calc(-50vw + 50%);
   margin-right: calc(-50vw + 50%);
-  background-color: #d8eef8;
+  background-color: #c6d7f4;
   position: relative;
   overflow: hidden;
 }

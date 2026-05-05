@@ -74,7 +74,7 @@ const FAQ = () => {
             navigate('/')
           }
         }}
-        className="back-button fixed bottom-12 right-6 z-[100] inline-flex aspect-square size-16 shrink-0 items-center justify-center rounded-full bg-[#B8E4F7] font-albert text-xs font-semibold uppercase leading-none tracking-[0.12em] text-[#1e4566] shadow-lg underline decoration-[#1e4566]/50 underline-offset-[0.25em] transition-colors duration-300 hover:bg-[#D8EEF8] sm:size-[4.25rem] sm:text-sm sm:tracking-[0.14em]"
+        className="back-button fixed bottom-12 right-6 z-[100] inline-flex aspect-square size-16 shrink-0 items-center justify-center rounded-full bg-[#c6d7f4] font-albert text-xs font-semibold uppercase leading-none tracking-[0.12em] text-[#1e4566] shadow-lg underline decoration-[#1e4566]/50 underline-offset-[0.25em] transition-colors duration-300 hover:bg-[#c6d7f4] sm:size-[4.25rem] sm:text-sm sm:tracking-[0.14em]"
       >
         Back
       </button>

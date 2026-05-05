@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useMemo, useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { createPortal } from 'react-dom'
 import { gsap } from 'gsap'
@@ -36,6 +36,18 @@ const Moments = () => {
   const prenupGalleryFilenames = prenupMomentsGalleryFilenames
 
   const galleryImageUrls = prenupGalleryFilenames.map(prenupUrl)
+  const storyParagraphs = useMemo(
+    () =>
+      loveStory.story
+        .split(/\n\n+/)
+        .map((block) => block.trim())
+        .filter(Boolean),
+    []
+  )
+  const storyImages = useMemo(
+    () => Array.from(new Set(galleryImageUrls)).slice(0, storyParagraphs.length),
+    [galleryImageUrls, storyParagraphs.length]
+  )
 
   const lightboxImages = galleryImageUrls
 
@@ -322,20 +334,92 @@ const Moments = () => {
         </div>
         
         {/* Love Story Section */}
-        <div className="relative z-20 w-full flex flex-col items-center bg-white py-12">
-          <div ref={firstParagraphRef} className="relative z-20 w-full max-w-4xl px-8 sm:px-12 md:px-8 lg:px-16">
-            <div className="alice-regular font-black text-[#1e4566] leading-relaxed text-center" style={{ fontWeight: 900, fontSize: '1rem', lineHeight: '1.8' }}>
-              {loveStory.story.split(/\n\n+/).map((block, i) => (
-                <p key={i} className="mb-4" style={i === 0 ? { fontStyle: 'italic', fontSize: '1.15rem', marginBottom: '1.5rem' } : undefined}>
-                  {block.trim().split('\n').map((line, j) => (
-                    <React.Fragment key={j}>
-                      {j > 0 && <br />}
-                      {line}
-                    </React.Fragment>
-                  ))}
-                </p>
-              ))}
-            </div>
+        <div
+          className="relative z-20 w-full py-12"
+          style={{ backgroundColor: '#ffffff' }}
+        >
+          <div
+            ref={firstParagraphRef}
+            className="relative z-20 mx-auto flex w-full max-w-5xl flex-col gap-12 px-6 sm:gap-16 sm:px-10 md:px-12"
+          >
+            {storyParagraphs.map((paragraph, index) => {
+              const photoLeft = index % 2 === 0
+              const storyImage = storyImages[index]
+              const storyObjectPosition = index === 2 ? 'center top' : undefined
+              return (
+                <div
+                  key={index}
+                  className="grid w-full items-center gap-6 md:gap-8"
+                  style={{
+                    gridTemplateColumns: photoLeft ? '2fr 3fr' : '3fr 2fr',
+                  }}
+                >
+                  {photoLeft ? (
+                    <>
+                      <div className="flex items-center justify-center">
+                        {storyImage && (
+                          <div
+                            className="relative w-full max-w-[220px] bg-white px-[2px] pt-[2px] pb-3 shadow-lg"
+                            style={{
+                              borderTop: '4px solid white',
+                              borderLeft: '2px solid white',
+                              borderRight: '2px solid white',
+                              borderBottom: '10px solid white',
+                              transform: 'rotate(-3deg)',
+                            }}
+                          >
+                            <img
+                              src={storyImage}
+                              alt=""
+                              className="aspect-square w-full object-cover"
+                              style={storyObjectPosition ? { objectPosition: storyObjectPosition } : undefined}
+                              loading="lazy"
+                            />
+                          </div>
+                        )}
+                      </div>
+                      <p
+                        className="w-full text-left text-xs font-albert leading-relaxed sm:text-sm md:text-base"
+                        style={{ color: '#4a2c1f' }}
+                      >
+                        {paragraph}
+                      </p>
+                    </>
+                  ) : (
+                    <>
+                      <p
+                        className="w-full text-right text-xs font-albert leading-relaxed sm:text-sm md:text-base"
+                        style={{ color: '#4a2c1f' }}
+                      >
+                        {paragraph}
+                      </p>
+                      <div className="flex items-center justify-center">
+                        {storyImage && (
+                          <div
+                            className="relative w-full max-w-[220px] bg-white px-[2px] pt-[2px] pb-3 shadow-lg"
+                            style={{
+                              borderTop: '4px solid white',
+                              borderLeft: '2px solid white',
+                              borderRight: '2px solid white',
+                              borderBottom: '10px solid white',
+                              transform: 'rotate(3deg)',
+                            }}
+                          >
+                            <img
+                              src={storyImage}
+                              alt=""
+                              className="aspect-square w-full object-cover"
+                              style={storyObjectPosition ? { objectPosition: storyObjectPosition } : undefined}
+                              loading="lazy"
+                            />
+                          </div>
+                        )}
+                      </div>
+                    </>
+                  )}
+                </div>
+              )
+            })}
           </div>
         </div>
 
@@ -684,7 +768,7 @@ const Moments = () => {
             navigate('/')
           }
         }}
-        className="back-button fixed bottom-12 right-6 z-[100] inline-flex aspect-square size-16 shrink-0 items-center justify-center rounded-full bg-[#B8E4F7] font-albert text-xs font-semibold uppercase leading-none tracking-[0.12em] text-[#1e4566] shadow-lg underline decoration-[#1e4566]/50 underline-offset-[0.25em] transition-colors duration-300 hover:bg-[#D8EEF8] sm:size-[4.25rem] sm:text-sm sm:tracking-[0.14em]"
+        className="back-button fixed bottom-12 right-6 z-[100] inline-flex aspect-square size-16 shrink-0 items-center justify-center rounded-full bg-[#c6d7f4] font-albert text-xs font-semibold uppercase leading-none tracking-[0.12em] text-[#1e4566] shadow-lg underline decoration-[#1e4566]/50 underline-offset-[0.25em] transition-colors duration-300 hover:bg-[#c6d7f4] sm:size-[4.25rem] sm:text-sm sm:tracking-[0.14em]"
         style={{ pointerEvents: 'auto' }}
       >
         Back

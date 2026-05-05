@@ -27,7 +27,7 @@
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #b8e4f7;
+  background: #c6d7f4;
 }
 
 /* Print styles */
@@ -45,7 +45,7 @@
 :root {
   --envelope-x: 300px;
   --envelope-y: 200px;
-  --envelope-bg: #b8e4f7;
+  --envelope-bg: #c6d7f4;
   /* Inset shadow for fold depth on envelope */
   --envelope-shadow: rgba(0, 0, 0, 0.35);
   --heart-bg: darkred;
@@ -320,6 +320,7 @@
   object-position: center top;
   border-radius: 6px;
   box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
+  filter: blur(4px);
 }
 
 .opening-stack-img--back {
@@ -369,6 +370,7 @@
   object-fit: cover;
   object-position: center top;
   display: block;
+  filter: blur(4px);
 }
 
 /* Opening background pulsing animation */

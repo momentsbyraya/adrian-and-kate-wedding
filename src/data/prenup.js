@@ -46,7 +46,7 @@ export const prenupDetailsPhotoStrip = [
 ]
 
 /** Moments: full-bleed top banner (also appears in gallery when using full `PRENUP_FILENAMES` list) */
-export const prenupMomentsBannerFilename = 'IMG_6290.jpeg'
+export const prenupMomentsBannerFilename = PRENUP_FILENAMES[0]
 
 /** Moments masonry + lightbox — every file in `PRENUP_FILENAMES` (may repeat the top banner image) */
 export const prenupMomentsGalleryFilenames = [...PRENUP_FILENAMES]

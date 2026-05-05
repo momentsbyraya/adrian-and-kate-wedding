@@ -20,6 +20,8 @@ const Venue = () => {
 
   const ceremony = venuesData.ceremony
   const reception = venuesData.reception
+  const venueGoogleMapsUrl =
+    'https://www.google.com/maps/search/?api=1&query=Lot%204677B%20M.H.%20Del%20Pilar%20Street%2C%20Brgy%20Plaza%20Aldea%2C%201980%20Tanay%2C%20Philippines'
 
   useEffect(() => {
     if (venueTitleRef.current) {
@@ -152,7 +154,7 @@ const Venue = () => {
             </p>
             <div className="mt-auto flex w-full justify-center">
               <SecondaryButton
-                href={reception.googleMapsUrl}
+                href={venueGoogleMapsUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 icon={ArrowRight}

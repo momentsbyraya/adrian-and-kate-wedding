@@ -75,12 +75,12 @@
   margin-left: 1.67vw;
 }
 
-/* Flower 4 */
+/* Flower 4 (moved to second bottom polaroid) */
 .flower-4 {
-  width: 25vw;
-  top: -25%;
-  right: -25%;
-  z-index: 0;
+  width: 20vw;
+  bottom: 0;
+  right: -40%;
+  z-index: 2;
   opacity: 0;
   scale: 0;
   pointer-events: none;
@@ -317,15 +317,6 @@
   height: 100%;
   pointer-events: none;
   object-position: center top;
-}
-
-/* Flower 8 */
-.flower-8 {
-  width: 20vw;
-  bottom: 0;
-  right: -40%;
-  z-index: 2;
-  pointer-events: none;
 }
 
 /* Responsive: Flower-1 for 992px and above */

@@ -4,7 +4,7 @@ const Divider = () => {
   return (
     <div className="flex justify-center items-center" style={{ paddingTop: '2rem', paddingBottom: '1rem' }}>
       {/* Left horizontal line */}
-      <div className="w-16 h-px bg-[#B8E4F7] opacity-40"></div>
+      <div className="w-16 h-px bg-[#c6d7f4] opacity-40"></div>
       
       <svg 
         className="w-3 h-3 mx-4"
@@ -20,7 +20,7 @@ const Divider = () => {
       </svg>
       
       {/* Right horizontal line */}
-      <div className="w-16 h-px bg-[#B8E4F7] opacity-40"></div>
+      <div className="w-16 h-px bg-[#c6d7f4] opacity-40"></div>
     </div>
   )
 }

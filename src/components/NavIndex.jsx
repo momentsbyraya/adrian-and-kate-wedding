@@ -285,14 +285,6 @@ const NavIndex = ({ onOpenRSVP }) => {
               }
             }}
           >
-            {/* Flower 4 - Top Right (under the image and container) */}
-            <img 
-              ref={flower4Ref}
-              src="/assets/images/graphics/flower-4.png" 
-              alt="Flower decoration" 
-              className="absolute h-auto object-contain flower-4"
-            />
-            
             {/* Polaroid-style Image Container */}
             <div 
               ref={polaroidRef}
@@ -305,12 +297,6 @@ const NavIndex = ({ onOpenRSVP }) => {
                 style={{ objectPosition: 'center bottom' }}
               />
               
-              {/* Flower 3 - Bottom Left (above the image) */}
-              <img 
-                src="/assets/images/graphics/flower-3.png" 
-                alt="Flower decoration" 
-                className="absolute bottom-0 left-0 h-auto object-contain flower-3"
-              />
             </div>
           </div>
         </div>
@@ -479,6 +465,13 @@ const NavIndex = ({ onOpenRSVP }) => {
                 alt="Prenup photo" 
                 className="w-full object-cover polaroid-1-image"
               />
+
+              {/* Flower 3 - Bottom Center (relative to this polaroid) */}
+              <img
+                src="/assets/images/graphics/flower-3.png"
+                alt="Flower decoration"
+                className="absolute bottom-0 left-[80%] h-auto object-contain flower-3"
+              />
             </div>
           </div>
 
@@ -511,12 +504,13 @@ const NavIndex = ({ onOpenRSVP }) => {
                 alt="Prenup photo" 
                 className="w-full object-cover polaroid-2-image"
               />
-              
-              {/* Flower 8 - Bottom Right */}
+
+              {/* Flower 4 - Bottom Right */}
               <img 
-                src="/assets/images/graphics/flower-8.png" 
+                ref={flower4Ref}
+                src="/assets/images/graphics/flower-4.png" 
                 alt="Flower decoration" 
-                className="absolute h-auto object-contain flower-8"
+                className="absolute h-auto object-contain flower-4"
               />
             </div>
           </div>
@@ -563,8 +557,8 @@ const NavIndex = ({ onOpenRSVP }) => {
                   <div 
                     className={`px-4 py-6 rounded-lg border-2 transition-all duration-300 text-center min-h-[80px] flex items-center justify-center ${
                       isActive
-                        ? 'bg-[#D8EEF8] border-[#B8E4F7] text-[#1e4566] shadow-lg'
-                        : 'bg-white border-[#B8E4F7]/60 text-[#1e4566] hover:border-[#B8E4F7] hover:bg-[#FAD6E0]/40 shadow-md'
+                        ? 'bg-[#c6d7f4] border-[#c6d7f4] text-[#1e4566] shadow-lg'
+                        : 'bg-white border-[#c6d7f4]/60 text-[#1e4566] hover:border-[#c6d7f4] hover:bg-[#F7DAE7]/40 shadow-md'
                     }`}
                   >
                     <span className="text-sm sm:text-base font-albert font-medium">
