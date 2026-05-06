@@ -9,7 +9,7 @@ const ImageBanner = ({ src, alt = "Banner image" }) => {
           <img
             src={src}
             alt={alt}
-            className="h-full w-full object-cover object-[50%_28%] sm:object-[50%_32%] md:object-[50%_36%]"
+            className="h-full w-full object-cover object-[50%_45%] sm:object-[50%_50%] md:object-[50%_55%]"
           />
           {/* Soft transparent white gradient layers at bottom */}
           <GradientLayer height="h-32" opacity={0.7} gradientId="whiteGradient1" />

@@ -36,7 +36,7 @@ export const prenupHomePolaroidUrls = [
 ]
 
 /** Details page top banner (`ImageBanner`) */
-export const prenupDetailsBannerUrl = prenupUrl('IMG_6282.jpeg')
+export const prenupDetailsBannerUrl = prenupUrl('IMG_6287.jpeg')
 
 /** Details PhotoSection (under schedule) — left · center · right */
 export const prenupDetailsPhotoStrip = [
@@ -46,10 +46,24 @@ export const prenupDetailsPhotoStrip = [
 ]
 
 /** Moments: full-bleed top banner (also appears in gallery when using full `PRENUP_FILENAMES` list) */
-export const prenupMomentsBannerFilename = PRENUP_FILENAMES[0]
+export const prenupMomentsBannerFilename = 'IMG_6288.jpeg'
 
-/** Moments masonry + lightbox — every file in `PRENUP_FILENAMES` (may repeat the top banner image) */
-export const prenupMomentsGalleryFilenames = [...PRENUP_FILENAMES]
+/** Moments story section — keep original prenup set for narrative photos */
+export const prenupMomentsStoryFilenames = [...PRENUP_FILENAMES]
+
+/** Moments masonry + lightbox — use prenup images not used by the current key sections */
+export const prenupMomentsGalleryFilenames = [
+  'DSCF4020.jpeg',
+  'IMG_3515.jpeg',
+  'img1.jpeg',
+  'IMG_4171.jpeg',
+  'DSCF7115.jpeg',
+  'DSCF6797.jpeg',
+  'DSCF4055.jpeg',
+  'img2.jpeg',
+  'IMG_4167.jpeg',
+  'img3.jpeg',
+]
 
 /** Entourage — keep in sync with `Entourage.css` `.entourage-bg` (graphic, not prenup) */
 export const prenupEntourageBackgroundUrl = '/assets/images/graphics/bg-1.png'

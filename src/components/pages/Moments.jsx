@@ -8,6 +8,7 @@ import { useAudio } from '../../hooks/useAudio'
 import { loveStory, images } from '../../data'
 import {
   prenupMomentsBannerFilename,
+  prenupMomentsStoryFilenames,
   prenupMomentsGalleryFilenames,
   prenupUrl,
 } from '../../data/prenup'
@@ -34,8 +35,10 @@ const Moments = () => {
 
   /** Masonry + lightbox — all entries in `prenupMomentsGalleryFilenames` (full prenup set). */
   const prenupGalleryFilenames = prenupMomentsGalleryFilenames
+  const prenupStoryFilenames = prenupMomentsStoryFilenames
 
   const galleryImageUrls = prenupGalleryFilenames.map(prenupUrl)
+  const storyImageUrls = prenupStoryFilenames.map(prenupUrl)
   const storyParagraphs = useMemo(
     () =>
       loveStory.story
@@ -45,8 +48,8 @@ const Moments = () => {
     []
   )
   const storyImages = useMemo(
-    () => Array.from(new Set(galleryImageUrls)).slice(0, storyParagraphs.length),
-    [galleryImageUrls, storyParagraphs.length]
+    () => Array.from(new Set(storyImageUrls)).slice(0, storyParagraphs.length),
+    [storyImageUrls, storyParagraphs.length]
   )
 
   const lightboxImages = galleryImageUrls
@@ -280,7 +283,7 @@ const Moments = () => {
             <img
               src={prenupUrl(prenupMomentsBannerFilename)}
               alt="Banner image"
-              className="h-full w-full object-cover object-[50%_28%] sm:object-[50%_32%] md:object-[50%_36%]"
+              className="h-full w-full object-cover object-top"
             />
             {/* Soft transparent white gradient layers at bottom */}
             <GradientLayer height="h-32" opacity={0.7} gradientId="whiteGradient1" />
@@ -480,7 +483,7 @@ const Moments = () => {
                                <img
                                  src={image}
                                  alt={`Gallery ${index + 1}`}
-                                 className="h-full w-full object-cover object-top transition-transform duration-300 hover:scale-105"
+                                className={`h-full w-full object-cover transition-transform duration-300 hover:scale-105 ${index === 3 ? 'object-top' : 'object-bottom'}`}
                                  style={{
                                    height: '100%',
                                    willChange: 'transform',
@@ -513,9 +516,10 @@ const Moments = () => {
                            <img
                              src={lastTwoGalleryImages[0]}
                              alt={`Gallery ${mainGalleryImages.length + 1}`}
-                             className="h-full w-full object-cover object-top transition-transform duration-300 hover:scale-105"
+                            className="h-full w-full object-cover object-bottom transition-transform duration-300 hover:scale-105"
                              style={{
                                height: '100%',
+                              objectPosition: '50% 100%',
                                willChange: 'transform',
                                backfaceVisibility: 'hidden',
                              }}
@@ -540,9 +544,10 @@ const Moments = () => {
                            <img
                              src={lastTwoGalleryImages[1]}
                              alt={`Gallery ${mainGalleryImages.length + 2}`}
-                             className="h-full w-full object-cover object-top transition-transform duration-300 hover:scale-105"
+                            className="h-full w-full object-cover object-bottom transition-transform duration-300 hover:scale-105"
                              style={{
                                height: '100%',
+                              objectPosition: '50% 100%',
                                willChange: 'transform',
                                backfaceVisibility: 'hidden',
                              }}
