@@ -1,7 +1,7 @@
 import React from 'react'
 import { Helmet } from 'react-helmet-async'
 import { couple } from '../data'
-import { SHARE_IMAGE_PATH, getShareImageAbsoluteUrl } from '../config/siteMeta'
+import { FAVICON_IMAGE_PATH, getShareImageAbsoluteUrl } from '../config/siteMeta'
 
 const DynamicTitle = () => {
   const weddingDate = new Date(couple.wedding.date).toLocaleDateString('en-US', {
@@ -17,8 +17,8 @@ const DynamicTitle = () => {
     <Helmet>
       <title>{`${couple.nickname}'s Wedding - ${weddingDate}`}</title>
       <meta name="description" content={description} />
-      <link rel="icon" type="image/jpeg" href={SHARE_IMAGE_PATH} />
-      <link rel="apple-touch-icon" href={SHARE_IMAGE_PATH} />
+      <link rel="icon" type="image/jpeg" href={FAVICON_IMAGE_PATH} />
+      <link rel="apple-touch-icon" href={FAVICON_IMAGE_PATH} />
       <meta property="og:title" content={`${couple.nickname}'s Wedding`} />
       <meta property="og:description" content={`Join us on ${weddingDate}`} />
       <meta property="og:image" content={ogImage} />

@@ -1,5 +1,7 @@
-/** Favicon + Open Graph / Twitter card image (served from Vite `publicDir` → `/assets/...`). */
-export const SHARE_IMAGE_PATH = '/assets/images/prenup/IMG_6290.jpeg'
+/** Favicon image (served from Vite `publicDir` → `/assets/...`). */
+export const FAVICON_IMAGE_PATH = '/assets/images/prenup/thumbnail.png'
+/** Open Graph / Twitter card image. */
+export const SHARE_IMAGE_PATH = '/assets/images/prenup/thumbnail.png'
 
 export function getShareImageAbsoluteUrl() {
   if (typeof window === 'undefined') return SHARE_IMAGE_PATH
