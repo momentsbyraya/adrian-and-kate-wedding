@@ -10,6 +10,16 @@
         "qrCode": "/assets/images/qr/qr-code.png",
         "giftImage": "/assets/images/monetary-gifts/IMG_6303.jpeg"
       }
+    },
+    {
+      "name": "Zelle",
+      "image": "/assets/images/monetary-gifts/zelle.png",
+      "accountInfo": {
+        "provider": "Zelle",
+        "accountNumber": "",
+        "accountName": "",
+        "giftImage": "/assets/images/monetary-gifts/zelle.png"
+      }
     }
   ]
 }
