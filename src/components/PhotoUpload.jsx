@@ -8,6 +8,9 @@ import './pages/Details.css'
 // Register ScrollTrigger plugin
 gsap.registerPlugin(ScrollTrigger)
 
+const UPLOAD_DRIVE_URL =
+  'https://drive.google.com/drive/folders/14hECHa8OazAGGnnrNgQf6lR1a6MZr2S5?usp=sharing'
+
 const PhotoUpload = () => {
   const photoUploadRef = useRef(null)
 
@@ -79,27 +82,33 @@ const PhotoUpload = () => {
               {/* QR Code Image - 50% width on mobile, full width on 992px+ */}
               <div className="w-1/2 lg-custom:w-full lg-custom:flex lg-custom:justify-center">
                 <div className="w-full relative upload-qr-container" style={{ maxWidth: '350px' }}>
-                  <div className="bg-white p-4 rounded-lg shadow-md w-full h-full flex items-center justify-center">
-                    <img 
-                      src="/assets/images/qr/qr-code.png" 
-                      alt="Upload QR Code" 
+                  <a
+                    href={UPLOAD_DRIVE_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block bg-white p-4 rounded-lg shadow-md w-full h-full"
+                    aria-label="Open photo upload folder"
+                  >
+                    <img
+                      src="/assets/images/qr/qr-code.png"
+                      alt="Upload QR Code"
                       className="w-full h-full object-contain"
                     />
-                  </div>
+                  </a>
                 </div>
               </div>
               
               {/* Upload Details - 50% width on mobile, full width on 992px+ */}
               <div className="w-1/2 lg-custom:w-full lg-custom:h-fit lg-custom:flex lg-custom:flex-col lg-custom:justify-center lg-custom:items-center flex flex-col justify-between text-left lg-custom:text-center py-4 sm:py-6 upload-content-container">
                 {/* Description */}
-                <p className="text-sm sm:text-base font-albert font-thin text-[#1e4566] mb-4 text-left lg-custom:text-center">
+                <p className="text-sm sm:text-base font-albert font-thin text-[#2F3E46] mb-4 text-left lg-custom:text-center">
                   Help us capture memories on our special day
                 </p>
 
                 {/* Upload Button */}
                 <div className="flex justify-start lg-custom:justify-center items-center">
                   <SecondaryButton
-                    href="https://drive.google.com/drive/folders/1lDGVzPiyAr5q3SHNE_GyedQb0MA_Xg2V?usp=sharing"
+                    href={UPLOAD_DRIVE_URL}
                     target="_blank"
                     rel="noopener noreferrer"
                     icon={ArrowRight}
@@ -110,8 +119,8 @@ const PhotoUpload = () => {
               </div>
             </div>
 
-            <p className="mt-6 text-center font-albert text-sm sm:text-base font-semibold text-[#1e4566]">
-              #KEVINmarrieshisgREAtlove
+            <p className="mt-6 text-center font-albert text-sm sm:text-base font-semibold text-[#2F3E46]">
+              #AdrianAndKate2026
             </p>
           </div>
         </div>

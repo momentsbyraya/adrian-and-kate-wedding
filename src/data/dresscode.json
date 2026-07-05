@@ -1,19 +1,21 @@
 {
   "mainDressCode": {
     "title": "Dress Code",
-    "description": "Guests: blush pink and light blue — wear either palette or a thoughtful mix so the room feels balanced and bright."
+    "description": "Guests are invited in pastel colors — soft, light tones that feel fresh and celebratory."
   },
   "sections": [
     {
       "id": "guests",
       "title": "Guests",
       "image": "/assets/images/dresscode/guests.png",
-      "description": "We invite you in blush pink and light blue. Pick one as your main color, or blend both in your outfit.",
+      "description": "We invite you in pastel colors. Think soft pinks, blues, lavenders, mints, and other gentle hues.",
       "colors": [
-        { "name": "Blush Pink", "hex": "#F7DAE7" },
+        { "name": "Blush Pink", "hex": "#F4E8E9" },
         { "name": "Petal Pink", "hex": "#FCE4EC" },
-        { "name": "Light Blue", "hex": "#c6d7f4" },
-        { "name": "Ice Blue", "hex": "#E8F6FC" }
+        { "name": "Light Blue", "hex": "#E2EAFC" },
+        { "name": "Lavender", "hex": "#E8E0F0" },
+        { "name": "Mint", "hex": "#DFF5E8" },
+        { "name": "Peach", "hex": "#FFE8D6" }
       ]
     }
   ]

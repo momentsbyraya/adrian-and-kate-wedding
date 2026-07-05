@@ -2,7 +2,7 @@
 
 /* Background: prenup photo, blurred (content stays sharp above z-10) */
 .nav-index-bg {
-  background-image: url(/assets/images/prenup/IMG_6282.jpeg);
+  background-image: url(/assets/images/image-placeholder.png);
   background-position: 55% center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -57,7 +57,7 @@
 }
 
 .oval-text-entourage {
-  color: var(--accent-text, #D4A5A5);
+  color: var(--accent-text, #6D5959);
   font-size: clamp(1.8rem, 4.5vw, 4.5rem);
   text-decoration-thickness: 1px;
   text-underline-offset: 0.15em;
@@ -155,7 +155,7 @@
 }
 
 .rsvp-text-container {
-  color: var(--primary-text, #1e4566);
+  color: var(--primary-text, #2F3E46);
   margin-top: 0;
   line-height: 0.8;
   text-shadow: 0 1px 3px rgba(255, 255, 255, 0.75);
@@ -174,8 +174,8 @@
   width: 50vw;
   height: 35vw;
   background-color: #f5f5f0;
-  border-top: 6px solid var(--primary-bg, #1e4566);
-  border-bottom: 6px solid var(--primary-bg, #1e4566);
+  border-top: 6px solid var(--primary-bg, #2F3E46);
+  border-bottom: 6px solid var(--primary-bg, #2F3E46);
   opacity: 0;
   transform: translateY(30px);
 }
@@ -195,7 +195,7 @@
 }
 
 .details-text-details {
-  color: var(--primary-text, #1e4566);
+  color: var(--primary-text, #2F3E46);
   font-size: clamp(2.4rem, 5.8vw, 5.8rem);
   text-decoration-thickness: 1px;
   text-underline-offset: 0.15em;

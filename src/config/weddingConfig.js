@@ -22,11 +22,11 @@ export const weddingConfig = {
 
   // RSVP Information
   rsvp: {
-    deadline: "2026-06-25",
+    deadline: "2026-08-05",
     email: "",
     phone: "",
     website: "",
-    message: "Please RSVP by June 25th, 2026"
+    message: "Please RSVP by August 5th, 2026"
   },
 
   // Theme and Styling
@@ -52,7 +52,7 @@ export const weddingConfig = {
 
   // Additional Information
   details: {
-    hashtag: "#KevinAndRea2026",
+    hashtag: "#AdrianAndKate2026",
     website: "",
     registry: "",
     message: "We're excited to celebrate our special day with you!",

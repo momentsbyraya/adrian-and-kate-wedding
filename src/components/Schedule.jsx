@@ -167,7 +167,7 @@ const Schedule = () => {
           className="text-sm sm:text-base md:text-lg font-albert text-center mt-4 mx-auto px-4 program-description"
           style={{ color: WEDDING_TEXT_DARK_BLUE }}
         >
-          Ceremony at 2:00 PM, then join us for reception from 4:30 PM to 9:00 PM
+          Guest gathering at 1:30 PM, ceremony at 2:00 PM, and reception at Mithi Resort and Spa from 6:00 PM
         </p>
         
         <div ref={dateSelectorRef} className="flex flex-col items-center mt-8">
@@ -204,7 +204,7 @@ const Schedule = () => {
                     </div>
                   ) : (
                     <div
-                      className={`flex items-center justify-center rounded-lg border border-[#1e4566]/35 ${isBesideHeart ? 'w-12 h-12 sm:w-14 sm:h-14 border-[#1e4566]/45' : 'w-10 h-10 sm:w-12 sm:h-12'}`}
+                      className={`flex items-center justify-center rounded-lg border border-[#2F3E46]/35 ${isBesideHeart ? 'w-12 h-12 sm:w-14 sm:h-14 border-[#2F3E46]/45' : 'w-10 h-10 sm:w-12 sm:h-12'}`}
                     >
                       <span className="font-boska text-base sm:text-lg" style={{ color: WEDDING_TEXT_DARK_BLUE }}>
                         {day}
@@ -221,21 +221,21 @@ const Schedule = () => {
       <div ref={timelineRef} className="relative max-w-md sm:max-w-xl lg:max-w-2xl w-full mx-auto z-10 timeline-container">
         <div
           ref={lineRef}
-          className="absolute left-1/2 top-0 bottom-0 w-px transform -translate-x-1/2 bg-[#1e4566]/35"
+          className="absolute left-1/2 top-0 bottom-0 w-px transform -translate-x-1/2 bg-[#2F3E46]/35"
         />
 
         <div ref={eventsRef} className="space-y-12 sm:space-y-16 md:space-y-20 lg:space-y-24">
           <div className="flex items-center relative min-h-[60px]">
             <div className="w-1/2 pr-6 text-right flex items-center justify-end">
             </div>
-            <div className="absolute left-1/2 z-10 h-3 w-3 -translate-x-1/2 transform rounded-full bg-[#1e4566]" />
+            <div className="absolute left-1/2 z-10 h-3 w-3 -translate-x-1/2 transform rounded-full bg-[#2F3E46]" />
             <div className="w-1/2 pl-6 text-left flex flex-col justify-center">
               <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl alice-regular mb-1 timeline-event-time">
-                2:00 PM
+                1:30 PM
               </div>
-              <div className="mb-1 border-b border-dashed border-[#1e4566]/40" />
+              <div className="mb-1 border-b border-dashed border-[#2F3E46]/40" />
               <div className="text-sm sm:text-base md:text-lg font-albert timeline-event-description">
-                Ceremony
+                Guest Gathering
               </div>
             </div>
           </div>
@@ -243,14 +243,14 @@ const Schedule = () => {
           <div className="flex items-center relative min-h-[60px]">
             <div className="w-1/2 pr-6 text-right flex flex-col justify-center">
               <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl alice-regular mb-1 timeline-event-time">
-                4:30 PM
+                2:00 PM
               </div>
-              <div className="mb-1 border-b border-dashed border-[#1e4566]/40" />
+              <div className="mb-1 border-b border-dashed border-[#2F3E46]/40" />
               <div className="text-sm sm:text-base md:text-lg font-albert timeline-event-description">
-                Reception begins
+                Wedding Ceremony
               </div>
             </div>
-            <div className="absolute left-1/2 z-10 h-3 w-3 -translate-x-1/2 transform rounded-full bg-[#1e4566]" />
+            <div className="absolute left-1/2 z-10 h-3 w-3 -translate-x-1/2 transform rounded-full bg-[#2F3E46]" />
             <div className="w-1/2 pl-6 text-left flex items-center justify-start">
             </div>
           </div>
@@ -258,14 +258,44 @@ const Schedule = () => {
           <div className="flex items-center relative min-h-[60px]">
             <div className="w-1/2 pr-6 text-right flex items-center justify-end">
             </div>
-            <div className="absolute left-1/2 z-10 h-3 w-3 -translate-x-1/2 transform rounded-full bg-[#1e4566]" />
+            <div className="absolute left-1/2 z-10 h-3 w-3 -translate-x-1/2 transform rounded-full bg-[#2F3E46]" />
             <div className="w-1/2 pl-6 text-left flex flex-col justify-center">
               <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl alice-regular mb-1 timeline-event-time">
-                9:00 PM
+                5:00 PM
               </div>
-              <div className="mb-1 border-b border-dashed border-[#1e4566]/40" />
+              <div className="mb-1 border-b border-dashed border-[#2F3E46]/40" />
               <div className="text-sm sm:text-base md:text-lg font-albert timeline-event-description">
-                Celebration concludes
+                Arrival at Reception
+              </div>
+            </div>
+          </div>
+
+          <div className="flex items-center relative min-h-[60px]">
+            <div className="w-1/2 pr-6 text-right flex flex-col justify-center">
+              <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl alice-regular mb-1 timeline-event-time">
+                6:30 PM
+              </div>
+              <div className="mb-1 border-b border-dashed border-[#2F3E46]/40" />
+              <div className="text-sm sm:text-base md:text-lg font-albert timeline-event-description">
+                Reception Dinner
+              </div>
+            </div>
+            <div className="absolute left-1/2 z-10 h-3 w-3 -translate-x-1/2 transform rounded-full bg-[#2F3E46]" />
+            <div className="w-1/2 pl-6 text-left flex items-center justify-start">
+            </div>
+          </div>
+
+          <div className="flex items-center relative min-h-[60px]">
+            <div className="w-1/2 pr-6 text-right flex items-center justify-end">
+            </div>
+            <div className="absolute left-1/2 z-10 h-3 w-3 -translate-x-1/2 transform rounded-full bg-[#2F3E46]" />
+            <div className="w-1/2 pl-6 text-left flex flex-col justify-center">
+              <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl alice-regular mb-1 timeline-event-time">
+                10:00 PM
+              </div>
+              <div className="mb-1 border-b border-dashed border-[#2F3E46]/40" />
+              <div className="text-sm sm:text-base md:text-lg font-albert timeline-event-description">
+                Evening Ends
               </div>
             </div>
           </div>

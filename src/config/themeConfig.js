@@ -1,11 +1,11 @@
 // Pastel surfaces + dark text (readable dark blue / dark pink)
-export const WEDDING_LIGHT_PINK = '#F7DAE7'
-export const WEDDING_LIGHT_BLUE = '#c6d7f4'
-export const WEDDING_TEXT_DARK_BLUE = '#1e4566'
-export const WEDDING_TEXT_DARK_PINK = '#8b4a5c'
-export const WEDDING_TEXT_ACCENT_BLUE = '#234d6b'
+export const WEDDING_LIGHT_PINK = '#F4E8E9'
+export const WEDDING_LIGHT_BLUE = '#E2EAFC'
+export const WEDDING_TEXT_DARK_BLUE = '#2F3E46'
+export const WEDDING_TEXT_DARK_PINK = '#6D5959'
+export const WEDDING_TEXT_ACCENT_BLUE = '#6D5959'
 export const WEDDING_LIGHT_PINK_ACCENT = '#F5B8CC'
-export const WEDDING_LIGHT_BLUE_ACCENT = '#c6d7f4'
+export const WEDDING_LIGHT_BLUE_ACCENT = '#E2EAFC'
 
 export const WEDDING_BLUSH = WEDDING_LIGHT_PINK
 export const WEDDING_INK = WEDDING_TEXT_DARK_BLUE
@@ -17,44 +17,44 @@ export const WEDDING_TEXT_BLUE = WEDDING_TEXT_DARK_BLUE
 
 export const themeConfig = {
     backgrounds: {
-        primary: 'bg-[#F7DAE7]',
-        secondary: 'bg-[#c6d7f4]',
-        tertiary: 'bg-[#F7DAE7]',
-        accent: 'bg-[#c6d7f4]',
+        primary: 'bg-[#F4E8E9]',
+        secondary: 'bg-[#E2EAFC]',
+        tertiary: 'bg-[#F4E8E9]',
+        accent: 'bg-[#E2EAFC]',
         light: 'bg-white/50',
-        theme: 'bg-[#c6d7f4]',
+        theme: 'bg-[#E2EAFC]',
         crumpledPaper: 'bg-[url("/assets/images/crumpled-paper.png")] bg-cover bg-center bg-no-repeat',
     },
 
     text: {
-        primary: 'text-[#1e4566]',
-        secondary: 'text-[#8b4a5c]',
-        accent: 'text-[#234d6b]',
+        primary: 'text-[#2F3E46]',
+        secondary: 'text-[#6D5959]',
+        accent: 'text-[#6D5959]',
         muted: 'text-gray-500',
-        dark: 'text-[#1e4566]',
-        theme: 'text-[#1e4566]',
+        dark: 'text-[#2F3E46]',
+        theme: 'text-[#2F3E46]',
         pause: 'text-[#dcdcdc]',
-        custom: 'text-[#1e4566]',
+        custom: 'text-[#2F3E46]',
     },
 
     borders: {
         primary: 'border-gray-200',
         secondary: 'border-gray-300',
-        accent: 'border-[#8b4a5c]/40',
-        theme: 'border-[#c6d7f4]',
+        accent: 'border-[#6D5959]/40',
+        theme: 'border-[#E2EAFC]',
     },
 
     buttons: {
-        primary: 'bg-[#F7DAE7] hover:bg-[#F5B8CC]',
-        secondary: 'border border-[#c6d7f4] hover:border-[#c6d7f4]',
+        primary: 'bg-[#F4E8E9] hover:bg-[#F5B8CC]',
+        secondary: 'border border-[#E2EAFC] hover:border-[#E2EAFC]',
         text: 'text-gray-600 hover:text-gray-800',
-        theme: 'bg-[#c6d7f4] hover:bg-[#c6d7f4]',
+        theme: 'bg-[#E2EAFC] hover:bg-[#E2EAFC]',
     },
 
     hover: {
         primary: 'hover:bg-[#F5B8CC]',
-        secondary: 'hover:border-[#c6d7f4] hover:text-gray-800',
-        theme: 'hover:bg-[#c6d7f4]',
+        secondary: 'hover:border-[#E2EAFC] hover:text-gray-800',
+        theme: 'hover:bg-[#E2EAFC]',
     },
 
     container: {
@@ -64,13 +64,13 @@ export const themeConfig = {
     },
 
     calendar: {
-        weddingDate: '2026-07-03',
-        highlightColor: 'bg-[#F7DAE7]',
-        heartColor: 'text-[#8b4a5c]',
+        weddingDate: '2026-09-05',
+        highlightColor: 'bg-[#F4E8E9]',
+        heartColor: 'text-[#6D5959]',
         textColor: 'text-gray-600',
         headerColor: 'text-gray-700',
         dayNamesColor: 'text-gray-500',
-        background: 'bg-[#c6d7f4]',
+        background: 'bg-[#E2EAFC]',
     },
 
     paragraph: {

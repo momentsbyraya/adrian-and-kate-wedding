@@ -15,7 +15,18 @@ const lineClass =
   'text-[10.5px] sm:text-[14px] md:text-[16px] lg:text-[18px] font-poppins uppercase entourage-anim-name'
 
 /** Heading uses less margin below title (before names / next block) */
-const entourageTightHeadingBottom = new Set(['Secondary Sponsors', 'Principal Sponsor', 'Ring bearer', 'Coin bearer', 'Bible bearer', 'Flower girls'])
+const entourageTightHeadingBottom = new Set([
+  'Priest',
+  'Banner Holder',
+  'Secondary Sponsors',
+  'Principal Sponsors',
+  'Ring bearer',
+  'Coin bearer',
+  'Bible bearer',
+  'Flower girls',
+  'Readers',
+  'Offerers'
+])
 
 /** Bearers + flower girls stack — reduce top margin vs other section `hl` */
 const entourageBearerFlowerHl = new Set(['Ring bearer', 'Coin bearer', 'Bible bearer', 'Flower girls'])
@@ -413,7 +424,7 @@ const Entourage = () => {
               id="entourage-back-link"
               to="/"
               replace
-              className="entourage-back-link inline-block caudex-bold text-sm uppercase tracking-[0.12em] underline decoration-[#8b4a5c]/50 underline-offset-[0.35em] transition-colors duration-300 sm:text-base md:text-lg"
+              className="entourage-back-link inline-block caudex-bold text-sm uppercase tracking-[0.12em] underline decoration-[#6D5959]/50 underline-offset-[0.35em] transition-colors duration-300 sm:text-base md:text-lg"
             >
               Back
             </Link>

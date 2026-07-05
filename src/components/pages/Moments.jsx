@@ -11,6 +11,7 @@ import {
   prenupMomentsStoryFilenames,
   prenupMomentsGalleryFilenames,
   prenupUrl,
+  IMAGE_PLACEHOLDER,
 } from '../../data/prenup'
 import GradientLayer from '../GradientLayer'
 
@@ -573,7 +574,7 @@ const Moments = () => {
                  }}
                >
                  <p 
-                   className="font-handwritten text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-[#8b4a5c] whitespace-nowrap"
+                   className="font-handwritten text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-[#6D5959] whitespace-nowrap"
                    style={{
                      position: 'absolute',
                      top: '5%',
@@ -584,7 +585,7 @@ const Moments = () => {
                    Forever
                  </p>
                  <p 
-                   className="font-handwritten text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-[#8b4a5c] whitespace-nowrap"
+                   className="font-handwritten text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-[#6D5959] whitespace-nowrap"
                    style={{
                      position: 'absolute',
                      top: '25%',
@@ -595,7 +596,7 @@ const Moments = () => {
                    Always
                  </p>
                  <p 
-                   className="font-handwritten text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-[#8b4a5c] whitespace-nowrap"
+                   className="font-handwritten text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-[#6D5959] whitespace-nowrap"
                    style={{
                      position: 'absolute',
                      bottom: '25%',
@@ -606,7 +607,7 @@ const Moments = () => {
                    Together
                  </p>
                  <p 
-                   className="font-handwritten text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-[#8b4a5c] whitespace-nowrap"
+                   className="font-handwritten text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-[#6D5959] whitespace-nowrap"
                    style={{
                      position: 'absolute',
                      bottom: '5%',
@@ -617,7 +618,7 @@ const Moments = () => {
                    Love
                  </p>
                  <p 
-                   className="font-handwritten text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-[#8b4a5c] whitespace-nowrap"
+                   className="font-handwritten text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-[#6D5959] whitespace-nowrap"
                    style={{
                      position: 'absolute',
                      top: '50%',
@@ -641,14 +642,14 @@ const Moments = () => {
                      <div 
                        className="w-full h-40 sm:h-60 lg:h-72 bg-cover bg-center"
                        style={{
-                         backgroundImage: 'url(/assets/images/prenup/prenup-7.jpg)',
+                         backgroundImage: `url(${IMAGE_PLACEHOLDER})`,
                          borderTop: '4px solid white',
                          borderLeft: '4px solid white',
                          borderRight: '4px solid white'
                        }}
                      ></div>
                      <div className="p-2 text-center">
-                       <div className="text-sm sm:text-lg text-[#8b4a5c] font-handwritten">
+                       <div className="text-sm sm:text-lg text-[#6D5959] font-handwritten">
                          Memories
                        </div>
                      </div>
@@ -664,14 +665,14 @@ const Moments = () => {
                      <div 
                        className="w-full h-40 sm:h-60 lg:h-72 bg-cover bg-center"
                        style={{
-                         backgroundImage: 'url(/assets/images/prenup/prenup-8.jpg)',
+                         backgroundImage: `url(${IMAGE_PLACEHOLDER})`,
                          borderTop: '4px solid white',
                          borderLeft: '4px solid white',
                          borderRight: '4px solid white'
                        }}
                      ></div>
                      <div className="p-2 text-center">
-                       <div className="text-sm sm:text-lg text-[#8b4a5c] font-handwritten">
+                       <div className="text-sm sm:text-lg text-[#6D5959] font-handwritten">
                          Together
                        </div>
                      </div>
@@ -687,14 +688,14 @@ const Moments = () => {
                      <div 
                        className="w-full h-40 sm:h-60 lg:h-72 bg-cover bg-center"
                        style={{
-                         backgroundImage: 'url(/assets/images/prenup/prenup-9.jpg)',
+                         backgroundImage: `url(${IMAGE_PLACEHOLDER})`,
                          borderTop: '4px solid white',
                          borderLeft: '4px solid white',
                          borderRight: '4px solid white'
                        }}
                      ></div>
                      <div className="p-2 text-center">
-                       <div className="text-sm sm:text-lg text-[#8b4a5c] font-handwritten">
+                       <div className="text-sm sm:text-lg text-[#6D5959] font-handwritten">
                          Love
                        </div>
                      </div>
@@ -712,14 +713,14 @@ const Moments = () => {
                      <div 
                        className="w-full h-40 sm:h-60 lg:h-72 bg-cover bg-center"
                        style={{
-                         backgroundImage: 'url(/assets/images/prenup/prenup-10.jpg)',
+                         backgroundImage: `url(${IMAGE_PLACEHOLDER})`,
                          borderTop: '4px solid white',
                          borderLeft: '4px solid white',
                          borderRight: '4px solid white'
                        }}
                      ></div>
                      <div className="p-2 text-center">
-                       <div className="text-sm sm:text-lg text-[#8b4a5c] font-handwritten">
+                       <div className="text-sm sm:text-lg text-[#6D5959] font-handwritten">
                          Forever
                        </div>
                      </div>
@@ -735,14 +736,14 @@ const Moments = () => {
                      <div 
                        className="w-full h-40 sm:h-60 lg:h-72 bg-cover bg-center"
                        style={{
-                         backgroundImage: 'url(/assets/images/prenup/prenup-11.jpg)',
+                         backgroundImage: `url(${IMAGE_PLACEHOLDER})`,
                          borderTop: '4px solid white',
                          borderLeft: '4px solid white',
                          borderRight: '4px solid white'
                        }}
                      ></div>
                      <div className="p-2 text-center">
-                       <div className="text-sm sm:text-lg text-[#8b4a5c] font-handwritten">
+                       <div className="text-sm sm:text-lg text-[#6D5959] font-handwritten">
                          Always
                        </div>
                      </div>
@@ -773,7 +774,7 @@ const Moments = () => {
             navigate('/')
           }
         }}
-        className="back-button fixed bottom-12 right-6 z-[100] inline-flex aspect-square size-16 shrink-0 items-center justify-center rounded-full bg-[#c6d7f4] font-albert text-xs font-semibold uppercase leading-none tracking-[0.12em] text-[#1e4566] shadow-lg underline decoration-[#1e4566]/50 underline-offset-[0.25em] transition-colors duration-300 hover:bg-[#c6d7f4] sm:size-[4.25rem] sm:text-sm sm:tracking-[0.14em]"
+        className="back-button fixed bottom-12 right-6 z-[100] inline-flex aspect-square size-16 shrink-0 items-center justify-center rounded-full bg-[#E2EAFC] font-albert text-xs font-semibold uppercase leading-none tracking-[0.12em] text-[#2F3E46] shadow-lg underline decoration-[#2F3E46]/50 underline-offset-[0.25em] transition-colors duration-300 hover:bg-[#E2EAFC] sm:size-[4.25rem] sm:text-sm sm:tracking-[0.14em]"
         style={{ pointerEvents: 'auto' }}
       >
         Back

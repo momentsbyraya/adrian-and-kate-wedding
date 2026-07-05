@@ -1,58 +1,120 @@
 {
   "blocks": [
+    { "t": "hl", "text": "Priest" },
+    {
+      "t": "p",
+      "lines": [
+        "Msgr. Efren Bongay",
+        "Rev. Fr. Felix Warlie Salise",
+        "Rev. Fr. Joventino Lustre"
+      ]
+    },
     {
       "t": "parentsTwoCol",
       "left": {
         "title": "Parents of groom",
-        "lines": ["Mrs. Lerma Ebalo", "Mr. Arnel Ebalo 🕊️", "Mr. Jayson Ebalo"]
+        "lines": ["Mrs. Carmelita Bongosia", "Mr. Gaudencio Lustre Jr."]
       },
       "right": {
         "title": "Parents of Bride",
-        "lines": ["Mrs. Naida Enteria", "Mr. Nestor Enteria"]
+        "lines": ["Mrs. Helen N. Sales", "Mr. Kenneth James Sales"]
       }
     },
-    {
-      "t": "rolesTwoCol",
-      "left": { "title": "Best Man", "lines": ["Mr. Jhonray Aguilar"] },
-      "right": { "title": "Maid of Honor", "lines": ["Ms. Rhicca Broniola"] }
-    },
-    { "t": "hl", "text": "Principal Sponsor" },
+    { "t": "hl", "text": "Banner Holder" },
+    { "t": "p", "lines": ["Patrick John Sales"] },
+    { "t": "hl", "text": "Principal Sponsors" },
     {
       "t": "principal",
       "rows": [
-        ["Mr. Alejandro Castillo", "Mrs. Myrna Loma"],
-        ["Mr. Wilfredo Enteria", "Mrs. Sylvia Bulanadi"],
-        ["Mr. Pedrito Duave"],
-        ["Mrs. Lulu Guillartes"],
-        ["Mrs. Amelia Reyes"],
-        ["Mr. Emmanuelle Reyes"],
-        ["Mr. Manny De Leon"],
-        ["Mrs. Imelda Juangco"]
+        ["Engr. Romy Sales", "Mrs. Evelyn Sales"],
+        ["Mr. Kevin Bazar", "Leslie Bazar"],
+        ["Mr. Juanito Felisilda", "Mrs. Rachel Felisilda"],
+        ["Mr. Jacinto Nambatac", "Mrs. Realyn Nambatac"],
+        ["Mr. Pablo Pocong", "Mrs. Ester Pocong"],
+        ["Mr. Roger Mangana", "Mrs. Evena Mangana"],
+        ["Mr. Sherlito Salise", "Mrs. Nelia Wapaño"],
+        ["Mr. Casiano Salise", "Mrs. Zenaida Nambatac"],
+        ["Mr. Herbie Dacuno", "Mrs. Helen Dacuno"],
+        ["Mr. Raul Arcay", "Mrs. Genefer Ann Arcay"],
+        ["Mayor Edgardo Arcay", "Mrs. Aniceta Arcay"],
+        ["Capt. Judito Clenista", "Mrs. Ances Clenista"],
+        ["Engr. Efren Cloma", "Mrs. Zenaida Cloma"],
+        ["Mr. Terso Piquero", "Mrs. Marlin Piquero"],
+        ["Mr. Jerome Fuderanan", "Mrs. Genedith Fuderanan"],
+        ["Mr. John Ticon", "Mrs. Jenifer Ticon"],
+        ["Mr. Hermes Fucanan", "Ms. Rubina Lustre"]
       ]
     },
     { "t": "hl", "text": "Secondary Sponsors" },
     { "t": "subhl", "text": "Candle" },
-    { "t": "pairRow", "left": "Ms. Carmi Venturina", "right": "Mr. Jerome Eresmas" },
+    { "t": "pairRow", "left": "Dr. Lyca Cardenas", "right": "Mr. Harold Poquita" },
     { "t": "subhl", "text": "Veil" },
-    { "t": "pairRow", "left": "Ms. Erica Paula Comia", "right": "Mr. Cherrieben Bellen" },
+    { "t": "pairRow", "left": "Mr. Eric Joseph Bompat", "right": "Melarissa Bompat" },
     { "t": "subhl", "text": "Cord" },
-    { "t": "pairRow", "left": "Ms. Airose Ignacio", "right": "Mr. Marvin Carpio" },
+    { "t": "pairRow", "left": "Mr. Epimaco Maniwang Jr.", "right": "Melanie Maniwang" },
+    { "t": "hl", "text": "Ring bearer" },
+    { "t": "p", "lines": ["John Aerholl Ramos"] },
+    { "t": "hl", "text": "Coin bearer" },
+    { "t": "p", "lines": ["Marco Angelo Maniwang"] },
+    { "t": "hl", "text": "Bible bearer" },
+    { "t": "p", "lines": ["Ryker Joseph Bompat"] },
+    { "t": "hl", "text": "Flower girls" },
     {
-      "t": "twoCol",
-      "leftTitle": "Grooms man",
-      "rightTitle": "Bridesmaid",
-      "rows": [
-        ["Renz Enteria", "Rianne Enteria"],
-        ["Rexzel Enteria", "Sophia Almira Adamus"]
+      "t": "p",
+      "lines": [
+        "Summer Elia Bompat",
+        "Danica Amber William",
+        "Anna Leah A. Bagolor",
+        "Mika Ellyne Sales"
       ]
     },
-    { "t": "hl", "text": "Ring bearer" },
-    { "t": "p", "lines": ["Keann Raiven Ebalo"] },
-    { "t": "hl", "text": "Coin bearer" },
-    { "t": "p", "lines": ["Rycel Enteria"] },
-    { "t": "hl", "text": "Bible bearer" },
-    { "t": "p", "lines": ["Rowan Nixon Enteria"] },
-    { "t": "hl", "text": "Flower girls" },
-    { "t": "p", "lines": ["Rachel Enteria", "Riezel Fae Enteria"] }
+    {
+      "t": "twoCol",
+      "leftTitle": "Groomsmen",
+      "rightTitle": "Bridesmaids",
+      "rows": [
+        ["Kyle Gerard Piquero", "Angela Remolador"],
+        ["Renz Javier Lustre", "Louisse Angeli Abucejo"],
+        ["Jehf Gelou Fuderanan", "Mary Jane Pocong"],
+        ["Alger Lumain", "Elen Fin Alaba"],
+        ["Joseph Campano", "Christine Rizza Mae Tan"],
+        ["Daryl Debb Macaranas", "Juliet Nambatac"]
+      ]
+    },
+    {
+      "t": "twoCol",
+      "leftTitle": "Junior groomsmen",
+      "rightTitle": "Junior bridesmaids",
+      "rows": [
+        ["Jehf Gian Fuderanan", "Mary Ella Erica Bompat"],
+        ["John Michael Ticon", "Kylen Monique Piquero"]
+      ]
+    },
+    {
+      "t": "rolesTwoCol",
+      "left": { "title": "Best Man", "lines": ["Albert Jabines"] },
+      "right": {
+        "title": "Maid of Honors",
+        "lines": ["Meldred Bolando", "Louwela Cardenas", "Jackielyn Nambatac"]
+      }
+    },
+    { "t": "hl", "text": "Readers" },
+    { "t": "subhl", "text": "1st reading" },
+    { "t": "p", "lines": ["John Aerholl Ramos"] },
+    { "t": "subhl", "text": "2nd reading" },
+    { "t": "p", "lines": ["Mr. Lorenza Salvo"] },
+    { "t": "subhl", "text": "Responsorial psalm" },
+    { "t": "p", "lines": ["Mr. Evenito Lustre"] },
+    { "t": "subhl", "text": "Prayers of the faithful" },
+    { "t": "p", "lines": ["Conchita Castillon"] },
+    { "t": "hl", "text": "Offerers" },
+    { "t": "subhl", "text": "Candles" },
+    { "t": "pairRow", "left": "Maria Rhona Ramos", "right": "Conception Nambatac" },
+    { "t": "subhl", "text": "Flowers" },
+    { "t": "pairRow", "left": "Ma. Nova Estoquia", "right": "Charlotte Jabines" },
+    { "t": "subhl", "text": "Fruits" },
+    { "t": "pairRow", "left": "Ciela Mae Cagatin", "right": "Nylienne Paulene Shane" },
+    { "t": "subhl", "text": "Bread & wine" },
+    { "t": "pairRow", "left": "Nicanor Lumain", "right": "Rosalina Lumain" }
   ]
 }

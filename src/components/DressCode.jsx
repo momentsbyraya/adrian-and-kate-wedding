@@ -53,16 +53,16 @@ const DressCodeCategoryRow = ({
                   onClick={() => setActiveTooltip(activeTooltip === tipId ? null : tipId)}
                 >
                   <div
-                    className="h-5 w-5 cursor-pointer rounded border border-[#8b4a5c]/35 sm:h-7 sm:w-7"
+                    className="h-5 w-5 cursor-pointer rounded border border-[#6D5959]/35 sm:h-7 sm:w-7"
                     style={{ backgroundColor: color.hex }}
                   />
                   {activeTooltip === tipId && (
                     <div
-                      className={`color-swatch-tooltip pointer-events-none absolute bottom-full left-1/2 z-[9999] mb-2 -translate-x-1/2 transform whitespace-nowrap rounded bg-[#c6d7f4] px-2 py-1 text-xs ${themeConfig.text.secondary}`}
+                      className={`color-swatch-tooltip pointer-events-none absolute bottom-full left-1/2 z-[9999] mb-2 -translate-x-1/2 transform whitespace-nowrap rounded bg-[#E2EAFC] px-2 py-1 text-xs ${themeConfig.text.secondary}`}
                       style={{ position: 'absolute' }}
                     >
                       {color.name}
-                      <div className="absolute left-1/2 top-full -mt-1 -translate-x-1/2 transform border-4 border-transparent border-t-[#c6d7f4]" />
+                      <div className="absolute left-1/2 top-full -mt-1 -translate-x-1/2 transform border-4 border-transparent border-t-[#E2EAFC]" />
                     </div>
                   )}
                 </div>
@@ -189,7 +189,7 @@ const DressCode = () => {
           <React.Fragment key={section.id}>
             {i > 0 && (
               <hr
-                className="dresscode-category-divider w-full border-0 border-t border-dashed border-[#8b4a5c]/30"
+                className="dresscode-category-divider w-full border-0 border-t border-dashed border-[#6D5959]/30"
                 aria-hidden="true"
               />
             )}

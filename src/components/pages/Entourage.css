@@ -154,9 +154,9 @@
   background-repeat: no-repeat;
 }
 
-/* Light pink wash (#F7DAE7 blush) at 50% over bg */
+/* Light pink wash (#F4E8E9 blush) at 50% over bg */
 .entourage-overlay {
-  background-color: rgba(247, 218, 231, 0.5);
+  background-color: rgba(244, 232, 233, 0.5);
   pointer-events: none;
 }
 
@@ -185,12 +185,12 @@
 #entourage .entourage-content-stack .entourage-block-hl,
 #entourage .entourage-content-stack .sponsor-role-title-wrap.caudex-bold,
 #entourage .entourage-content-stack .sponsor-role-title-wrap {
-  color: #8b4a5c !important;
+  color: #6D5959 !important;
 }
 
 /* Names & body lines — same hue, slightly lighter */
 #entourage .entourage-content-stack .entourage-anim-name {
-  color: #4f7899 !important;
+  color: #2F3E46 !important;
 }
 
 /* Parents columns: keep name lines visually tight (no extra block gaps) */
@@ -233,7 +233,7 @@
 #entourage .entourage-foreground .entourage-back-link {
   position: relative;
   z-index: 50;
-  color: #8b4a5c !important;
+  color: #6D5959 !important;
   white-space: normal !important;
   background-color: transparent;
   cursor: pointer;
@@ -242,6 +242,6 @@
 
 #entourage .entourage-foreground .entourage-back-link:hover,
 #entourage .entourage-foreground .entourage-back-link:active {
-  color: #743e4d !important;
+  color: #6D5959 !important;
 }
 

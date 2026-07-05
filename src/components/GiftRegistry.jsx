@@ -45,7 +45,7 @@ const GiftRegistry = () => {
         </h3>
         <p className="text-base sm:text-lg font-albert font-thin max-w-3xl mx-auto leading-relaxed gift-registry-body">
           Sharing our wedding day with you means the world to us. Should you wish to give a gift, a monetary contribution is welcome via{' '}
-          <span className="font-medium not-italic">BDO account 007170487389 (Rea Ebalo)</span>.
+          <span className="font-medium not-italic">GCash 09953553512</span>.
         </p>
 
         <button

@@ -148,7 +148,7 @@ body {
   font-family: 'Elsie Swash Caps', cursive;
   font-weight: 400;
   line-height: 1.6;
-  color: #1e4566;
+  color: #2F3E46;
   background-color: #ffffff;
 }
 
@@ -182,7 +182,7 @@ body {
   }
   
   .text-gradient {
-    background: linear-gradient(135deg, #1e4566 0%, #234d6b 100%);
+    background: linear-gradient(135deg, #2F3E46 0%, #6D5959 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;

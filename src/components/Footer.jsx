@@ -12,7 +12,7 @@ const Footer = () => {
       onClick={handleFooterClick}
     >
       {/* Divider line on top */}
-      <div className="w-full h-px bg-[#1e4566] opacity-40 mb-4"></div>
+      <div className="w-full h-px bg-[#2F3E46] opacity-40 mb-4"></div>
       
       {/* Footer text */}
       <div className="text-center">

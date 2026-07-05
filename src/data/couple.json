@@ -1,22 +1,22 @@
 {
   "bride": {
-    "firstName": "Rea",
-    "lastName": "Enteria",
-    "fullName": "Rea Enteria"
+    "firstName": "Kate",
+    "lastName": "Sales",
+    "fullName": "Helen Kate Sales"
   },
   "groom": {
-    "firstName": "Kevin",
-    "lastName": "Ebalo",
-    "fullName": "Kevin Ebalo"
+    "firstName": "Adrian",
+    "lastName": "Bongosia",
+    "fullName": "Adrian Aris Bongosia"
   },
-  "together": "Kevin & Rea",
-  "nickname": "Kevin & Rea",
+  "together": "Adrian & Kate",
+  "nickname": "Adrian & Kate",
   "wedding": {
-    "date": "2026-07-03",
+    "date": "2026-09-05",
     "time": "2:00 PM",
-    "dayOfWeek": "Friday",
-    "month": "July",
-    "day": "3",
+    "dayOfWeek": "Saturday",
+    "month": "September",
+    "day": "5",
     "year": "2026"
   }
 }

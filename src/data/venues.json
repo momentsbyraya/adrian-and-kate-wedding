@@ -1,25 +1,25 @@
 {
   "ceremony": {
-    "name": "St. Mary Magdalene Church",
+    "name": "Holy Name University Church",
     "address": "",
     "city": "",
     "state": "",
     "zip": "",
     "time": "2:00 PM",
     "details": "Ceremony begins at 2:00 PM.",
-    "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=St+Mary+Magdalene+Church+Tanay+Rizal",
-    "directionsUrl": "https://www.google.com/maps/search/?api=1&query=St+Mary+Magdalene+Church+Tanay+Rizal"
+    "googleMapsUrl": "https://maps.app.goo.gl/vM1xuT4T68gv3Hs7A",
+    "directionsUrl": "https://maps.app.goo.gl/vM1xuT4T68gv3Hs7A"
   },
   "reception": {
-    "name": "Simple Restaurant",
+    "name": "Mithi Resort and Spa",
     "address": "",
-    "city": "Tanay",
-    "state": "Rizal",
+    "city": "",
+    "state": "",
     "zip": "",
-    "time": "4:30 PM",
-    "details": "Reception begins at 4:30 PM. Celebration runs until 9:00 PM.",
+    "time": "6:00 PM",
+    "details": "Reception begins at 6:00 PM. Celebration runs until 10:00 PM.",
     "landmark": "",
-    "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Simple+Restaurant+Tanay+Rizal",
-    "directionsUrl": "https://www.google.com/maps/search/?api=1&query=Simple+Restaurant+Tanay+Rizal"
+    "googleMapsUrl": "https://maps.app.goo.gl/hmSXgqAk744ggou77",
+    "directionsUrl": "https://maps.app.goo.gl/hmSXgqAk744ggou77"
   }
 }

@@ -97,7 +97,7 @@ const PhotoSection = ({
           }}
         >
           <p 
-            className="font-handwritten text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-[#D4A5A5] whitespace-nowrap"
+            className="font-handwritten text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-[#6D5959] whitespace-nowrap"
             style={{
               position: 'absolute',
               top: '5%',
@@ -108,7 +108,7 @@ const PhotoSection = ({
             {texts[0] || texts[0]}
           </p>
           <p 
-            className="font-handwritten text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-[#D4A5A5] whitespace-nowrap"
+            className="font-handwritten text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-[#6D5959] whitespace-nowrap"
             style={{
               position: 'absolute',
               top: '25%',
@@ -119,7 +119,7 @@ const PhotoSection = ({
             {texts[1] || texts[0]}
           </p>
           <p 
-            className="font-handwritten text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-[#D4A5A5] whitespace-nowrap"
+            className="font-handwritten text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-[#6D5959] whitespace-nowrap"
             style={{
               position: 'absolute',
               bottom: '25%',
@@ -130,7 +130,7 @@ const PhotoSection = ({
             {texts[2] || texts[0]}
           </p>
           <p 
-            className="font-handwritten text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-[#D4A5A5] whitespace-nowrap"
+            className="font-handwritten text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-[#6D5959] whitespace-nowrap"
             style={{
               position: 'absolute',
               bottom: '5%',
@@ -141,7 +141,7 @@ const PhotoSection = ({
             {texts[3] || texts[0]}
           </p>
           <p 
-            className="font-handwritten text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-[#D4A5A5] whitespace-nowrap"
+            className="font-handwritten text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-[#6D5959] whitespace-nowrap"
             style={{
               position: 'absolute',
               top: '50%',
@@ -153,7 +153,7 @@ const PhotoSection = ({
           </p>
           {/* Additional right side text elements */}
           <p 
-            className="font-handwritten text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-[#D4A5A5] whitespace-nowrap"
+            className="font-handwritten text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-[#6D5959] whitespace-nowrap"
             style={{
               position: 'absolute',
               top: '15%',
@@ -164,7 +164,7 @@ const PhotoSection = ({
             {texts[0] || 'Forever'}
           </p>
           <p 
-            className="font-handwritten text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-[#D4A5A5] whitespace-nowrap"
+            className="font-handwritten text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-[#6D5959] whitespace-nowrap"
             style={{
               position: 'absolute',
               top: '40%',
@@ -175,7 +175,7 @@ const PhotoSection = ({
             {texts[1] || 'Always'}
           </p>
           <p 
-            className="font-handwritten text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-[#D4A5A5] whitespace-nowrap"
+            className="font-handwritten text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-[#6D5959] whitespace-nowrap"
             style={{
               position: 'absolute',
               bottom: '40%',
@@ -186,7 +186,7 @@ const PhotoSection = ({
             {texts[2] || 'Together'}
           </p>
           <p 
-            className="font-handwritten text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-[#D4A5A5] whitespace-nowrap"
+            className="font-handwritten text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-[#6D5959] whitespace-nowrap"
             style={{
               position: 'absolute',
               bottom: '15%',
@@ -223,7 +223,7 @@ const PhotoSection = ({
                 }}
               />
               <div className="p-2 text-center">
-                <div className="text-sm sm:text-lg text-[#D4A5A5] font-handwritten">
+                <div className="text-sm sm:text-lg text-[#6D5959] font-handwritten">
                   {displayImages[0].label || 'Memories'}
                 </div>
               </div>
@@ -251,7 +251,7 @@ const PhotoSection = ({
                 }}
               />
               <div className="p-2 text-center">
-                <div className="text-sm sm:text-lg text-[#D4A5A5] font-handwritten">
+                <div className="text-sm sm:text-lg text-[#6D5959] font-handwritten">
                   {displayImages[1].label || 'Together'}
                 </div>
               </div>
@@ -279,7 +279,7 @@ const PhotoSection = ({
                 }}
               />
               <div className="p-2 text-center">
-                <div className="text-sm sm:text-lg text-[#D4A5A5] font-handwritten">
+                <div className="text-sm sm:text-lg text-[#6D5959] font-handwritten">
                   {displayImages[2].label || 'Love'}
                 </div>
               </div>
@@ -289,7 +289,7 @@ const PhotoSection = ({
         
         {/* Paragraph */}
         {paragraph && (
-          <p className="text-base sm:text-lg font-albert font-thin text-[#1e4566] text-center max-w-xl mx-auto leading-relaxed">
+          <p className="text-base sm:text-lg font-albert font-thin text-[#2F3E46] text-center max-w-xl mx-auto leading-relaxed">
             {paragraph}
           </p>
         )}

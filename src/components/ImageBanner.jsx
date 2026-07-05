@@ -48,13 +48,13 @@ const ImageBanner = ({ src, alt = "Banner image" }) => {
           <div className="absolute bottom-0 left-0 flex w-full flex-col items-center justify-end pb-6 sm:pb-8 md:pb-10 z-10">
             <div className="w-full text-center">
               {/* The in Ballet font */}
-              <h1 className="font-ballet mb-2 text-5xl sm:text-6xl md:text-7xl lg:text-8xl" style={{ color: '#1e4566' }}>
+              <h1 className="font-ballet mb-2 text-5xl sm:text-6xl md:text-7xl lg:text-8xl" style={{ color: '#2F3E46' }}>
                 The
               </h1>
               {/* Details in Tebranos font */}
               <h2
                 className="font-tebranos -mt-6 mb-4 text-6xl uppercase sm:text-7xl md:text-8xl lg:text-9xl"
-                style={{ color: '#1e4566' }}
+                style={{ color: '#2F3E46' }}
               >
                 Details
               </h2>

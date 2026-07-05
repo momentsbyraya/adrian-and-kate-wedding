@@ -78,15 +78,15 @@ const FAQSection = ({ id = 'faq' }) => {
               return (
                 <div key={index}>
                   <div className="mb-2">
-                    <p className="faq-question-bold mb-2 text-base font-albert text-[#1e4566] sm:text-lg">
+                    <p className="faq-question-bold mb-2 text-base font-albert text-[#2F3E46] sm:text-lg">
                       Q: {text}
                     </p>
-                    <p className="whitespace-pre-line text-sm font-albert font-thin text-[#1e4566] sm:text-base">
+                    <p className="whitespace-pre-line text-sm font-albert font-thin text-[#2F3E46] sm:text-base">
                       A: {item.answer}
                     </p>
                   </div>
                   {index < faqItems.faqData.length - 1 && (
-                    <div className="mt-6 h-px bg-[#1e4566]/20" aria-hidden />
+                    <div className="mt-6 h-px bg-[#2F3E46]/20" aria-hidden />
                   )}
                 </div>
               )

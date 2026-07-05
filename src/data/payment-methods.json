@@ -1,24 +1,14 @@
 {
   "paymentMethods": [
     {
-      "name": "BDO — Rea Ebalo",
-      "image": "/assets/images/qr/qr-code.png",
+      "name": "GCash",
+      "image": "/assets/images/qr/g-cash.jpg",
       "accountInfo": {
-        "provider": "BDO",
-        "accountNumber": "007170487389",
-        "accountName": "Rea Ebalo",
-        "qrCode": "/assets/images/qr/qr-code.png",
-        "giftImage": "/assets/images/monetary-gifts/IMG_6303.jpeg"
-      }
-    },
-    {
-      "name": "Zelle",
-      "image": "/assets/images/monetary-gifts/zelle.png",
-      "accountInfo": {
-        "provider": "Zelle",
-        "accountNumber": "",
-        "accountName": "",
-        "giftImage": "/assets/images/monetary-gifts/zelle.png"
+        "provider": "GCash",
+        "accountNumber": "09953553512",
+        "accountName": "Adrian Aris Bongosia",
+        "qrCode": "/assets/images/qr/g-cash.jpg",
+        "giftImage": "/assets/images/qr/g-cash.jpg"
       }
     }
   ]

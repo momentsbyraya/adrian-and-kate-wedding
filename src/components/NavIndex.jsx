@@ -248,13 +248,13 @@ const NavIndex = ({ onOpenRSVP }) => {
               <div className="rounded-[50%] w-full h-full flex flex-col items-center justify-center relative oval-border">
                 {/* Text Content */}
                 <div className="text-center px-4">
-                  <p className="nanum-myeongjo-regular text-[#1e4566] mb-2 oval-text-for">
+                  <p className="nanum-myeongjo-regular text-[#2F3E46] mb-2 oval-text-for">
                     FOR THE
                   </p>
                   <p className={`imperial-script-regular mb-4 underline oval-text-entourage ${themeConfig.text.primary}`}>
                     Entourage
                   </p>
-                  <p className="nanum-myeongjo-regular text-[#1e4566] oval-text-click">
+                  <p className="nanum-myeongjo-regular text-[#2F3E46] oval-text-click">
                     CLICK HERE
                   </p>
                 </div>
@@ -531,7 +531,7 @@ const NavIndex = ({ onOpenRSVP }) => {
                   >
                     {/* Box with Section Name */}
                     <div 
-                      className="px-4 py-6 rounded-lg border-2 text-center min-h-[80px] flex items-center justify-center bg-white border-[#1e4566]/30 text-[#1e4566] shadow-sm"
+                      className="px-4 py-6 rounded-lg border-2 text-center min-h-[80px] flex items-center justify-center bg-white border-[#2F3E46]/30 text-[#2F3E46] shadow-sm"
                     >
                       <span className="text-sm sm:text-base font-albert font-medium">
                         {section.name}
@@ -557,8 +557,8 @@ const NavIndex = ({ onOpenRSVP }) => {
                   <div 
                     className={`px-4 py-6 rounded-lg border-2 transition-all duration-300 text-center min-h-[80px] flex items-center justify-center ${
                       isActive
-                        ? 'bg-[#c6d7f4] border-[#c6d7f4] text-[#1e4566] shadow-lg'
-                        : 'bg-white border-[#c6d7f4]/60 text-[#1e4566] hover:border-[#c6d7f4] hover:bg-[#F7DAE7]/40 shadow-md'
+                        ? 'bg-[#E2EAFC] border-[#E2EAFC] text-[#2F3E46] shadow-lg'
+                        : 'bg-white border-[#E2EAFC]/60 text-[#2F3E46] hover:border-[#E2EAFC] hover:bg-[#F4E8E9]/40 shadow-md'
                     }`}
                   >
                     <span className="text-sm sm:text-base font-albert font-medium">

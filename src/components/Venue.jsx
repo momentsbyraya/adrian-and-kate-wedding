@@ -20,8 +20,6 @@ const Venue = () => {
 
   const ceremony = venuesData.ceremony
   const reception = venuesData.reception
-  const venueGoogleMapsUrl =
-    'https://www.google.com/maps/search/?api=1&query=Lot%204677B%20M.H.%20Del%20Pilar%20Street%2C%20Brgy%20Plaza%20Aldea%2C%201980%20Tanay%2C%20Philippines'
 
   useEffect(() => {
     if (venueTitleRef.current) {
@@ -101,25 +99,25 @@ const Venue = () => {
           <div className="flex w-1/2 min-w-0 shrink-0 items-stretch justify-center">
             <div className="venue-image-container relative w-full max-w-none">
               <img
-                src="/assets/images/venues/ceremony.jpg"
+                src="/assets/images/venues/church1.jpg"
                 alt={ceremony.name}
                 className="h-full w-full rounded object-cover"
               />
             </div>
           </div>
           <div className="venue-content-container flex w-1/2 min-w-0 flex-col items-center justify-center text-center">
-            <p className="imperial-script-regular mb-1 text-xl capitalize leading-none text-[#1e4566] not-italic sm:mb-1.5 sm:text-2xl md:text-3xl">
+            <p className="imperial-script-regular mb-1 text-xl capitalize leading-none text-[#2F3E46] not-italic sm:mb-1.5 sm:text-2xl md:text-3xl">
               Ceremony
             </p>
-            <div className="mb-2 text-base font-boska text-[#1e4566] sm:text-lg md:text-xl lg:text-2xl">
+            <div className="mb-2 text-base font-boska text-[#2F3E46] sm:text-lg md:text-xl lg:text-2xl">
               {ceremony.name}
             </div>
             {formatVenueLine(ceremony) && (
-              <p className="mb-3 text-xs font-albert text-[#1e4566]/90 sm:text-sm">
+              <p className="mb-3 text-xs font-albert text-[#2F3E46]/90 sm:text-sm">
                 {formatVenueLine(ceremony)}
               </p>
             )}
-            <p className="mb-4 text-xs font-albert text-[#1e4566] sm:mb-5 sm:text-sm md:text-base">
+            <p className="mb-4 text-xs font-albert text-[#2F3E46] sm:mb-5 sm:text-sm md:text-base">
               <span className="font-semibold">Time:</span> {ceremony.time}
             </p>
             <div className="mt-auto flex w-full justify-center">
@@ -138,23 +136,23 @@ const Venue = () => {
         {/* Reception: copy left, image right */}
         <div className="flex min-w-0 flex-row items-stretch gap-3 sm:gap-4 md:gap-6">
           <div className="venue-content-container flex w-1/2 min-w-0 flex-col items-center justify-center text-center">
-            <p className="imperial-script-regular mb-1 text-xl capitalize leading-none text-[#1e4566] not-italic sm:mb-1.5 sm:text-2xl md:text-3xl">
+            <p className="imperial-script-regular mb-1 text-xl capitalize leading-none text-[#2F3E46] not-italic sm:mb-1.5 sm:text-2xl md:text-3xl">
               Reception
             </p>
-            <div className="mb-2 text-base font-boska text-[#1e4566] sm:text-lg md:text-xl lg:text-2xl">
+            <div className="mb-2 text-base font-boska text-[#2F3E46] sm:text-lg md:text-xl lg:text-2xl">
               {reception.name}
             </div>
             {formatVenueLine(reception) && (
-              <p className="mb-3 text-xs font-albert text-[#1e4566]/90 sm:text-sm">
+              <p className="mb-3 text-xs font-albert text-[#2F3E46]/90 sm:text-sm">
                 {formatVenueLine(reception)}
               </p>
             )}
-            <p className="mb-4 text-xs font-albert text-[#1e4566] sm:mb-5 sm:text-sm md:text-base">
+            <p className="mb-4 text-xs font-albert text-[#2F3E46] sm:mb-5 sm:text-sm md:text-base">
               <span className="font-semibold">Time:</span> {reception.time}
             </p>
             <div className="mt-auto flex w-full justify-center">
               <SecondaryButton
-                href={venueGoogleMapsUrl}
+                href={reception.googleMapsUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 icon={ArrowRight}
@@ -166,7 +164,7 @@ const Venue = () => {
           <div className="flex w-1/2 min-w-0 shrink-0 items-stretch justify-center">
             <div className="venue-image-container relative w-full max-w-none">
               <img
-                src="/assets/images/venues/reception.jpg"
+                src="/assets/images/venues/venue2.jpg"
                 alt={reception.name}
                 className="h-full w-full rounded object-cover"
               />

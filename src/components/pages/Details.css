@@ -14,7 +14,7 @@
 
 .venue-title-text {
   line-height: 0.8;
-  color: #1e4566;
+  color: #2F3E46;
 }
 
 /* Venue Image Container */
@@ -28,7 +28,7 @@
   width: 100vw;
   margin-left: calc(-50vw + 50%);
   margin-right: calc(-50vw + 50%);
-  background-color: #c6d7f4;
+  background-color: #E2EAFC;
 }
 
 .program-title-container {
@@ -41,7 +41,7 @@
 
 .program-title-text {
   line-height: 0.8;
-  color: #1e4566;
+  color: #2F3E46;
   display: block;
   text-align: center;
 }
@@ -65,22 +65,22 @@
 }
 
 .timeline-event-time {
-  color: #1e4566;
+  color: #2F3E46;
 }
 
 .timeline-event-description {
-  color: #1e4566;
+  color: #2F3E46;
 }
 
 /* Dress Code */
 .dress-code-title-text {
   line-height: 0.8;
-  color: #8b4a5c;
+  color: #6D5959;
   white-space: nowrap;
 }
 
 .dress-code-description {
-  color: #8b4a5c;
+  color: #6D5959;
 }
 
 .dress-code-image-container {
@@ -140,7 +140,7 @@
 
 /* Attire Section — light pink */
 .attire-section {
-  background-color: #f7dae7;
+  background-color: #F4E8E9;
   width: 100vw;
   margin-left: calc(-50vw + 50%);
   margin-right: calc(-50vw + 50%);
@@ -189,15 +189,15 @@
 
 .gift-registry-title-text {
   line-height: 0.8;
-  color: #1e4566;
+  color: #2F3E46;
 }
 
 .gift-registry-body {
-  color: #1e4566;
+  color: #2F3E46;
 }
 
 .gift-send-button:focus-visible {
-  outline: 2px solid #1e4566;
+  outline: 2px solid #2F3E46;
   outline-offset: 3px;
 }
 
@@ -209,7 +209,7 @@
 
 .upload-title-text {
   line-height: 0.8;
-  color: #1e4566;
+  color: #2F3E46;
 }
 
 .upload-qr-container {
@@ -234,14 +234,14 @@
   width: 100vw;
   margin-left: calc(-50vw + 50%);
   margin-right: calc(-50vw + 50%);
-  background-color: #c6d7f4;
+  background-color: #E2EAFC;
   position: relative;
   overflow: hidden;
 }
 
 .faq-title-text {
   line-height: 0.8;
-  color: #1e4566;
+  color: #2F3E46;
 }
 
 /* Modal */

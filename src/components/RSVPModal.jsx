@@ -84,14 +84,10 @@ const RSVPModal = ({ isOpen, onClose }) => {
           </button>
         </div>
 
-        <div className="flex min-h-0 flex-1 px-3 py-3 sm:px-4 sm:py-4">
-          <iframe
-            src="https://forms.gle/xZvut1SiF4VMfBHQ9"
-            title="RSVP for the Wedding of Kevin & Rea"
-            className="h-full w-full rounded-md border border-gray-200 bg-white"
-            loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade"
-          />
+        <div className="flex min-h-0 flex-1 items-center justify-center px-3 py-3 sm:px-4 sm:py-4">
+          <p className="caudex-bold text-xl uppercase tracking-[0.12em] text-gray-900/70 sm:text-2xl md:text-3xl">
+            TO BE ADDED
+          </p>
         </div>
       </div>
     </div>,

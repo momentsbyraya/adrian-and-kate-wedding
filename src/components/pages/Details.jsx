@@ -168,7 +168,7 @@ const Details = () => {
           {/* Header Section */}
           <div className="text-center">
             <div ref={headerContentRef}>
-              <p className="text-base sm:text-lg font-albert font-thin text-[#1e4566] max-w-3xl mx-auto leading-relaxed">
+              <p className="text-base sm:text-lg font-albert font-thin text-[#2F3E46] max-w-3xl mx-auto leading-relaxed">
                 Join us as we exchange our vows
               </p>
               <Divider />
@@ -274,7 +274,7 @@ const Details = () => {
           navigate('/')
         }
       }}
-      className="back-button fixed bottom-12 right-6 z-[100] inline-flex aspect-square size-16 shrink-0 items-center justify-center rounded-full bg-[#F7DAE7] font-albert text-xs font-semibold uppercase leading-none tracking-[0.12em] text-[#1e4566] shadow-lg underline decoration-[#1e4566]/50 underline-offset-[0.25em] transition-colors duration-300 hover:bg-[#c6d7f4] sm:size-[4.25rem] sm:text-sm sm:tracking-[0.14em]"
+      className="back-button fixed bottom-12 right-6 z-[100] inline-flex aspect-square size-16 shrink-0 items-center justify-center rounded-full bg-[#F4E8E9] font-albert text-xs font-semibold uppercase leading-none tracking-[0.12em] text-[#2F3E46] shadow-lg underline decoration-[#2F3E46]/50 underline-offset-[0.25em] transition-colors duration-300 hover:bg-[#E2EAFC] sm:size-[4.25rem] sm:text-sm sm:tracking-[0.14em]"
     >
       Back
     </button>
