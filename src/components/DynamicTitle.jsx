@@ -17,12 +17,12 @@ const DynamicTitle = () => {
     <Helmet>
       <title>{`${couple.nickname}'s Wedding - ${weddingDate}`}</title>
       <meta name="description" content={description} />
-      <link rel="icon" type="image/jpeg" href={FAVICON_IMAGE_PATH} />
+      <link rel="icon" type="image/png" href={FAVICON_IMAGE_PATH} />
       <link rel="apple-touch-icon" href={FAVICON_IMAGE_PATH} />
       <meta property="og:title" content={`${couple.nickname}'s Wedding`} />
       <meta property="og:description" content={`Join us on ${weddingDate}`} />
       <meta property="og:image" content={ogImage} />
-      <meta property="og:image:type" content="image/jpeg" />
+      <meta property="og:image:type" content="image/png" />
       <meta property="og:image:alt" content={`${couple.nickname} — wedding`} />
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={`${couple.nickname}'s Wedding`} />

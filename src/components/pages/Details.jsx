@@ -14,7 +14,7 @@ import DressCode from '../DressCode'
 import GiftRegistry from '../GiftRegistry'
 import PhotoUpload from '../PhotoUpload'
 import FAQSection from '../FAQSection'
-import { prenupDetailsBannerUrl, prenupDetailsPhotoStrip } from '../../data/prenup'
+import { prenupDetailsBannerUrl, prenupDetailsBannerFocal, prenupDetailsPhotoStrip } from '../../data/prenup'
 import './Details.css'
 
 // Register ScrollTrigger plugin
@@ -175,6 +175,7 @@ const Details = () => {
       <ImageBanner 
         src={prenupDetailsBannerUrl} 
         alt="Prenup photo"
+        objectPosition={prenupDetailsBannerFocal}
       />
       
       {/* Content */}

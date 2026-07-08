@@ -11,6 +11,7 @@ import {
   prenupMomentsStoryFilenames,
   prenupMomentsGalleryFilenames,
   prenupUrl,
+  prenupFocalPoint,
   IMAGE_PLACEHOLDER,
 } from '../../data/prenup'
 import GradientLayer from '../GradientLayer'
@@ -39,6 +40,7 @@ const Moments = () => {
   const prenupStoryFilenames = prenupMomentsStoryFilenames
 
   const galleryImageUrls = prenupGalleryFilenames.map(prenupUrl)
+  const galleryFocalPoints = prenupGalleryFilenames.map(prenupFocalPoint)
   const storyImageUrls = prenupStoryFilenames.map(prenupUrl)
   const storyParagraphs = useMemo(
     () =>
@@ -61,25 +63,38 @@ const Moments = () => {
       : galleryImageUrls
   const lastTwoGalleryImages =
     galleryImageUrls.length >= 2 ? galleryImageUrls.slice(-2) : []
+  const mainGalleryFocal =
+    galleryFocalPoints.length >= 2
+      ? galleryFocalPoints.slice(0, -2)
+      : galleryFocalPoints
+  const lastTwoGalleryFocal =
+    galleryFocalPoints.length >= 2 ? galleryFocalPoints.slice(-2) : []
 
-  const gridColumnPattern = [
-    'span 3',
-    'span 1',
-    'span 2',
-    'span 2',
-    'span 1',
-    'span 3',
-    'span 1',
-    'span 2',
-    'span 2',
-    'span 1',
-  ]
-
-  const gridColumnForIndex = (index) => {
-    const n = mainGalleryImages.length
-    if (n === 4 && index === 3) return 'span 3'
-    return gridColumnPattern[index % gridColumnPattern.length]
+  /**
+   * Build column spans that ALWAYS fill each 3-column row (no empty gaps),
+   * for any number of images. Rows are picked from an aesthetic cycle and the
+   * final row is adjusted to exactly consume whatever images remain.
+   */
+  const buildMainGridSpans = (count) => {
+    const cycle = [[3], [1, 2], [2, 1], [1, 1, 1]]
+    const spans = []
+    let remaining = count
+    let c = 0
+    while (remaining > 0) {
+      let row = cycle[c % cycle.length]
+      if (row.length > remaining) {
+        row = remaining === 1 ? [3] : remaining === 2 ? [1, 2] : [1, 1, 1]
+      }
+      spans.push(...row)
+      remaining -= row.length
+      c += 1
+    }
+    return spans
   }
+
+  const mainGridSpans = buildMainGridSpans(mainGalleryImages.length)
+
+  const gridColumnForIndex = (index) => `span ${mainGridSpans[index] ?? 1}`
 
   const galleryTileClass = (isFullWidthRow) =>
     isFullWidthRow
@@ -481,17 +496,18 @@ const Moments = () => {
                                }}
                                onClick={() => openLightbox(image, index)}
                              >
-                               <img
-                                 src={image}
-                                 alt={`Gallery ${index + 1}`}
-                                className={`h-full w-full object-cover transition-transform duration-300 hover:scale-105 ${index === 3 ? 'object-top' : 'object-bottom'}`}
-                                 style={{
-                                   height: '100%',
-                                   willChange: 'transform',
-                                   backfaceVisibility: 'hidden',
-                                 }}
-                                 loading="lazy"
-                               />
+                              <img
+                                src={image}
+                                alt={`Gallery ${index + 1}`}
+                               className="h-full w-full object-cover transition-transform duration-300 hover:scale-105"
+                                style={{
+                                  height: '100%',
+                                  objectPosition: mainGalleryFocal[index] ?? '50% 40%',
+                                  willChange: 'transform',
+                                  backfaceVisibility: 'hidden',
+                                }}
+                                loading="lazy"
+                              />
                              </div>
                            )
                          })}
@@ -514,18 +530,18 @@ const Moments = () => {
                              )
                            }
                          >
-                           <img
-                             src={lastTwoGalleryImages[0]}
-                             alt={`Gallery ${mainGalleryImages.length + 1}`}
-                            className="h-full w-full object-cover object-bottom transition-transform duration-300 hover:scale-105"
-                             style={{
-                               height: '100%',
-                              objectPosition: '50% 100%',
-                               willChange: 'transform',
-                               backfaceVisibility: 'hidden',
-                             }}
-                             loading="lazy"
-                           />
+                          <img
+                            src={lastTwoGalleryImages[0]}
+                            alt={`Gallery ${mainGalleryImages.length + 1}`}
+                           className="h-full w-full object-cover transition-transform duration-300 hover:scale-105"
+                            style={{
+                              height: '100%',
+                              objectPosition: lastTwoGalleryFocal[0] ?? '50% 50%',
+                              willChange: 'transform',
+                              backfaceVisibility: 'hidden',
+                            }}
+                            loading="lazy"
+                          />
                          </div>
                          <div
                            ref={(el) => {
@@ -542,18 +558,18 @@ const Moments = () => {
                              )
                            }
                          >
-                           <img
-                             src={lastTwoGalleryImages[1]}
-                             alt={`Gallery ${mainGalleryImages.length + 2}`}
-                            className="h-full w-full object-cover object-bottom transition-transform duration-300 hover:scale-105"
-                             style={{
-                               height: '100%',
-                              objectPosition: '50% 100%',
-                               willChange: 'transform',
-                               backfaceVisibility: 'hidden',
-                             }}
-                             loading="lazy"
-                           />
+                          <img
+                            src={lastTwoGalleryImages[1]}
+                            alt={`Gallery ${mainGalleryImages.length + 2}`}
+                           className="h-full w-full object-cover transition-transform duration-300 hover:scale-105"
+                            style={{
+                              height: '100%',
+                              objectPosition: lastTwoGalleryFocal[1] ?? '50% 50%',
+                              willChange: 'transform',
+                              backfaceVisibility: 'hidden',
+                            }}
+                            loading="lazy"
+                          />
                          </div>
                        </div>
                      )}

@@ -2,14 +2,15 @@ import React from 'react'
 import { images } from '../data'
 import GradientLayer from './GradientLayer'
 
-const ImageBanner = ({ src, alt = "Banner image" }) => {
+const ImageBanner = ({ src, alt = "Banner image", objectPosition }) => {
   return (
     <div className="relative z-20 w-screen" style={{ width: '100vw' }}>
       <div className="relative w-full h-[250px] sm:h-[250px] md:h-[300px] lg:h-[350px]">
           <img
             src={src}
             alt={alt}
-            className="h-full w-full object-cover object-[50%_45%] sm:object-[50%_50%] md:object-[50%_55%]"
+            className={`h-full w-full object-cover${objectPosition ? '' : ' object-[50%_45%] sm:object-[50%_50%] md:object-[50%_55%]'}`}
+            style={objectPosition ? { objectPosition } : undefined}
           />
           {/* Soft transparent white gradient layers at bottom */}
           <GradientLayer height="h-32" opacity={0.7} gradientId="whiteGradient1" />
