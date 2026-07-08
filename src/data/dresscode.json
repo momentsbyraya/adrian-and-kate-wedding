@@ -5,10 +5,17 @@
   },
   "sections": [
     {
+      "id": "principal-sponsors",
+      "title": "Principal Sponsors",
+      "image": "/assets/images/dresscode/sponsor.png",
+      "description": "Filipiniana for the ladies and Barong for the gentlemen.",
+      "colors": []
+    },
+    {
       "id": "guests",
       "title": "Guests",
-      "image": "/assets/images/dresscode/guests.png",
-      "description": "We invite you in pastel colors. Think soft pinks, blues, lavenders, mints, and other gentle hues.",
+      "image": "/assets/images/dresscode/guest.png",
+      "description": "Gentlemen in Barong. Ladies in pastel colors — soft pinks, blues, lavenders, mints, and other gentle hues.",
       "colors": [
         { "name": "Blush Pink", "hex": "#F4E8E9" },
         { "name": "Petal Pink", "hex": "#FCE4EC" },

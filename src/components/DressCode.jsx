@@ -97,7 +97,6 @@ const DressCode = () => {
   const [activeTooltip, setActiveTooltip] = useState(null)
 
   const sections = dresscode.sections ?? []
-  const attireIntro = dresscode.mainDressCode?.description ?? ''
 
   useEffect(() => {
     if (dressCodeTitleRef.current) {
@@ -178,9 +177,6 @@ const DressCode = () => {
               The Attire
             </span>
           </h3>
-          <p className="text-base sm:text-lg font-albert font-thin italic dress-code-description max-w-2xl mx-auto px-2">
-            {attireIntro}
-          </p>
         </div>
       </div>
 
