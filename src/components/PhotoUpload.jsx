@@ -39,7 +39,7 @@ const PhotoUpload = () => {
   }, [])
 
   return (
-    <div className="mt-20 pb-32 sm:pb-40 md:pb-48 lg:pb-56 relative">
+    <div id="snap-and-share" className="mt-20 pb-32 sm:pb-40 md:pb-48 lg:pb-56 relative">
       <div className="relative overflow-visible">
         <div className="relative overflow-hidden">
           <div 

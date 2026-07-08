@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useMemo } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useLocation } from 'react-router-dom'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { WEDDING_BLUSH, WEDDING_LIGHT_BLUE } from '../../config/themeConfig'
@@ -22,6 +22,7 @@ gsap.registerPlugin(ScrollTrigger)
 
 const Details = () => {
   const navigate = useNavigate()
+  const location = useLocation()
   const sectionRef = useRef(null)
   const backButtonRef = useRef(null)
   const headerContentRef = useRef(null)
@@ -147,6 +148,20 @@ const Details = () => {
       ScrollTrigger.getAll().forEach(trigger => trigger.kill())
     }
   }, [])
+
+  useEffect(() => {
+    if (!location.hash) return undefined
+
+    const scrollToHash = () => {
+      const target = document.querySelector(location.hash)
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' })
+      }
+    }
+
+    const timer = window.setTimeout(scrollToHash, 700)
+    return () => window.clearTimeout(timer)
+  }, [location.hash])
 
   return (
     <>

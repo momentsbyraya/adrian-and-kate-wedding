@@ -15,6 +15,107 @@
   background-color: rgba(255, 255, 255, 0.25);
 }
 
+/* Clickable affordance — makes interactive areas easy to spot */
+@keyframes nav-clickable-glow {
+  0%,
+  100% {
+    box-shadow:
+      0 4px 14px rgba(47, 62, 70, 0.14),
+      0 0 0 0 rgba(226, 234, 252, 0.35);
+  }
+
+  50% {
+    box-shadow:
+      0 8px 22px rgba(47, 62, 70, 0.2),
+      0 0 0 5px rgba(226, 234, 252, 0.55);
+  }
+}
+
+@keyframes nav-tap-badge {
+  0%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.42;
+  }
+
+  50% {
+    transform: translateY(-2px);
+    opacity: 0.58;
+  }
+}
+
+.nav-clickable {
+  position: relative;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition:
+    transform 0.28s ease,
+    box-shadow 0.28s ease,
+    filter 0.28s ease;
+  animation: nav-clickable-glow 2.6s ease-in-out infinite;
+}
+
+.nav-clickable::before {
+  content: 'TAP';
+  position: absolute;
+  top: 0.55rem;
+  right: 0.55rem;
+  z-index: 25;
+  padding: 0.22rem 0.5rem;
+  border-radius: 999px;
+  border: 1px solid rgba(47, 62, 70, 0.08);
+  background: rgba(255, 255, 255, 0.45);
+  color: rgba(47, 62, 70, 0.55);
+  font-family: Albert Sans, system-ui, sans-serif;
+  font-size: clamp(0.5rem, 1.4vw, 0.62rem);
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  line-height: 1;
+  pointer-events: none;
+  animation: nav-tap-badge 2.2s ease-in-out infinite;
+}
+
+.nav-clickable:hover {
+  filter: brightness(1.04);
+  animation: none;
+  box-shadow:
+    0 10px 28px rgba(47, 62, 70, 0.24),
+    0 0 0 4px rgba(244, 232, 233, 0.95);
+}
+
+.nav-clickable:active {
+  filter: brightness(0.98);
+}
+
+.nav-clickable:focus-visible {
+  outline: 2px solid #2f3e46;
+  outline-offset: 4px;
+}
+
+.nav-clickable-text {
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition:
+    transform 0.25s ease,
+    opacity 0.25s ease,
+    text-shadow 0.25s ease;
+}
+
+.nav-clickable-text:hover {
+  transform: scale(1.06);
+  opacity: 1;
+  text-shadow:
+    0 0 1px rgba(255, 255, 255, 1),
+    0 0 16px rgba(255, 255, 255, 0.75),
+    0 2px 8px rgba(0, 0, 0, 0.45);
+}
+
+.nav-clickable-text:focus-visible {
+  outline: 2px solid #ffffff;
+  outline-offset: 4px;
+  border-radius: 0.25rem;
+}
+
 /* Envelope Container */
 .envelope-container {
   margin-bottom: 2.5vw;
@@ -65,6 +166,10 @@
 
 .oval-text-click {
   font-size: clamp(0.625rem, 0.9vw, 0.95rem);
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
 }
 
 /* Polaroid Container Wrapper */
@@ -169,6 +274,16 @@
   font-size: clamp(1.25rem, 2.5vw, 2.5rem);
 }
 
+.rsvp-text-hint {
+  margin-top: 0.75rem;
+  font-size: clamp(0.55rem, 0.85vw, 0.8rem);
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+  color: var(--primary-text, #2f3e46);
+}
+
 /* Details Container */
 .details-container {
   width: 50vw;
@@ -202,6 +317,16 @@
   margin-bottom: 0.2vw;
   margin-top: 0.5vw;
   line-height: 0.9;
+}
+
+.details-text-hint {
+  margin-top: 0.35rem;
+  font-size: clamp(0.55rem, 0.85vw, 0.8rem);
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+  color: var(--primary-text, #2f3e46);
 }
 
 /* Moments Images Container */
@@ -290,6 +415,40 @@
   height: 100%;
   pointer-events: none;
   object-position: 70% 80%;
+}
+
+.polaroid-feature-image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.polaroid-feature-icon {
+  width: 58%;
+  height: auto;
+  object-fit: contain;
+  pointer-events: none;
+}
+
+.polaroid-label {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 5vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 0 0.75rem;
+  font-size: clamp(0.7rem, 2.1vw, 1.05rem);
+  color: #6D5959;
+  text-align: center;
+  line-height: 1.1;
+  pointer-events: none;
 }
 
 /* Polaroid Image 2 */

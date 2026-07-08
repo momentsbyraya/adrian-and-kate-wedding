@@ -36,7 +36,7 @@ const GiftRegistry = () => {
   }, [])
 
   return (
-    <div className="mt-20 relative gift-registry-section">
+    <div id="couples-request" className="mt-20 relative gift-registry-section">
       <div ref={giftRegistryRef} className="text-center relative z-10">
         <h3 className="relative inline-block px-6 py-3 mb-4">
           <span className="font-tebranos text-5xl sm:text-6xl md:text-7xl lg:text-8xl inline-block leading-none uppercase gift-registry-title-text">

@@ -7,6 +7,40 @@ import Counter from './Counter'
 import { getTimeUntilWedding } from '../utils/countdown'
 import './NavIndex.css'
 
+const FEATURE_POLAROIDS = [
+  {
+    id: 'couples-request',
+    label: "Couple's Request",
+    background: '/assets/images/graphics/bg-1.png',
+    icon: '/assets/images/graphics/ring-sketch.png',
+    iconAlt: 'Wedding rings sketch',
+    hash: '#couples-request',
+    className: 'polaroid-1',
+    containerClassName: 'polaroid-1-container',
+    imageClassName: 'polaroid-1-image',
+    flower: {
+      src: '/assets/images/graphics/flower-3.png',
+      className: 'absolute bottom-0 left-[80%] h-auto object-contain flower-3',
+    },
+  },
+  {
+    id: 'snap-and-share',
+    label: 'Snap',
+    background: '/assets/images/graphics/textured-bg-2.png',
+    icon: '/assets/images/graphics/camera-sketch.png',
+    iconAlt: 'Camera sketch',
+    hash: '#snap-and-share',
+    className: 'polaroid-2',
+    containerClassName: 'polaroid-2-container',
+    imageClassName: 'polaroid-2-image',
+    flower: {
+      src: '/assets/images/graphics/flower-4.png',
+      className: 'absolute h-auto object-contain flower-4',
+      refKey: 'flower4',
+    },
+  },
+]
+
 const NavIndex = ({ onOpenRSVP }) => {
   const navigate = useNavigate()
   const location = useLocation()
@@ -164,26 +198,34 @@ const NavIndex = ({ onOpenRSVP }) => {
       return
     }
 
-    // Scroll to top immediately
+    navigateWithSlide(section.path)
+  }
+
+  const navigateWithSlide = (path) => {
     window.scrollTo(0, 0)
 
-    // Slide out animation before navigation
+    const complete = () => {
+      navigate(path)
+      setTimeout(() => window.scrollTo(0, 0), 0)
+    }
+
     if (navRef.current) {
       gsap.to(navRef.current, {
         x: '-100%',
         opacity: 0,
         duration: 0.5,
         ease: "power2.in",
-        onComplete: () => {
-          navigate(section.path)
-          // Ensure scroll to top after navigation
-          setTimeout(() => window.scrollTo(0, 0), 0)
-        }
+        onComplete: complete
       })
     } else {
-      navigate(section.path)
-      // Ensure scroll to top after navigation
-      setTimeout(() => window.scrollTo(0, 0), 0)
+      complete()
+    }
+  }
+
+  const handleCardKeyDown = (event, action) => {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault()
+      action()
     }
   }
 
@@ -223,26 +265,12 @@ const NavIndex = ({ onOpenRSVP }) => {
           {/* Oval Container */}
           <div 
             ref={ovalContainerRef}
-            className="rounded-[50%] p-1 cursor-pointer transition-transform duration-300 hover:scale-105 oval-container"
-            onClick={() => {
-              window.scrollTo(0, 0)
-              // Slide out animation before navigation
-              if (navRef.current) {
-                gsap.to(navRef.current, {
-                  x: '-100%',
-                  opacity: 0,
-                  duration: 0.5,
-                  ease: "power2.in",
-                  onComplete: () => {
-                    navigate('/entourage')
-                    setTimeout(() => window.scrollTo(0, 0), 0)
-                  }
-                })
-              } else {
-                navigate('/entourage')
-                setTimeout(() => window.scrollTo(0, 0), 0)
-              }
-            }}
+            className="rounded-[50%] p-1 nav-clickable oval-container"
+            role="button"
+            tabIndex={0}
+            aria-label="View entourage"
+            onClick={() => navigateWithSlide('/entourage')}
+            onKeyDown={(event) => handleCardKeyDown(event, () => navigateWithSlide('/entourage'))}
           >
             <div className="rounded-[50%] w-full h-full p-1 oval-border">
               <div className="rounded-[50%] w-full h-full flex flex-col items-center justify-center relative oval-border">
@@ -264,26 +292,12 @@ const NavIndex = ({ onOpenRSVP }) => {
           
           {/* Polaroid Container Wrapper */}
           <div 
-            className="relative cursor-pointer hover:scale-105 transition-transform duration-300 polaroid-wrapper"
-            onClick={() => {
-              window.scrollTo(0, 0)
-              // Slide out animation before navigation
-              if (navRef.current) {
-                gsap.to(navRef.current, {
-                  x: '-100%',
-                  opacity: 0,
-                  duration: 0.5,
-                  ease: "power2.in",
-                  onComplete: () => {
-                    navigate('/moments')
-                    setTimeout(() => window.scrollTo(0, 0), 0)
-                  }
-                })
-              } else {
-                navigate('/moments')
-                setTimeout(() => window.scrollTo(0, 0), 0)
-              }
-            }}
+            className="relative nav-clickable polaroid-wrapper"
+            role="button"
+            tabIndex={0}
+            aria-label="View our moments"
+            onClick={() => navigateWithSlide('/moments')}
+            onKeyDown={(event) => handleCardKeyDown(event, () => navigateWithSlide('/moments'))}
           >
             {/* Polaroid-style Image Container */}
             <div 
@@ -296,7 +310,7 @@ const NavIndex = ({ onOpenRSVP }) => {
                 className="w-full object-cover polaroid-image"
                 style={{ objectPosition: 'center bottom' }}
               />
-              
+              <p className="polaroid-label font-handwritten">Our Moments</p>
             </div>
           </div>
         </div>
@@ -305,33 +319,11 @@ const NavIndex = ({ onOpenRSVP }) => {
         <div className="flex justify-start items-start gap-6 relative rsvp-details-container">
           <div 
             ref={rsvpContainerRef}
-            className="bg-white flex flex-col cursor-pointer transition-transform duration-300 relative rsvp-container"
-            onMouseEnter={(e) => {
-              e.currentTarget.style.transform = 'scale(1.05)'
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.transform = 'scale(1)'
-            }}
-            onMouseDown={(e) => {
-              e.currentTarget.style.transform = 'scale(1.1)'
-            }}
-            onMouseUp={(e) => {
-              e.currentTarget.style.transform = 'scale(1.05)'
-            }}
-            onClick={() => {
-              if (onOpenRSVP) {
-                onOpenRSVP()
-                return
-              }
-            }}
+            className="bg-white flex flex-col nav-clickable relative rsvp-container"
+            onClick={() => onOpenRSVP?.()}
             role="button"
             tabIndex={0}
-            onKeyDown={(e) => {
-              if (e.key === 'Enter' || e.key === ' ') {
-                e.preventDefault()
-                onOpenRSVP?.()
-              }
-            }}
+            onKeyDown={(e) => handleCardKeyDown(e, () => onOpenRSVP?.())}
             aria-label="Open RSVP"
           >
             {/* RSVP card */}
@@ -340,36 +332,25 @@ const NavIndex = ({ onOpenRSVP }) => {
                 <span className="imperial-script-regular rsvp-text-r">R</span>
                 <span className="nanum-myeongjo-regular rsvp-text-svp">SVP</span>
               </p>
+              <p className="nanum-myeongjo-regular rsvp-text-hint">
+                CLICK TO RSVP
+              </p>
             </div>
           </div>
           
           {/* New Container - Wider than long */}
           <div 
             ref={detailsContainerRef}
-            className="bg-white flex flex-col items-center justify-center cursor-pointer transition-transform duration-300 hover:scale-105 relative details-container"
+            className="bg-white flex flex-col items-center justify-center nav-clickable relative details-container"
             style={{
               borderTopColor: themeConfig.cssVariables['--primary-bg'],
               borderBottomColor: themeConfig.cssVariables['--primary-bg']
             }}
-            onClick={() => {
-              window.scrollTo(0, 0)
-              // Slide out animation before navigation
-              if (navRef.current) {
-                gsap.to(navRef.current, {
-                  x: '-100%',
-                  opacity: 0,
-                  duration: 0.5,
-                  ease: "power2.in",
-                  onComplete: () => {
-                    navigate('/details')
-                    setTimeout(() => window.scrollTo(0, 0), 0)
-                  }
-                })
-              } else {
-                navigate('/details')
-                setTimeout(() => window.scrollTo(0, 0), 0)
-              }
-            }}
+            role="button"
+            tabIndex={0}
+            aria-label="View wedding details"
+            onClick={() => navigateWithSlide('/details')}
+            onKeyDown={(event) => handleCardKeyDown(event, () => navigateWithSlide('/details'))}
           >
             {/* Flower 5 - Bottom Left */}
             <img 
@@ -386,11 +367,14 @@ const NavIndex = ({ onOpenRSVP }) => {
               <p className={`imperial-script-regular underline details-text-details ${themeConfig.text.primary}`}>
                 Details
               </p>
+              <p className="nanum-myeongjo-regular details-text-hint">
+                CLICK HERE
+              </p>
             </div>
           </div>
         </div>
 
-        {/* Three Polaroid Images Below RSVP and Details */}
+        {/* Couple's Request & Snap polaroids */}
         <div ref={momentsImagesRef} className="flex justify-center items-start gap-4 sm:gap-6 relative moments-images-container mt-16 sm:mt-20 md:mt-24">
           {/* Flower 7 - Under the images */}
           <img 
@@ -403,32 +387,12 @@ const NavIndex = ({ onOpenRSVP }) => {
           <button
             ref={momentsTextRef}
             type="button"
-            className="absolute cursor-pointer hover:opacity-80 transition-opacity duration-300 bg-transparent border-none outline-none moments-text-button"
+            className="absolute nav-clickable-text bg-transparent border-none outline-none moments-text-button"
+            aria-label="View our moments"
             onClick={(e) => {
               e.preventDefault()
               e.stopPropagation()
-              // Slide out animation before navigation
-              if (navRef.current) {
-                gsap.to(navRef.current, {
-                  x: '-100%',
-                  opacity: 0,
-                  duration: 0.5,
-                  ease: "power2.in",
-                  onComplete: () => {
-                    try {
-                      navigate('/moments')
-                    } catch {
-                      window.location.href = '/moments'
-                    }
-                  }
-                })
-              } else {
-                try {
-                  navigate('/moments')
-                } catch {
-                  window.location.href = '/moments'
-                }
-              }
+              navigateWithSlide('/moments')
             }}
           >
              <span className="nanum-myeongjo-regular text-center underline pulsating-moments moments-text text-white">
@@ -436,84 +400,48 @@ const NavIndex = ({ onOpenRSVP }) => {
              </span>
           </button>
           
-          {/* Polaroid Image 1 */}
-          <div 
-            className="relative cursor-pointer hover:scale-105 transition-transform duration-300 polaroid-1"
-            onClick={() => {
-              window.scrollTo(0, 0)
-              // Slide out animation before navigation
-              if (navRef.current) {
-                gsap.to(navRef.current, {
-                  x: '-100%',
-                  opacity: 0,
-                  duration: 0.5,
-                  ease: "power2.in",
-                  onComplete: () => {
-                    navigate('/moments')
-                    setTimeout(() => window.scrollTo(0, 0), 0)
-                  }
-                })
-              } else {
-                navigate('/moments')
-                setTimeout(() => window.scrollTo(0, 0), 0)
+          {FEATURE_POLAROIDS.map((polaroid) => (
+            <div
+              key={polaroid.id}
+              className={`nav-clickable ${polaroid.className}`}
+              role="button"
+              tabIndex={0}
+              aria-label={`View ${polaroid.label}`}
+              onClick={() => navigateWithSlide(`/details${polaroid.hash}`)}
+              onKeyDown={(event) =>
+                handleCardKeyDown(event, () => navigateWithSlide(`/details${polaroid.hash}`))
               }
-            }}
-          >
-            <div className="bg-white relative polaroid-1-container">
-              <img 
-                src={prenupHomePolaroidUrls[1]} 
-                alt="Prenup photo" 
-                className="w-full object-cover polaroid-1-image"
-              />
+            >
+              <div className={`bg-white relative ${polaroid.containerClassName}`}>
+                <div
+                  className={`w-full polaroid-feature-image ${polaroid.imageClassName}`}
+                  style={{ backgroundImage: `url(${polaroid.background})` }}
+                >
+                  <img
+                    src={polaroid.icon}
+                    alt={polaroid.iconAlt}
+                    className="polaroid-feature-icon"
+                  />
+                </div>
+                <p className="polaroid-label font-handwritten">{polaroid.label}</p>
 
-              {/* Flower 3 - Bottom Center (relative to this polaroid) */}
-              <img
-                src="/assets/images/graphics/flower-3.png"
-                alt="Flower decoration"
-                className="absolute bottom-0 left-[80%] h-auto object-contain flower-3"
-              />
+                {polaroid.flower.refKey === 'flower4' ? (
+                  <img
+                    ref={flower4Ref}
+                    src={polaroid.flower.src}
+                    alt="Flower decoration"
+                    className={polaroid.flower.className}
+                  />
+                ) : (
+                  <img
+                    src={polaroid.flower.src}
+                    alt="Flower decoration"
+                    className={polaroid.flower.className}
+                  />
+                )}
+              </div>
             </div>
-          </div>
-
-          {/* Polaroid Image 2 */}
-          <div 
-            className="relative cursor-pointer hover:scale-105 transition-transform duration-300 polaroid-2"
-            onClick={() => {
-              window.scrollTo(0, 0)
-              // Slide out animation before navigation
-              if (navRef.current) {
-                gsap.to(navRef.current, {
-                  x: '-100%',
-                  opacity: 0,
-                  duration: 0.5,
-                  ease: "power2.in",
-                  onComplete: () => {
-                    navigate('/moments')
-                    setTimeout(() => window.scrollTo(0, 0), 0)
-                  }
-                })
-              } else {
-                navigate('/moments')
-                setTimeout(() => window.scrollTo(0, 0), 0)
-              }
-            }}
-          >
-            <div className="bg-white relative polaroid-2-container">
-              <img 
-                src={prenupHomePolaroidUrls[2]} 
-                alt="Prenup photo" 
-                className="w-full object-cover polaroid-2-image"
-              />
-
-              {/* Flower 4 - Bottom Right */}
-              <img 
-                ref={flower4Ref}
-                src="/assets/images/graphics/flower-4.png" 
-                alt="Flower decoration" 
-                className="absolute h-auto object-contain flower-4"
-              />
-            </div>
-          </div>
+          ))}
         </div>
 
           {/* Navigation Boxes Grid */}

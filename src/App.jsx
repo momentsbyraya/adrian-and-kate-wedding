@@ -14,6 +14,7 @@ import Moments from './components/pages/Moments'
 import FAQ from './components/pages/FAQ'
 import AudioProvider from './contexts/AudioProvider'
 import { useAudio } from './hooks/useAudio'
+import Watermark from './components/Watermark'
 import { prenupAllUrls } from './data/prenup'
 
 function AppContent() {
@@ -125,6 +126,7 @@ function AppContent() {
           <Loader />
         </div>
       )}
+      {!isLoading && <Watermark />}
       {/* OpeningScreen - shows after loading, before invitation */}
       {!isLoading && !showInvitation && (
         <OpeningScreen onEnvelopeOpen={handleEnvelopeOpen} />
