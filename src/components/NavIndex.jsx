@@ -295,7 +295,7 @@ const NavIndex = ({ onOpenRSVP }) => {
             className="relative nav-clickable polaroid-wrapper"
             role="button"
             tabIndex={0}
-            aria-label="View our moments"
+            aria-label="View our story"
             onClick={() => navigateWithSlide('/moments')}
             onKeyDown={(event) => handleCardKeyDown(event, () => navigateWithSlide('/moments'))}
           >
@@ -310,7 +310,10 @@ const NavIndex = ({ onOpenRSVP }) => {
                 className="w-full object-cover polaroid-image"
                 style={{ objectPosition: 'center bottom' }}
               />
-              <p className="polaroid-label font-handwritten">Our Moments</p>
+              <div className="polaroid-label polaroid-label-stack">
+                <p className="font-handwritten polaroid-label-title">Our Story</p>
+                <p className="nanum-myeongjo-regular polaroid-label-hint">CLICK HERE</p>
+              </div>
             </div>
           </div>
         </div>
@@ -423,7 +426,7 @@ const NavIndex = ({ onOpenRSVP }) => {
                     className="polaroid-feature-icon"
                   />
                 </div>
-                <p className="polaroid-label font-handwritten">{polaroid.label}</p>
+                <p className="polaroid-label polaroid-label-top font-handwritten">{polaroid.label}</p>
 
                 {polaroid.flower.refKey === 'flower4' ? (
                   <img

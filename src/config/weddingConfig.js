@@ -26,6 +26,10 @@ export const weddingConfig = {
     email: "",
     phone: "",
     website: "",
+    formUrl:
+      "https://docs.google.com/forms/d/e/1FAIpQLSd00-gA4ICdOUxluJuQzo4SpxnbEkHh9bcOFCnoHpgwNZp-6Q/viewform?embedded=true",
+    formOpenUrl:
+      "https://docs.google.com/forms/d/e/1FAIpQLSd00-gA4ICdOUxluJuQzo4SpxnbEkHh9bcOFCnoHpgwNZp-6Q/viewform?usp=header",
     message: "Please RSVP by August 5th, 2026"
   },
 

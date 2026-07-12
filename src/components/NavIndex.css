@@ -92,6 +92,13 @@
   outline-offset: 4px;
 }
 
+/* Feature polaroids have captions at the top — keep TAP clear of the label */
+.polaroid-1.nav-clickable::before,
+.polaroid-2.nav-clickable::before {
+  top: auto;
+  bottom: 0.55rem;
+}
+
 .nav-clickable-text {
   cursor: pointer;
   -webkit-tap-highlight-color: transparent;
@@ -194,11 +201,9 @@
 /* Polaroid Image Container */
 .polaroid-container {
   width: 30vw;
-  border-top: 1.2vw solid white;
-  border-left: 1.2vw solid white;
-  border-right: 1.2vw solid white;
-  border-bottom: 5vw solid white;
-  padding: 0;
+  background-color: #ffffff;
+  padding: 1.2vw 1.2vw 7vw;
+  border: none;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
   z-index: 1;
   margin-top: 6vw;
@@ -399,11 +404,9 @@
 
 .polaroid-1-container {
   width: 30vw;
-  border-top: 1.2vw solid white;
-  border-left: 1.2vw solid white;
-  border-right: 1.2vw solid white;
-  border-bottom: 5vw solid white;
-  padding: 0;
+  background-color: #ffffff;
+  padding: 5vw 1.2vw 1.2vw;
+  border: none;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
   z-index: 1;
 }
@@ -444,11 +447,51 @@
   justify-content: center;
   margin: 0;
   padding: 0 0.75rem;
-  font-size: clamp(0.7rem, 2.1vw, 1.05rem);
+  font-size: clamp(0.85rem, 2.4vw, 1.25rem);
   color: #6D5959;
   text-align: center;
   line-height: 1.1;
   pointer-events: none;
+  z-index: 3;
+}
+
+.polaroid-label-stack {
+  height: 7vw;
+  flex-direction: column;
+  gap: 0.15vw;
+  padding-bottom: 0.35vw;
+}
+
+.polaroid-label-title {
+  margin: 0;
+  font-size: clamp(0.85rem, 2.4vw, 1.25rem);
+  color: #6D5959;
+  line-height: 1.1;
+}
+
+.polaroid-label-hint {
+  margin: 0;
+  font-size: clamp(0.45rem, 0.85vw, 0.7rem);
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+  color: #2f3e46;
+  line-height: 1;
+}
+
+/* Couple's Request & Snap — caption at top so flowers don't cover it */
+.polaroid-label-top {
+  top: 0;
+  bottom: auto;
+  white-space: nowrap;
+}
+
+/* Longer title — keep on one line and match Snap's vertical alignment */
+.polaroid-1-container .polaroid-label-top {
+  top: 0.45vw;
+  font-size: clamp(0.65rem, 1.85vw, 1rem);
+  letter-spacing: -0.01em;
 }
 
 /* Polaroid Image 2 */
@@ -460,11 +503,9 @@
 
 .polaroid-2-container {
   width: 30vw;
-  border-top: 1.2vw solid white;
-  border-left: 1.2vw solid white;
-  border-right: 1.2vw solid white;
-  border-bottom: 5vw solid white;
-  padding: 0;
+  background-color: #ffffff;
+  padding: 5vw 1.2vw 1.2vw;
+  border: none;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
   z-index: 1;
 }
