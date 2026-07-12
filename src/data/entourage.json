@@ -13,11 +13,11 @@
       "t": "parentsTwoCol",
       "left": {
         "title": "Parents of groom",
-        "lines": ["Mrs. Carmelita Bongosia", "Mr. Gaudencio Lustre Jr."]
+        "lines": ["Carmelita Bongosia", "Mr. Gaudencio Lustre Jr."]
       },
       "right": {
         "title": "Parents of Bride",
-        "lines": ["Mrs. Helen N. Sales", "Mr. Kenneth James Sales"]
+        "lines": ["Helen N. Sales", "Kenneth James Sales"]
       }
     },
     { "t": "hl", "text": "Banner Holder" },
@@ -26,32 +26,33 @@
     {
       "t": "principal",
       "rows": [
+        ["Mayor Edgardo Arcay", "Mrs. Aniceta Arcay"],
+        ["Mr. Raul Arcay", "Mrs. Genefer Ann Arcay"],
+        ["Capt. Judito Clenista", "Mrs. Ances Clenista"],
         ["Engr. Romy Sales", "Mrs. Evelyn Sales"],
         ["Mr. Kevin Bazar", "Leslie Bazar"],
         ["Mr. Juanito Felisilda", "Mrs. Rachel Felisilda"],
         ["Mr. Jacinto Nambatac", "Mrs. Realyn Nambatac"],
+        ["Mr. Hermes Fucanan", "Ms. Rubina Lustre"],
         ["Mr. Pablo Pocong", "Mrs. Ester Pocong"],
         ["Mr. Roger Mangana", "Mrs. Evena Mangana"],
+        ["Mr. Herbie Dacuno", "Mrs. Helen Dacuno"],
         ["Mr. Sherlito Salise", "Mrs. Nelia Wapaño"],
         ["Mr. Casiano Salise", "Mrs. Zenaida Nambatac"],
-        ["Mr. Herbie Dacuno", "Mrs. Helen Dacuno"],
-        ["Mr. Raul Arcay", "Mrs. Genefer Ann Arcay"],
-        ["Mayor Edgardo Arcay", "Mrs. Aniceta Arcay"],
-        ["Capt. Judito Clenista", "Mrs. Ances Clenista"],
+        ["Mr. Yolando Nangkil", "Mrs. Gloria Nangkil"],
         ["Engr. Efren Cloma", "Mrs. Zenaida Cloma"],
-        ["Mr. Terso Piquero", "Mrs. Marlin Piquero"],
         ["Mr. Jerome Fuderanan", "Mrs. Genedith Fuderanan"],
-        ["Mr. John Ticon", "Mrs. Jenifer Ticon"],
-        ["Mr. Hermes Fucanan", "Ms. Rubina Lustre"]
+        ["Mr. Terso Piquero", "Mrs. Marlin Piquero"],
+        ["Mr. John Ticon", "Mrs. Jenifer Ticon"]
       ]
     },
     { "t": "hl", "text": "Secondary Sponsors" },
     { "t": "subhl", "text": "Candle" },
     { "t": "pairRow", "left": "Dr. Lyca Cardenas", "right": "Mr. Harold Poquita" },
     { "t": "subhl", "text": "Veil" },
-    { "t": "pairRow", "left": "Mr. Eric Joseph Bompat", "right": "Melarissa Bompat" },
+    { "t": "pairRow", "left": "Mr. Eric Joseph Bompat", "right": "Mrs. Melarissa Bompat" },
     { "t": "subhl", "text": "Cord" },
-    { "t": "pairRow", "left": "Mr. Epimaco Maniwang Jr.", "right": "Melanie Maniwang" },
+    { "t": "pairRow", "left": "Mr. Epimaco Maniwang Jr.", "right": "Mrs. Melanie Maniwang" },
     { "t": "hl", "text": "Ring bearer" },
     { "t": "p", "lines": ["John Aerholl Ramos"] },
     { "t": "hl", "text": "Coin bearer" },
@@ -92,7 +93,7 @@
     },
     {
       "t": "rolesTwoCol",
-      "left": { "title": "Best Man", "lines": ["Albert Jabines"] },
+      "left": { "title": "Best Man", "lines": ["Mr. Albert Jabines"] },
       "right": {
         "title": "Maid of Honors",
         "lines": ["Meldred Bolando", "Louwela Cardenas", "Jackielyn Nambatac"]
@@ -102,14 +103,14 @@
     { "t": "subhl", "text": "1st reading" },
     { "t": "p", "lines": ["John Aerholl Ramos"] },
     { "t": "subhl", "text": "2nd reading" },
-    { "t": "p", "lines": ["Mr. Lorenza Salvo"] },
+    { "t": "p", "lines": ["Ms. Jocelyn Christy Apigo"] },
     { "t": "subhl", "text": "Responsorial psalm" },
-    { "t": "p", "lines": ["Mr. Evenito Lustre"] },
+    { "t": "p", "lines": ["Mr. Evelito Lustre"] },
     { "t": "subhl", "text": "Prayers of the faithful" },
-    { "t": "p", "lines": ["Conchita Castillon"] },
+    { "t": "p", "lines": ["Mrs. Conchita Castillon"] },
     { "t": "hl", "text": "Offerers" },
     { "t": "subhl", "text": "Candles" },
-    { "t": "pairRow", "left": "Maria Rhona Ramos", "right": "Conception Nambatac" },
+    { "t": "pairRow", "left": "Maria Rhona Ramos", "right": "Concepion Nambatac" },
     { "t": "subhl", "text": "Flowers" },
     { "t": "pairRow", "left": "Ma. Nova Estoquia", "right": "Charlotte Jabines" },
     { "t": "subhl", "text": "Fruits" },
