@@ -30,7 +30,7 @@
         ["Mr. Raul Arcay", "Mrs. Genefer Ann Arcay"],
         ["Capt. Judito Clenista", "Mrs. Ances Clenista"],
         ["Engr. Romy Sales", "Mrs. Evelyn Sales"],
-        ["Mr. Kevin Bazar", "Leslie Bazar"],
+        ["Mr. Kevin Bazar", "Mrs. Leslie Bazar"],
         ["Mr. Juanito Felisilda", "Mrs. Rachel Felisilda"],
         ["Mr. Jacinto Nambatac", "Mrs. Realyn Nambatac"],
         ["Mr. Hermes Fucanan", "Ms. Rubina Lustre"],
@@ -105,7 +105,7 @@
     { "t": "subhl", "text": "2nd reading" },
     { "t": "p", "lines": ["Ms. Jocelyn Christy Apigo"] },
     { "t": "subhl", "text": "Responsorial psalm" },
-    { "t": "p", "lines": ["Mr. Evelito Lustre"] },
+    { "t": "p", "lines": ["Mr. Avelito Lustre"] },
     { "t": "subhl", "text": "Prayers of the faithful" },
     { "t": "p", "lines": ["Mrs. Conchita Castillon"] },
     { "t": "hl", "text": "Offerers" },
@@ -114,7 +114,7 @@
     { "t": "subhl", "text": "Flowers" },
     { "t": "pairRow", "left": "Ma. Nova Estoquia", "right": "Charlotte Jabines" },
     { "t": "subhl", "text": "Fruits" },
-    { "t": "pairRow", "left": "Ciela Mae Cagatin", "right": "Nylienne Paulene Shane" },
+    { "t": "pairRow", "left": "Ciela Mae Cagatin", "right": "Paulene Shane Ladao" },
     { "t": "subhl", "text": "Bread & wine" },
     { "t": "pairRow", "left": "Nicanor Lumain", "right": "Rosalina Lumain" }
   ]
